@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('food_items', function (Blueprint $table) {
+            $table->id();
+            $table->uuid('uuid');
+            $table->foreignId('food_id')->unsigned()->references('id')->on('food')->constrained()->cascadeOnDelete();
+            $table->string('food_name');
+            $table->tinyInteger('status')->comment('0:Unapproved,1:Approved,3:Rejected')->default(0);
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('food_items');
+    }
+};

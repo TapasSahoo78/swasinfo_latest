@@ -1,0 +1,60 @@
+{
+    "categories": [
+        {
+            "name": "Prerolls"
+        },
+        {
+            "name": "Edibles"
+        },
+        {
+            "name": "Flower"
+        },
+        {
+            "name": "Vapes/Disposables"
+        },
+        {
+            "name": "Cartridges"
+        },
+        {
+            "name": "Wax"
+        },
+        {
+            "name": "Oils/Drops"
+        },
+        {
+            "name": "Softgels"
+        },
+        {
+            "name": "Canabinoids",
+            "sub_category":[
+                {
+                    "name": "CBD"
+                },
+                {
+                    "name": "Delta 8",
+                    "sub_category":[
+                        {
+                            "name": "HHC"
+                        },
+                        {
+                            "name": "THC-O"
+                        },
+                        {
+                            "name": "HHC-O"
+                        },
+                        {
+                            "name": "THC-P"
+                        },
+                        {
+                            "name": "HHC-P"
+                        },
+                        {
+                            "name": "Blends"
+                        }
+                    ]
+                }
+            ]
+        }
+
+    ]
+}

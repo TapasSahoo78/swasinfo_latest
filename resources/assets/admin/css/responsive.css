@@ -1,0 +1,70 @@
+/* large Desktop */
+@media only screen and (min-width: 1550px) {
+}
+
+/* desktop 1200px to 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+}
+
+/* normal desktop */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+}
+
+/* tablet view */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* dashboard */
+    .dashcard_mob {
+        margin-bottom: 25px;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+}
+
+/* mobile view */
+@media only screen and (max-width: 767px) {
+    /* top bar */
+    .topbar_mob {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    .search_mobform {
+        flex: 0 0 80%;
+        max-width: 80%;
+    }
+
+    .navbar_mob {
+        flex: 0 0 10%;
+        max-width: 10%;
+    }
+
+    .navprofile_mob {
+        flex: 0 0 100%;
+        max-width: 100%;
+        justify-content: center;
+    }
+    /* dasboard */
+    .dash_mob {
+        padding: 1.6rem !important;
+    }
+
+    .dashcard_mob {
+        margin-bottom: 25px;
+    }
+    .right_btn {
+        justify-content: flex-start;
+        margin-top: 12px;
+    } 
+
+    .permission_box{
+        width: 85%;
+        margin: auto;
+    }
+
+    .faq_sec .card-head .accor_toggle h2 {
+        font-size: 15px;
+    }    
+}
+
+@media only screen and (max-width: 350px) {
+}

@@ -1,0 +1,104 @@
+{
+    "permissions": [
+        {
+            "name": "View Dashboard"
+        },
+        {
+            "name": "Add Customer"
+        },
+        {
+            "name": "Edit Customer"
+        },
+        {
+            "name": "Delete Customer"
+        },
+        {
+            "name": "View Customer"
+        },
+
+        {
+            "name": "Add Pages"
+        },
+        {
+            "name": "Edit Pages"
+        },
+        {
+            "name": "View Pages"
+        },
+        {
+            "name": "Delete Pages"
+        },
+        {
+            "name": "Add Plan Category"
+        },
+        {
+            "name": "Edit Plan Category"
+        },
+        {
+            "name": "View Plan Category"
+        },
+        {
+            "name": "Delete Plan Category"
+        },
+        {
+            "name": "Add Course"
+        },
+        {
+            "name": "Edit Course"
+        },
+        {
+            "name": "View Course"
+        },
+        {
+            "name": "Delete Course"
+        },
+        {
+            "name": "Add Category"
+        },
+        {
+            "name": "Edit Category"
+        },
+        {
+            "name": "View Category"
+        },
+        {
+            "name": "Delete Category"
+        },
+        {
+            "name": "Add Product"
+        },
+        {
+            "name": "Edit Product"
+        },
+        {
+            "name": "View Product"
+        },
+        {
+            "name": "Delete Product"
+        },
+        {
+            "name": "Add Attribute"
+        },
+        {
+            "name": "Edit Attribute"
+        },
+        {
+            "name": "View Attribute"
+        },
+        {
+            "name": "Delete Attribute"
+        },
+        {
+            "name": "Add FAQ"
+        },
+        {
+            "name": "Edit FAQ"
+        },
+        {
+            "name": "View FAQ"
+        },
+        {
+            "name": "Delete FAQ"
+        }
+    ]
+}

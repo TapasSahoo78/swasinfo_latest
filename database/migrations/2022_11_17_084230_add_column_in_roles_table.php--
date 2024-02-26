@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddColumnInRolesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('roles', function (Blueprint $table) {
+            $table->enum('role_type', ['admin', 'seller','customer','employee'])->nullable()->comment('This is the type of role so that admin can identify the role type')->after('short_code');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('roles', function (Blueprint $table) {
+            $table->dropColumn('role_type');
+        });
+    }
+}

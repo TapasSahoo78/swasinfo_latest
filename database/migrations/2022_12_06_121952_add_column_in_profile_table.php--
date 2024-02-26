@@ -1,0 +1,33 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddColumnInProfileTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('profiles', function (Blueprint $table) {
+            $table->string('organization_name')->nullable()->after('gender');
+            $table->string('designation')->nullable()->after('organization_name');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('profiles', function (Blueprint $table) {
+            $table->dropColumn(['organization_name','designation']);
+        });
+    }
+}

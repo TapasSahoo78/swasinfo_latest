@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
+use Webpatser\Uuid\Uuid;
+
+class Media extends Model
+{
+    use HasFactory, SoftDeletes;
+    protected $guarded = [];
+    // protected $table= 'medias';
+
+    public function getUrl(){
+
+          $directory = strtolower(last(explode('\\', $this->media_type)));
+        return Storage::disk('public')->url($directory.'/'.$this->file);
+    }
+
+     /**
+     * Boot method
+    **/
+
+    protected $casts= [
+        'meta_details'=> array()
+    ];
+
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function ($model) {
+            $model->uuid = (string) Uuid::generate(4);
+        });
+        self::deleted(function ($model) {
+            if (!empty($model->path)) {
+                $model->deleteFile($model->path);
+            }
+        });
+    }
+
+    public function mediaable(){
+        return $this->morphTo();
+    }
+}
+
+

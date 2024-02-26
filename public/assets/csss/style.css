@@ -1,0 +1,61 @@
+:root {
+	scroll-behavior: smooth;
+}
+
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/*--------------------------------------------------------------
+# Ankita Das
+--------------------------------------------------------------*/
+/*=================================
+	Download Page
+=================================*/
+.mainloginsection {
+	overflow: hidden;	
+	height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    background: transparent;
+}
+
+.downloadp_box {
+    max-height: 500px;
+    /* box-shadow: rgb(0 0 0 / 26%) 0px 5px 9px;
+    background: #F9FDFF; */
+    padding: 15px;
+	background: rgba(166,166,166, 0.1);
+    border-radius: 10px;
+	box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2)
+}
+
+.logo_company {
+    width: 160px;
+    margin: 15px auto;
+}
+
+.click_text {
+    color: #495566;
+    font-size: 18px;
+    padding: 0px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.download_app {
+    margin-bottom: 25px;
+	text-align: center;
+}
+
+.download_app  p {
+    margin-bottom: 0;
+}

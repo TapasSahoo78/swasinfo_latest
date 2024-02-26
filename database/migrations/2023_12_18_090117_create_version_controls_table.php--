@@ -1,0 +1,25 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateVersionControlsTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('version_controls', function (Blueprint $table) {
+            $table->id();
+            $table->string('version', 10)->nullable();
+            $table->tinyInteger('device')->nullable()->comment('0-android, 1-ios');
+            $table->tinyInteger('update_type')->nullable()->comment('0-normal, 1-critical');
+            $table->timestamp('release_date')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('version_controls');
+    }
+}

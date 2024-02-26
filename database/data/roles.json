@@ -1,0 +1,34 @@
+{
+    "roles":[
+        {
+            "name" : "Super Admin",
+            "short_code" : "SAD",
+            "role_type" : "admin",
+            "slug" : "super-admin"
+        },
+        {
+            "name": "Sub Admin",
+            "short_code": "SUAD",
+            "role_type": "admin",
+            "slug": "sub-admin"
+        },
+        {
+            "name": "Businees Development Executive",
+            "short_code": "BDE",
+            "role_type": "admin",
+            "slug": "business-development-executive"
+        },
+        {
+            "name" : "Customer",
+            "short_code" : "customer",
+            "role_type" : "customer",
+            "slug" : "customer"
+        },
+        {
+            "name" : "Trainer",
+            "short_code" : "trainer",
+            "role_type" : "trainer",
+            "slug" : "trainer"
+        }
+    ]
+}

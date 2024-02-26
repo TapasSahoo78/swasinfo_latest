@@ -1,0 +1,69 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('trainer_details', function (Blueprint $table) {
+            $table->id();
+            $table->uuid('uuid')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->string('media_type')->comment('Please add document or image description in this field')->nullable();
+            $table->string('reference_type')->comment('Please add document or image description in this field')->nullable();
+
+
+
+
+            $table->string('preffered_language')->nullable();
+
+            $table->string('expertise')->nullable();
+
+            $table->string('qualification_name')->nullable();
+            $table->string('intro')->nullable();
+
+            $table->BigInteger('ac_no')->nullable();
+
+            $table->string('reenter_ac_no')->nullable();
+
+            $table->string('ifsc_code')->nullable();
+
+            $table->string('bank_name')->nullable();
+
+            $table->boolean('is_profile_picture')->default(0)->comment('0 = No, 1 = Yes')->nullable();
+            $table->boolean('is_logo')->default(0)->comment('0 = No, 1 = Yes')->nullable();
+            $table->boolean('is_aadhaar')->default(0)->comment('0 = No, 1 = Yes')->nullable();
+            $table->boolean('is_location')->default(0)->comment('0 = No, 1 = Yes')->nullable();
+
+            $table->string('profile_picture_file')->nullable();
+            $table->string('qualification_file')->nullable();
+            $table->string('bank_check_file')->nullable();
+            $table->string('id_proof_file')->nullable();
+            $table->json('meta_details')->nullable()->comment('Meta details are use for advertisement and seo purpose')->nullable();
+
+            //$table->softDeletes();
+
+
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('trainer_details');
+    }
+};

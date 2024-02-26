@@ -1,0 +1,14 @@
+$(document).on('click', '.create', function () {
+    var accountTypeval = $('#account_type option:selected').val();
+    if (accountTypeval == '') {
+        $('.errAcntType,.create').show();
+        $('.accountSubType,.openingBalance,.saveBtnList,.upiSection,.bankSection,.accountName').hide();
+    } else {
+        $('.errAcntType').hide();
+        $('.create').hide();
+        $('.accountSubType').show();
+        $('.openingBalance').show();
+        $('.saveBtnList').show();
+      
+    }
+});

@@ -1,0 +1,43 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class ChangeColumnInReviewsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+
+        if (Schema::hasColumn('reviews', 'overall_rating')) {
+            Schema::table('reviews', function (Blueprint $table) {
+                $table->dropColumn('overall_rating');
+            });
+        }
+
+        Schema::table('reviews', function (Blueprint $table) {
+            $table->double('overall_rating', 2, 1)->after('description');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('reviews', function (Blueprint $table) {
+
+            /* $table->dropColumn('overall_rating');
+
+        $table->double('overall_rating', 1, 1); */
+        });
+
+    }
+}

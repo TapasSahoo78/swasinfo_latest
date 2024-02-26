@@ -1,0 +1,72 @@
+@extends('auth.partials.app')
+@section('content')
+<!-- Content -->
+<div class="w-full md:w-1/2">
+    <div class="min-h-screen h-full flex flex-col after:flex-1">
+        <!-- Header -->
+        <div class="flex-1">
+            <div class="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
+                <!-- Logo -->
+                <a class="block" href="{{ route('login') }}">
+                    <img src="{{ asset('assets/admin/images/logo.png') }}" alt="Canably" />
+                </a>
+            </div>
+        </div>
+
+        <div class="max-w-sm mx-auto px-4 py-8">
+            <h1 class="text-3xl text-slate-800 font-bold mb-6">Forget Password ✨</h1>
+            <!-- Form -->
+            <form action="{{ route('password.email') }}" method="post">
+                @csrf
+                <input type="hidden" name="recaptcha" id="recaptcha">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1" for="email">Email Address</label>
+                        <input name="email" id="email" value="{{ old('email') }}" class="form-input w-full" type="email"
+                            required />
+                    </div>
+                </div>
+                <div class="flex items-center justify-between mt-6">
+                    <div class="mr-1">
+                        <a class="text-sm underline hover:no-underline" href="{{ route('login') }}">Nevermind, take me back.</a>
+                    </div>
+                    <input type="submit" disabled class="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3"
+                        value="Reset Password" />
+                </div>
+            </form>
+            <!-- Footer -->
+            <div class="pt-5 mt-6 border-t border-slate-200">
+                &copy; Canably
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Image -->
+
+@endsection
+@push('scripts')
+<script  defer>
+    $(document).ready(function() {
+        setRecaptchaToken();
+        // Every 90 Seconds
+        setInterval(function() {
+            setRecaptchaToken();
+        }, 90 * 1000);
+    });
+
+    function setRecaptchaToken() {
+        grecaptcha.ready(function() {
+            grecaptcha.execute('{{ config('captcha.sitekey') }}', {
+                action: 'forgetpassword'
+            }).then(function(token) {
+                // console.log(token);
+                if (token) {
+                    document.getElementById('recaptcha').value = token;
+                    $('input[type="submit"]').prop('disabled', false);
+                }
+            });
+        });
+    }
+</script>
+@endpush
+

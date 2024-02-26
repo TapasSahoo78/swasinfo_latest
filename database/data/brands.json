@@ -1,0 +1,64 @@
+{
+    "brands": [
+        {
+            "name": "+PlusCBD",
+            "created_by": 1,
+            "updated_by": 1
+        },
+        {
+            "name": "Cannamoly",
+            "created_by": 1,
+            "updated_by": 1
+        },
+        {
+            "name": "Clean AF",
+            "created_by": 1,
+            "updated_by": 1
+        },
+        {
+            "name": "Cream",
+            "created_by": 1,
+            "updated_by": 1
+        },
+        {
+            "name": "Elevate",
+            "created_by": 1,
+            "updated_by": 1
+        },
+        {
+            "name": "Fellow Mellow",
+            "created_by": 1,
+            "updated_by": 1
+        },
+        {
+            "name": "Happy Shaman",
+            "created_by": 1,
+            "updated_by": 1
+        },
+        {
+            "name": "Hydoze",
+            "created_by": 1,
+            "updated_by": 1
+        },
+        {
+            "name": "Kuzz Delta 8",
+            "created_by": 1,
+            "updated_by": 1
+        },
+        {
+            "name": "Litty",
+            "created_by": 1,
+            "updated_by": 1
+        },
+        {
+            "name": "Sleepy Bear",
+            "created_by": 1,
+            "updated_by": 1
+        },
+        {
+            "name": "Torch",
+            "created_by": 1,
+            "updated_by": 1
+        }
+    ]
+}
