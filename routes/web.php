@@ -14,19 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('frontend.layouts.main');
-});
-// Route::get('/contact-us', function () {
-//     return redirect('admin/login');
-//     // return view('welcome');
-// });
+    return view('frontend.pages.homepage');
+})->name('frontend.home');
+Route::get('/contact-us', function () {
+    return view('frontend.pages.contact_us');
+})->name('frontend.contact');
 
 Route::get('/ecom', function () {
     return view('ecom.layouts.main');
-});
+})->name('frontend.ecom');
 
 Route::get('/branch', function () {
-
     // return redirect('admin/login');
     return view('admin.branch.list');
 });

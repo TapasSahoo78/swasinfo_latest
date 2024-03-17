@@ -4,16 +4,16 @@
             <div class="col-lg-4 col-md-4 col-12">
                 <div class="footer-logo">
                     <a href="">
-                        <img src="{{ asset('frontend/images/ft-logo.png') }}" class="img-fluid" alt="">
+                        <img src="<?php echo e(asset('frontend/images/ft-logo.png')); ?>" class="img-fluid" alt="">
                     </a>
                 </div>
 
                 <ul class="socials">
-                    <li><a href=""><img src="{{ asset('frontend/images/f-1.png') }}" class="img-fluid"
+                    <li><a href=""><img src="<?php echo e(asset('frontend/images/f-1.png')); ?>" class="img-fluid"
                                 alt=""></a></li>
-                    <li><a href=""><img src="{{ asset('frontend/images/f-2.png') }}" class="img-fluid"
+                    <li><a href=""><img src="<?php echo e(asset('frontend/images/f-2.png')); ?>" class="img-fluid"
                                 alt=""></a></li>
-                    <li><a href=""><img src="{{ asset('frontend/images/f-3.png') }}" class="img-fluid"
+                    <li><a href=""><img src="<?php echo e(asset('frontend/images/f-3.png')); ?>" class="img-fluid"
                                 alt=""></a></li>
 
                 </ul>
@@ -61,3 +61,4 @@
         <p>&#169;SwaasthFiit 2023</p>
     </div>
 </footer>
+<?php /**PATH J:\DECEMBER-2024\SWASINFO(latest)\shyamfuturetech-swasthafit(latest)\resources\views/frontend/layouts/include/footer.blade.php ENDPATH**/ ?>
