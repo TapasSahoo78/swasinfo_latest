@@ -1,6 +1,5 @@
 {
-    "categories": [
-        {
+    "categories": [{
             "name": "Prerolls"
         },
         {
@@ -26,14 +25,12 @@
         },
         {
             "name": "Canabinoids",
-            "sub_category":[
-                {
+            "sub_category": [{
                     "name": "CBD"
                 },
                 {
                     "name": "Delta 8",
-                    "sub_category":[
-                        {
+                    "sub_category": [{
                             "name": "HHC"
                         },
                         {

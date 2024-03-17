@@ -686,7 +686,7 @@ p {
 a.inactive-status , a.active-status,a.pending-status,a.approved-status,a.withdrawl-status,a.rejected-status,a.process-status,a.hold-status {
     font-size: 12px;
     font-weight: 600;
-    color: #065e04;
+    color: #fff;
     width: 68px;
     text-align: center;
     display: flex;
@@ -874,31 +874,5 @@ li.nav-item.has-treeview a b{
 
 .custom-dropdown a:hover{
     color: #fff;
-}
-
-/* ankita changes */
-
-.card_con h4 {
-    color: #1c1c1c;
-    font-weight: 600;
-    height: 40px;
-}
-
-.card_con h4  span{
-    color: #684bab;
-    padding-right: 5px;
-}
-
-.card_con h5 {
-    font-size: 16px;
-    color: #787878;
-    font-weight: 400;
-    padding-top: 10px;
-}
-
-.count_sec .card {
-    min-height: 180px;
-    padding: 30px;
-    justify-content: center;
 }
 

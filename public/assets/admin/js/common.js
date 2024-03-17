@@ -438,9 +438,6 @@ $(document).ready(function (e) {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
                     type: "put",
                     url: baseUrl + 'ajax/updateStatus',
                     data: { 'uuid': uuid, 'find': find, 'value': value },
@@ -483,137 +480,6 @@ $(document).ready(function (e) {
             }
         });
     });
-
-    
-    $('.custom-data-table').on('click', '.changeSales', function (e) {
-        var $this = $(this);
-        var uuid = $this.data('uuid');
-        var value = $this.data('value');
-        var find = $this.data('table');
-        var message = $this.data('message') ?? 'test message';
-        Swal.fire({
-            title: 'Are you sure you want to ' + message + ' it?',
-            text: 'The status will be changed to ' + message,
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, ' + message + ' it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: "put",
-                    url: baseUrl + 'ajax/updateSales',
-                    data: { 'uuid': uuid, 'find': find, 'value': value },
-                    cache: false,
-                    dataType: "json",
-                    beforeSend: function () {
-
-                    },
-                    success: function (response) {
-                        if (response.status) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Status Updated!',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                            location.reload();
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'We are facing some technical issue now.',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                        }
-                    },
-                    error: function (response) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'We are facing some technical issue now. Please try again after some time',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                    }
-                    /* ,
-                    complete: function(response){
-                        location.reload();
-                    } */
-                });
-            }
-        });
-    });
-
-
-
-    $('.custom-data-table').on('click', '.changeDeal', function (e) {
-        var $this = $(this);
-        var uuid = $this.data('uuid');
-        var value = $this.data('value');
-        var find = $this.data('table');
-        var message = $this.data('message') ?? 'test message';
-        Swal.fire({
-            title: 'Are you sure you want to ' + message + ' it?',
-            text: 'The status will be changed to ' + message,
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, ' + message + ' it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: "put",
-                    url: baseUrl + 'ajax/updateDeal',
-                    data: { 'uuid': uuid, 'find': find, 'value': value },
-                    cache: false,
-                    dataType: "json",
-                    beforeSend: function () {
-
-                    },
-                    success: function (response) {
-                        if (response.status) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Status Updated!',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                            location.reload();
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'We are facing some technical issue now.',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                        }
-                    },
-                    error: function (response) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'We are facing some technical issue now. Please try again after some time',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                    }
-                    /* ,
-                    complete: function(response){
-                        location.reload();
-                    } */
-                });
-            }
-        });
-    });
-
-
     $('.custom-data-table').on('click', '.deleteData', function (e) {
         var $this = $(this);
         var uuid = $this.data('uuid');
@@ -630,9 +496,6 @@ $(document).ready(function (e) {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
                     type: "delete",
                     url: baseUrl + 'ajax/deleteData',
                     data: { 'uuid': uuid, 'find': find },
