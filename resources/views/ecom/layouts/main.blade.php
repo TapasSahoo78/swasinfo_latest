@@ -31,9 +31,10 @@
             <div class="row align-items-center">
                 <div class="col-lg-9 col-md-12 col-12">
                     <div class="header-left">
-                        <a href="">
+                        <a href="{{ route('frontend.home') }}">
                             <div class="logo">
-                                <img src="{{ asset('frontend/images/logo.png')}}" class="img-fluid" alt="" title="SwaasthFiit">
+                                <img src="{{ asset('frontend/images/logo.png') }}" class="img-fluid" alt=""
+                                    title="SwaasthFiit">
                             </div>
                         </a>
                         <div class="location">
@@ -99,9 +100,10 @@
                 <div class="col-lg-9 col-6">
                     <div class="stellarnav" id="main-nav">
                         <ul>
-                            <li class="menu-img"><img src="{{ asset('frontend/images/menu.png')}}" class="img-fluid" alt=""></li>
+                            <li class="menu-img"><img src="{{ asset('frontend/images/menu.png') }}" class="img-fluid"
+                                    alt=""></li>
                             <li class="nav-hover active">
-                                <a href="">Home</a>
+                                <a href="{{ route('frontend.home') }}">Home</a>
                             </li>
                             <li class="nav-hover active">
                                 <a href="">Shop</a>
@@ -127,22 +129,27 @@
                             <div class="dropdown">
                                 <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('frontend/images/india.svg')}}" class="img-fluid" alt="">
+                                    <img src="{{ asset('frontend/images/india.svg') }}" class="img-fluid"
+                                        alt="">
                                 </a>
 
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li><a class="dropdown-item" href="#"><img src="{{ asset('frontend/images/india.svg')}}"
-                                                class="img-fluid" alt="">
+                                    <li><a class="dropdown-item" href="#"><img
+                                                src="{{ asset('frontend/images/india.svg') }}" class="img-fluid"
+                                                alt="">
                                         </a></li>
-                                    <li><a class="dropdown-item" href="#"><img src="{{ asset('frontend/images/india.svg')}}"
-                                                class="img-fluid" alt=""></a></li>
-                                    <li><a class="dropdown-item" href="#"><img src="{{ asset('frontend/images/india.svg')}}"
-                                                class="img-fluid" alt=""></a></li>
+                                    <li><a class="dropdown-item" href="#"><img
+                                                src="{{ asset('frontend/images/india.svg') }}" class="img-fluid"
+                                                alt=""></a></li>
+                                    <li><a class="dropdown-item" href="#"><img
+                                                src="{{ asset('frontend/images/india.svg') }}" class="img-fluid"
+                                                alt=""></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="cart">
-                            <a href="#"><img src="{{ asset('frontend/images/cart.svg')}}" class="img-fluid" alt=""> Cart
+                            <a href="#"><img src="{{ asset('frontend/images/cart.svg') }}" class="img-fluid"
+                                    alt=""> Cart
                                 <span>2</span></a>
 
                         </div>
@@ -164,16 +171,16 @@
                             fitness goals with utmost guidance from team of our experts!</p>
 
                         <div class="service-img">
-                            <img src="{{ asset('frontend/images/ser-1.png')}}" class="img-fluid" alt="">
-                            <img src="{{ asset('frontend/images/ser-2.png')}}" class="img-fluid" alt="">
-                            <img src="{{ asset('frontend/images/ser-3.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/ser-1.png') }}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/ser-2.png') }}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/ser-3.png') }}" class="img-fluid" alt="">
 
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="bnr-right">
-                        <img src="{{ asset('frontend/images/banner-right.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('frontend/images/banner-right.png') }}" class="img-fluid" alt="">
                     </div>
                 </div>
             </div>
@@ -188,7 +195,7 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="banner-box">
                         <div class="top-box">
-                            <img src="{{ asset('frontend/images/prfl.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/prfl.png') }}" class="img-fluid" alt="">
                             <h6>Hi, John <span> Customer since 2017</span></h6>
                         </div>
 
@@ -197,25 +204,29 @@
                         <div class="inner-box">
                             <a href="" class="all-itms">
                                 <div class="box-items">
-                                    <img src="{{ asset('frontend/images/b-1.png')}}" class="img-fluid" alt="">
+                                    <img src="{{ asset('frontend/images/b-1.png') }}" class="img-fluid"
+                                        alt="">
                                     <p>Your Orders</p>
                                 </div>
                             </a>
                             <a href="" class="all-itms">
                                 <div class="box-items">
-                                    <img src="{{ asset('frontend/images/b-2.png')}}" class="img-fluid" alt="">
+                                    <img src="{{ asset('frontend/images/b-2.png') }}" class="img-fluid"
+                                        alt="">
                                     <p>Mobile & Accessories</p>
                                 </div>
                             </a>
                             <a href="" class="all-itms">
                                 <div class="box-items">
-                                    <img src="{{ asset('frontend/images/b-3.png')}}" class="img-fluid" alt="">
+                                    <img src="{{ asset('frontend/images/b-3.png') }}" class="img-fluid"
+                                        alt="">
                                     <p>Watches For Men</p>
                                 </div>
                             </a>
                             <a href="" class="all-itms">
                                 <div class="box-items">
-                                    <img src="{{ asset('frontend/images/b-4.png')}}" class="img-fluid" alt="">
+                                    <img src="{{ asset('frontend/images/b-4.png') }}" class="img-fluid"
+                                        alt="">
                                     <p>Watches For Men</p>
                                 </div>
                             </a>
@@ -227,7 +238,7 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="banner-box scnd">
                         <h6>Up to 70% off | Electronics Clearance Store</h6>
-                        <img src="{{ asset('frontend/images/bn-2.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('frontend/images/bn-2.png') }}" class="img-fluid" alt="">
                         <a href="">see more</a>
                     </div>
                 </div>
@@ -239,7 +250,7 @@
                             <p>Fast, convenient and secure | Over 17 crore products in your pocket.</p>
                             <a href="">Download the SwaasthFiit App</a>
                         </div>
-                        <img src="{{ asset('frontend/images/bnr-3.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('frontend/images/bnr-3.png') }}" class="img-fluid" alt="">
 
 
                     </div>
@@ -255,7 +266,7 @@
                 <div class="row">
                     <div class="col-lg-7 col-md-7 col-12">
                         <div class="gym-left">
-                            <img src="{{ asset('frontend/images/gym-1.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/gym-1.png') }}" class="img-fluid" alt="">
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 col-12">
@@ -264,25 +275,29 @@
                             <div class="gym-right-image">
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/gymm-2.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/gymm-2.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Saral Home Kids Yoga Mat </p>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/gymm-2.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/gymm-2.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Fitness Girl (Japanese) </p>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/gymm.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/gymm.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Boldfit Track Pants </p>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/gymm-2.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/gymm-2.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Dumble Gym Elements</p>
                                 </div>
@@ -307,7 +322,7 @@
                     <div class="item">
                         <div class="deal-box">
                             <div class="deal-image">
-                                <img src="{{ asset('frontend/images/d-1.png')}}" class="img-fluid" alt="">
+                                <img src="{{ asset('frontend/images/d-1.png') }}" class="img-fluid" alt="">
                             </div>
                             <div class="limited-deal">
                                 <p>Up to 73% off</p>
@@ -319,7 +334,7 @@
                     <div class="item">
                         <div class="deal-box">
                             <div class="deal-image">
-                                <img src="{{ asset('frontend/images/d-2.png')}}" class="img-fluid" alt="">
+                                <img src="{{ asset('frontend/images/d-2.png') }}" class="img-fluid" alt="">
                             </div>
                             <div class="limited-deal">
                                 <p>Up to 73% off</p>
@@ -331,7 +346,7 @@
                     <div class="item">
                         <div class="deal-box">
                             <div class="deal-image">
-                                <img src="{{ asset('frontend/images/d-3.png')}}" class="img-fluid" alt="">
+                                <img src="{{ asset('frontend/images/d-3.png') }}" class="img-fluid" alt="">
                             </div>
                             <div class="limited-deal">
                                 <p>Up to 73% off</p>
@@ -343,7 +358,7 @@
                     <div class="item">
                         <div class="deal-box">
                             <div class="deal-image">
-                                <img src="{{ asset('frontend/images/d-4.png')}}" class="img-fluid" alt="">
+                                <img src="{{ asset('frontend/images/d-4.png') }}" class="img-fluid" alt="">
                             </div>
                             <div class="limited-deal">
                                 <p>Up to 73% off</p>
@@ -355,7 +370,7 @@
                     <div class="item">
                         <div class="deal-box">
                             <div class="deal-image">
-                                <img src="{{ asset('frontend/images/d-5.png')}}" class="img-fluid" alt="">
+                                <img src="{{ asset('frontend/images/d-5.png') }}" class="img-fluid" alt="">
                             </div>
                             <div class="limited-deal">
                                 <p>Up to 73% off</p>
@@ -367,7 +382,7 @@
                     <div class="item">
                         <div class="deal-box">
                             <div class="deal-image">
-                                <img src="{{ asset('frontend/images/d-1.png')}}" class="img-fluid" alt="">
+                                <img src="{{ asset('frontend/images/d-1.png') }}" class="img-fluid" alt="">
                             </div>
                             <div class="limited-deal">
                                 <p>Up to 73% off</p>
@@ -379,7 +394,7 @@
                     <div class="item">
                         <div class="deal-box">
                             <div class="deal-image">
-                                <img src="{{ asset('frontend/images/d-2.png')}}" class="img-fluid" alt="">
+                                <img src="{{ asset('frontend/images/d-2.png') }}" class="img-fluid" alt="">
                             </div>
                             <div class="limited-deal">
                                 <p>Up to 73% off</p>
@@ -407,45 +422,45 @@
                 <div class="owl-carousel deal-carousel owl-theme">
                     <div class="item">
                         <div class="deal-image retated-itms">
-                            <img src="{{ asset('frontend/images/r-1.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/r-1.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
 
                         <div class="deal-image retated-itms">
-                            <img src="{{ asset('frontend/images/r-2.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/r-2.png') }}" class="img-fluid" alt="">
                         </div>
 
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/r-3.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/r-3.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/r-4.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/r-4.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/d-1.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/d-1.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/r-1.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/r-1.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/r-2.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/r-2.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
@@ -467,45 +482,45 @@
                 <div class="owl-carousel deal-carousel owl-theme">
                     <div class="item">
                         <div class="deal-image retated-itms">
-                            <img src="{{ asset('frontend/images/m-1.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/m-1.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
 
                         <div class="deal-image retated-itms">
-                            <img src="{{ asset('frontend/images/m-2.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/m-2.png') }}" class="img-fluid" alt="">
                         </div>
 
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/m-3.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/m-3.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/m-4.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/m-4.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/m-1.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/m-1.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/m-2.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/m-2.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/m-3.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/m-3.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
@@ -521,10 +536,10 @@
                             <h6>Customer’ Most-Loved
                                 Fashion For You</h6>
                             <div class="loved-images">
-                                <img src="{{ asset('frontend/images/l-1.png')}}" class="img-fluid" alt="">
-                                <img src="{{ asset('frontend/images/l-2.png')}}" class="img-fluid" alt="">
-                                <img src="{{ asset('frontend/images/l-3.png')}}" class="img-fluid" alt="">
-                                <img src="{{ asset('frontend/images/l-4.png')}}" class="img-fluid" alt="">
+                                <img src="{{ asset('frontend/images/l-1.png') }}" class="img-fluid" alt="">
+                                <img src="{{ asset('frontend/images/l-2.png') }}" class="img-fluid" alt="">
+                                <img src="{{ asset('frontend/images/l-3.png') }}" class="img-fluid" alt="">
+                                <img src="{{ asset('frontend/images/l-4.png') }}" class="img-fluid" alt="">
 
                             </div>
                             <a class="explr" href="#">Explore More</a>
@@ -537,28 +552,32 @@
                             <div class="gym-right-image">
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/k-1.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/k-1.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Wides Men’s Synt..</p>
                                     <a href="#">₹545 </a>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/k-2.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/k-2.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Elmira Small..</p>
                                     <a href="#">₹545 </a>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/k-3.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/k-3.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>The House Of Tara..</p>
                                     <a href="#">₹2,090</a>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/k-4.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/k-4.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Supplement...</p>
                                     <a href="#">₹921</a>
@@ -574,7 +593,8 @@
                         <div class="most-loved">
                             <h6>Pick Up Where You Left off</h6>
                             <div class="pick-up">
-                                <img src="{{ asset('frontend/images/cus-1.png')}}" class="img-fluid" alt="">
+                                <img src="{{ asset('frontend/images/cus-1.png') }}" class="img-fluid"
+                                    alt="">
                                 <p>SwassFiit Brand- Symactive Neoprene Coated Solid Kettlebell For..</p>
                             </div>
                             <div class="rupees-all">
@@ -583,10 +603,14 @@
                             </div>
 
                             <div class="acrd-btm">
-                                <img src="{{ asset('frontend/images/cus-2.png')}}" class="img-fluid" alt="">
-                                <img src="{{ asset('frontend/images/cus-3.png')}}" class="img-fluid" alt="">
-                                <img src="{{ asset('frontend/images/cus-4.png')}}" class="img-fluid" alt="">
-                                <img src="{{ asset('frontend/images/cus-5.png')}}" class="img-fluid" alt="">
+                                <img src="{{ asset('frontend/images/cus-2.png') }}" class="img-fluid"
+                                    alt="">
+                                <img src="{{ asset('frontend/images/cus-3.png') }}" class="img-fluid"
+                                    alt="">
+                                <img src="{{ asset('frontend/images/cus-4.png') }}" class="img-fluid"
+                                    alt="">
+                                <img src="{{ asset('frontend/images/cus-5.png') }}" class="img-fluid"
+                                    alt="">
 
                             </div>
                             <a class="explr" href="#">See More</a>
@@ -601,28 +625,32 @@
                             <div class="gym-right-image">
                                 <div class="images-items-all">
                                     <div class="images-items right-most">
-                                        <img src="{{ asset('frontend/images/best-1.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/best-1.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Cushion Covers,
                                         Bedsheets & More</p>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items right-most">
-                                        <img src="{{ asset('frontend/images/best-1.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/best-1.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Cushion Covers,
                                         Bedsheets & More</p>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items right-most">
-                                        <img src="{{ asset('frontend/images/best-2.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/best-2.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Figurines, Vases
                                         And More</p>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items right-most">
-                                        <img src="{{ asset('frontend/images/best-1.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/best-1.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Cushion Covers,
                                         Bedsheets & More</p>
@@ -654,45 +682,45 @@
                 <div class="owl-carousel deal-carousel owl-theme">
                     <div class="item">
                         <div class="deal-image retated-itms">
-                            <img src="{{ asset('frontend/images/e-1.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/e-1.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
 
                         <div class="deal-image retated-itms">
-                            <img src="{{ asset('frontend/images/e-2.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/e-2.png') }}" class="img-fluid" alt="">
                         </div>
 
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/e-3.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/e-3.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/e-4.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/e-4.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/e-5.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/e-5.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/e-1.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/e-1.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/e-2.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/e-2.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
@@ -710,14 +738,14 @@
                 <div class="owl-carousel deal-carousel owl-theme">
                     <div class="item">
                         <div class="deal-image retated-itms">
-                            <img src="{{ asset('frontend/images/bag-1.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/bag-1.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
 
                         <div class="deal-image retated-itms">
-                            <img src="{{ asset('frontend/images/bag-2.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/bag-2.png') }}" class="img-fluid" alt="">
 
                         </div>
 
@@ -725,35 +753,35 @@
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/bag-3.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/bag-3.png') }}" class="img-fluid" alt="">
 
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/bag-4.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/bag-4.png') }}" class="img-fluid" alt="">
 
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/bag-5.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/bag-5.png') }}" class="img-fluid" alt="">
 
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/bag-1.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/bag-1.png') }}" class="img-fluid" alt="">
 
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/bag-2.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/bag-2.png') }}" class="img-fluid" alt="">
 
                         </div>
 
@@ -777,28 +805,32 @@
                             <div class="gym-right-image">
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/dmbl-1.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/dmbl-1.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Storio Kids Toys..</p>
                                     <a href="#">₹149 </a>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/dmbl-2.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/dmbl-2.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Lapster Multico..</p>
                                     <a href="#">₹199 </a>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/dmbl-1.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/dmbl-1.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Eumqestoer LCD..</p>
                                     <a href="#">₹99</a>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/dmbl-3.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/dmbl-3.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Toy Imagine 8.5 In </p>
                                     <a href="#">₹99</a>
@@ -815,7 +847,7 @@
                             <h6>Customer’ Most-Loved
                                 Fashion For You</h6>
                             <div class="dmbl-images">
-                                <img src="{{ asset('frontend/images/dmbl.png')}}" class="img-fluid" alt="">
+                                <img src="{{ asset('frontend/images/dmbl.png') }}" class="img-fluid" alt="">
 
                             </div>
                             <a class="explr" href="#">See More</a>
@@ -831,13 +863,15 @@
                             <div class="utube">
 
                                 <div class="uimg">
-                                    <img src="{{ asset('frontend/images/utube.png')}}" class="img-fluid" alt="">
+                                    <img src="{{ asset('frontend/images/utube.png') }}" class="img-fluid"
+                                        alt="">
                                 </div>
 
                                 <!-- Button trigger modal -->
                                 <div class="btn video-btn" data-bs-toggle="modal"
                                     data-src="https://www.youtube.com/embed/Jfrjeg26Cwk" data-bs-target="#myModal">
-                                    <img src="{{ asset('frontend/images/rmv.png')}}" class="img-fluid" alt="">
+                                    <img src="{{ asset('frontend/images/rmv.png') }}" class="img-fluid"
+                                        alt="">
                                 </div>
 
                             </div>
@@ -854,28 +888,32 @@
                             <div class="gym-right-image">
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/last-1.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/last-1.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Techno Pop 8 Gra..</p>
                                     <a href="#">₹6599 </a>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/last-2.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/last-2.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Realme Narzo..</p>
                                     <a href="#">₹8,999 </a>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/last-3.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/last-3.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>OnePlus Nord CE..</p>
                                     <a href="#">₹1,799</a>
                                 </div>
                                 <div class="images-items-all">
                                     <div class="images-items">
-                                        <img src="{{ asset('frontend/images/last-4.png')}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('frontend/images/last-4.png') }}" class="img-fluid"
+                                            alt="">
                                     </div>
                                     <p>Samsung Brand..</p>
                                     <a href="#">₹8,749</a>
@@ -912,14 +950,14 @@
                 <div class="owl-carousel trouser-carousel owl-theme">
                     <div class="item">
                         <div class="deal-image retated-itms">
-                            <img src="{{ asset('frontend/images/t-1.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/t-1.png') }}" class="img-fluid" alt="">
                         </div>
 
                     </div>
                     <div class="item">
 
                         <div class="deal-image retated-itms">
-                            <img src="{{ asset('frontend/images/t-2.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/t-2.png') }}" class="img-fluid" alt="">
 
                         </div>
 
@@ -927,49 +965,49 @@
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/t-3.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/t-3.png') }}" class="img-fluid" alt="">
 
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/t-4.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/t-4.png') }}" class="img-fluid" alt="">
 
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/t-5.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/t-5.png') }}" class="img-fluid" alt="">
 
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/t-6.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/t-6.png') }}" class="img-fluid" alt="">
 
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/t-7.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/t-7.png') }}" class="img-fluid" alt="">
 
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/t-8.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/t-8.png') }}" class="img-fluid" alt="">
 
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="deal-image  retated-itms">
-                            <img src="{{ asset('frontend/images/t-1.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/t-1.png') }}" class="img-fluid" alt="">
 
                         </div>
 
@@ -991,21 +1029,21 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="our-ser">
-                        <img src="{{ asset('frontend/images/ser-1.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('frontend/images/ser-1.png') }}" class="img-fluid" alt="">
                         <h6>Free and Fast Delivery</h6>
                         <p>Free delivery for all orders over ₹140</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="our-ser">
-                        <img src="{{ asset('frontend/images/ser-2.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('frontend/images/ser-2.png') }}" class="img-fluid" alt="">
                         <h6>24/7 Customer Service</h6>
                         <p>Friendly 24/7 customer support</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="our-ser">
-                        <img src="{{ asset('frontend/images/ser-3.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('frontend/images/ser-3.png') }}" class="img-fluid" alt="">
                         <h6>Money Back Guarantee</h6>
                         <p>We reurn money within 30 days</p>
                     </div>
@@ -1020,14 +1058,17 @@
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="footer-logo">
                         <a href="">
-                            <img src="{{ asset('frontend/images/ft-logo.png')}}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend/images/ft-logo.png') }}" class="img-fluid" alt="">
                         </a>
                     </div>
 
                     <ul class="socials">
-                        <li><a href=""><img src="{{ asset('frontend/images/f-1.png')}}" class="img-fluid" alt=""></a></li>
-                        <li><a href=""><img src="{{ asset('frontend/images/f-2.png')}}" class="img-fluid" alt=""></a></li>
-                        <li><a href=""><img src="{{ asset('frontend/images/f-3.png')}}" class="img-fluid" alt=""></a></li>
+                        <li><a href=""><img src="{{ asset('frontend/images/f-1.png') }}" class="img-fluid"
+                                    alt=""></a></li>
+                        <li><a href=""><img src="{{ asset('frontend/images/f-2.png') }}" class="img-fluid"
+                                    alt=""></a></li>
+                        <li><a href=""><img src="{{ asset('frontend/images/f-3.png') }}" class="img-fluid"
+                                    alt=""></a></li>
 
                     </ul>
                 </div>
