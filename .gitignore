@@ -14,6 +14,19 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+<<<<<<< HEAD
+# Ignore the entire storage directory
+/storage/*
+
+# Except for these directories...
+!/storage/app/
+!/storage/app/public/
+!/storage/framework/
+!/storage/framework/cache/
+!/storage/framework/sessions/
+!/storage/framework/views/
+!/storage/logs/
+=======
 vendor_latest.zip
 # Ignore Laravel log file
 # Ignore the entire storage directory
@@ -28,3 +41,4 @@ vendor_latest.zip
 !/storage/framework/views/
 !/storage/logs/
 /storage/logs/laravel.log
+>>>>>>> a3ce67951dd08d989fe15111775c985ef15a76dc
