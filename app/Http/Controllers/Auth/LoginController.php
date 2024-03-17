@@ -50,7 +50,6 @@ class LoginController extends BaseController
 
     public function login(Request $request)
     {
-      
         $input = $request->all();
         // return $input;
         $this->validate($request, [
@@ -66,8 +65,8 @@ class LoginController extends BaseController
         $rememberMe = $request->has('remember') ? true : false;
         // return auth()->attempt($userData, $rememberMe);
         if (auth()->attempt($userData, $rememberMe)) {
-            
             $user = auth()->user();
+            // dd($user);
             // return $user;
             if (!$user->is_active) {
                 auth()->logout();
@@ -102,7 +101,7 @@ class LoginController extends BaseController
 
     }
 
-  
 
-    
+
+
 }

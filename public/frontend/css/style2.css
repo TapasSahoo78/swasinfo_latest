@@ -1,0 +1,124 @@
+/* Google Web Fonts CDN */
+@import url('https://fonts.googleapis.com/css?family=Inter:300,400,500,700,900&display=swap');
+
+/* FontAwesome CDN 4.7 */
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+body {
+    color: #222;
+    margin: 0;
+    font-weight: 300;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+/* Layout */
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+   }
+
+section article {
+    width: 100%;
+    height: auto;
+}
+
+.heading {
+    text-align: center;
+}
+
+.heading span {
+    color: crimson;
+    font-size: 24px;
+}
+
+.heading h1 {
+    font-size: 36px;
+    margin-top: 10px;
+}
+
+
+
+.content {}
+
+.content>div {
+    width: 50%;
+    float: right;
+    height: 714px;
+    box-sizing: border-box;
+}
+
+.accordion {}
+
+.title {
+    border-bottom: 1px solid #ddd;
+    padding: 16px 0px;
+    border-radius: 0px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.title:after {
+    content: '\f105';
+    font-family: fontawesome;
+    /* position: absolute;
+    right: 10px;
+    top: 7px; */
+    float: right;
+    margin-right: 5px;
+    margin-top: 3px;
+    transition: 0.3s;
+}
+
+.title.active:after {
+    transform: rotate(90deg);
+    color: #1e65ab;
+}
+
+.title:hover,
+.title.active {
+    background: transparent;
+    color: #212529;
+}
+
+.desc {
+    padding: 12px 0px;
+    display: none;
+    font-weight: 500;
+    line-height: 28px;
+    font-size: 20px;
+    width: 78%;
+}
+
+.desc.active {
+    display: block;
+}
+
+.image {
+    text-align: left;
+}
+
+.image img {
+    height: 100%;
+    width: 96%;
+    }
+.features-section2 .title {
+    border-bottom: 1px solid #b8b8b8;
+    }

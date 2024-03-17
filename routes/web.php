@@ -13,19 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//    return redirect('admin/login');
-// //     // return view('welcome');
-// });
 Route::get('/', function () {
-   return redirect('admin/login');
-    // return view('welcome');
+    return view('frontend.layouts.main');
 });
+// Route::get('/contact-us', function () {
+//     return redirect('admin/login');
+//     // return view('welcome');
+// });
+
+Route::get('/ecom', function () {
+    return view('ecom.layouts.main');
+});
+
 Route::get('/branch', function () {
 
     // return redirect('admin/login');
-     return view('admin.branch.list');
- });
+    return view('admin.branch.list');
+});
 //  Route::get('/dashboard', function () {
 
 //     // return redirect('admin/login');
@@ -38,6 +42,6 @@ Route::get('/branch', function () {
 
 Route::get('/home/{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/planexpires',[App\Http\Controllers\HomeController::class, 'userPlanExpires'])->name('planexpires');
+Route::get('/planexpires', [App\Http\Controllers\HomeController::class, 'userPlanExpires'])->name('planexpires');
 Route::get('/send-notification', [App\Http\Controllers\HomeController::class, 'sendNotification'])->name('send-notification');
 Route::get('/send-notificationtwo', [App\Http\Controllers\HomeController::class, 'sendNotificationTwo'])->name('send-notificationtwo');
