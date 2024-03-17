@@ -14,3 +14,14 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+# Ignore the entire storage directory
+/storage/*
+
+# Except for these directories...
+!/storage/app/
+!/storage/app/public/
+!/storage/framework/
+!/storage/framework/cache/
+!/storage/framework/sessions/
+!/storage/framework/views/
+!/storage/logs/
