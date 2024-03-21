@@ -240,10 +240,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function profilePicture($type = 'profile')
     {
         $profilePicture = $this->media()->where('is_profile_picture', 1)->value('file');
-    
+
         if (!is_null($profilePicture)) {
             $fileDisk = config('constants.SITE_FILE_STORAGE_DISK');
-           
+
             if ($fileDisk == 'public') {
                 $image = public_path('storage/images/' . $type . '/' . $profilePicture);
                 if (file_exists(public_path('storage/images/' . $type . '/' . $profilePicture))) {
@@ -263,10 +263,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function highcholesterol($type = 'profile')
     {
         $profilePicture = $this->media()->where('is_high_cholesterol_prescription', 1)->value('file');
-    
+
         if (!is_null($profilePicture)) {
             $fileDisk = config('constants.SITE_FILE_STORAGE_DISK');
-           
+
             if ($fileDisk == 'public') {
                 $image = public_path('storage/images/' . $type . '/' . $profilePicture);
                 if (file_exists(public_path('storage/images/' . $type . '/' . $profilePicture))) {
@@ -285,10 +285,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function diabitiesprescription($type = 'profile')
     {
         $profilePicture = $this->media()->where('is_diabities_prescription', 1)->value('file');
-    
+
         if (!is_null($profilePicture)) {
             $fileDisk = config('constants.SITE_FILE_STORAGE_DISK');
-           
+
             if ($fileDisk == 'public') {
                 $image = public_path('storage/images/' . $type . '/' . $profilePicture);
                 if (file_exists(public_path('storage/images/' . $type . '/' . $profilePicture))) {
@@ -308,10 +308,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function uricacid($type = 'profile')
     {
         $profilePicture = $this->media()->where('is_uric_acid_prescription', 1)->value('file');
-    
+
         if (!is_null($profilePicture)) {
             $fileDisk = config('constants.SITE_FILE_STORAGE_DISK');
-           
+
             if ($fileDisk == 'public') {
                 $image = public_path('storage/images/' . $type . '/' . $profilePicture);
                 if (file_exists(public_path('storage/images/' . $type . '/' . $profilePicture))) {
@@ -331,10 +331,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function asthma($type = 'profile')
     {
         $profilePicture = $this->media()->where('is_asthma_prescription', 1)->value('file');
-    
+
         if (!is_null($profilePicture)) {
             $fileDisk = config('constants.SITE_FILE_STORAGE_DISK');
-           
+
             if ($fileDisk == 'public') {
                 $image = public_path('storage/images/' . $type . '/' . $profilePicture);
                 if (file_exists(public_path('storage/images/' . $type . '/' . $profilePicture))) {
@@ -353,10 +353,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function medication($type = 'profile')
     {
         $profilePicture = $this->media()->where('is_medication_prescription', 1)->value('file');
-    
+
         if (!is_null($profilePicture)) {
             $fileDisk = config('constants.SITE_FILE_STORAGE_DISK');
-           
+
             if ($fileDisk == 'public') {
                 $image = public_path('storage/images/' . $type . '/' . $profilePicture);
                 if (file_exists(public_path('storage/images/' . $type . '/' . $profilePicture))) {
@@ -376,10 +376,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function prescription($type = 'profile')
     {
         $profilePicture = $this->media()->where('is_prescription', 1)->value('file');
-    
+
         if (!is_null($profilePicture)) {
             $fileDisk = config('constants.SITE_FILE_STORAGE_DISK');
-           
+
             if ($fileDisk == 'public') {
                 $image = public_path('storage/images/' . $type . '/' . $profilePicture);
                 if (file_exists(public_path('storage/images/' . $type . '/' . $profilePicture))) {
@@ -395,10 +395,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function lowblood($type = 'profile')
     {
         $profilePicture = $this->media()->where('is_low_blood_pressure_prescription', 1)->value('file');
-    
+
         if (!is_null($profilePicture)) {
             $fileDisk = config('constants.SITE_FILE_STORAGE_DISK');
-           
+
             if ($fileDisk == 'public') {
                 $image = public_path('storage/images/' . $type . '/' . $profilePicture);
                 if (file_exists(public_path('storage/images/' . $type . '/' . $profilePicture))) {
@@ -409,7 +409,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return asset('assets/images/pro_img.jpg');
     }
 
-    
+
 
 
     public function locationPicture($type = 'location')
@@ -466,9 +466,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(UserPhysicallyActiveConditions::class, 'user_physical_activations');
     }
-    // public function roles(){
+    // public function roles()
+    // {
     //     return $this->belongsToMany(Role::class, 'user_roles');
-    //     }
+    // }
     /* public function roles(){
     return $this->belongsToMany(Role::class, 'user_roles');
     } */
@@ -550,11 +551,10 @@ return $this->hasOne(Address::class);
     }
 
 
-    public function subscribedDetails(
-    )
+    public function subscribedDetails()
     {
         return $this->hasOne(Plan::class, 'id', 'payment_type');
-       // return $this->hasOne(UserHealthScheduleScreenThree::class, 'user_id')
+        // return $this->hasOne(UserHealthScheduleScreenThree::class, 'user_id')
 
     }
 
@@ -563,9 +563,8 @@ return $this->hasOne(Address::class);
         return $this->belongsTo(Plan::class, 'payment_type', 'id');
     }
 
-        public function createdBy()
+    public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');
     }
-
 }

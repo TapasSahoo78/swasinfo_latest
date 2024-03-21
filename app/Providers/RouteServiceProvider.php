@@ -92,7 +92,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapVendorRoutes()
     {
         Route::middleware('web')
-            ->namespace($this->namespace . '\Vendor')
+            ->namespace($this->namespace)
+            // ->namespace($this->namespace . '\Vendor')
             ->prefix('vendor')
             ->group(base_path('routes/vendor.php'));
     }
