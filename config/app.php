@@ -203,7 +203,7 @@ return [
         App\Providers\RepositoryServiceProvider::class,
         
         Milon\Barcode\BarcodeServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class
+        // Maatwebsite\Excel\ExcelServiceProvider::class
         
 
     ],

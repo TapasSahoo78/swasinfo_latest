@@ -74,7 +74,7 @@ class FrontendController extends BaseController
         $canamolyCbdProducts = $this->productService->listProducts($filterBrandProducts, 'id', 'asc');
         $banners = $this->bannerService->listBanners($filterBanners, 'id', 'asc');
         $listTestimonials = $this->testimonialService->listTestimonials($filterTestimonials, 'id', 'asc', 10);
-        return view('frontend.index', compact('listBrands', 'listDelta8Products', 'banners', 'canamolyCbdProducts', 'categories', 'listTestimonials', 'listBlogs'));
+        return view('frontend.index', compact('listBrands', 'listDelta8Pucts', 'banners', 'canamolyCbdProducts', 'categories', 'listTestimonials', 'listBlogs'));
     }
 
     public function products(Request $request)
