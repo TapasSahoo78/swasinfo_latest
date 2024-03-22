@@ -1,3 +1,4 @@
+
 <?php $__env->startPush('style'); ?>
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 <?php $__env->stopPush(); ?>
@@ -87,4 +88,4 @@
     </script>
 <?php $__env->stopPush(); ?>
 
-<?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/u932153640/domains/swasthfit.in/public_html/resources/views/admin/dashboard/dashboard.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\webalizer\swasinfo_latest\resources\views/admin/dashboard/dashboard.blade.php ENDPATH**/ ?>

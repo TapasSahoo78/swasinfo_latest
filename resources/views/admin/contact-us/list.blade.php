@@ -1,5 +1,8 @@
-<?php $__env->startPush('style'); ?>
-    
+@extends('admin.layouts.app')
+
+@push('style')
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css"> --}}
 
     <style>
         @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
@@ -277,29 +280,19 @@
             width: 36px;
         }
     </style>
-<?php $__env->stopPush(); ?>
-<?php $__env->startSection('pagetitlesection'); ?>
+@endpush
+@section('pagetitlesection')
     <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link custom-cumb"><?php echo e(__('Banner List')); ?></a>
+        <a href="#" class="nav-link custom-cumb">{{ __('Pages') }}</a>
     </li>
-<?php $__env->stopSection(); ?>
-<?php $__env->startSection('content'); ?>
+@endsection
+@section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-sm-8">
-                        <h1 class="m-0 text-dark">No of Banner : <?php echo e(count($listbanner)); ?></h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-4 right_btn">
-                        <a class="btn btn-primary" href="<?php echo e(route('admin.product.addbanner')); ?>">
-                            <span><i class="fa fa-plus" aria-hidden="true"></i></span>
-                            ADD Banner
-                        </a>
-                    </div><!-- /.col -->
-                </div>
+
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
@@ -317,101 +310,66 @@
                             <table class="table  text-nowrap custom-data-table" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Title</th>
-                                        <th>Link</th>
-                                        <th>description</th>
-                                        <th>Images</th>
-                                        <th>Status</th>
-                                        <th>Create Date</th>
-                                        <th>Action</th>
+                                        <th>fisrt_name</th>
+                                        <th>last_name</th>
+                                        <th>connecting_for</th>
+                                        <th>mobile</th>
+                                        <th>email</th>
+                                        <th>details</th>
+                                        <th>created_at</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $__empty_1 = true; $__currentLoopData = $listbanner; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                    @forelse ($data as $value)
+                                     
                                         <tr>
-                                            <td><?php echo e($data->title ? $data->title : '---'); ?></td>
-                                             <td><?php echo e($data->link  ? $data->link : '---'); ?></td>
-                                             <td><?php echo e($data->description  ? $data->description  : '---'); ?></td>
-                                             <td><img src="<?php echo e(asset('images/' . $data->banner_img_file)); ?>" alt="Your Image" width="200" height="100"></td>
-                                             <td>
-                                                <?php switch($data->is_active):
-                                                    case (1): ?>
-                                                        <a href="javascript:void(0)" data-value="0" data-table="banners"
-                                                            data-message="inactive" data-uuid="<?php echo e($data->uuid); ?>"
-                                                            class="active-status text-success changeStatus ">Active</a>
-                                                    <?php break; ?>
-
-                                                    <?php case (0): ?>
-                                                        <a href="javascript:void(0)" data-value="1" data-uuid="<?php echo e($data->uuid); ?>"
-                                                            data-table="banners" data-message="active"
-                                                            class="inactive-status changeStatus ">Inactive</a>
-                                                    <?php break; ?>
-
-                                                    <?php default: ?>
-                                                        <a href="javascript:void(0)"
-                                                            class="badge badge-danger text-dark">Deleted</a>
-                                                <?php endswitch; ?>
-                                            </td>
-                                           
-                                            <td><?php echo e(date('d-m-Y', strtotime($data->created_at))); ?></td>
-                                           
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <img src="<?php echo e(asset('assets/img/three-dot-btn.png')); ?>"
-                                                            alt="">
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a class="dropdown-item" href="<?php echo e(route('admin.product.editbanner',$data->uuid)); ?>">Edit</a>
-                                                            <a class="dropdown-item deleteData" data-table="banners"
-                                                                data-uuid="<?php echo e($data->uuid); ?>"
-                                                                href="javascript:void(0)">Delete</a>
-                                                    </div>
-                                                </div>
-
-                                            </td>
+                                            <td>{{ $value->fisrt_name ?? '' }}</td>
+                                            <td>{{ $value->last_name ?? '' }}</td>
+                                            <td>{{ $value->connecting_for ?? '' }}</td>
+                                            <td>{{ $value->mobile ?? '' }}</td>
+                                            <td>{{ $value->email ?? '' }}</td>
+                                            <td>{{ $value->details ?? '' }}</td>
+                                            <td>{{ $value->created_at ?? '' }}</td>
                                         </tr>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                            <tr>
-                                                <td colspan="4" class="text-center">No
-                                                    Data Yet</td>
-                                            </tr>
-                                        <?php endif; ?>
+                                    @empty
+                                        <tr>
+                                            <td colspan="4" class="text-center">No
+                                                Data Yet</td>
+                                        </tr>
+                                    @endforelse
 
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.card-body -->
-                            <!-- /.card -->
+                                </tbody>
+                            </table>
                         </div>
+                        <!-- /.card-body -->
+                        <!-- /.card -->
                     </div>
                 </div>
-                <!-- /.container-fluid -->
             </div>
-            <!-- /.content -->
+            <!-- /.container-fluid -->
         </div>
+        <!-- /.content -->
+    </div>
 
-        <!-- add baranch form -->
+    <!-- add baranch form -->
 
 
 
 
-        <!-- add baranch form-end-->
+    <!-- add baranch form-end-->
 
-        <!-- /.content-wrapper -->
-    <?php $__env->stopSection(); ?>
-    <?php $__env->startPush('scripts'); ?>
-        
-        
-        
-        
-
-        <script src="<?php echo e(asset('assets/admin/js/datatableajax.js')); ?>"></script>
-        <script src="<?php echo e(asset('assets/admin/js/customer.js')); ?>"></script>
-        <script src="<?php echo e(asset('assets/admin/js/customer-kyc-verification.js')); ?>"></script>
-        <script src="<?php echo e(asset('assets/admin/js/customer-kyc-document-verification.js')); ?>"></script>
-    <?php $__env->stopPush(); ?>
-
-<?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/u932153640/domains/swasthfit.in/public_html/resources/views/admin/product/bannerlist.blade.php ENDPATH**/ ?>
+    <!-- /.content-wrapper -->
+@endsection
+@push('scripts')
+    <script src="{{ asset('assets/admin/js/datatableajax.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/customer.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/customer-kyc-verification.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/customer-kyc-document-verification.js') }}"></script>
+@endpush
+{{-- "fisrt_name" => "lkjhg" --}}
+{{-- "last_name" => "lkjhg" --}}
+{{-- "connecting_for" => "1" --}}
+{{-- "mobile" => "1234567890" --}}
+{{-- "email" => "admin@gmail.com" --}}
+{{-- "details" => "lkmjnhbgvcvbnm" --}}
+{{-- "created_at" => "2024-03-22 23:41:24" --}}

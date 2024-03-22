@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
 
 Route::namespace('Frontend')->as('frontend.')->controller(FrontendController::class)->group(function () {
@@ -9,4 +11,5 @@ Route::namespace('Frontend')->as('frontend.')->controller(FrontendController::cl
     Route::match(['get', 'post', 'put'], '/product/{uuid}', 'productDetails')->name('product.details');
     Route::get('/blogs', 'blogs')->name('blogs');
     Route::get('/blogs-details/{uuid}', 'blogDetails')->name('blogs.details');
+    // Route::match(['get','post'],'/contact-us', 'contactUs')->name('contactus');
 });

@@ -38,4 +38,4 @@
         <span class="flashmessage d-none"><?php echo e($value); ?></span>
 	<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 <?php endif; ?>
-<?php /**PATH /home/u932153640/domains/swasthfit.in/public_html/resources/views/auth/partials/flash.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\webalizer\swasinfo_latest\resources\views/admin/layouts/partials/flash.blade.php ENDPATH**/ ?>

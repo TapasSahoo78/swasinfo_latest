@@ -50,4 +50,4 @@
     </ul>
 </nav>
 <!-- /.navbar -->
-<?php /**PATH /home/u932153640/domains/swasthfit.in/public_html/resources/views/admin/layouts/partials/navbar.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\webalizer\swasinfo_latest\resources\views/admin/layouts/partials/navbar.blade.php ENDPATH**/ ?>

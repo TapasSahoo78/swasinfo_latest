@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AttributeController;
+use App\Http\Controllers\Admin\ContacUsController;
 use Illuminate\Support\Facades\Route;
 
 Route::namespace('Admin')->as('admin.')->middleware(['auth'])->group(function () {
@@ -125,6 +126,10 @@ Route::namespace('Admin')->as('admin.')->middleware(['auth'])->group(function ()
         Route::match(['get', 'post'], 'add', 'addAttribute')->name('add');
         Route::match(['get', 'post', 'put'], 'edit/{uuid}', 'editAttribute')->name('edit');
         Route::get('/delete/{uuid}', 'deleteAttribute')->name('delete');
+    });
+    Route::controller(ContacUsController::class)->as('contact-us.')->prefix('contact-us')->group(function () {
+        Route::get('/', 'index')->name('list');
+       
     });
 
     Route::controller(ProductController::class)->as('product.')->prefix('product')->group(function () {
