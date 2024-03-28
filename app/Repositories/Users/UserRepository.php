@@ -1166,11 +1166,6 @@ class UserRepository extends BaseRepository implements UserContract
         return $this->findOneBy($params);
     }
 
-
-
-
-
-
     /**
      * Deactivating a user account and generating log
      *

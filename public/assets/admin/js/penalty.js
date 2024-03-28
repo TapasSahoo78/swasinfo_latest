@@ -661,6 +661,7 @@ $(document).ready(function (e) {
     });
 
     $('.custom-data-table').on('click', '.changeUserStatus,.changeUserBlock', function (e) {
+        
         var $this = $(this);
         var uuid = $this.data('uuid');
         if ($this.hasClass('changeUserStatus')) {

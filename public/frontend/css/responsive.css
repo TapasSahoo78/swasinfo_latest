@@ -1,0 +1,891 @@
+/* large desktop :2160px. */
+@media (min-width: 2160px) and (max-width: 3840px) {
+ 
+}
+  
+  
+ /* large desktop :2001px. */
+ @media (min-width: 2001px) and (max-width: 2160px) {
+
+.bannercarousel-text {
+    padding: 0px 18%;
+    }
+.ourservices-section .square-img1 {
+    left: 15%;
+    top: 18%;
+    }
+
+}
+
+/* large desktop :1400px. */
+@media (min-width: 1400px) and (max-width: 2000px) {
+  
+}
+
+
+/* desktop 1200px to 1600px */
+@media (min-width: 1200px) and (max-width: 1600px) {
+	
+ }
+
+
+
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1199px) {
+.stellarnav > ul > li > a {
+    padding: 10px 7px;
+    font-size: 14px;
+    font-weight: 400;
+    }
+.loginbtn {
+    font-size: 13px !important;
+    padding: 10px 16px !important;
+    }
+.loginbtn {
+    font-size: 12px;
+    }
+.bannercarousel-text {
+    top: 19%;
+    padding: 0px 0%;
+    left: 5%;
+    }
+.banner-section .owl-carousel .owl-stage-outer {
+    min-height: 410px;
+    }
+.bannercarousel-text h2 {
+    margin: 0px 0px 1px 0px;
+    width: 92%;
+    font-size: 50px;
+    line-height: 52px;
+    }
+.bannercarousel-text p {
+    margin: 0px 0px 38px 0px;
+    font-size: 20px;
+    line-height: 24px;
+    width: 53%;
+    }
+.fitnessgoal-card .content h3 {
+    font-size: 19px;
+    line-height: 21px;
+    }
+.featuresimg02 {
+    width: 246px;
+    }
+.customisedguidance-section {
+    padding: 67px 0px;
+    }
+.fitnessright {
+    margin: 11% 0px 0px 0px;
+    }
+.healthassurance-left {
+    padding: 0% 0px 0px 7%;
+    }
+.healthassurance-section {
+    min-height: 440px;
+    }
+.sweatimg02 {
+    width: 169px;
+    }
+.features-section {
+    padding: 50px 0px 0px 0px;
+    min-height: 178px;
+    }
+.customisedguidance-left p {
+    width: 78%;
+    }
+.firstwealth-sect p {
+    font-size: 11px;
+    line-height: 13px;
+    }
+.firstwealth-sect h6 {
+    font-size: 11px;
+    }
+.thetlanfit-sect li {
+    font-size: 15px;
+    width: 50%;
+    }
+.thetlanfit-sect h4 {
+    margin: 0px 0px 17px 0px;
+    font-size: 29px;
+    line-height: 28px;
+    }
+.image img {
+     height: 85%;
+     width: 96%;
+    }
+    a.all-itms {
+        width: 47%;
+    }
+.box-items p {
+    line-height: 14px;
+    }
+.limited-deal p {
+    font-size: 7px;
+    }
+ .deal-box h5 {
+    font-size: 11px;
+    }
+ .loved-img .images-items img {
+    height: 84px;
+    }
+ .most-loved .gym-right-image p {
+    line-height: 14px;
+    }
+.loved-images img {
+    max-height: 113px;
+    }
+
+  }
+
+
+
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+.content > div {
+     height: 611px;
+    }
+.stellarnav {
+    justify-content: right;
+    }
+.stellarnav.mobile.right > ul {
+    z-index: 999;
+    background: #174E75;
+    }
+.main-nav .stellarnav ul ul {
+    width: 100%;
+    background: #d8e5ee;
+    padding: 12px 6px;
+    }
+.stellarnav > ul > li > a:hover {
+    color: #20A1FF;
+    }
+.stellarnav > ul > li > a.active {
+    color: #20A1FF !important;
+    }
+.stellarnav .icon-close::after {
+    border-bottom: solid 3px #f82424;
+    }
+.stellarnav .icon-close::before {
+    border-bottom: solid 3px #f82424;
+    }
+.stellarnav a.dd-toggle .icon-plus::after {
+    border-bottom: solid 3px #fff;
+    }
+.stellarnav a.dd-toggle .icon-plus::before {
+    border-bottom: solid 3px #fff;
+    }
+.stellarnav.mobile li a {
+    color: #fff;
+    border-bottom: 1px solid rgba(210, 176, 176, 0.15);
+    }
+.menu-toggle {
+    display: block !important;
+    text-align: center;
+    }
+.stellarnav .menu-toggle span.bars {
+    top: 4px;
+    }
+.logo {
+    width: 153px;
+    }
+.stellarnav .menu-toggle {
+    padding: 6px;
+    }
+.stellarnav .menu-toggle span.bars span {
+    width: 25px;
+    height: 3px;
+    margin: 0 0 4px;
+    background: #1476bd;
+    }
+.bannercarousel-text h2 {
+    padding: 0px 0px 0px 0px;
+    font-size: 40px;
+    line-height: 42px;
+    }
+.bannercarousel-text {
+    text-align: left;
+    padding: 0px 0%;
+    top: 73%;
+    left: 7%;
+    }
+.bannercarousel-text p {
+    margin: 14px 0px 22px 0px;
+    font-size: 18px;
+    line-height: 22px;
+    }
+.btn-download {
+    padding: 8px 19px;
+    font-size: 16px;
+    }
+.btn-readmore {
+    padding: 9px 19px;
+    font-size: 16px;
+    }
+ .banner-section .owl-carousel .owl-stage-outer {
+    min-height: 290px;
+    }
+
+.banner-section .owl-nav .owl-prev {
+    top: 48%;
+    left: 45px;
+    }
+.banner-section .owl-nav .owl-next {
+    top: 48%;
+    right: 45px;
+    }
+.stellarnav ul {
+    margin: 0px 0px 0px 0px;
+    }
+.fitnessgoal-card {
+    height: 181px;
+    }
+.fitnessgoal-card .content {
+    height: 204px;
+    }
+.fitnessgoal-card .content h3 {
+    font-size: 14px;
+    padding: 0px 12px;
+    line-height: 16px;
+    }
+.fitnessgoal-sect:hover .content2 p {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 0px 8px;
+    line-height: 14px;
+    }
+ .fitnessgoals-section {
+    min-height: 467px;
+    }
+ .featuresleft h3 {
+    margin: 0px 0px 34px 0px;
+    width: 100%;
+    font-size: 30px;
+    line-height: 34px;
+    }
+.featuresimg02 {
+    width: 176px;
+    }
+.brainteasergame-section {
+    padding: 5% 0px 0px 0px;
+    min-height: 372px;
+    }
+.customisedguidance-section {
+    padding: 29px 0px;
+    }
+.personalisedcard h3 {
+    margin: 10px 0px 25px 0px;
+    font-size: 22px;
+    line-height: 26px;
+    }
+ .planbtn {
+    padding: 10px 25px;
+    font-size: 13px;
+    }
+.personalisedcard {
+    margin: 23px 0px;
+    padding: 16px 37px;
+    height: 154px;
+    }
+.fitnessright p {
+    width: 100%;
+    font-size: 18px;
+    line-height: 25px;
+    }
+.healthassurance-left {
+    padding: 2% 0px 0px 0%;
+    width: 100%;
+    }
+.healthassurance-left p {
+    width: 50%;
+    line-height: 25px;
+    }
+ .healthassurance-section {
+    min-height: 370px;
+    }
+.sweatimg02 {
+    width: 133px;
+    }
+.walletsystemimg02 {
+    width: 236px;
+    }
+.customisedguidance-left p {
+    width: 85%;
+    font-size: 17px;
+    line-height: 23px;
+    }
+.firstwealth-section {
+    padding: 2px 0px 8px 5%;
+    width: 100%;
+    }
+.firstwealth-sect p {
+    margin: 0px 0px 20px 0px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    }
+.videocontentcard {
+    margin: 0px auto 44px auto;
+    min-height: 320px;
+    }
+.squareeffect {
+    left: -2%;
+    width: 278px;
+    top: 161px;
+    }
+.thetlanfit-sect h4 {
+    margin: 0px 0px 17px 0px;
+    font-size: 27px;
+    line-height: 26px;
+    }
+.loginbtn {
+    margin: 16px;
+    text-align: center;
+    }
+.loginbtn2 {
+    margin: 16px;
+    text-align: center;
+    }
+    .image img {
+        height: 72%;
+        width: 96%;
+    }
+.our-ser h6 {
+    font-size: 17px;
+     }
+.loved-img .images-items img {
+    width: 76px;
+    height: 77px;
+    }
+ .most-loved .gym-right-image p {
+    line-height: 13px;
+    }
+.most-loved {
+    padding: 16px;
+    height: 379px;
+    margin-bottom: 26px;
+    }
+.deal-image.retated-itms img {
+    height: 140px;
+    }
+.images-items-all {
+    width: 47%;
+    }
+.gym-right p {
+    line-height: 15px;
+    }
+ .gym-left img {
+    height: 341px;    
+    }
+ a.all-itms {
+    width: 47%;
+    }
+.top-box.third {
+    margin-top: 16px;
+    }
+.bnr-right {
+    padding-top: 0px;
+    }
+.box-items p {
+    font-size: 11px;
+    line-height: 12px;
+    }
+
+.header-bottom .stellarnav {
+    justify-content: left;
+    }
+.bottom-header-right {
+	justify-content: end;
+    }
+.header-right {
+    justify-content: space-between;
+    }
+.loved-images img {
+    max-height: 117px;
+    }
+.acrd-btm img {
+    width: 42px;
+    }
+.acrd-btm {
+    padding: 4px 0 8px 0;
+    }
+
+
+ }
+
+
+
+/* Tablet desktop :320px. */
+@media (min-width: 320px) and (max-width: 767px) {
+.header-left {
+    flex-direction: column;
+     }   
+ .header-left {
+    gap: 7px;
+    }
+.serch-bar {
+    width: 95%;
+    }
+.header-bottom .stellarnav {
+    justify-content: start;
+    align-items: center;
+  }
+.abnner-left {
+    padding: 30px 0;
+  }
+a.all-itms {
+	width: 46%;
+}
+.box-items {
+	padding: 11px;
+    }
+.box-items p {
+    font-size: 10px;
+    }
+.banner-box {
+    margin-bottom: 19px;
+    }
+.title {
+    font-size: 16px; 
+    }
+ .desc {
+     line-height: 22px;
+    font-size: 16px;
+    }
+.gym-left img {
+     height: auto;
+    }
+.gym-left {
+    margin-bottom: 17px;
+    }
+.gym-right p {
+    line-height: 16px;  
+    }
+ .common-headinng h6 {
+    font-size: 12px;
+    }
+ .header-right {
+        justify-content: space-between;
+    }
+.common-headinng a {
+    font-size: 13px;
+    line-height: 16px;
+    }  
+ .most-loved {
+        margin-bottom: 18px;
+    }
+ .most-loved {
+    height: auto;
+    }
+.topsocial-section {
+    display: none;
+    }
+.stellarnav ul {
+    margin: 0px 0px 0px 0px;
+    }
+.logo {
+    width: 142px;
+    margin: 0px;
+    }
+.stellarnav {
+    justify-content: end;
+    align-items: center;
+    }
+.menu-toggle {
+    display: block !important;
+    text-align: center;
+    }
+.stellarnav .menu-toggle span.bars {
+    top: 0px;
+    }
+.stellarnav .menu-toggle {
+    padding: 6px;
+    }
+.stellarnav .menu-toggle span.bars span {
+    width: 25px;
+    height: 3px;
+    margin: 0 0 4px;
+    background: #1476bd;
+    }
+.stellarnav.mobile.right > ul {
+    z-index: 999;
+    background: #174E75;
+    }
+.main-nav .stellarnav ul ul {
+    width: 100%;
+    background: #d8e5ee;
+    padding: 12px 6px;
+    }
+.stellarnav > ul > li > a:hover {
+    color: #20A1FF;
+    }
+.stellarnav > ul > li > a.active {
+    color: #20A1FF !important;
+    }
+.stellarnav .icon-close::after {
+    border-bottom: solid 3px #f82424;
+    }
+.stellarnav .icon-close::before {
+    border-bottom: solid 3px #f82424;
+    }
+.stellarnav a.dd-toggle .icon-plus::after {
+    border-bottom: solid 3px #fff;
+    }
+.stellarnav a.dd-toggle .icon-plus::before {
+    border-bottom: solid 3px #fff;
+    }
+.stellarnav.mobile li a {
+    color: #fff;
+    border-bottom: 1px solid rgba(210, 176, 176, 0.15);
+    }
+.stellarnav .menu-toggle span.bars {
+    top: 3px !important;
+    }
+.loginbtn {
+    padding: 9px 15px;
+    font-size: 11px;
+    }
+.bannercarousel-text {
+    top: 10%;
+    padding: 0px 0%;
+    }
+.bannercarousel-text h2 {
+    margin: 1px 0px 0px 0px;
+    padding: 0px 0px;
+    font-size: 21px;
+    line-height: 24px;
+    }
+.bannercarousel-text p {
+    margin: 5px 0px 14px 0px;
+    padding: 0px 0px;
+    font-size: 13px;
+    line-height: 14px;
+    width: 93%;
+    } 
+.banner-section .owl-carousel .owl-stage-outer {
+    position: relative;
+    overflow: unset;
+    min-height: 194px;
+    }
+.btn-readmore {
+    padding: 6px 13px;
+    font-size: 10px;
+    }
+.btn-download {
+    margin: 0px 12px 0px 0px;
+    padding: 6px 10px;
+    font-size: 10px;
+    }
+.banner-section .owl-theme .owl-dots .owl-dot span {
+    width: 9px;
+    height: 9px;
+    }
+.banner-section .owl-dots {
+    bottom: 0px;
+    }
+.howworks-card {
+    flex-wrap: wrap;
+    }
+.mostconvenient {
+    margin: 50px 0px 0px 0px;
+    padding: 26px 26px 20px 26px;
+    min-height: 353px;
+    }
+.mostconvenient h4 {
+    margin: 0px 0px 10px 0px;
+    width: 100%;
+    font-size: 24px;
+    line-height: 29px;
+    }
+.mostconvenient h5 {
+    margin: 0px 0px 3px 0px;
+    width: 100%;
+    font-size: 15px;
+    line-height: 28px;
+    }
+.banner01 {
+    width: 75%;
+    }
+.fitnessgoals-section h2 {
+    margin: 0px 0px 21px 0px;
+    width: 100%;
+    font-size: 23px;
+    line-height: 25px;
+    }
+.fitnessgoal-sect {
+    min-height: 348px;
+    }
+.featuresimg02 {
+    width: 164px;
+    }
+.featuresleft h3 {
+    margin: 0px 0px 22px 0px;
+    width: 99%;
+    font-size: 23px;
+    line-height: 25px;
+    }
+.featuresleft h6 {
+    margin: 0px 0px 3px 0px;
+    font-size: 17px;
+    line-height: 22px;
+    }
+ .features-section {
+    padding: 17px 0px;
+    }
+.featuresright p {
+    padding: 0px 0% 0px 0%;
+    font-size: 17px;
+    line-height: 23px;
+    }
+.features-section p {
+    margin: 0px 0px 12px 0px;
+    padding: 0px 4%;
+    font-size: 16px;
+    line-height: 23px;
+    }
+.bainteaser-text h4 {
+    margin: 3px 0px 6px 0px;
+    font-size: 23px;
+    line-height: 25px;
+    }
+ .bainteaser-text p {
+    margin: 0px 0px 21px 0px;
+    padding: 0px 0%;
+    width: 100%;
+    font-size: 15px;
+    line-height: 19px;
+    }
+.brainteasergame-section {
+    padding: 7% 0px 0px 0px;
+    min-height: 261px;
+    }
+.customisedguidance-section {
+    padding: 6px 0px;
+    min-height: auto;
+    }
+.customisedguidance-left {
+    padding: 5% 0px 0px 0px; 
+    }
+.customisedguidance-left h3 {
+    margin: 0px 0px 7px 0px;
+    width: 86%;
+    font-size: 23px;
+    line-height: 31px;
+    }
+.customisedguidance-left p {
+    margin: 0px 0px 10px 0px;
+    width: 98%;
+    font-size: 16px;
+    line-height: 21px;
+    }
+.personalisedcard h3 {
+    margin: 10px 0px 18px 0px;
+    width: 100%;
+    font-size: 23px;
+    line-height: 30px;
+    }
+.fitnessright {
+    margin: 12% 0px 0px 0px;
+    }
+.fitnessright h2 {
+    margin: 0px 0px 3px 0px;
+    width: 86%;
+     font-size: 23px;
+    line-height: 25px;
+    }
+.fitnessright p {
+    margin: 0px 0px 10px 0px;
+    width: 98%;
+    font-size: 16px;
+    line-height: 21px;
+    }
+.healthassurance-left {
+    padding: 0% 0px 0px 5%;
+    width: 100%;
+    }
+.healthassurance-left h3 {
+        margin: 15px 0px 7px 0px;
+        width: 86%;
+        font-size: 23px;
+        line-height: 25px;
+    }
+ .healthassurance-left p {
+    margin: 0px 0px 10px 0px;
+    width: 98%;
+     font-size: 16px;
+    line-height: 21px;
+    }
+.healthassurance-section {
+    min-height: auto;
+    }
+.sweatimg02 {
+    right: 1%;
+    width: 109px;
+    }
+.featuresleft {
+    margin: 0px 0px 0px 0px;
+    }
+.features-section2 .featuresright p {
+    padding: 0px 0% 0px 0%;
+    }
+.features-section2 .featuresright {
+    padding: 0px 0px 0px 0%;
+    }
+.features-section2 #accordionExample {
+    margin-top: 4%;
+    }
+.walletsystemimg02 {
+    left: -17%;
+    bottom: -26%;
+    width: 236px;
+    }
+.firstwealth-section {
+    padding: 22px 0px 2px 4%;   
+    }
+.videocontentcard {
+    min-height: 310px;
+    }
+.squareeffect {
+    left: -2%;
+    width: 178px;
+    top: 191px;
+    }
+.theplan-head h2 {
+    font-size: 23px;
+    line-height: 25px;
+    }
+.theplan-head p {
+    font-size: 16px;
+    line-height: 22px;
+    }
+.thetlanfit-sect h4 {
+    margin: 0px 0px 8px 0px;
+    font-size: 23px;
+    line-height: 25px;
+    }
+.thetlanfit-sect h4 span {
+    font-size: 13px;
+    }
+ .thetlanfit-sect li {
+    font-size: 15px;
+    margin: 2px 0px;
+    width: 100%;
+    }
+.firstwealthfooter h6 {
+    font-size: 15px;
+    line-height: 21px;
+    }
+ .subscribe-btn {
+    font-size: 13px !important;
+    padding: 5px 30px !important;
+    }
+.thetlanfit-sect {
+    margin: 0px 0px 9px 0px;
+    min-height: auto;
+    }
+ .meetourteam-section {
+    margin: 20px 0px 0px 0px;
+    padding: 25px 0px;
+    }
+.meetourteam-section h3 {
+    margin: 0px 0px 17px 0px;
+    font-size: 23px;
+    line-height: 21px;
+    }
+.meetourteam-section p {
+    margin: 0px 0px 10px 0px;
+    text-align: center;
+     width: 100%;
+    font-size: 16px;
+    line-height: 21px;
+    }
+ .meeteamcard {
+    min-height: auto;
+    }
+.loginbtn2 {
+    margin: 16px;
+    text-align: center;
+    }
+.loginbtn {
+    margin: 16px;
+    text-align: center;
+    }
+.connectwith-section h3 {
+	font-size: 32px;
+	line-height: 41px;    
+    margin: 0px 0px 2px 0px;
+   }
+.connectwith-section p {
+	font-size: 15px;
+	line-height: 21px;
+   }
+.connectwith-section {
+	margin: 0px 0px  20px 0px;
+	padding: 19px 0px;
+	width: 100%;
+    }
+.connectwith-form {
+    padding: 29px 19px;
+   }
+.connectwith-form .form-group {
+	margin-bottom: 19px;
+    }
+.content > div {
+    width: 100%;
+    height: auto;
+    }
+ .image img {
+     height: auto;
+     width: 100%;
+    }
+
+ .footer-logo img {
+    width: 220px;
+    }
+.footer-links h3 {
+    margin: 13px 0px 11px 0px;
+    font-weight: 600;
+    }
+.footer-social-icons {
+    margin: 27px 0px;
+    }
+.footer .square-img2 {
+    width: 120px;
+    }
+.footer .square-img1 {
+   left: 2%;
+   width: 63px;
+   top: -28px;
+   }
+.copyright {
+    padding: 11px 0px;
+    font-size: 13px;
+    text-align: center;
+    }
+.copyright .text-right {
+    text-align: center !important;
+    }
+.footer-logo-area {
+    margin: 0px auto 13px auto;
+    width: 172px;
+    }
+.footer {
+    padding: 28px 0px 0px 0px;
+    }
+.footer-social-icons {
+    text-align: center;
+    }
+.footer-social-icons a .fa {
+    width: 42px;
+    height: 42px;
+    text-align: center;
+    padding: 6px 0px;
+    }
+
+
+}
+
+
+
+
+				
+					

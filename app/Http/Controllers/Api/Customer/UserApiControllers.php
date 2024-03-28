@@ -387,7 +387,7 @@ class UserApiControllers extends BaseController
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'password' => 'required|string|min:6',
+            // 'password' => 'required|string|min:6',
             'username' => 'required|nullable|string',
             'is_email' => 'required|boolean'
         ]);
@@ -405,7 +405,7 @@ class UserApiControllers extends BaseController
         } else {
             $loginParam = ['mobile_number' => $request->username];
         }
-        $loginParam['password'] = $request->password;
+        // $loginParam['password'] = $request->password;
         if ($request->is_email) {
             $request->merge(['email' => $request->username]);
             $userFound = $this->userService->findUserByEmail($request->username);
@@ -416,9 +416,14 @@ class UserApiControllers extends BaseController
         if (is_null($userFound)) {
             return $this->responseJson(false, 200, "User Not Found", "");
         }
-        if (auth()->attempt($loginParam)) {
+        $user = User::where('email', $$request->username)
+            ->orWhere('mobile_number', $$request->username)
+            ->first();
+        // if (auth()->attempt($loginParam)) {
+        if ($user) {
             $otp = genrateOtp(4);
-            $user = auth()->user();
+            // $user = auth()->user();
+            auth()->login($user);
             $userStatus = $user->is_active;
 
             if ($userStatus == 1) {
@@ -572,9 +577,6 @@ class UserApiControllers extends BaseController
     }
     public function createProfile(Request $request)
     {
-
-
-
         $userId = auth()->user()->id;
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
@@ -984,12 +986,12 @@ class UserApiControllers extends BaseController
             $planss = Diet::where('status', 1)->first();
 
             $q = $info->diet_type;
-            $planss['food_type_optionsend']=$q;
+            $planss['food_type_optionsend'] = $q;
             // $planss = Diet::whereHas('foods', function($q){
             //     $q->where('food_type_option','non_veg');
             // })->first();
             // $planss = Diet::all();
-           // dd($planss->foods);
+            // dd($planss->foods);
 
             if ($planss) {
                 $today = Carbon::today();
@@ -1175,26 +1177,26 @@ class UserApiControllers extends BaseController
 
 
 
-                    
+
 
                     if (auth()->user()->is_subscribed == 1) {
-                       
+
                         $updatefood = UserFootitem::where('user_id', auth()->user()->id)->where('trainer_id', auth()->user()->dietitian_id)->get();
-                       
+
                         $foodids = []; // Initialize the $foodids array outside the loop
                         $optionids = [];
                         $breakfastwater = [];
-                        $breakfastremark=[];
+                        $breakfastremark = [];
                         $breakfastlunch = [];
-                        $lunchremark=[];
+                        $lunchremark = [];
                         $breakfastdinner = [];
-                        $dinnerremark=[];
+                        $dinnerremark = [];
                         $breakfastsnack = [];
-                        $snackremark=[];
-                        
+                        $snackremark = [];
+
                         foreach ($updatefood as $updatefoods) {
-                           
-                            
+
+
                             $food = json_decode($updatefoods->food, true);
 
                             $option_food = json_decode($updatefoods->option_food, true);
@@ -1205,13 +1207,13 @@ class UserApiControllers extends BaseController
                             foreach ($option_food as $option_foods) {
                                 $optionids[] = $option_foods['id'];
                             }
-                           
+
                             if ($updatefoods->foot_type == "breakfast") {
                                 $breakfastwater[] = $updatefoods->water;
                                 $breakfastremark[] = $updatefoods->remarks;
                             } elseif ($updatefoods->foot_type == "lunch") {
                                 $breakfastlunch[] = $updatefoods->water;
-                                
+
                                 $lunchremark[] = $updatefoods->remarks;
                             } elseif ($updatefoods->foot_type == "dinner") {
                                 $breakfastdinner[] = $updatefoods->water;
@@ -1221,54 +1223,54 @@ class UserApiControllers extends BaseController
                                 $snackremark[] = $updatefoods->remarks;
                             }
                         }
-                        
-                        
-                        if($breakfastwater){
-                           $breakfastwaters= $breakfastwater[0];
-                        }else{
-                            $breakfastwaters= "";
+
+
+                        if ($breakfastwater) {
+                            $breakfastwaters = $breakfastwater[0];
+                        } else {
+                            $breakfastwaters = "";
                         }
-                        if($breakfastlunch){
-                            $breakfastlunchs= $breakfastlunch[0];
-                         }else{
-                             $breakfastlunchs= "";
-                         }
-                         if($breakfastdinner){
-                            $breakfastdinners= $breakfastdinner[0];
-                         }else{
-                             $breakfastdinners= "";
-                         }
-                         if($breakfastsnack){
-                            $breakfastsnacks= $breakfastsnack[0];
-                         }else{
-                             $breakfastsnacks= "";
-                         }
+                        if ($breakfastlunch) {
+                            $breakfastlunchs = $breakfastlunch[0];
+                        } else {
+                            $breakfastlunchs = "";
+                        }
+                        if ($breakfastdinner) {
+                            $breakfastdinners = $breakfastdinner[0];
+                        } else {
+                            $breakfastdinners = "";
+                        }
+                        if ($breakfastsnack) {
+                            $breakfastsnacks = $breakfastsnack[0];
+                        } else {
+                            $breakfastsnacks = "";
+                        }
 
 
-                         if($breakfastremark){
-                            $breakfastremarks= $breakfastremark[0];
-                         }else{
-                             $breakfastremarks= "";
-                         }
-                         if($lunchremark){
-                             $lunchremarks= $lunchremark[0];
-                          }else{
-                              $lunchremarks= "";
-                          }
-                          if($dinnerremark){
-                             $dinnerremarks= $dinnerremark[0];
-                          }else{
-                              $dinnerremarks= "";
-                          }
-                          if($snackremark){
-                             $snackremarks= $snackremark[0];
-                          }else{
-                              $snackremarks= "";
-                          }
+                        if ($breakfastremark) {
+                            $breakfastremarks = $breakfastremark[0];
+                        } else {
+                            $breakfastremarks = "";
+                        }
+                        if ($lunchremark) {
+                            $lunchremarks = $lunchremark[0];
+                        } else {
+                            $lunchremarks = "";
+                        }
+                        if ($dinnerremark) {
+                            $dinnerremarks = $dinnerremark[0];
+                        } else {
+                            $dinnerremarks = "";
+                        }
+                        if ($snackremark) {
+                            $snackremarks = $snackremark[0];
+                        } else {
+                            $snackremarks = "";
+                        }
 
-                      
-                       
-                        
+
+
+
 
 
 
@@ -1295,8 +1297,8 @@ class UserApiControllers extends BaseController
 
 
 
-                        $keys = ["breakfast", "lunch", "dinner", "snack","breakfastwater","breakremark","breakfastlunch","lunchremark","breakfastdinner","dinnerremarks","breakfastsnack","snackremarks"];
-                        $values = [$breakfast, $lunch, $dinner, $snack,$breakfastwaters,$breakfastremarks,$breakfastlunchs,$lunchremarks,$breakfastdinners,$dinnerremarks,$breakfastsnacks,$snackremarks];
+                        $keys = ["breakfast", "lunch", "dinner", "snack", "breakfastwater", "breakremark", "breakfastlunch", "lunchremark", "breakfastdinner", "dinnerremarks", "breakfastsnack", "snackremarks"];
+                        $values = [$breakfast, $lunch, $dinner, $snack, $breakfastwaters, $breakfastremarks, $breakfastlunchs, $lunchremarks, $breakfastdinners, $dinnerremarks, $breakfastsnacks, $snackremarks];
 
 
                         for ($i = 0; $i < count($keys); $i++) {
@@ -1330,12 +1332,12 @@ class UserApiControllers extends BaseController
                         for ($i = 0; $i < count($keyss); $i++) {
                             $plans[$keyss[$i]] = $valuess[$i];
                         }
-                        
-                       
+
+
 
                         $plans = new UpdateDietApiCollection($plans);
                     } else {
-                        
+
                         $plans = new DietApiCollection($plans);
                     }
                 } else {
@@ -1867,7 +1869,7 @@ class UserApiControllers extends BaseController
     public function getEcommerceHome(Request $request)
     {
         $userId = auth()->user()->id;
-        $cartItemscount = Cart::where('user_id', $userId)->where('is_active','0')->count();
+        $cartItemscount = Cart::where('user_id', $userId)->where('is_active', '0')->count();
         $lastWeek = Carbon::now()->subDays(7)->toDateTimeString();
         $data['new-product'] = Product::where('created_at', '>=', $lastWeek)
             ->get();
@@ -1954,17 +1956,17 @@ class UserApiControllers extends BaseController
 
             $discountvalue = $product->price * $product->discount / 100;
             $actual_price = $product->price - $discountvalue;
-                   
+
             $ratings = Rating::where('product_id', $product->id)->get();
             $averageRating = $ratings->avg('rating');
-            
+
             if ($averageRating === null) {
                 $averageRating = 0;
             }
-               
-               
 
-                
+
+
+
 
             // Modify this according to your duct model attributes
             return [
@@ -1974,7 +1976,7 @@ class UserApiControllers extends BaseController
                 "price" => $actual_price,
                 "discount" => $product->discount,
                 "images" => $productimages,
-                'rating'=>$averageRating
+                'rating' => $averageRating
                 // Add more attributediscountvalue;s as needed
             ];
         });
@@ -1985,11 +1987,11 @@ class UserApiControllers extends BaseController
     {
 
         $userId = auth()->user()->id;
-        $cartItemscount = Cart::where('user_id', $userId)->where('is_active','0')->count();
+        $cartItemscount = Cart::where('user_id', $userId)->where('is_active', '0')->count();
         $sortDirection = $request->input('sort');
         $searchTerm = $request->input('search_term');
         $type = $request->input('type');
-        $category = $request->input('category');  
+        $category = $request->input('category');
         $productQuery = Product::where('is_active', '1');
         if ($searchTerm) {
             $productQuery->where('name', 'LIKE', '%' . $searchTerm . '%');
@@ -1998,44 +2000,42 @@ class UserApiControllers extends BaseController
             $lastWeek = Carbon::now()->subDays(7)->toDateTimeString();
             $productQuery->where('created_at', '>=', $lastWeek);
             if ($sortDirection == "discount") {
-                $productQuery->orderBy('discount','desc');
+                $productQuery->orderBy('discount', 'desc');
             } elseif ($sortDirection == "lth") {
-                $productQuery->orderBy('price','asc');
+                $productQuery->orderBy('price', 'asc');
             } elseif ($sortDirection == "htl") {
-                $productQuery->orderBy('price','desc');
+                $productQuery->orderBy('price', 'desc');
             }
-            
         } elseif ($type == "best_deals") {
             $productQuery->where('is_deal', '1');
             if ($sortDirection == "discount") {
-                $productQuery->orderBy('discount','desc');
+                $productQuery->orderBy('discount', 'desc');
             } elseif ($sortDirection == "lth") {
-                $productQuery->orderBy('price','asc');
+                $productQuery->orderBy('price', 'asc');
             } elseif ($sortDirection == "htl") {
-                $productQuery->orderBy('price','desc');
+                $productQuery->orderBy('price', 'desc');
             }
-
         } elseif ($type == "best_sales") {
             $productQuery->where('is_sales', '1');
             if ($sortDirection == "discount") {
-                $productQuery->orderBy('discount','desc');
+                $productQuery->orderBy('discount', 'desc');
             } elseif ($sortDirection == "lth") {
-                $productQuery->orderBy('price','asc');
+                $productQuery->orderBy('price', 'asc');
             } elseif ($sortDirection == "htl") {
-                $productQuery->orderBy('price','desc');
+                $productQuery->orderBy('price', 'desc');
             }
         } elseif (isset($category)) {
             $productQuery->where('category_id', $category);
             if ($sortDirection == "discount") {
-                $productQuery->orderBy('discount','desc');
+                $productQuery->orderBy('discount', 'desc');
             } elseif ($sortDirection == "lth") {
-                $productQuery->orderBy('price','asc');
+                $productQuery->orderBy('price', 'asc');
             } elseif ($sortDirection == "htl") {
-                $productQuery->orderBy('price','desc');
+                $productQuery->orderBy('price', 'desc');
             }
         }
 
-        // Order the products                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+        // Order the products
         $products = $productQuery->get();
 
         foreach ($products as &$product) {
@@ -2060,7 +2060,7 @@ class UserApiControllers extends BaseController
     {
         $product = Product::where('id', $id)->first();
         $userId = auth()->user()->id;
-        $cartItemscount = Cart::where('user_id', $userId)->where('is_active','0')->count();
+        $cartItemscount = Cart::where('user_id', $userId)->where('is_active', '0')->count();
         if (!$product) {
             return response()->json(['status' => false, 'message' => 'Product not found.', 'data' => null], 404);
         }
@@ -2070,13 +2070,13 @@ class UserApiControllers extends BaseController
         $product->product_image = asset('images/' . $images[0]);
 
         $ratings = Rating::where('product_id', $product->id)->get();
-            $averageRating = $ratings->avg('rating');
-            
-            if ($averageRating === null) {
-                $averageRating = 0;
-            }
-            
-        $product->rating=$averageRating;
+        $averageRating = $ratings->avg('rating');
+
+        if ($averageRating === null) {
+            $averageRating = 0;
+        }
+
+        $product->rating = $averageRating;
 
 
         $formattedResponse = [
@@ -2108,7 +2108,7 @@ class UserApiControllers extends BaseController
 
         }
 
-        // Order the products                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+        // Order the products
         $products = $productQuery->orderBy('name', $sortDirection)->get();
 
         foreach ($products as &$product) {
@@ -2137,7 +2137,7 @@ class UserApiControllers extends BaseController
         $products = Product::where('id', $request->id)->where('is_active', '1')->first();
         if ($products->stock >= $request->qty) {
             Cart::updateOrCreate(
-                ['product_id' => $request->id, 'user_id' => $userId,'is_active'=>'0'],
+                ['product_id' => $request->id, 'user_id' => $userId, 'is_active' => '0'],
                 ['quantity' => $request->qty]
             );
 
@@ -2243,11 +2243,11 @@ class UserApiControllers extends BaseController
     public function getCartData(Request $request)
     {
         $userId = auth()->user()->id;
-        $cartItems = Cart::where('user_id', $userId)->where('is_active','0')->get();
-        $cartItemscount = Cart::where('user_id', $userId)->where('is_active','0')->count();
+        $cartItems = Cart::where('user_id', $userId)->where('is_active', '0')->get();
+        $cartItemscount = Cart::where('user_id', $userId)->where('is_active', '0')->count();
         $totalAmount = 0;
         $actual_price = 0;
-        $totaldiscount=0;
+        $totaldiscount = 0;
         foreach ($cartItems as $cartItem) {
             $pricePerQuantity = $cartItem->product->price * $cartItem->quantity;
             $cartItem->price_per_quantity = $pricePerQuantity;
@@ -2255,7 +2255,7 @@ class UserApiControllers extends BaseController
             //$totalAmount += $totalItemAmount;
             $discountvalue = $cartItem->product->price * $cartItem->product->discount / 100;
             $actual_price = $cartItem->product->price - $discountvalue;
-            $discountvalue =$discountvalue * $cartItem->quantity;
+            $discountvalue = $discountvalue * $cartItem->quantity;
             $totaldiscount += $discountvalue;
             $totalItemAmount = $actual_price * $cartItem->quantity;
             $totalAmount += $totalItemAmount;
@@ -2284,11 +2284,11 @@ class UserApiControllers extends BaseController
 
         $address = UserAddress::where('id', $request->addressid)->first();
         $userId = auth()->user()->id;
-        $cartItems = Cart::where('user_id', $userId)->where('is_active','0')->get();
-        $cartItemscount = Cart::where('user_id', $userId)->where('is_active','0')->count();
+        $cartItems = Cart::where('user_id', $userId)->where('is_active', '0')->get();
+        $cartItemscount = Cart::where('user_id', $userId)->where('is_active', '0')->count();
         $totalAmount = 0;
         $actual_price = 0;
-        $totaldiscount=0;
+        $totaldiscount = 0;
         foreach ($cartItems as $cartItem) {
             $pricePerQuantity = $cartItem->product->price * $cartItem->quantity;
             $cartItem->price_per_quantity = $pricePerQuantity;
@@ -2296,13 +2296,13 @@ class UserApiControllers extends BaseController
             //$totalAmount += $totalItemAmount;
             $discountvalue = $cartItem->product->price * $cartItem->product->discount / 100;
             $actual_price = $cartItem->product->price - $discountvalue;
-            $discountvalue =$discountvalue * $cartItem->quantity;
+            $discountvalue = $discountvalue * $cartItem->quantity;
             $totaldiscount += $discountvalue;
             $totalItemAmount = $actual_price * $cartItem->quantity;
             $totalAmount += $totalItemAmount;
 
 
-            
+
             if ($cartItem->product->product_image != "") {
                 $images = explode(', ', $cartItem->product->product_image);
 
@@ -2339,7 +2339,7 @@ class UserApiControllers extends BaseController
                 'actual_price' => $product->product->price,
                 "price" => $actual_price,
                 "stock" => $product->product->stock,
-                
+
                 // Add more attributediscountvalue;s as needed
             ];
         });
@@ -2404,7 +2404,7 @@ class UserApiControllers extends BaseController
     public function placeOrder(Request $request)
     {
         $userId = auth()->user()->id;
-        $cart = Cart::where('user_id', $userId)->where('is_active','0')->get();
+        $cart = Cart::where('user_id', $userId)->where('is_active', '0')->get();
         $product_id = [];
         $cart_id = [];
         $totalAmount = 0;
@@ -2418,8 +2418,8 @@ class UserApiControllers extends BaseController
             $product_id[] = $carts->product_id;
             $cart_id[] = $carts->id;
         }
-       
-      
+
+
         $productid = json_encode($product_id);
         $cart_ids = json_encode($cart_id);
 
@@ -2462,13 +2462,13 @@ class UserApiControllers extends BaseController
             ->where('ended_at', '>=', $currentDateTime)
             ->first();
         if ($coupon) {
-            $count=Order::where('user_id',$userId)->where('coupon',$request->coupons)->count();
-                if($count == 0){
-                        return response()->json(['status' => true, 'message' => 'Coupon Validate Successfully.', 'discount' => $coupon->coupon_discount,'coupon'=>$request->coupons,'type'=>$coupon->type], 200);
-                }else{
-                    return response()->json(['status' => false, 'message' => 'Coupon is already Use', 'data' => (object)[]], 200);
-                }
-        }else{
+            $count = Order::where('user_id', $userId)->where('coupon', $request->coupons)->count();
+            if ($count == 0) {
+                return response()->json(['status' => true, 'message' => 'Coupon Validate Successfully.', 'discount' => $coupon->coupon_discount, 'coupon' => $request->coupons, 'type' => $coupon->type], 200);
+            } else {
+                return response()->json(['status' => false, 'message' => 'Coupon is already Use', 'data' => (object)[]], 200);
+            }
+        } else {
             return response()->json(['status' => false, 'message' => 'Invalid Coupon.', 'data' => (object)[]], 200);
         }
     }
@@ -2476,19 +2476,19 @@ class UserApiControllers extends BaseController
     public function orderList(Request $request)
     {
 
-        $user= User::where('id','1')->first();
-        $gst= $user->igst + $user->cgst;
+        $user = User::where('id', '1')->first();
+        $gst = $user->igst + $user->cgst;
         $userId = auth()->user()->id;
-        if($request->id == ""){
+        if ($request->id == "") {
             $orders = Order::where('user_id', $userId)->get();
             $data = [];
-            
+
             foreach ($orders as $order) {
                 $address = UserAddress::where('id', $order->address_id)->first();
                 $shipping_method = ShippingMethod::where('id', $order->payment_type)->where('is_active', '1')->first();
                 $cartid = json_decode($order->cart_id);
                 $cartdata = Cart::whereIn('id', $cartid)->where('is_active', '1')->get();
-            
+
                 foreach ($cartdata as $cartItem) {
                     if ($cartItem->product->product_image != "") {
                         $images = explode(',', $cartItem->product->product_image);
@@ -2498,19 +2498,19 @@ class UserApiControllers extends BaseController
                         $cartItem->image = "";
                     }
                 }
-            
+
                 $item = $this->formatCartItems($cartdata);
                 $coupon = Coupon::where('coupon_code', $order->coupon)->first();
                 $type = ($coupon) ? $coupon->type : "";
-            
+
                 $status = ($order->delivery_status == 0) ? "Pending" : "Delivered";
-            
+
                 $data[] = [
                     'address' => $address,
                     'shipping_method' => $shipping_method ? $shipping_method->type : null,
                     'item' => $item,
                     'total_price' => $order->total_amount,
-                    'item_price'=>$order->item,
+                    'item_price' => $order->item,
                     'delivery_charge' => '0',
                     'gst' => $order->gst,
                     'discount' => $order->discount,
@@ -2522,27 +2522,26 @@ class UserApiControllers extends BaseController
                     'gst_per' => $gst
                 ];
             }
-            
+
             $response = [
                 'status' => true,
                 'message' => 'Order List.',
                 'data' => $data
             ];
-            
-            return response()->json($response, 200);
 
-        }else{
-            
-            $order=Order::where('id',$request->id)->first();
+            return response()->json($response, 200);
+        } else {
+
+            $order = Order::where('id', $request->id)->first();
             $address = UserAddress::where('id', $order->address_id)->first();
-            $shipping_method = ShippingMethod::where('id',$order->payment_type)->where('is_active', '1')->first();
-            $cartid=json_decode($order->cart_id);
-           
-            $cartdata = Cart::whereIn('id', $cartid)->where('is_active','1')->get();
+            $shipping_method = ShippingMethod::where('id', $order->payment_type)->where('is_active', '1')->first();
+            $cartid = json_decode($order->cart_id);
+
+            $cartdata = Cart::whereIn('id', $cartid)->where('is_active', '1')->get();
             foreach ($cartdata as $cartItem) {
                 if ($cartItem->product->product_image != "") {
                     $images = explode(',', $cartItem->product->product_image);
-    
+
                     $productimages = asset('images/' . $images[0]);
                     $cartItem->image =  $productimages;
                 } else {
@@ -2551,43 +2550,42 @@ class UserApiControllers extends BaseController
             }
 
 
-            
-            
+
+
             $item = $this->formatCartItems($cartdata);
             $coupon = Coupon::where('coupon_code', $order->coupon)->first();
-            if($coupon){
-                $type=$coupon->type;
-            }else{
-                $type="";
+            if ($coupon) {
+                $type = $coupon->type;
+            } else {
+                $type = "";
             }
 
 
-        if($order->delivery_status  == 0){
-            $status="Pending";
-        }else if($order->delivery_status  == 1){
-            $status="delivered";
-        }
-        
-      
+            if ($order->delivery_status  == 0) {
+                $status = "Pending";
+            } else if ($order->delivery_status  == 1) {
+                $status = "delivered";
+            }
 
 
 
-            
+
+
+
             // return response()->json(['status' => true, 'message' => 'Shipping Data.', 'address' => $address, 'shipping_method' => $shipping_method->type, 'item' => $item, 'total_price' =>  $order->total_amount,  'delivery_charge' => '0', 'gst' =>  $order->gst, 'discount' => $order->discount], 200);
-            $data=['id'=>$order->id,'address'=>$address,'shipping_method'=>$shipping_method->type,'item'=>$item,'total_price' =>  $order->total_amount,'item_price'=>$order->item, 'delivery_charge' => '0', 'gst' =>  $order->gst, 'discount' => $order->discount,'order_id'=>$order->order_id,'coupon'=>$order->coupon,'type'=>$type,'delivery_status'=>$status,'gst_per'=>$gst];
+            $data = ['id' => $order->id, 'address' => $address, 'shipping_method' => $shipping_method->type, 'item' => $item, 'total_price' =>  $order->total_amount, 'item_price' => $order->item, 'delivery_charge' => '0', 'gst' =>  $order->gst, 'discount' => $order->discount, 'order_id' => $order->order_id, 'coupon' => $order->coupon, 'type' => $type, 'delivery_status' => $status, 'gst_per' => $gst];
             return response()->json(['status' => true, 'message' => 'Order Data.', 'data' => $data], 200);
         }
-        
-
     }
 
-    public function addRating(Request $request){
+    public function addRating(Request $request)
+    {
         $userId = auth()->user()->id;
         $request->validate([
             'product_id' => 'required|numeric',
             'rating' => 'required|numeric|min:1|max:5', // Assuming ratings are between 1 and 5
         ]);
-    
+
         // Create a new rating record
         $rating = Rating::create([
             'user_id' => $userId,
@@ -2596,10 +2594,6 @@ class UserApiControllers extends BaseController
             'description' => $request->description,
         ]);
         // You can return a response or redirect as needed
-        return response()->json(['status'=>true,'message' => 'Rating inserted successfully', 'data' => $rating], 200);
+        return response()->json(['status' => true, 'message' => 'Rating inserted successfully', 'data' => $rating], 200);
     }
-
-    
-
-   
 }
