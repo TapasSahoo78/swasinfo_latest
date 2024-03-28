@@ -21,11 +21,3 @@ vendor_latest.zip
 /storage/*
 
 # Except for these directories...
-!/storage/app/
-!/storage/app/public/
-!/storage/framework/
-!/storage/framework/cache/
-!/storage/framework/sessions/
-!/storage/framework/views/
-!/storage/logs/
-/storage/logs/laravel.log

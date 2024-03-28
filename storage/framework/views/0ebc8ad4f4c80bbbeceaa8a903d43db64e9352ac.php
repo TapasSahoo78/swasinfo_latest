@@ -27,7 +27,7 @@
                                 <li><a href="">About Us</a></li>
                                 <li><a href="">Become a Coach</a></li>
                                 <li><a href="">Help & Support</a></li>
-                                <li><a href="">Contact Us</a></li>
+                                <li><a href="<?php echo e(route('frontend.contact')); ?>">Contact Us</a></li>
 
                             </ul>
 
