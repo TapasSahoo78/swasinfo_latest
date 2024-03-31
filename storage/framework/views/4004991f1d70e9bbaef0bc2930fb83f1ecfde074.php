@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('content'); ?>
 <!-- Banner Section -->
 <div class="banner-section">

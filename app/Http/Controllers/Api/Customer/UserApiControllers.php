@@ -976,8 +976,6 @@ class UserApiControllers extends BaseController
     }
     public function dietPlanList(Request $request)
     {
-
-
         // $planss = Diet::where('status', 1)->where('age_from',auth()->user()?->profile?->age)
         // ->where('height',auth()->user()?->profile?->height)->where('weight',auth()->user()?->profile?->weight) ->first();
 

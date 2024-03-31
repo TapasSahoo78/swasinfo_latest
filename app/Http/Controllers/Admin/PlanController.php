@@ -35,37 +35,38 @@ class PlanController extends BaseController
             // dd($request->course);
 
             //$request->validate([
-               // 'name' => 'required|unique:plan',
-                //'category' => 'required',
+            // 'name' => 'required|unique:plan',
+            //'category' => 'required',
             //]);
             DB::beginTransaction();
             //try {
-                $isAttributeCreated = Plan::create([
-                    'name' => $request['name'],
-                    'frequently_purchased_title' => $request['title'],
-                    'expiry_date' => $request['expiry_date'],
-                    'day_validity' => $request['day_validity']
-                ]);
-                if ($isAttributeCreated) {
-                    // $courseId = Course::whereIn('id',$request->course)->value('id');
-                    //dd($request->course);
-                    $isAttributeWithCategory = $isAttributeCreated->courses()->attach($request->course);
-                }
+            $isAttributeCreated = Plan::create([
+                'name' => $request['name'],
+                'frequently_purchased_title' => $request['title'],
+                'expiry_date' => $request['expiry_date'],
+                'day_validity' => $request['day_validity'],
+                'is_ai_only'  => $request['is_ai_only'] ? 1 : 0
+            ]);
+            if ($isAttributeCreated) {
+                // $courseId = Course::whereIn('id',$request->course)->value('id');
+                //dd($request->course);
+                $isAttributeWithCategory = $isAttributeCreated->courses()->attach($request->course);
+            }
 
-                if ($isAttributeCreated) {
-                    DB::commit();
-                    return $this->responseRedirect('admin.subscription.plan.list', 'Plan created successfully', 'success', false);
-                }
+            if ($isAttributeCreated) {
+                DB::commit();
+                return $this->responseRedirect('admin.subscription.plan.list', 'Plan created successfully', 'success', false);
+            }
             //} catch (\Exception $e) {
-                //DB::rollback();
-               // logger($e->getMessage() . ' -- ' . $e->getLine() . ' -- ' . $e->getFile());
-               // return $this->responseRedirectBack('Something went wrong', 'error', true);
+            //DB::rollback();
+            // logger($e->getMessage() . ' -- ' . $e->getLine() . ' -- ' . $e->getFile());
+            // return $this->responseRedirectBack('Something went wrong', 'error', true);
             //}
         } else {
-            $listCourses = Course::where('status',1)->get();
+            $listCourses = Course::where('status', 1)->get();
             $listPlanCategories = PlanCategory::all();
             $listCourses = $listCourses->chunk(ceil($listCourses->count() / 3));
-            return view('admin.plans.add', compact('listCourses','listPlanCategories'));
+            return view('admin.plans.add', compact('listCourses', 'listPlanCategories'));
         }
     }
 
@@ -83,35 +84,36 @@ class PlanController extends BaseController
             ]);
             DB::beginTransaction();
             // try {
-                $isAttribute = Plan::where('uuid', $id)->first();
-                $isAttributeCreated = Plan::where('uuid', $id)->update([
-                    'name' => $request['name'],
-                    'frequently_purchased_title' => $request['frequently_purchased_title'],
-                    'expiry_date' => $request['expiry_date'],
-                    'day_validity' => $request['day_validity']
-                ]);
+            $isAttribute = Plan::where('uuid', $id)->first();
+            $isAttributeCreated = Plan::where('uuid', $id)->update([
+                'name' => $request['name'],
+                'frequently_purchased_title' => $request['frequently_purchased_title'],
+                'expiry_date' => $request['expiry_date'],
+                'day_validity' => $request['day_validity'],
+                'is_ai_only'  => $request['is_ai_only'] ? 1 : 0
+            ]);
 
-                if ($isAttribute->id) {
-                    // $breakfastOptional = [];
-                    // $lunchOptional = [];
-                    // $dinnerOptional = [];
-                    // $snackOptional = [];
-                    if(!is_null($request['course'])){
-                        $listCourses = Course::whereIn('id', $request['course'])->get();
-                    }
-                    // if(!is_null($request['optionalbreakfast'])){
-                    // $breakfastOptional = Food::whereIn('id', $request['optionalbreakfast'])->get();
-                    // }
-                    if(!is_null($request['course'])){
-                        $isAttribute->courses()->detach();
-                        $isAttribute->courses()->attach($listCourses);
-                    }
+            if ($isAttribute->id) {
+                // $breakfastOptional = [];
+                // $lunchOptional = [];
+                // $dinnerOptional = [];
+                // $snackOptional = [];
+                if (!is_null($request['course'])) {
+                    $listCourses = Course::whereIn('id', $request['course'])->get();
                 }
+                // if(!is_null($request['optionalbreakfast'])){
+                // $breakfastOptional = Food::whereIn('id', $request['optionalbreakfast'])->get();
+                // }
+                if (!is_null($request['course'])) {
+                    $isAttribute->courses()->detach();
+                    $isAttribute->courses()->attach($listCourses);
+                }
+            }
 
-                if ($isAttributeCreated) {
-                    DB::commit();
-                    return $this->responseRedirect('admin.subscription.plan.list', 'Plan updated successfully', 'success', false);
-                }
+            if ($isAttributeCreated) {
+                DB::commit();
+                return $this->responseRedirect('admin.subscription.plan.list', 'Plan updated successfully', 'success', false);
+            }
             // } catch (\Exception $e) {
             //     DB::rollback();
             //     logger($e->getMessage() . ' -- ' . $e->getLine() . ' -- ' . $e->getFile());
@@ -119,13 +121,11 @@ class PlanController extends BaseController
             // }
         } else {
 
-            $listCourses = Course::where('status',1)->get();
+            $listCourses = Course::where('status', 1)->get();
             $listCourses = $listCourses->chunk(ceil($listCourses->count() / 3));
             $data = Plan::where('uuid', $id)->first();
             return view('admin.plans.edit', compact('data', 'listCourses'));
         }
-
-
     }
 
     public function deleteCategory()
