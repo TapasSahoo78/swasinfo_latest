@@ -416,8 +416,8 @@ class UserApiControllers extends BaseController
         if (is_null($userFound)) {
             return $this->responseJson(false, 200, "User Not Found", "");
         }
-        $user = User::where('email', $$request->username)
-            ->orWhere('mobile_number', $$request->username)
+        $user = User::where('email', $request->username)
+            ->orWhere('mobile_number', $request->username)
             ->first();
         // if (auth()->attempt($loginParam)) {
         if ($user) {

@@ -1,0 +1,524 @@
+[2024-03-31 17:39:57] local.ERROR: Undefined variable $POST /api/v1/customers/login HTTP/1.1
+Accept-Encoding: gzip
+Content-Length:  55
+Content-Type:    application/json; charset=UTF-8
+Host:            swasthfit.in
+User-Agent:      okhttp/4.10.0
+
+{"is_email":"0","page":"login","username":"8591721792"} {"exception":"[object] (ErrorException(code: 0): Undefined variable $POST /api/v1/customers/login HTTP/1.1
+
+Accept-Encoding: gzip
+
+Content-Length:  55
+
+Content-Type:    application/json; charset=UTF-8
+
+Host:            swasthfit.in
+
+User-Agent:      okhttp/4.10.0
+
+
+
+{\"is_email\":\"0\",\"page\":\"login\",\"username\":\"8591721792\"} at /home/u932153640/domains/swasthfit.in/public_html/app/Http/Controllers/Api/Customer/UserApiControllers.php:419)
+[stacktrace]
+#0 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(270): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 /home/u932153640/domains/swasthfit.in/public_html/app/Http/Controllers/Api/Customer/UserApiControllers.php(419): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}()
+#2 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\Api\\Customer\\UserApiControllers->login()
+#3 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(43): Illuminate\\Routing\\Controller->callAction()
+#4 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(260): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#5 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#6 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(798): Illuminate\\Routing\\Route->run()
+#7 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#8 /home/u932153640/domains/swasthfit.in/public_html/app/Http/Middleware/TrackApiHits.php(34): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#9 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): App\\Http\\Middleware\\TrackApiHits->handle()
+#10 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#11 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#12 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(126): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#13 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(102): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#14 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(54): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#15 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#16 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(799): Illuminate\\Pipeline\\Pipeline->then()
+#18 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(740): Illuminate\\Routing\\Router->runRoute()
+#20 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(190): Illuminate\\Routing\\Router->dispatch()
+#22 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#31 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#35 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then()
+#39 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#40 /home/u932153640/domains/swasthfit.in/public_html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#41 /home/u932153640/domains/swasthfit.in/public_html/server.php(13): require_once('/home/u93215364...')
+#42 {main}
+"} 
+[2024-03-31 17:40:16] local.ERROR: Undefined variable $POST /api/v1/customers/login HTTP/1.1
+Accept-Encoding: gzip
+Content-Length:  55
+Content-Type:    application/json; charset=UTF-8
+Host:            swasthfit.in
+User-Agent:      okhttp/4.10.0
+
+{"is_email":"0","page":"login","username":"8591721792"} {"exception":"[object] (ErrorException(code: 0): Undefined variable $POST /api/v1/customers/login HTTP/1.1
+
+Accept-Encoding: gzip
+
+Content-Length:  55
+
+Content-Type:    application/json; charset=UTF-8
+
+Host:            swasthfit.in
+
+User-Agent:      okhttp/4.10.0
+
+
+
+{\"is_email\":\"0\",\"page\":\"login\",\"username\":\"8591721792\"} at /home/u932153640/domains/swasthfit.in/public_html/app/Http/Controllers/Api/Customer/UserApiControllers.php:419)
+[stacktrace]
+#0 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(270): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 /home/u932153640/domains/swasthfit.in/public_html/app/Http/Controllers/Api/Customer/UserApiControllers.php(419): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}()
+#2 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\Api\\Customer\\UserApiControllers->login()
+#3 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(43): Illuminate\\Routing\\Controller->callAction()
+#4 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(260): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#5 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#6 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(798): Illuminate\\Routing\\Route->run()
+#7 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#8 /home/u932153640/domains/swasthfit.in/public_html/app/Http/Middleware/TrackApiHits.php(34): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#9 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): App\\Http\\Middleware\\TrackApiHits->handle()
+#10 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#11 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#12 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(126): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#13 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(102): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#14 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(54): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#15 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#16 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(799): Illuminate\\Pipeline\\Pipeline->then()
+#18 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(740): Illuminate\\Routing\\Router->runRoute()
+#20 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(190): Illuminate\\Routing\\Router->dispatch()
+#22 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#31 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#35 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then()
+#39 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#40 /home/u932153640/domains/swasthfit.in/public_html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#41 /home/u932153640/domains/swasthfit.in/public_html/server.php(13): require_once('/home/u93215364...')
+#42 {main}
+"} 
+[2024-03-31 17:41:42] local.ERROR: Undefined variable $POST /api/v1/customers/login HTTP/1.1
+Accept:          */*
+Accept-Encoding: gzip, deflate, br
+Connection:      keep-alive
+Content-Length:  78
+Content-Type:    application/json
+Host:            swasthfit.in
+Postman-Token:   6e4374d0-349e-4a7d-8f3b-3785097b7641
+User-Agent:      PostmanRuntime/7.28.4
+
+{
+    "is_email": "0",
+    "page": "login",
+    "username": "8591721792"
+} {"exception":"[object] (ErrorException(code: 0): Undefined variable $POST /api/v1/customers/login HTTP/1.1
+
+Accept:          */*
+
+Accept-Encoding: gzip, deflate, br
+
+Connection:      keep-alive
+
+Content-Length:  78
+
+Content-Type:    application/json
+
+Host:            swasthfit.in
+
+Postman-Token:   6e4374d0-349e-4a7d-8f3b-3785097b7641
+
+User-Agent:      PostmanRuntime/7.28.4
+
+
+
+{
+
+    \"is_email\": \"0\",
+
+    \"page\": \"login\",
+
+    \"username\": \"8591721792\"
+
+} at /home/u932153640/domains/swasthfit.in/public_html/app/Http/Controllers/Api/Customer/UserApiControllers.php:419)
+[stacktrace]
+#0 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(270): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 /home/u932153640/domains/swasthfit.in/public_html/app/Http/Controllers/Api/Customer/UserApiControllers.php(419): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}()
+#2 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\Api\\Customer\\UserApiControllers->login()
+#3 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(43): Illuminate\\Routing\\Controller->callAction()
+#4 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(260): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#5 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#6 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(798): Illuminate\\Routing\\Route->run()
+#7 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#8 /home/u932153640/domains/swasthfit.in/public_html/app/Http/Middleware/TrackApiHits.php(34): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#9 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): App\\Http\\Middleware\\TrackApiHits->handle()
+#10 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#11 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#12 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(126): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#13 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(102): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#14 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(54): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#15 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#16 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(799): Illuminate\\Pipeline\\Pipeline->then()
+#18 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(740): Illuminate\\Routing\\Router->runRoute()
+#20 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(190): Illuminate\\Routing\\Router->dispatch()
+#22 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#31 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#35 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then()
+#39 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#40 /home/u932153640/domains/swasthfit.in/public_html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#41 /home/u932153640/domains/swasthfit.in/public_html/server.php(13): require_once('/home/u93215364...')
+#42 {main}
+"} 
+[2024-03-31 18:00:02] local.ERROR: Undefined variable $POST /api/v1/customers/login HTTP/1.1
+Accept:          */*
+Accept-Encoding: gzip, deflate, br
+Connection:      keep-alive
+Content-Length:  83
+Content-Type:    application/json
+Host:            swasthfit.in
+Postman-Token:   486e67f8-df3a-4857-8c8c-2daf1982398b
+User-Agent:      PostmanRuntime/7.37.0
+
+{
+    "is_email": "0",
+    
+    "page": "login",
+    "username": "8591721792"
+} {"exception":"[object] (ErrorException(code: 0): Undefined variable $POST /api/v1/customers/login HTTP/1.1
+
+Accept:          */*
+
+Accept-Encoding: gzip, deflate, br
+
+Connection:      keep-alive
+
+Content-Length:  83
+
+Content-Type:    application/json
+
+Host:            swasthfit.in
+
+Postman-Token:   486e67f8-df3a-4857-8c8c-2daf1982398b
+
+User-Agent:      PostmanRuntime/7.37.0
+
+
+
+{
+
+    \"is_email\": \"0\",
+
+    
+    \"page\": \"login\",
+
+    \"username\": \"8591721792\"
+
+} at /home/u932153640/domains/swasthfit.in/public_html/app/Http/Controllers/Api/Customer/UserApiControllers.php:419)
+[stacktrace]
+#0 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(270): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 /home/u932153640/domains/swasthfit.in/public_html/app/Http/Controllers/Api/Customer/UserApiControllers.php(419): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}()
+#2 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\Api\\Customer\\UserApiControllers->login()
+#3 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(43): Illuminate\\Routing\\Controller->callAction()
+#4 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(260): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#5 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#6 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(798): Illuminate\\Routing\\Route->run()
+#7 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#8 /home/u932153640/domains/swasthfit.in/public_html/app/Http/Middleware/TrackApiHits.php(34): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#9 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): App\\Http\\Middleware\\TrackApiHits->handle()
+#10 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#11 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#12 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(126): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#13 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(102): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#14 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(54): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#15 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#16 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(799): Illuminate\\Pipeline\\Pipeline->then()
+#18 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(740): Illuminate\\Routing\\Router->runRoute()
+#20 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(190): Illuminate\\Routing\\Router->dispatch()
+#22 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#31 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#35 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then()
+#39 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#40 /home/u932153640/domains/swasthfit.in/public_html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#41 /home/u932153640/domains/swasthfit.in/public_html/server.php(13): require_once('/home/u93215364...')
+#42 {main}
+"} 
+[2024-03-31 18:00:42] local.ERROR: Undefined variable $POST /api/v1/customers/login HTTP/1.1
+Accept:          */*
+Accept-Encoding: gzip, deflate, br
+Connection:      keep-alive
+Content-Length:  83
+Content-Type:    application/json
+Host:            swasthfit.in
+Postman-Token:   8f44cf1c-21cf-4a68-baf5-0b2645058b01
+User-Agent:      PostmanRuntime/7.37.0
+
+{
+    "is_email": "0",
+    
+    "page": "login",
+    "username": "8591721792"
+} {"exception":"[object] (ErrorException(code: 0): Undefined variable $POST /api/v1/customers/login HTTP/1.1
+
+Accept:          */*
+
+Accept-Encoding: gzip, deflate, br
+
+Connection:      keep-alive
+
+Content-Length:  83
+
+Content-Type:    application/json
+
+Host:            swasthfit.in
+
+Postman-Token:   8f44cf1c-21cf-4a68-baf5-0b2645058b01
+
+User-Agent:      PostmanRuntime/7.37.0
+
+
+
+{
+
+    \"is_email\": \"0\",
+
+    
+    \"page\": \"login\",
+
+    \"username\": \"8591721792\"
+
+} at /home/u932153640/domains/swasthfit.in/public_html/app/Http/Controllers/Api/Customer/UserApiControllers.php:419)
+[stacktrace]
+#0 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(270): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 /home/u932153640/domains/swasthfit.in/public_html/app/Http/Controllers/Api/Customer/UserApiControllers.php(419): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}()
+#2 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\Api\\Customer\\UserApiControllers->login()
+#3 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(43): Illuminate\\Routing\\Controller->callAction()
+#4 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(260): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#5 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#6 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(798): Illuminate\\Routing\\Route->run()
+#7 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#8 /home/u932153640/domains/swasthfit.in/public_html/app/Http/Middleware/TrackApiHits.php(34): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#9 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): App\\Http\\Middleware\\TrackApiHits->handle()
+#10 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#11 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#12 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(126): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#13 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(102): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#14 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(54): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#15 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#16 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#17 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(799): Illuminate\\Pipeline\\Pipeline->then()
+#18 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack()
+#19 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(740): Illuminate\\Routing\\Router->runRoute()
+#20 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute()
+#21 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(190): Illuminate\\Routing\\Router->dispatch()
+#22 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#23 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#24 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#25 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#26 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#28 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#29 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#30 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#31 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#32 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#33 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#34 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#35 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#36 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#37 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then()
+#39 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#40 /home/u932153640/domains/swasthfit.in/public_html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#41 /home/u932153640/domains/swasthfit.in/public_html/server.php(13): require_once('/home/u93215364...')
+#42 {main}
+"} 
+[2024-03-31 18:06:25] local.ERROR: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'imiei' cannot be null (SQL: insert into `user_tracks` (`imiei`, `user_id`, `updated_at`, `created_at`) values (?, 268, 2024-03-31 18:06:25, 2024-03-31 18:06:25)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'imiei' cannot be null (SQL: insert into `user_tracks` (`imiei`, `user_id`, `updated_at`, `created_at`) values (?, 268, 2024-03-31 18:06:25, 2024-03-31 18:06:25)) at /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:760)
+[stacktrace]
+#0 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback()
+#1 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(546): Illuminate\\Database\\Connection->run()
+#2 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(498): Illuminate\\Database\\Connection->statement()
+#3 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\\Database\\Connection->insert()
+#4 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3322): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId()
+#5 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1869): Illuminate\\Database\\Query\\Builder->insertGetId()
+#6 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1330): Illuminate\\Database\\Eloquent\\Builder->__call()
+#7 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1295): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#8 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1138): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#9 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(566): Illuminate\\Database\\Eloquent\\Model->save()
+#10 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Support/helpers.php(306): Illuminate\\Database\\Eloquent\\Builder->Illuminate\\Database\\Eloquent\\{closure}()
+#11 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(567): tap()
+#12 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Support/Traits/ForwardsCalls.php(23): Illuminate\\Database\\Eloquent\\Builder->firstOrCreate()
+#13 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2330): Illuminate\\Database\\Eloquent\\Model->forwardCallTo()
+#14 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2342): Illuminate\\Database\\Eloquent\\Model->__call()
+#15 /home/u932153640/domains/swasthfit.in/public_html/app/Http/Controllers/Api/Customer/UserApiControllers.php(481): Illuminate\\Database\\Eloquent\\Model::__callStatic()
+#16 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\Api\\Customer\\UserApiControllers->loginVerify()
+#17 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(43): Illuminate\\Routing\\Controller->callAction()
+#18 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(260): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#19 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#20 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(798): Illuminate\\Routing\\Route->run()
+#21 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#22 /home/u932153640/domains/swasthfit.in/public_html/app/Http/Middleware/TrackApiHits.php(34): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#23 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): App\\Http\\Middleware\\TrackApiHits->handle()
+#24 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#25 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#26 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(126): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(102): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#28 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(54): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#29 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#30 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#31 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(799): Illuminate\\Pipeline\\Pipeline->then()
+#32 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack()
+#33 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(740): Illuminate\\Routing\\Router->runRoute()
+#34 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute()
+#35 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(190): Illuminate\\Routing\\Router->dispatch()
+#36 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#37 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#38 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#39 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#40 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#41 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#42 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#43 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#44 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#45 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#46 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#47 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#48 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#49 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#50 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#51 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#52 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then()
+#53 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#54 /home/u932153640/domains/swasthfit.in/public_html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#55 /home/u932153640/domains/swasthfit.in/public_html/server.php(13): require_once('/home/u93215364...')
+#56 {main}
+
+[previous exception] [object] (PDOException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'imiei' cannot be null at /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:545)
+[stacktrace]
+#0 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(545): PDOStatement->execute()
+#1 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(753): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}()
+#2 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback()
+#3 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(546): Illuminate\\Database\\Connection->run()
+#4 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(498): Illuminate\\Database\\Connection->statement()
+#5 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\\Database\\Connection->insert()
+#6 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(3322): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId()
+#7 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1869): Illuminate\\Database\\Query\\Builder->insertGetId()
+#8 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1330): Illuminate\\Database\\Eloquent\\Builder->__call()
+#9 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1295): Illuminate\\Database\\Eloquent\\Model->insertAndSetId()
+#10 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1138): Illuminate\\Database\\Eloquent\\Model->performInsert()
+#11 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(566): Illuminate\\Database\\Eloquent\\Model->save()
+#12 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Support/helpers.php(306): Illuminate\\Database\\Eloquent\\Builder->Illuminate\\Database\\Eloquent\\{closure}()
+#13 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(567): tap()
+#14 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Support/Traits/ForwardsCalls.php(23): Illuminate\\Database\\Eloquent\\Builder->firstOrCreate()
+#15 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2330): Illuminate\\Database\\Eloquent\\Model->forwardCallTo()
+#16 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2342): Illuminate\\Database\\Eloquent\\Model->__call()
+#17 /home/u932153640/domains/swasthfit.in/public_html/app/Http/Controllers/Api/Customer/UserApiControllers.php(481): Illuminate\\Database\\Eloquent\\Model::__callStatic()
+#18 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\Api\\Customer\\UserApiControllers->loginVerify()
+#19 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(43): Illuminate\\Routing\\Controller->callAction()
+#20 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(260): Illuminate\\Routing\\ControllerDispatcher->dispatch()
+#21 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#22 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(798): Illuminate\\Routing\\Route->run()
+#23 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}()
+#24 /home/u932153640/domains/swasthfit.in/public_html/app/Http/Middleware/TrackApiHits.php(34): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#25 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): App\\Http\\Middleware\\TrackApiHits->handle()
+#26 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#27 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle()
+#28 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(126): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#29 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(102): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequest()
+#30 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(54): Illuminate\\Routing\\Middleware\\ThrottleRequests->handleRequestUsingNamedLimiter()
+#31 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle()
+#32 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#33 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(799): Illuminate\\Pipeline\\Pipeline->then()
+#34 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(776): Illuminate\\Routing\\Router->runRouteWithinStack()
+#35 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(740): Illuminate\\Routing\\Router->runRoute()
+#36 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Routing/Router.php(729): Illuminate\\Routing\\Router->dispatchToRoute()
+#37 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(190): Illuminate\\Routing\\Router->dispatch()
+#38 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}()
+#39 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#40 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#41 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle()
+#42 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#43 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle()
+#44 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle()
+#45 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#46 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle()
+#47 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#48 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle()
+#49 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(62): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#50 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\HandleCors->handle()
+#51 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#52 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle()
+#53 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}()
+#54 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Pipeline\\Pipeline->then()
+#55 /home/u932153640/domains/swasthfit.in/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(134): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#56 /home/u932153640/domains/swasthfit.in/public_html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle()
+#57 /home/u932153640/domains/swasthfit.in/public_html/server.php(13): require_once('/home/u93215364...')
+#58 {main}
+"} 
