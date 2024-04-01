@@ -91,7 +91,7 @@ class WalletController extends BaseController
         $wallet = $user?->wallet;
         $walletTransaction = $user?->wallet?->walletHistory;
         return $this->responseJson(false, 200, "Get Wallet History", [
-            'wallet' => $wallet,
+            'wallet' => $wallet?->balance,
             'walletTransaction' => $walletTransaction
         ]);
     }
