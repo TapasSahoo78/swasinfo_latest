@@ -85,7 +85,6 @@ class WalletController extends BaseController
     public function getWalletHistory(Request $request)
     {
         $user = auth()->user();
-        dd($user);
         if (empty($user->wallet)) {
             return $this->responseJson(false, 422, "User does not have a wallet", (object)[]);
         }
