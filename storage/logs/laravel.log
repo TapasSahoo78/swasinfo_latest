@@ -5521,3 +5521,159 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
+[2024-04-02 03:06:40] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2024-04-02 03:07:38] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2024-04-02 03:08:40] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2024-04-02 03:09:39] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2024-04-02 03:10:29] local.ERROR: Unclosed '{' on line 94 {"exception":"[object] (ParseError(code: 0): Unclosed '{' on line 94 at J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\routes\\api.php:373)
+[stacktrace]
+#0 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(503): Illuminate\\Routing\\RouteFileRegistrar->register('J:\\\\DECEMBER-202...')
+#1 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(457): Illuminate\\Routing\\Router->loadRoutes('J:\\\\DECEMBER-202...')
+#2 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(192): Illuminate\\Routing\\Router->group(Array, 'J:\\\\DECEMBER-202...')
+#3 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\app\\Providers\\RouteServiceProvider.php(45): Illuminate\\Routing\\RouteRegistrar->group('J:\\\\DECEMBER-202...')
+#4 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\RouteServiceProvider->App\\Providers\\{closure}()
+#5 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#6 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#7 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#8 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#9 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(120): Illuminate\\Container\\Container->call(Object(Closure))
+#10 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(45): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#11 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#12 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#13 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#14 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#15 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#16 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(119): Illuminate\\Container\\Container->call(Object(Closure))
+#17 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(932): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#18 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(910): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#19 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 36)
+#20 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(911): array_walk(Array, Object(Closure))
+#21 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#22 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(242): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#23 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(383): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#24 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#25 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 {main}
+"} 
+[2024-04-02 03:10:31] local.ERROR: Unclosed '{' on line 94 {"exception":"[object] (ParseError(code: 0): Unclosed '{' on line 94 at J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\routes\\api.php:373)
+[stacktrace]
+#0 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(503): Illuminate\\Routing\\RouteFileRegistrar->register('J:\\\\DECEMBER-202...')
+#1 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(457): Illuminate\\Routing\\Router->loadRoutes('J:\\\\DECEMBER-202...')
+#2 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(192): Illuminate\\Routing\\Router->group(Array, 'J:\\\\DECEMBER-202...')
+#3 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\app\\Providers\\RouteServiceProvider.php(45): Illuminate\\Routing\\RouteRegistrar->group('J:\\\\DECEMBER-202...')
+#4 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\RouteServiceProvider->App\\Providers\\{closure}()
+#5 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#6 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#7 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#8 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#9 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(120): Illuminate\\Container\\Container->call(Object(Closure))
+#10 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(45): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#11 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#12 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#13 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(81): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#14 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#15 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#16 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(119): Illuminate\\Container\\Container->call(Object(Closure))
+#17 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(932): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#18 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(910): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#19 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 36)
+#20 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(911): array_walk(Array, Object(Closure))
+#21 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#22 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(242): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#23 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(383): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#24 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#25 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 {main}
+"} 
+[2024-04-02 03:10:40] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2024-04-02 03:11:39] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
