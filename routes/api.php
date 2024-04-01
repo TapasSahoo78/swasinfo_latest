@@ -87,9 +87,17 @@ Route::namespace('Api\Customer')
         // Route::post('login', [UserApiControllers::class, 'login']);
     });
 
-
-
-
+Route::namespace('Api\Common')
+    ->prefix('common')
+    ->as('common.')
+    // Add 'track.api.hits' middleware here
+    ->group(function () {
+        Route::controller(WalletController::class)->group(function () {
+            Route::get('/wallet-history', 'getWalletHistory')->name('wallet.history');
+            Route::post('/recharge-wallet', 'rechargeWallet')->name('recharge.wallet');
+            Route::post('/payment-success', 'payMentVerify')->name('payment.success');
+        });
+    });
 
 Route::namespace('Api\Customer')
     ->prefix('v1/customers') // Include "v1" in the prefix
@@ -185,13 +193,6 @@ Route::namespace('Api\Customer')
 
         });
         // Route::post('login', [UserApiControllers::class, 'login']);
-
-
-        Route::controller(WalletController::class)->group(function () {
-            Route::get('/wallet-history', 'getWalletHistory')->name('wallet.history');
-            Route::post('/recharge-wallet', 'rechargeWallet')->name('recharge.wallet');
-            Route::post('/payment-success', 'payMentVerify')->name('payment.success');
-        });
     });
 
 
