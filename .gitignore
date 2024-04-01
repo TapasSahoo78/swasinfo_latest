@@ -20,6 +20,6 @@ vendor_latest.zip
 # Ignore the entire storage directory
 /storage/*
 
-/storage/logs/Laravel.log
+/storage/logs/laravel.log
 
 # Except for these directories...
