@@ -86,10 +86,7 @@ class WalletController extends BaseController
     {
         $user = auth()->user();
         if (empty($user->wallet)) {
-            return response()->json([
-                'success' => false,
-                'message' => 'User does not have a wallet',
-            ], 422);
+            return $this->responseJson(false, 422, "User does not have a wallet", (object)[]);
         }
         $wallet = $user?->wallet;
         $walletTransaction = $user?->wallet?->walletHistory;

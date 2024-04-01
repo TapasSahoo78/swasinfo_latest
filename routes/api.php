@@ -92,10 +92,12 @@ Route::namespace('Api\Common')
     ->as('common.')
     // Add 'track.api.hits' middleware here
     ->group(function () {
-        Route::controller(WalletController::class)->group(function () {
-            Route::get('/wallet-history', 'getWalletHistory')->name('wallet.history');
-            Route::post('/recharge-wallet', 'rechargeWallet')->name('recharge.wallet');
-            Route::post('/payment-success', 'payMentVerify')->name('payment.success');
+        Route::middleware('auth:api')->middleware('auth:api')->group(function () {
+            Route::controller(WalletController::class)->group(function () {
+                Route::get('/wallet-history', 'getWalletHistory')->name('wallet.history');
+                Route::post('/recharge-wallet', 'rechargeWallet')->name('recharge.wallet');
+                Route::post('/payment-success', 'payMentVerify')->name('payment.success');
+            });
         });
     });
 
