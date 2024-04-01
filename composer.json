@@ -21,6 +21,7 @@
         "maatwebsite/excel": "^3.1",
         "milon/barcode": "^10.0",
         "pbmedia/laravel-ffmpeg": "*",
+        "razorpay/razorpay": "^2.9",
         "staudenmeir/laravel-adjacency-list": "^1.0",
         "taylornetwork/laravel-username-generator": "^2.6",
         "typicms/nestablecollection": "^1.2",

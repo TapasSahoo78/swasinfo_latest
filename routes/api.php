@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Agent\SettingController;
+use App\Http\Controllers\Api\Common\WalletController;
+
 // use App\Http\Controllers\Api\Agent\UserApiControllers;
 /*
 |--------------------------------------------------------------------------
@@ -185,25 +187,12 @@ Route::namespace('Api\Customer')
         // Route::post('login', [UserApiControllers::class, 'login']);
 
 
-
-
-
-
-
-
-
+        Route::controller(WalletController::class)->group(function () {
+            Route::get('/wallet-history', 'getWalletHistory')->name('wallet.history');
+            Route::post('/recharge-wallet', 'rechargeWallet')->name('recharge.wallet');
+            Route::post('/payment-success', 'payMentVerify')->name('payment.success');
+        });
     });
-
-
-
-
-
-
-
-
-
-
-
 
 
 
