@@ -8,9 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class WalletTransaction extends Model
 {
     use HasFactory;
-
-    public function walletHistory()
-    {
-        return $this->hasMany(WalletTransaction::class);
-    }
 }
