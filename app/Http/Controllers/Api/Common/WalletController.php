@@ -8,6 +8,7 @@ use Razorpay\Api\Api;
 use App\Models\Wallet;
 use App\Models\WalletTransaction;
 use Exception;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class WalletController extends BaseController
@@ -16,72 +17,56 @@ class WalletController extends BaseController
     {
         $validator = Validator::make($request->all(), [
             'amount' => 'required|numeric|min:0',
+            'category' => 'required|in:Step Count,Calories Burned,Distance Covered,Body Scan,Face Scan,Posture Analysis,Brain Games',
         ]);
         if ($validator->fails()) {
-            return $this->responseJson(false, 422, $validator->errors()->all(), "");
+            return $this->responseJson(false, 422, $validator->errors()->first(), (object)[]);
         }
+        DB::begintransaction();
         try {
-            // Get the user making the recharge
             $user = auth()->user();
 
-            // Create a Razorpay order
-            $api = new Api(env('RAZORPAY_KEY_ID'), env('RAZORPAY_KEY_SECRET'));
-
-            $order = $api->order->create([
-                'amount' => $request->amount * 100, // Amount in paisa
-                'currency' => 'INR',
-            ]);
-            return $this->responseJson(true, 200, "Payment intent created successfully!", $order);
+            if (!$user->wallet) {
+                $wallet = new Wallet([
+                    'user_id' => $user?->id,
+                    'balance' => $request->amount,
+                ]);
+                $wallet->save();
+            } else {
+                // Update the existing wallet's balance
+                $user->wallet->balance += $request->amount;
+                $user->wallet->save();
+                $wallet = $user->wallet;
+            }
+            $walletTrans = WalletTransaction::where('category', $request->category)
+                ->where('wallet_id', $wallet?->id)
+                ->first();
+            logger($walletTrans?->amount ."||". $request->amount);
+            if (!empty($walletTrans)) {
+                $walletTrans->update([
+                    'amount' => $walletTrans?->amount + $request->amount,
+                    'type' => 'credit',
+                    'description' => 'Coin Added',
+                    'current_balance' => $walletTrans?->amount + $request->amount,
+                ]);
+            } else {
+                WalletTransaction::create([
+                    'wallet_id' => $wallet?->id,
+                    'amount' => $request->amount,
+                    'type' => 'credit',
+                    'description' => 'Coin Added',
+                    'category' => $request->category,
+                    'current_balance' => $request->amount,
+                ]);
+            }
+            DB::commit();
+            return $this->responseJson(true, 200, "Coin added successfully!", (object)[]);
         } catch (Exception $e) {
-            return $this->responseJson(false, 422, "Something went wrong!", $e->getMessage());
+            DB::rollBack();
+            logger($e->getMessage() . ' -- ' . $e->getLine() . ' -- ' . $e->getFile());
+            return $this->responseJson(false, 500, "Something went wrong!", $e->getMessage());
         }
     }
-    public function payMentVerify(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'razorpay_order_id' => 'required',
-            'razorpay_payment_id' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return $this->responseJson(false, 422, $validator->errors()->all(), "");
-        }
-
-        $razorpay_order_id = $request->razorpay_order_id;
-        $razorpay_payment_id = $request->razorpay_payment_id;
-
-        // Initialize Razorpay API
-        $api = new Api(env('RAZORPAY_KEY_ID'), env('RAZORPAY_KEY_SECRET'));
-
-        try {
-            // Fetch the payment
-            $payment = $api->payment->fetch($razorpay_payment_id);
-            $amount = $payment->amount;
-
-            // Verify the payment
-            $attributes = [
-                'razorpay_order_id' => $razorpay_order_id,
-                'razorpay_payment_id' => $razorpay_payment_id,
-            ];
-
-            $api->utility->verifyPaymentSignature($attributes);
-            $user = auth()->user();
-            $user->wallet->balance += $amount;
-            $user->wallet->save();
-
-            // Record the transaction
-            WalletTransaction::create([
-                'wallet_id' => $user?->wallet?->id,
-                'amount' => $amount / 100,
-                'type' => 'credit',
-                'description' => 'Wallet recharge via Razorpay',
-            ]);
-
-            return $this->responseJson(false, 422, "Payment verification successful", $payment->toArray());
-        } catch (\Exception $e) {
-            return $this->responseJson(false, 422, "Payment verification failed!", $e->getMessage());
-        }
-    }
-
     public function getWalletHistory(Request $request)
     {
         $user = auth()->user();

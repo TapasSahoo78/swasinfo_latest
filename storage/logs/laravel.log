@@ -1,4 +1,4 @@
-[2024-04-02 03:46:40] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+[2024-04-03 03:19:50] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
 Stack trace:
 #0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
 #1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
@@ -14,7 +14,10 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
-[2024-04-02 03:47:40] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+[2024-04-03 03:19:58] local.DEBUG: Attempt to read property "amount" on null -- 43 -- J:\DECEMBER-2024\SWASINFO(latest)\shyamfuturetech-swasthafit(latest)\app\Http\Controllers\Api\Common\WalletController.php  
+[2024-04-03 03:20:25] local.DEBUG: ||50  
+[2024-04-03 03:20:25] local.DEBUG: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'wallet_id' cannot be null (SQL: insert into `wallet_transactions` (`wallet_id`, `amount`, `type`, `description`, `category`, `current_balance`, `updated_at`, `created_at`) values (?, 50, credit, Coin Added, Step Count, 50, 2024-04-03 03:20:25, 2024-04-03 03:20:25)) -- 760 -- J:\DECEMBER-2024\SWASINFO(latest)\shyamfuturetech-swasthafit(latest)\vendor\laravel\framework\src\Illuminate\Database\Connection.php  
+[2024-04-03 03:20:50] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
 Stack trace:
 #0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
 #1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
@@ -30,7 +33,7 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
-[2024-04-02 03:48:40] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+[2024-04-03 03:21:51] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
 Stack trace:
 #0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
 #1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
@@ -46,7 +49,10 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
-[2024-04-02 03:49:42] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+[2024-04-03 03:22:06] local.DEBUG: ||50  
+[2024-04-03 03:22:06] local.DEBUG: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'wallet_id' cannot be null (SQL: insert into `wallet_transactions` (`wallet_id`, `amount`, `type`, `description`, `category`, `current_balance`, `updated_at`, `created_at`) values (?, 50, credit, Coin Added, Step Count, 50, 2024-04-03 03:22:06, 2024-04-03 03:22:06)) -- 760 -- J:\DECEMBER-2024\SWASINFO(latest)\shyamfuturetech-swasthafit(latest)\vendor\laravel\framework\src\Illuminate\Database\Connection.php  
+[2024-04-03 03:22:33] local.DEBUG: ||50  
+[2024-04-03 03:22:51] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
 Stack trace:
 #0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
 #1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
@@ -62,7 +68,8 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
-[2024-04-02 03:50:43] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+[2024-04-03 03:22:53] local.DEBUG: 50.00||50  
+[2024-04-03 03:23:50] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
 Stack trace:
 #0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
 #1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
@@ -78,7 +85,8 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
-[2024-04-02 03:51:47] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+[2024-04-03 03:24:02] local.DEBUG: 100.00||10  
+[2024-04-03 03:24:51] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
 Stack trace:
 #0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
 #1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
@@ -94,99 +102,4 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
-[2024-04-02 03:52:41] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
-Stack trace:
-#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
-#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
-#2 Command line code(1): array_map(Object(Closure), Array, Array)
-#3 {main}
-  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
-Stack trace:
-#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
-#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
-#2 Command line code(1): array_map(Object(Closure), Array, Array)
-#3 {main}
-  thrown at Command line code:1)
-[stacktrace]
-#0 {main}
-"} 
-[2024-04-02 03:53:41] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
-Stack trace:
-#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
-#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
-#2 Command line code(1): array_map(Object(Closure), Array, Array)
-#3 {main}
-  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
-Stack trace:
-#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
-#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
-#2 Command line code(1): array_map(Object(Closure), Array, Array)
-#3 {main}
-  thrown at Command line code:1)
-[stacktrace]
-#0 {main}
-"} 
-[2024-04-02 03:54:39] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
-Stack trace:
-#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
-#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
-#2 Command line code(1): array_map(Object(Closure), Array, Array)
-#3 {main}
-  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
-Stack trace:
-#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
-#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
-#2 Command line code(1): array_map(Object(Closure), Array, Array)
-#3 {main}
-  thrown at Command line code:1)
-[stacktrace]
-#0 {main}
-"} 
-[2024-04-02 03:55:40] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
-Stack trace:
-#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
-#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
-#2 Command line code(1): array_map(Object(Closure), Array, Array)
-#3 {main}
-  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
-Stack trace:
-#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
-#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
-#2 Command line code(1): array_map(Object(Closure), Array, Array)
-#3 {main}
-  thrown at Command line code:1)
-[stacktrace]
-#0 {main}
-"} 
-[2024-04-02 03:56:39] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
-Stack trace:
-#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
-#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
-#2 Command line code(1): array_map(Object(Closure), Array, Array)
-#3 {main}
-  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
-Stack trace:
-#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
-#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
-#2 Command line code(1): array_map(Object(Closure), Array, Array)
-#3 {main}
-  thrown at Command line code:1)
-[stacktrace]
-#0 {main}
-"} 
-[2024-04-02 03:57:40] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
-Stack trace:
-#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
-#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
-#2 Command line code(1): array_map(Object(Closure), Array, Array)
-#3 {main}
-  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
-Stack trace:
-#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
-#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
-#2 Command line code(1): array_map(Object(Closure), Array, Array)
-#3 {main}
-  thrown at Command line code:1)
-[stacktrace]
-#0 {main}
-"} 
+[2024-04-03 03:25:08] local.DEBUG: ||10  
