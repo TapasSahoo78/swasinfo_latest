@@ -96,7 +96,6 @@ Route::namespace('Api\Common')
             Route::controller(WalletController::class)->group(function () {
                 Route::get('/wallet-history', 'getWalletHistory')->name('wallet.history');
                 Route::post('/recharge-wallet', 'rechargeWallet')->name('recharge.wallet');
-                Route::post('/payment-success', 'payMentVerify')->name('payment.success');
             });
         });
     });
