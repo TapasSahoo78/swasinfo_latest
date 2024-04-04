@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('wallet_transactions', function (Blueprint $table) {
-            $table->enum('category', ['Step Count', 'Calories Burned', 'Distance Covered', 'Body Scan', 'Face Scan', 'Posture Analysis', 'Brain Games'])->default('Step Count')->after('wallet_id');
+            $table->enum('category', ['Step Count', 'Calories Burned', 'Distance Covered', 'Body Scan', 'Face Scan', 'Food Scan', 'Posture Analysis', 'Brain Games'])->default('Step Count')->after('wallet_id');
         });
     }
 
