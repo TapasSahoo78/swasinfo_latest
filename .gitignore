@@ -23,3 +23,7 @@ vendor_latest.zip
 /storage/logs/laravel.log
 
 # Except for these directories...
+ /public/bankcheque/
+ /public/id_proof/
+ /public/profile_picture/
+ /public/qualification/
