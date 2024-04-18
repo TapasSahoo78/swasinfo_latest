@@ -607,18 +607,18 @@ class UserRepository extends BaseRepository implements UserContract
 
     public function createVendor($attributes)
     {
-        $userId = auth()->user()->id;
+        // $userId = auth()->user()->id;
         $isCustomerCreated = $this->create([
             'first_name'         => $attributes['name'],
             'mobile_number'     => $attributes['mobile_number'],
             'email'             => $attributes['email'],
             'username'             => $attributes['email'],
-            'introduction'      => $attributes['introduction'],
+            // 'introduction'      => $attributes['introduction'],
             // 'pickup_address'      => $attributes['pickupaddress'],
             'email_verified_at' => \Carbon\Carbon::now(),
             'password'          => bcrypt($attributes['password']),
             'is_approve'        => 1,
-            'created_by'=>$userId
+            // 'created_by'=>$userId
         ]);
         //$isCustomerCreated = $this->create($attributes);
         if ($isCustomerCreated) {
