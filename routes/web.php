@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('frontend.pages.homepage');
 })->name('frontend.home');
+
 Route::get('/contact-us', function () {
     return view('frontend.pages.contact_us');
 })->name('frontend.contact');
@@ -28,14 +29,11 @@ Route::get('/branch', function () {
     // return redirect('admin/login');
     return view('admin.branch.list');
 });
-//  Route::get('/dashboard', function () {
-
-//     // return redirect('admin/login');
-//     return view('admin.branch.list');
-// });
 
 
-
+// Route::get('/selling-account', function () {
+//     return view('frontend.pages.selling_account');
+// })->name('selling.account');
 
 
 Route::get('/home/{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

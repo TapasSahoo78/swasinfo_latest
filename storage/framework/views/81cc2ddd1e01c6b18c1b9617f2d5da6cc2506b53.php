@@ -306,10 +306,7 @@
                             
                         </div>
                         
-                        <a class="btn btn-primary" href="<?php echo e(route('admin.vendor.add')); ?>">
-                            <span><i class="fa fa-plus" aria-hidden="true"></i></span>
-                            Add Vendor
-                        </a>
+                        
 
                     </div><!-- /.col -->
 

@@ -130,6 +130,9 @@ Route::namespace('Api\Customer')
                 Route::get('/notification', 'notification')->name('notification');
                 Route::get('/transaction/{any}', 'transaction')->name('transaction');
                 Route::match(['get', 'post'], '/storetransaction', 'savetransaction')->name('storetransaction');
+
+                Route::match(['get', 'post'], '/start-pause-subscription', 'startPauseSubscription')->name('startPauseSubscription');
+
                 Route::get('/getscriptiondetails', 'getscriptiondetails')->name('getscriptiondetails');
                 Route::post('/deleteaccount', 'userDeleteAccount')->name('deleteaccount');
                 Route::post('/screen_time', 'screenTime')->name('screen_time');

@@ -10,10 +10,10 @@
                 <div id="main-nav" class="stellarnav">
                     <ul>
                         <li><a href="aboutus.html">Features</a></li>
-                        <li><a href="how-it-works.html">About Us</a></li>
+                        <li><a href="<?php echo e(route('frontend.contact')); ?>">Contact Us</a></li>
                         <li><a href="portfolio.html">Sign Up</a></li>
                         <li><a href="<?php echo e(route('frontend.ecom')); ?>" class="loginbtn2">Buy Product</a></li>
-                        <li><a href="<?php echo e(route('frontend.contact')); ?>" class="loginbtn">Connect With Us</a></li>
+                        <li><a href="<?php echo e(route('seller.selling.account')); ?>" class="loginbtn">Selling Account</a></li>
                     </ul>
                 </div>
             </div>

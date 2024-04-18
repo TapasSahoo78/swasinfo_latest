@@ -321,10 +321,10 @@
                             <span><i class="fa fa-download" aria-hidden="true"></i></span>
                             Download CSV Format
                         </a> --}}
-                        <a class="btn btn-primary" href="{{ route('admin.vendor.add') }}">
+                        {{-- <a class="btn btn-primary" href="{{ route('admin.vendor.add') }}">
                             <span><i class="fa fa-plus" aria-hidden="true"></i></span>
                             Add Vendor
-                        </a>
+                        </a> --}}
 
                     </div><!-- /.col -->
 

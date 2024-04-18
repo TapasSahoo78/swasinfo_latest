@@ -67,8 +67,7 @@ use App\Models\Order;
 use App\Models\ProfileOtherInformation;
 use App\Models\Coupon;
 use App\Models\Rating;
-
-
+use Exception;
 
 class UserApiControllers extends BaseController
 {
@@ -1649,6 +1648,26 @@ class UserApiControllers extends BaseController
         $fcmuserdietitian = User::where('id', $request->dietitian_id)->first();
         $this->sendNotificationtesttrainer($requestparam, $fcmuserdietitian->fcm_token);
         return response()->json(['status' => true, 'message' => 'Transaction Store successfully.'], 200);
+    }
+
+    public function startPauseSubscription(Request $request)
+    {
+        $userId = auth()->user()->id;
+
+        $validator = Validator::make($request->all(), [
+            "start_pause_date" => 'required|date',
+            "type" => 'in:0,1' //0-pause,1-start
+        ]);
+        if ($validator->fails()) {
+            return $this->responseJson(false, 200, $validator->errors()->first(), (object)[]);
+        }
+        try {
+            // echo "Start Pause Subscription";
+            return response()->json(['status' => true, 'message' => 'Success', 'data' => (object)[]], 200);
+        } catch (Exception $e) {
+            logger($e->getMessage());
+            return response()->json(['status' => false, 'message' => 'Something went wrong!', 'data' => (object)[]], 500);
+        }
     }
 
     public function getscriptiondetails(Request $request)
