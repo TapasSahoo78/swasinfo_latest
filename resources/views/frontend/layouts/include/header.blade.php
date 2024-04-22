@@ -9,9 +9,9 @@
             <div class="col-md-10 col-5">
                 <div id="main-nav" class="stellarnav">
                     <ul>
-                        <li><a href="aboutus.html">Features</a></li>
+                        <li><a href="{{route('frontend.features')}}">Features</a></li>
                         <li><a href="{{ route('frontend.contact') }}">Contact Us</a></li>
-                        <li><a href="portfolio.html">Sign Up</a></li>
+                        <li><a href="{{route('frontend.signup')}}">Sign Up</a></li>
                         <li><a href="{{ route('frontend.ecom') }}" class="loginbtn2">Buy Product</a></li>
                         <li><a href="{{ route('seller.selling.account') }}" class="loginbtn">Selling Account</a></li>
                     </ul>
