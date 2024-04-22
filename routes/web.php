@@ -30,6 +30,13 @@ Route::get('/branch', function () {
     return view('admin.branch.list');
 });
 
+Route::get('/features', function () {
+    return view('frontend.pages.features');
+})->name('frontend.features');
+Route::get('/signup', function () {
+    return view('frontend.pages.signup');
+})->name('frontend.signup');
+
 
 // Route::get('/selling-account', function () {
 //     return view('frontend.pages.selling_account');

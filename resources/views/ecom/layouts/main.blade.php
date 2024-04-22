@@ -115,7 +115,7 @@
                                 <a href="">Blog</a>
                             </li>
                             <li class="nav-hover active">
-                                <a href="">Wattel</a>
+                                <a href="">Wallet</a>
                             </li>
                             <li class="nav-hover active">
                                 <a href="">Account</a>
