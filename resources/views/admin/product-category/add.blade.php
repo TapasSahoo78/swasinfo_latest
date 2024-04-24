@@ -283,7 +283,7 @@
 
 @section('pagetitlesection')
     <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link custom-cumb">{{ __('Brand') }}</a>
+        <a href="#" class="nav-link custom-cumb">{{ __('Category') }}</a>
     </li>
 @endsection
 
@@ -295,12 +295,12 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-sm-8">
-                        <h1 class="m-0 text-dark">Add Brand</h1>
+                        <h1 class="m-0 text-dark">Add Category</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-4 right_btn">
                         <a class="btn btn-primary" href="{{ route('admin.product.category.list') }}">
                             <span><i class="fa fa-list" aria-hidden="true"></i></span>
-                            Brand List
+                            Category List
                         </a>
                     </div><!-- /.col -->
                 </div>
@@ -333,7 +333,7 @@
                                 </div>
                             </div>
 
-                          
+
 
                             <div class="col-md-12">
                                 <div class="form-group">
