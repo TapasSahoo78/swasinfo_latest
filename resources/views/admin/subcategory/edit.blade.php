@@ -295,14 +295,14 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-sm-8">
-                        <h1 class="m-0 text-dark">Add Category</h1>
+                        <h1 class="m-0 text-dark">Edit Category</h1>
                     </div><!-- /.col -->
-                    <div class="col-sm-4 right_btn">
-                        <a class="btn btn-primary" href="{{ route('admin.product.category.list') }}">
+                    {{-- <div class="col-sm-4 right_btn">
+                        <a class="btn btn-primary " href="{{ route('admin.product.category.list') }}">
                             <span><i class="fa fa-list" aria-hidden="true"></i></span>
                             Category List
                         </a>
-                    </div><!-- /.col -->
+                    </div><!-- /.col --> --}}
                 </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -315,7 +315,7 @@
                 <!-- /.row -->
                 <!-- Recent Assets -->
                 <div class="card p-3">
-                    <form method="post" action="{{ route('admin.product.category.add') }}" id="customerForm"
+                    <form method="post" action="{{ route('admin.product.category.edit', $data->uuid) }}" id="customerForm"
                         enctype="multipart/form-data">
                         @csrf
                         {{-- <input type="hidden" name="id" value="{{isset($data)?$data->id:''}}"> --}}
@@ -324,7 +324,7 @@
                                 <div class="form-group">
                                     <label>Name<sup>*</sup></label>
                                     <input id="name" class="form-control" type="text" name="name"
-                                        placeholder="Brand" value="{{ old('name') }}" />
+                                        placeholder="Category" value="{{ old('name', $data->name) }}" />
                                     @error('name')
                                         <span class="text-sm text-danger">
                                             {{ $message }}
@@ -333,14 +333,15 @@
                                 </div>
                             </div>
 
-
+                           
 
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Description</label>
                                     {{-- <input id="category_name" class="" type="text" name="category_name"
                                         placeholder="Category" value="{{ old('category_name') }}" /> --}}
-                                    <textarea name="description" id="" class="form-control" cols="30" rows="5" placeholder="Description"></textarea>
+                                    <textarea name="description" id="" class="form-control" cols="30" rows="5"
+                                        placeholder="Description">{{ $data->description }}</textarea>
                                     @error('description')
                                         <span class="text-sm text-danger">
                                             {{ $message }}
@@ -359,6 +360,7 @@
                                         </span>
                                     @enderror
                                 </div>
+                                <img src="{{ asset('images/' . $data->category_image) }}" alt="Your Image" width="200" height="100">
                             </div>
 
                         </div>

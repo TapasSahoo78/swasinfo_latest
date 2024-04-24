@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AttributeController;
+use App\Http\Controllers\Admin\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::namespace('Admin')->as('admin.')->middleware(['auth'])->group(function () {
@@ -118,6 +119,13 @@ Route::namespace('Admin')->as('admin.')->middleware(['auth'])->group(function ()
         Route::match(['get', 'post'], 'add', 'addCategory')->name('add');
         Route::match(['get', 'post', 'put'], 'edit/{uuid}', 'editCategory')->name('edit');
         Route::get('/delete/{uuid}', 'deleteCategory')->name('delete');
+    });
+
+    Route::controller(SubCategoryController::class)->as('subcategory.')->prefix('product/subcategory')->group(function () {
+        Route::get('/', 'index')->name('list');
+        Route::match(['get', 'post'], 'add', 'addSubCategory')->name('add');
+        Route::match(['get', 'post', 'put'], 'edit/{uuid}', 'editSubCategory')->name('edit');
+        Route::get('/delete/{uuid}', 'deleteSubCategory')->name('delete');
     });
 
     Route::controller(AttributeController::class)->as('product.points.')->prefix('product/points')->group(function () {

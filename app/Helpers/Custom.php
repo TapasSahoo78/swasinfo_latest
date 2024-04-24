@@ -50,3 +50,17 @@ function getAllUnit($id)
         }
     }
 }
+
+function getSubCategory($id)
+{
+    $data = Category::where('is_active', 1)->get();
+
+    echo "<option value=''>Select Category</option>";
+    foreach ($data as $key => $val) {
+        if ($id == $val?->id) {
+            echo "<option value='" . $val?->id . "' selected>" . $val->name . "</option>";
+        } else {
+            echo "<option value='" . $val?->id . "'>" . $val->name . "</option>";
+        }
+    }
+}

@@ -283,7 +283,7 @@
 
 @section('pagetitlesection')
     <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link custom-cumb">{{ __('Category') }}</a>
+        <a href="#" class="nav-link custom-cumb">{{ __('Sub Category') }}</a>
     </li>
 @endsection
 
@@ -295,12 +295,12 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-sm-8">
-                        <h1 class="m-0 text-dark">Add Category</h1>
+                        <h1 class="m-0 text-dark">Add Sub Category</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-4 right_btn">
-                        <a class="btn btn-primary" href="{{ route('admin.product.category.list') }}">
+                        <a class="btn btn-primary" href="{{ route('admin.subcategory.list') }}">
                             <span><i class="fa fa-list" aria-hidden="true"></i></span>
-                            Category List
+                            Sub Category List
                         </a>
                     </div><!-- /.col -->
                 </div>
@@ -315,16 +315,29 @@
                 <!-- /.row -->
                 <!-- Recent Assets -->
                 <div class="card p-3">
-                    <form method="post" action="{{ route('admin.product.category.add') }}" id="customerForm"
+                    <form method="post" action="{{ route('admin.subcategory.add') }}" id="customerForm"
                         enctype="multipart/form-data">
                         @csrf
                         {{-- <input type="hidden" name="id" value="{{isset($data)?$data->id:''}}"> --}}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Name<sup>*</sup></label>
+                                    <label>Category<sup>*</sup></label>
+                                    <select name="category_id" class="form-control" id="">
+                                        {{ getSubCategory('') }}
+                                    </select>
+                                    @error('category_id')
+                                        <span class="text-sm text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Sub Category Name<sup>*</sup></label>
                                     <input id="name" class="form-control" type="text" name="name"
-                                        placeholder="Brand" value="{{ old('name') }}" />
+                                        placeholder="Sub Category" value="{{ old('name') }}" />
                                     @error('name')
                                         <span class="text-sm text-danger">
                                             {{ $message }}
@@ -332,36 +345,23 @@
                                     @enderror
                                 </div>
                             </div>
-
-
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    {{-- <input id="category_name" class="" type="text" name="category_name"
-                                        placeholder="Category" value="{{ old('category_name') }}" /> --}}
-                                    <textarea name="description" id="" class="form-control" cols="30" rows="5" placeholder="Description"></textarea>
-                                    @error('description')
-                                        <span class="text-sm text-danger">
-                                            {{ $message }}
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Category Image</label>
-                                    <input id="category_image" class="form-control" type="file" name="category_image"
-                                        placeholder="Category" value="{{ old('category_image') }}" />
-                                    @error('category_image')
-                                        <span class="text-sm text-danger">
-                                            {{ $message }}
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
                         </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-9" id="commission-fields">
+                                <!-- Commission rate fields will be dynamically added here -->
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary btn-block" id="add-commission-field">Add
+                                        Commission Rate</button>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div class="row mt-3">
                             <div class="col-md-4">
@@ -411,4 +411,50 @@
     <script src="{{ asset('assets/admin/js/customer.js') }}"></script>
     <script src="{{ asset('assets/admin/js/customer-kyc-verification.js') }}"></script>
     <script src="{{ asset('assets/admin/js/customer-kyc-document-verification.js') }}"></script>
+
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+    <script>
+        $(document).ready(function() {
+            // Function to add a new set of commission rate fields
+            function addCommissionField() {
+                // Create HTML elements for the new commission rate fields
+                const commissionFieldHtml = `
+                <div class="commission-row row">
+    <div class="col-md-3 mb-3">
+        <label>Price Range Min<sup>*</sup></label>
+        <input class="form-control" type="text" name="price_range_min[]" placeholder="Price Range Min" />
+    </div>
+    <div class="col-md-3 mb-3">
+        <label>Price Range Max<sup>*</sup></label>
+        <input class="form-control" type="text" name="price_range_max[]" placeholder="Price Range Max" />
+    </div>
+    <div class="col-md-3 mb-3">
+        <label>Commission Rate<sup>*</sup></label>
+        <input class="form-control" type="text" name="commission_rate[]" placeholder="Commission Rate" />
+    </div>
+    <div class="col-md-3 mb-3">
+        <label>&nbsp;</label>
+        <button type="button" class="btn btn-danger btn-block remove-commission-field">Remove</button>
+    </div>
+</div>
+        `;
+
+                // Append the new commission rate fields to the commission fields container
+                $('#commission-fields').append('<div class="row">' + commissionFieldHtml + '</div>');
+            }
+
+            // Add commission rate fields when the button is clicked
+            $('#add-commission-field').click(function() {
+                addCommissionField();
+            });
+
+            // Remove commission rate fields when the remove button is clicked
+            $('#commission-fields').on('click', '.remove-commission-field', function() {
+                $(this).closest('.commission-row').remove();
+            });
+
+            // Optionally, add some initial commission rate fields when the page loads
+            addCommissionField();
+        });
+    </script>
 @endpush
