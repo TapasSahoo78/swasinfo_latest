@@ -283,7 +283,7 @@
 
 @section('pagetitlesection')
     <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link custom-cumb">{{ __('Category') }}</a>
+        <a href="#" class="nav-link custom-cumb">{{ __('Brand') }}</a>
     </li>
 @endsection
 
@@ -295,12 +295,12 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-sm-8">
-                        <h1 class="m-0 text-dark">Add Category</h1>
+                        <h1 class="m-0 text-dark">Add Brand</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-4 right_btn">
-                        <a class="btn btn-primary" href="{{ route('admin.product.category.list') }}">
+                        <a class="btn btn-primary" href="{{ route('admin.product.brand.list') }}">
                             <span><i class="fa fa-list" aria-hidden="true"></i></span>
-                            Category List
+                            Brand List
                         </a>
                     </div><!-- /.col -->
                 </div>
@@ -315,7 +315,7 @@
                 <!-- /.row -->
                 <!-- Recent Assets -->
                 <div class="card p-3">
-                    <form method="post" action="{{ route('admin.product.category.add') }}" id="customerForm"
+                    <form method="post" action="{{ route('admin.product.brand.add') }}" id="customerForm"
                         enctype="multipart/form-data">
                         @csrf
                         {{-- <input type="hidden" name="id" value="{{isset($data)?$data->id:''}}"> --}}
@@ -324,7 +324,7 @@
                                 <div class="form-group">
                                     <label>Name<sup>*</sup></label>
                                     <input id="name" class="form-control" type="text" name="name"
-                                        placeholder="Category" value="{{ old('name') }}" />
+                                        placeholder="Brand" value="{{ old('name') }}" />
                                     @error('name')
                                         <span class="text-sm text-danger">
                                             {{ $message }}
@@ -350,10 +350,10 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Category Image</label>
-                                    <input id="category_image" class="form-control" type="file" name="category_image"
-                                        placeholder="Category" value="{{ old('category_image') }}" />
-                                    @error('category_image')
+                                    <label>Brand Image</label>
+                                    <input id="brand_image" class="form-control" type="file" name="brand_image"
+                                        placeholder="Category" value="{{ old('brand_image') }}" />
+                                    @error('brand_image')
                                         <span class="text-sm text-danger">
                                             {{ $message }}
                                         </span>

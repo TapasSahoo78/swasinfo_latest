@@ -325,7 +325,7 @@
                                         <th>Sub Category Name</th>
                                         <th>Category</th>
                                         <th>Commission</th>
-                                        <th>Status</th>
+                                        {{-- <th>Status</th> --}}
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -337,8 +337,8 @@
                                             <td>{{ $value->description ? $value->description : '---' }}
                                             <td><img src="{{ asset('images/' . $value->category_image) }}" alt="Your Image"
                                                     width="200" height="100">
-                                            <td>
-                                                @switch($value->is_active)
+                                            {{-- <td> --}}
+                                                {{-- @switch($value->is_active)
                                                     @case(1)
                                                         <a href="javascript:void(0)" data-value="0" data-table="categories"
                                                             data-message="inactive" data-uuid="{{ $value->uuid }}"
@@ -349,13 +349,13 @@
                                                         <a href="javascript:void(0)" data-value="1" data-uuid="{{ $value->uuid }}"
                                                             data-table="categories" data-message="active"
                                                             class="inactive-status changeStatus ">Inactive</a>
-                                                    @break
+                                                    @break --}}
 
-                                                    @default
-                                                        <a href="javascript:void(0)"
-                                                            class="badge badge-danger text-dark">Deleted</a>
-                                                @endswitch
-                                            </td>
+                                                    {{-- @default --}}
+                                                        {{-- <a href="javascript:void(0)"
+                                                            class="badge badge-danger text-dark">Deleted</a> --}}
+                                                {{-- @endswitch --}}
+                                            {{-- </td> --}}
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="btn btn-secondary dropdown-toggle" type="button"
@@ -366,13 +366,10 @@
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                         <a class="dropdown-item"
-                                                            href="{{ route('admin.product.category.edit', $value->uuid) }}">Edit</a>
-                                                        <a class="dropdown-item deleteData" data-table="categories"
+                                                            href="{{ route('admin.subcategory.edit', $value->uuid) }}">Edit</a>
+                                                        <a class="dropdown-item deleteData" data-table="subcategories"
                                                             data-uuid="{{ $value->uuid }}"
                                                             href="javascript:void(0)">Delete</a>
-                                                        <a class="dropdown-item"
-                                                            href="{{ route('admin.product.add', $value->uuid) }}">Add
-                                                            Product</a>
                                                     </div>
                                                 </div>
 

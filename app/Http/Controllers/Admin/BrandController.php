@@ -2,90 +2,130 @@
 
 namespace App\Http\Controllers\Admin;
 
-
+use App\Http\Controllers\BaseController;
+use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\ProductBrand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Services\Brand\BrandService;
-use App\Http\Controllers\BaseController;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use App\Traits\UploadAble;
+use Illuminate\Support\Str;
 
 class BrandController extends BaseController
 {
-    protected $brandService;
-    public function __construct(BrandService $brandService)
+
+    use UploadAble;
+
+    public function __construct(
+        //UserService $userService,
+        //RoleService $roleService
+    )
     {
-        $this->brandService = $brandService;
+        //$this->userService = $userService;
+        //$this->roleService = $roleService;
     }
-    public function viewBrand()
+    public function index()
     {
-        $this->setPageTitle('All Brands');
-        $filterConditions = [];
-        $listBrands = $this->brandService->listBrands($filterConditions, 'id', 'asc', 15);
-        return view('admin.brand.list', compact('listBrands'));
+        $this->setPageTitle('Brand List');
+        $data = ProductBrand::all();
+        return view('admin.brand.index', compact('data'));
     }
 
     public function addBrand(Request $request)
     {
-        $this->setPageTitle('Add Brand');
-        if ($request->post()) {
+        $this->setPageTitle('Brand Add');
+        if ($request->isMethod('post')) {
+
             $request->validate([
-                'name' => 'required',
-                'is_popular' => 'required',
+                'name' => 'required|unique:product_brands'
             ]);
             DB::beginTransaction();
             try {
-                $isBrandCreated = $this->brandService->createOrUpdateBrand($request->except('_token'));
-                if ($isBrandCreated) {
+                $banner = new ProductBrand();
+                $banner->name = $request->input('name');
+                $banner->slug = Str::slug($request->input('name'));
+                $banner->description = $request->input('description');
+                $banner->created_by = auth()->user()->id;
+                $banner->updated_by = auth()->user()->id;
+                // Handle image upload
+                if ($request->hasFile('brand_image')) {
+                    $image = $request->file('brand_image');
+                    $imageName = time() . '.' . $image->extension();
+                    $image->move(public_path('images'), $imageName);
+                    $banner->brand_image = $imageName;
+                }
+                // Assign other fields here
+                $banner->save();
+                if ($banner) {
                     DB::commit();
-                    return $this->responseRedirect('admin.catalog.brand.list', 'Brand created successfully', 'success', false);
+                    return $this->responseRedirect('admin.product.brand.list', 'Brand created successfully', 'success', false);
                 }
             } catch (\Exception $e) {
+                echo $e->getMessage();
+                die();
                 DB::rollback();
                 logger($e->getMessage() . ' -- ' . $e->getLine() . ' -- ' . $e->getFile());
                 return $this->responseRedirectBack('Something went wrong', 'error', true);
             }
+        } else {
+            return view('admin.brand.add');
         }
-        return view('admin.brand.add-brand');
     }
-    public function editBrand(Request $request, $uuid)
-    {
-        $this->setPageTitle('Edit Brand');
-        $filterConditions = [
-            'is_active' => true
-        ];
-        $brandId = uuidtoid($uuid, 'brands');
-        $brandData = $this->brandService->findBrandById($brandId);
 
-        if ($request->post()) {
+    public function editBrand(Request $request, $id)
+    {
+        $productId = uuidtoid($id, 'product_brands');
+        $this->setPageTitle('Brand Edit');
+        if ($request->isMethod('post')) {
+
+            $request->validate([
+                'name' => 'required',
+            ]);
             DB::beginTransaction();
             try {
-                $isBrandUpdated = $this->brandService->createOrUpdateBrand($request->except('_token'), $brandId);
-                if ($isBrandUpdated) {
+                $isCategoryCreated = ProductBrand::where('uuid', $id)->update([
+                    'name' => $request['name'],
+                    'slug' => Str::slug($request->input('name')),
+                    'description' => $request['description'],
+                    'created_by' => auth()->user()->id,
+                    'updated_by' => auth()->user()->id
+                ]);
+
+
+                $banner = ProductBrand::where('id', $productId)->first();
+                $banner->name = $request->input('name');
+                $banner->slug = Str::slug($request->input('name'));
+                $banner->description = $request->input('description');
+                $banner->created_by = auth()->user()->id;
+                $banner->updated_by = auth()->user()->id;
+                // Handle image upload
+                if ($request->hasFile('brand_image')) {
+                    $image = $request->file('brand_image');
+                    $imageName = time() . '.' . $image->extension();
+                    $image->move(public_path('images'), $imageName);
+                    $banner->brand_image = $imageName;
+                }
+                // Assign other fields here
+                $banner->save();
+                if ($isCategoryCreated) {
                     DB::commit();
-                    return $this->responseRedirect('admin.catalog.brand.list', 'Brand updated successfully', 'success', false);
+                    return $this->responseRedirect('admin.product.brand.list', 'Brand updated successfully', 'success', false);
                 }
             } catch (\Exception $e) {
+
                 DB::rollback();
                 logger($e->getMessage() . ' -- ' . $e->getLine() . ' -- ' . $e->getFile());
                 return $this->responseRedirectBack('Something went wrong', 'error', true);
             }
+        } else {
+            $data = ProductBrand::where('uuid', $id)->first();
+            return view('admin.brand.edit', compact('data'));
         }
-        return view('admin.brand.edit-brand', compact('brandData'));
     }
 
-    public function deleteBrand(Request $request, $uuid)
+    public function deleteBrand()
     {
-        $brandId = uuidtoid($uuid, 'brands');
-        DB::beginTransaction();
-        try {
-            $isBrandDeleted = $this->brandService->deleteBrand($brandId);
-            if ($isBrandDeleted) {
-                DB::commit();
-                return $this->responseRedirect('admin.catalog.brand.list', 'Brand deleted successfully', 'success', false);
-            }
-        } catch (\Exception $e) {
-            DB::rollback();
-            logger($e->getMessage() . ' -- ' . $e->getLine() . ' -- ' . $e->getFile());
-            return $this->responseRedirectBack('Something went wrong', 'error', true);
-        }
     }
 }

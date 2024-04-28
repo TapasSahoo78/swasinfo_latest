@@ -323,9 +323,10 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Category<sup>*</sup></label>
-                                    <select name="category_id" class="form-control" id="">
-                                        {{ getSubCategory('') }}
+                                    <select name="category_id" class="form-control" id="category_id">
+                                        {{ getSubCategory(old('category_id') ?? '') }}
                                     </select>
+                                    <span id="category-error" class="text-danger"></span>
                                     @error('category_id')
                                         <span class="text-sm text-danger">
                                             {{ $message }}
@@ -336,9 +337,10 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Sub Category Name<sup>*</sup></label>
-                                    <input id="name" class="form-control" type="text" name="name"
-                                        placeholder="Sub Category" value="{{ old('name') }}" />
-                                    @error('name')
+                                    <input id="sub_category" class="form-control" type="text" name="sub_category"
+                                        placeholder="Sub Category" value="{{ old('sub_category') }}" />
+                                    <span id="sub-category-error" class="text-danger"></span>
+                                    @error('sub_category')
                                         <span class="text-sm text-danger">
                                             {{ $message }}
                                         </span>
@@ -365,7 +367,7 @@
 
                         <div class="row mt-3">
                             <div class="col-md-4">
-                                <button class="btn btn-primary" type="submit">Save</button>
+                                <button class="btn btn-primary" id="submit-form" type="submit">Save</button>
                             </div>
                             <div class="col-md-4">
 
@@ -420,32 +422,81 @@
                 // Create HTML elements for the new commission rate fields
                 const commissionFieldHtml = `
                 <div class="commission-row row">
-    <div class="col-md-3 mb-3">
-        <label>Price Range Min<sup>*</sup></label>
-        <input class="form-control" type="text" name="price_range_min[]" placeholder="Price Range Min" />
-    </div>
-    <div class="col-md-3 mb-3">
-        <label>Price Range Max<sup>*</sup></label>
-        <input class="form-control" type="text" name="price_range_max[]" placeholder="Price Range Max" />
-    </div>
-    <div class="col-md-3 mb-3">
-        <label>Commission Rate<sup>*</sup></label>
-        <input class="form-control" type="text" name="commission_rate[]" placeholder="Commission Rate" />
-    </div>
-    <div class="col-md-3 mb-3">
-        <label>&nbsp;</label>
-        <button type="button" class="btn btn-danger btn-block remove-commission-field">Remove</button>
-    </div>
-</div>
+            <div class="col-md-3 mb-3">
+                <label>Price Range Min<sup>*</sup></label>
+                <input class="form-control price-range-min" type="text" name="price_range_min[]" placeholder="Price Range Min" />
+                <span class="text-danger min-error-message"></span>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label>Price Range Max <sup>*</sup></label>
+                <input class="form-control price-range-max" type="text" name="price_range_max[]" placeholder="Price Range Max" />
+                <span class="text-danger max-error-message"></span>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label>Commission Rate<sup>*</sup></label>
+                <input class="form-control commission-rate" type="text" name="commission_rate[]" placeholder="Commission Rate" />
+                <span class="text-danger rate-error-message"></span>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label>&nbsp;</label>
+                <button type="button" class="btn btn-danger btn-sm btn-block remove-commission-field" style="width: 150px;">
+                  <i class="fas fa-times"></i> <!-- Font Awesome remove icon -->
+               </button>
+            </div>
+        </div>
         `;
-
                 // Append the new commission rate fields to the commission fields container
                 $('#commission-fields').append('<div class="row">' + commissionFieldHtml + '</div>');
             }
 
+            // Function to validate commission rate fields
+            function validateCommissionFields() {
+                let isValid = true;
+
+                $('.commission-row').each(function() {
+
+                    const priceRangeMin = $(this).find('.price-range-min').val();
+                    const priceRangeMax = $(this).find('.price-range-max').val();
+                    const commissionRate = $(this).find('.commission-rate').val();
+                    const minErrorMessage = $(this).find('.min-error-message');
+                    const maxErrorMessage = $(this).find('.max-error-message');
+                    const rateErrorMessage = $(this).find('.rate-error-message');
+
+                    // Reset error messages
+                    minErrorMessage.text('');
+                    maxErrorMessage.text('');
+                    rateErrorMessage.text('');
+
+                    // Validate price range min
+                    if (!priceRangeMin) {
+                        minErrorMessage.text('Price Range Min is required.');
+                        isValid = false;
+                    }
+
+                    // Validate price range max
+                    if (!priceRangeMax) {
+                        maxErrorMessage.text('Price Range Max is required.');
+                        isValid = false;
+                    }
+
+                    // Validate commission rate
+                    if (!commissionRate) {
+                        rateErrorMessage.text('Commission Rate is required.');
+                        isValid = false;
+                    }
+                });
+
+                return isValid;
+            }
+
+
+
             // Add commission rate fields when the button is clicked
             $('#add-commission-field').click(function() {
-                addCommissionField();
+                // addCommissionField();
+                if (validateCommissionFields()) {
+                    addCommissionField();
+                }
             });
 
             // Remove commission rate fields when the remove button is clicked
@@ -455,6 +506,73 @@
 
             // Optionally, add some initial commission rate fields when the page loads
             addCommissionField();
+
+            // Validation
+            $('#submit-form').click(function() {
+
+                var isValid = true;
+
+                // Validate category
+                var category = $('#category_id').val();
+                if (!category) {
+                    $('#category-error').html('Please select a category.');
+                    isValid = false;
+                } else {
+                    $('#category-error').html('');
+                }
+
+                // Validate category
+                var subcategory = $('#sub_category').val();
+                if (!subcategory) {
+                    $('#sub-category-error').html('Please enter sub category.');
+                    isValid = false;
+                } else {
+                    $('#sub-category-error').html('');
+                }
+
+                // Validate price range min
+                $('input[name^="price_range_min"]').each(function() {
+                    if (!$(this).val()) {
+                        $(this).next('.text-danger').html('Price Range Min is required.');
+                        isValid = false;
+                    } else {
+                        $(this).next('.text-danger').html('');
+                    }
+                });
+
+                // Validate price range max
+                $('input[name^="price_range_max"]').each(function() {
+                    if (!$(this).val()) {
+                        $(this).next('.text-danger').html('Price Range Max is required.');
+                        isValid = false;
+                    } else {
+                        $(this).next('.text-danger').html('');
+                    }
+                });
+
+                // Validate commission rate
+                $('input[name^="commission_rate"]').each(function() {
+                    var commissionRate = $(this).val();
+                    if (!commissionRate) {
+                        $(this).next('.text-danger').html('Commission Rate is required.');
+                        isValid = false;
+                    } else {
+                        // Clear previous error message if commission rate is provided
+                        $(this).next('.text-danger').html('');
+
+                        // Additional validation logic if needed
+                        // Example: Ensure commission rate is a valid number
+                        if (isNaN(commissionRate)) {
+                            $(this).next('.text-danger').html(
+                                'Commission Rate must be a valid number.');
+                            isValid = false;
+                        }
+                    }
+                });
+
+                return isValid;
+            });
+
         });
     </script>
 @endpush

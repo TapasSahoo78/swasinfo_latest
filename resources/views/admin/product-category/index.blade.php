@@ -369,8 +369,8 @@
                                                         <a class="dropdown-item deleteData" data-table="categories"
                                                             data-uuid="{{ $value->uuid }}"
                                                             href="javascript:void(0)">Delete</a>
-                                                            <a class="dropdown-item"
-                                                            href="{{ route('admin.product.add',$value->uuid) }}">Add Product</a>
+                                                            {{-- <a class="dropdown-item"
+                                                            href="{{ route('admin.product.add',$value->uuid) }}">Add Product</a> --}}
                                                     </div>
                                                 </div>
 

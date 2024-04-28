@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\CommissionRate;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -34,31 +35,37 @@ class SubCategoryController extends BaseController
 
     public function addSubCategory(Request $request)
     {
-        $this->setPageTitle('Category Add');
+        $this->setPageTitle('Sub Category Add');
         if ($request->isMethod('post')) {
-
             $request->validate([
-                'name' => 'required|unique:categories'
+                // 'category_id' => 'required|exists:categories',
+                // 'sub_category' => 'required|unique:subcategories',
+                'category_id' => 'required',
+                'sub_category' => 'required|unique:subcategories,name',
+                'price_range_min.*' => 'required|numeric',
+                'price_range_max.*' => 'required|numeric',
+                'commission_rate.*' => 'required|numeric',
             ]);
             DB::beginTransaction();
             try {
-                $banner = new Category();
-                $banner->name = $request->input('name');
-                $banner->description = $request->input('description');
-                $banner->created_by = auth()->user()->id;
-                $banner->updated_by = auth()->user()->id;
-                // Handle image upload
-                if ($request->hasFile('category_image')) {
-                    $image = $request->file('category_image');
-                    $imageName = time() . '.' . $image->extension();
-                    $image->move(public_path('images'), $imageName);
-                    $banner->category_image = $imageName;
+                $subcategory = new Subcategory();
+                $subcategory->category_id = $request->input('category_id');
+                $subcategory->name = $request->input('sub_category');
+                $subcategory->save();
+
+                // If validation passes, insert data into the database
+                foreach ($request->price_range_min as $key => $value) {
+                    CommissionRate::create([
+                        'subcategory_id' => $subcategory->id,
+                        'price_range_min' => $request->price_range_min[$key],
+                        'price_range_max' => $request->price_range_max[$key],
+                        'commission_rate' => $request->commission_rate[$key],
+                    ]);
                 }
-                // Assign other fields here
-                $banner->save();
-                if ($banner) {
+
+                if ($subcategory) {
                     DB::commit();
-                    return $this->responseRedirect('admin.product.brand.list', 'Category created successfully', 'success', false);
+                    return $this->responseRedirect('admin.subcategory.list', 'Sub Category created successfully', 'success', false);
                 }
             } catch (\Exception $e) {
                 echo $e->getMessage();
@@ -74,40 +81,36 @@ class SubCategoryController extends BaseController
 
     public function editSubCategory(Request $request, $id)
     {
-        $productId = uuidtoid($id, 'categories');
-        $this->setPageTitle('Category Edit');
+        $productId = uuidtoid($id, 'subcategories');
+        $this->setPageTitle('Sub Category Edit');
         if ($request->isMethod('post')) {
 
             $request->validate([
-                'name' => 'required',
+                'category_id' => 'required|exists:categories',
+                'sub_category' => 'required',
+                'price_range_min.*' => 'required|numeric',
+                'price_range_max.*' => 'required|numeric',
+                'commission_rate.*' => 'required|numeric',
             ]);
             DB::beginTransaction();
             try {
-                $isCategoryCreated = Category::where('uuid', $id)->update([
-                    'name' => $request['name'],
-                    'description' => $request['description'],
-                    'created_by' => auth()->user()->id,
-                    'updated_by' => auth()->user()->id
-                ]);
+                $subcategory = Subcategory::where('uuid', $id)->first();
+                $subcategory->category_id = $request->input('category_id');
+                $subcategory->name = $request->input('sub_category');
+                $subcategory->save();
 
-
-                $banner = Category::where('id', $productId)->first();
-                $banner->name = $request->input('name');
-                $banner->description = $request->input('description');
-                $banner->created_by = auth()->user()->id;
-                $banner->updated_by = auth()->user()->id;
-                // Handle image upload
-                if ($request->hasFile('category_image')) {
-                    $image = $request->file('category_image');
-                    $imageName = time() . '.' . $image->extension();
-                    $image->move(public_path('images'), $imageName);
-                    $banner->category_image = $imageName;
+                // If validation passes, insert data into the database
+                foreach ($request->price_range_min as $key => $value) {
+                    CommissionRate::create([
+                        'subcategory_id' => $subcategory->id,
+                        'price_range_min' => $request->price_range_min[$key],
+                        'price_range_max' => $request->price_range_max[$key],
+                        'commission_rate' => $request->commission_rate[$key],
+                    ]);
                 }
-                // Assign other fields here
-                $banner->save();
-                if ($isCategoryCreated) {
+                if ($subcategory) {
                     DB::commit();
-                    return $this->responseRedirect('admin.product.category.list', 'Category updated successfully', 'success', false);
+                    return $this->responseRedirect('admin.subcategory.list', 'Sub Category updated successfully', 'success', false);
                 }
             } catch (\Exception $e) {
 
@@ -116,7 +119,7 @@ class SubCategoryController extends BaseController
                 return $this->responseRedirectBack('Something went wrong', 'error', true);
             }
         } else {
-            $data = Category::where('uuid', $id)->first();
+            $data = Subcategory::where('uuid', $id)->first();
             return view('admin.subcategory.edit', compact('data'));
         }
     }

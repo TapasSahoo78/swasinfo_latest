@@ -283,7 +283,7 @@
 
 @section('pagetitlesection')
     <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link custom-cumb">{{ __('Category') }}</a>
+        <a href="#" class="nav-link custom-cumb">{{ __('Sub Category') }}</a>
     </li>
 @endsection
 
@@ -295,7 +295,7 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-sm-8">
-                        <h1 class="m-0 text-dark">Edit Category</h1>
+                        <h1 class="m-0 text-dark">Edit Sub Category</h1>
                     </div><!-- /.col -->
                     {{-- <div class="col-sm-4 right_btn">
                         <a class="btn btn-primary " href="{{ route('admin.product.category.list') }}">
@@ -315,7 +315,7 @@
                 <!-- /.row -->
                 <!-- Recent Assets -->
                 <div class="card p-3">
-                    <form method="post" action="{{ route('admin.product.category.edit', $data->uuid) }}" id="customerForm"
+                    <form method="post" action="{{ route('admin.subcategory.edit', $data?->uuid) }}" id="customerForm"
                         enctype="multipart/form-data">
                         @csrf
                         {{-- <input type="hidden" name="id" value="{{isset($data)?$data->id:''}}"> --}}
@@ -333,7 +333,7 @@
                                 </div>
                             </div>
 
-                           
+
 
                             <div class="col-md-12">
                                 <div class="form-group">

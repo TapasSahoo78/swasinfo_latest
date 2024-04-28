@@ -114,6 +114,13 @@ Route::namespace('Admin')->as('admin.')->middleware(['auth'])->group(function ()
         Route::match(['get', 'post', 'put'], 'create-details/{uuid}', 'createWorkoutDetails')->name('create.details');
     });
 
+    Route::controller(BrandController::class)->as('product.brand.')->prefix('product/brand')->group(function () {
+        Route::get('/', 'index')->name('list');
+        Route::match(['get', 'post'], 'add', 'addBrand')->name('add');
+        Route::match(['get', 'post', 'put'], 'edit/{uuid}', 'editBrand')->name('edit');
+        Route::get('/delete/{uuid}', 'deleteBrand')->name('delete');
+    });
+
     Route::controller(CategoryController::class)->as('product.category.')->prefix('product/category')->group(function () {
         Route::get('/', 'index')->name('list');
         Route::match(['get', 'post'], 'add', 'addCategory')->name('add');
@@ -128,7 +135,7 @@ Route::namespace('Admin')->as('admin.')->middleware(['auth'])->group(function ()
         Route::get('/delete/{uuid}', 'deleteSubCategory')->name('delete');
     });
 
-    Route::controller(AttributeController::class)->as('product.points.')->prefix('product/points')->group(function () {
+    Route::controller(AttributeController::class)->as('product.points.')->prefix('product/variants')->group(function () {
         Route::get('/', 'index')->name('list');
         Route::match(['get', 'post'], 'add', 'addAttribute')->name('add');
         Route::match(['get', 'post', 'put'], 'edit/{uuid}', 'editAttribute')->name('edit');
