@@ -1,50 +1,40 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
-@include('vendor.layouts.partials.header')
+<head>
+    <meta charset="utf-8">
+    <title>SwasthFit</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-<body class="hold-transition sidebar-mini">
-    @include('vendor.layouts.partials.flash')
-    <div class="wrapper">
+    @include('vendor.layouts.partials.header')
 
-        @include('vendor.layouts.partials.navbar')
+</head>
 
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        @include('vendor.layouts.partials.spinner')
+        <!-- Spinner End -->
+        <!-- Sidebar Start -->
+        @include('vendor.layouts.partials.sidebar')
+        <!-- Sidebar End -->
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            @include('vendor.layouts.partials.navbar')
+            <!-- Navbar End -->
 
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="#" class="brand-link">
-                <img src="{{ asset('assets/img/admin-logo.png') }}" alt="" class="brand-image">
-            </a>
+            @yield('content')
 
-            <!-- Sidebar -->
-            <div class="sidebar_vendor">
-                @include('vendor.layouts.partials.sidebar')
-
-            </div>
-            <!-- /.sidebar -->
-        </aside>
-
-        @yield('content')
-
-
-
+        </div>
+        <!-- Content End -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-
-    <!-- ./wrapper -->
-
-    <!-- REQUIRED SCRIPTS -->
-
-    <!-- jQuery -->
-
-    @include('admin.layouts.partials._footer')
-    @include('admin.layouts.partials.footer')
-
-
-    @stack('scripts')
-
-
+    @include('vendor.layouts.partials.footer')
 
 </body>
 

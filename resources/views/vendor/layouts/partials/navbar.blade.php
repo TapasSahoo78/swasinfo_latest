@@ -1,51 +1,52 @@
-<!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light topbar_mob">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        @yield('pagetitlesection')
-
-    </ul>
-
-    <!-- SEARCH FORM -->
-
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav navprofile_mob">
-
-
-
-
-        <li class="nav-item dropdown">
-            <a class="nav-link height-unset" data-toggle="dropdown" href="#">
-                <div class="profile-box">
-                    <div class="img">
-                        <img src="{{ auth()->user()?->profile_picture }}" alt="">
-                    </div>
-                    <p>{{ auth()->user()->username ?? auth()->user()?->first_name }}</p>
-                </div>
+<nav class="navbar navbar-expand bg-white navbar-light sticky-top px-4 py-0">
+    <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+        <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+    </a>
+    <a href="#" class="sidebar-toggler flex-shrink-0 txt-dark">
+        <i class="fa fa-bars text-dark"></i>
+    </a>
+    {{-- <h5 class="px-3"> Dashboard</h5> --}}
+    <h5 class="px-3"> @yield('pagetitlesection')</h5>
+    <div class="navbar-nav align-items-center ms-auto">
+        <form class="d-none d-md-flex ms-4 position-relative">
+            <div class="search-icon"><img src="{{ asset('assets_f/img/search-icon.png') }}" alt=""></div>
+            <input class="form-control border-0" type="search" placeholder="Search">
+        </form>
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="fa fa-bell me-lg-2"></i>
+                <!-- <span class="d-none d-lg-inline-flex">Notificatin</span> -->
             </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right custom-dropdown">
-
-                <a href="{{ route('admin.profile') }}">
-                    Profile
+            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                <a href="#" class="dropdown-item">
+                    <h6 class="fw-normal mb-0">Profile updated</h6>
+                    <small>15 minutes ago</small>
                 </a>
-                <a href="{{ route('admin.change.password') }}">
-                    Change Password
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item">
+                    <h6 class="fw-normal mb-0">New user added</h6>
+                    <small>15 minutes ago</small>
                 </a>
-                <a href="{{ route('logout') }}"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    Logout
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item">
+                    <h6 class="fw-normal mb-0">Password changed</h6>
+                    <small>15 minutes ago</small>
                 </a>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item text-center">See all notifications</a>
             </div>
-
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-            </form>
-        </li>
-    </ul>
+        </div>
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <img class="rounded-circle me-lg-1" src="{{ asset('assets_f/img/user02.png') }}" alt=""
+                    style="width: 40px; height: 40px;">
+                <!-- <span class="d-none d-lg-inline-flex">John Doe</span> -->
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                <a href="#" class="dropdown-item">My Profile</a>
+                <a href="#" class="dropdown-item">Settings</a>
+                <a href="#" class="dropdown-item">Log Out</a>
+            </div>
+        </div>
+    </div>
 </nav>
-<!-- /.navbar -->
