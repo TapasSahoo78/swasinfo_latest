@@ -4,7 +4,7 @@
             <img src="{{ asset('assets_f/img/logo.png') }}" alt="">
         </a>
         <div class="navbar-nav w-100 pe-3">
-            <a href="dashboard.html" class="nav-item nav-link active"><i class="fa"><img
+            <a href="{{ route('vendor.dashboard') }}" class="nav-item nav-link active"><i class="fa"><img
                         src="{{ asset('assets_f/img/Dashboard.png') }}" alt=""></i> Dashboard</a>
             <a href="{{ route('vendor.catalogue') }}" class="nav-item nav-link"><i class="fa"><img
                         src="{{ asset('assets_f/img/Catalogue.png') }}" alt=""></i> Catalogue</a>

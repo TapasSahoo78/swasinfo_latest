@@ -2614,3 +2614,4 @@ class UserApiControllers extends BaseController
         return response()->json(['status' => true, 'message' => 'Rating inserted successfully', 'data' => $rating], 200);
     }
 }
+
