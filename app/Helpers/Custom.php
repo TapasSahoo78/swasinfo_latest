@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Category;
+use App\Models\ProductBrand;
+use App\Models\Subcategory;
 
 function getParentCategory($id)
 {
@@ -53,9 +55,23 @@ function getAllUnit($id)
 
 function getSubCategory($id)
 {
-    $data = Category::where('is_active', 1)->get();
+    $data = Subcategory::get();
 
-    echo "<option value=''>Select Category</option>";
+    echo "<option value=''>Select Sub Category</option>";
+    foreach ($data as $key => $val) {
+        if ($id == $val?->id) {
+            echo "<option value='" . $val?->id . "' selected>" . $val->name . "</option>";
+        } else {
+            echo "<option value='" . $val?->id . "'>" . $val->name . "</option>";
+        }
+    }
+}
+
+function getProductBrand($id)
+{
+    $data = ProductBrand::where('is_active', 1)->get();
+
+    echo "<option value=''>Select Brand</option>";
     foreach ($data as $key => $val) {
         if ($id == $val?->id) {
             echo "<option value='" . $val?->id . "' selected>" . $val->name . "</option>";
