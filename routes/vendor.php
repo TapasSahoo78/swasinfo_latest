@@ -40,6 +40,10 @@ use Illuminate\Support\Facades\Route;
 // Route::namespace('Vendor')->as('vendor.')->middleware(['auth'])->group(function () {
 // });
 
+Route::get('/registration', function () {
+    return view('vendor.pages.registration');
+})->name('vendor.registration');
+
 Route::namespace('Vendor')->as('vendor.')->middleware([])->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::match(['get', 'post'], '/dashboard', 'index')->name('dashboard');

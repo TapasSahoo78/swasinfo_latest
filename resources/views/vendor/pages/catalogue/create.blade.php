@@ -453,7 +453,7 @@
             $('#productCategory').change(function() {
                 var categoryId = $(this).val();
                 $.ajax({
-                    url: "route('ajax.vendor.sub.categories')",
+                    url: "{{ route('ajax.vendor.sub.categories') }}",
                     type: 'GET',
                     dataType: 'json',
                     data: {
@@ -463,8 +463,7 @@
                         $('#sub_categories').empty();
                         $.each(data, function(key, value) {
                             $('#sub_categories').append('<option value="' + value.id +
-                                '">' +
-                                value.name + '</option>');
+                                '">' + value.name + '</option>');
                         });
                     }
                 });

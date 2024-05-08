@@ -253,7 +253,7 @@
     <!-- Recent Sales End -->
 @endsection
 @push('scripts')
-    <!-- line-chart -->
+<!-- line-chart -->
 <script>
     var ctx3 = $("#line-chart").get(0).getContext("2d");
     var myChart3 = new Chart(ctx3, {

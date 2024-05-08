@@ -62,5 +62,5 @@ Route::controller(CustomerAjaxController::class)->prefix('customer')->as('ajax.c
 
 // Route::controller(VendorController::class)->prefix('vendor')->as('ajax.vendor.')->middleware(['auth','verified','role:vendor'])->group(function () {
 Route::controller(VendorController::class)->prefix('vendor')->as('ajax.vendor.')->group(function () {
-    Route::get('/sub-categories/{id}', 'getSubCategories')->name('sub.categories');
+    Route::get('/sub-categories', 'getSubCategories')->name('sub.categories');
 });
