@@ -258,7 +258,7 @@ class UserRepository extends BaseRepository implements UserContract
     {
         return $this->model->whereHas('roles', function ($q) use ($role) {
             $q->where('role_type', $role);
-        })->where($filterConditions)->orderBy('id','DESC')->get();
+        })->where($filterConditions)->orderBy('id', 'DESC')->get();
     }
 
 
@@ -267,21 +267,21 @@ class UserRepository extends BaseRepository implements UserContract
         $userId = auth()->user()->id;
         return $this->model->whereHas('roles', function ($q) use ($role) {
             $q->where('role_type', $role);
-        })->where($filterConditions)->where('created_by',$userId)->orderBy('id','DESC')->get();
+        })->where($filterConditions)->where('created_by', $userId)->orderBy('id', 'DESC')->get();
     }
 
     public function getUserscount($role, $filterConditions)
     {
         return $this->model->whereHas('roles', function ($q) use ($role) {
             $q->where('role_type', $role);
-        })->where($filterConditions)->orderBy('id','DESC')->count();
+        })->where($filterConditions)->orderBy('id', 'DESC')->count();
     }
 
     public function gettransactionUsers($role, $filterConditions)
     {
         return $this->model->whereHas('roles', function ($q) use ($role) {
             $q->where('role_type', $role);
-        })->where($filterConditions)->where('payment_type','!=','0')->orderBy('id','DESC')->get();
+        })->where($filterConditions)->where('payment_type', '!=', '0')->orderBy('id', 'DESC')->get();
     }
     public function getAdminUsers($role, $filterConditions)
     {
@@ -548,7 +548,7 @@ class UserRepository extends BaseRepository implements UserContract
             'email_verified_at' => \Carbon\Carbon::now(),
             'password'          => bcrypt($attributes['password']),
             'is_approve'        => 1,
-            'created_by'=>$userId
+            'created_by' => $userId
         ]);
         //$isCustomerCreated = $this->create($attributes);
         if ($isCustomerCreated) {
@@ -611,8 +611,8 @@ class UserRepository extends BaseRepository implements UserContract
         $isCustomerCreated = $this->create([
             'first_name'         => $attributes['name'],
             'mobile_number'     => $attributes['mobile_number'],
-            'email'             => $attributes['email'],
-            'username'             => $attributes['email'],
+            // 'email'             => $attributes['email'],
+            'username'             => $attributes['username'],
             // 'introduction'      => $attributes['introduction'],
             // 'pickup_address'      => $attributes['pickupaddress'],
             'email_verified_at' => \Carbon\Carbon::now(),
@@ -674,9 +674,6 @@ class UserRepository extends BaseRepository implements UserContract
         }
         return $user;
     }
-
-
-
 
     public function createDoctor($attributes)
     {
@@ -2380,8 +2377,8 @@ class UserRepository extends BaseRepository implements UserContract
         $user = $this->find($id);
 
         $attributes['first_name'] = $attributes['name'];
-        if(isset($attributes['refer_code'])){
-       $attributes['refer_code_come'] = $attributes['refer_code'];
+        if (isset($attributes['refer_code'])) {
+            $attributes['refer_code_come'] = $attributes['refer_code'];
         }
         $attributes['is_profile_completed'] = 1;
         $userData = $user->update($attributes);
@@ -2409,11 +2406,11 @@ class UserRepository extends BaseRepository implements UserContract
                 'medical_condition_type' => !empty($attributes['medical_condition_type']) ? $attributes['medical_condition_type'] : ''
             ];
             $user->profileOtherInformation()->updateOrcreate(['user_id' => $id], $profileOtherData);
-            if($attributes['fitness_id'] != ""){
-            $isUserFitnessGoal = $this->fitnessGoalModel->find($attributes['fitness_id']);
-            $isUserPhysicalConditions = $this->userPhysicallyActiveConditions->find($attributes['user_physically_conditions_id']);
-            $user->fitness()->sync($isUserFitnessGoal->id);
-            $user->physicalCondition()->sync($isUserPhysicalConditions->id);
+            if ($attributes['fitness_id'] != "") {
+                $isUserFitnessGoal = $this->fitnessGoalModel->find($attributes['fitness_id']);
+                $isUserPhysicalConditions = $this->userPhysicallyActiveConditions->find($attributes['user_physically_conditions_id']);
+                $user->fitness()->sync($isUserFitnessGoal->id);
+                $user->physicalCondition()->sync($isUserPhysicalConditions->id);
             }
 
 
@@ -2484,12 +2481,12 @@ class UserRepository extends BaseRepository implements UserContract
         $type = $attributes['type'];
         $food_ids = $attributes['foods'];
         $today = Carbon::today();
-        $fooditem= UserFoodItemDetail::where('user_id',auth()->user()->id)->whereDate('updated_at', $today)->first();
-        if($fooditem){
-        $a=$fooditem->food_ids;
-        $food_ids_comma_separated = implode(',', $food_ids);
-        $c = $a . "," . $food_ids_comma_separated;
-        }else{
+        $fooditem = UserFoodItemDetail::where('user_id', auth()->user()->id)->whereDate('updated_at', $today)->first();
+        if ($fooditem) {
+            $a = $fooditem->food_ids;
+            $food_ids_comma_separated = implode(',', $food_ids);
+            $c = $a . "," . $food_ids_comma_separated;
+        } else {
             $c = implode(',', $food_ids);
         }
 
@@ -2579,160 +2576,160 @@ class UserRepository extends BaseRepository implements UserContract
 
             ];
             $user->userHealthScreenThreeDetails()->updateOrcreate(['user_id' => $id], $userHealthScreenThree);
-                if (isset($attributes['prescription'])) {
-                    // list($type, $data) = explode(';', $attributes['image']);
-                    // $extSplit = explode('/', $type);
-                    // $ext      =  $extSplit[1];
-                    $fileNameCustomers = uniqid() . ".png";
-                    // if($ext)
-                    // {
-                    //     $fileNameCustomer = uniqid() .".". $ext;
-                    // }
+            if (isset($attributes['prescription'])) {
+                // list($type, $data) = explode(';', $attributes['image']);
+                // $extSplit = explode('/', $type);
+                // $ext      =  $extSplit[1];
+                $fileNameCustomers = uniqid() . ".png";
+                // if($ext)
+                // {
+                //     $fileNameCustomer = uniqid() .".". $ext;
+                // }
 
-                    $isFileUploadedCustomers = $this->createImageFromBase64($attributes['prescription'], config('constants.SITE_USER_IMAGE_UPLOAD_PATH'), $fileNameCustomers, 'public');
-                    if ($isFileUploadedCustomers) {
-                        $isFileRelatedMediaCreated = $user->media()->updateOrCreate(['user_id' => $id, 'is_prescription' => true],[
-                            'mediaable_type' => get_class($user),
-                            'mediaable_id' => $id,
-                            'media_type' => 'image',
-                            'file' => $fileNameCustomers,
-                            'is_prescription' => true
-                        ]);
-                    }
+                $isFileUploadedCustomers = $this->createImageFromBase64($attributes['prescription'], config('constants.SITE_USER_IMAGE_UPLOAD_PATH'), $fileNameCustomers, 'public');
+                if ($isFileUploadedCustomers) {
+                    $isFileRelatedMediaCreated = $user->media()->updateOrCreate(['user_id' => $id, 'is_prescription' => true], [
+                        'mediaable_type' => get_class($user),
+                        'mediaable_id' => $id,
+                        'media_type' => 'image',
+                        'file' => $fileNameCustomers,
+                        'is_prescription' => true
+                    ]);
                 }
+            }
 
-                if (isset($attributes['medication_prescription'])) {
-                    // list($type, $data) = explode(';', $attributes['image']);
-                    // $extSplit = explode('/', $type);
-                    // $ext      =  $extSplit[1];
-                    $fileNameCustomerss = uniqid() . ".png";
-                    // if($ext)
-                    // {
-                    //     $fileNameCustomer = uniqid() .".". $ext;
-                    // }
+            if (isset($attributes['medication_prescription'])) {
+                // list($type, $data) = explode(';', $attributes['image']);
+                // $extSplit = explode('/', $type);
+                // $ext      =  $extSplit[1];
+                $fileNameCustomerss = uniqid() . ".png";
+                // if($ext)
+                // {
+                //     $fileNameCustomer = uniqid() .".". $ext;
+                // }
 
-                    $isFileUploadedCustomerss = $this->createImageFromBase64($attributes['medication_prescription'], config('constants.SITE_USER_IMAGE_UPLOAD_PATH'), $fileNameCustomerss, 'public');
-                    if ($isFileUploadedCustomerss) {
-                        $isFileRelatedMediaCreated = $user->media()->updateOrCreate(['user_id' => $id, 'is_medication_prescription' => true],[
-                            'mediaable_type' => get_class($user),
-                            'mediaable_id' => $id,
-                            'media_type' => 'image',
-                            'file' => $fileNameCustomerss,
-                            'is_medication_prescription' => true
-                        ]);
-                    }
+                $isFileUploadedCustomerss = $this->createImageFromBase64($attributes['medication_prescription'], config('constants.SITE_USER_IMAGE_UPLOAD_PATH'), $fileNameCustomerss, 'public');
+                if ($isFileUploadedCustomerss) {
+                    $isFileRelatedMediaCreated = $user->media()->updateOrCreate(['user_id' => $id, 'is_medication_prescription' => true], [
+                        'mediaable_type' => get_class($user),
+                        'mediaable_id' => $id,
+                        'media_type' => 'image',
+                        'file' => $fileNameCustomerss,
+                        'is_medication_prescription' => true
+                    ]);
                 }
+            }
 
-                if (isset($attributes['asthma_prescription'])) {
-                    // list($type, $data) = explode(';', $attributes['image']);
-                    // $extSplit = explode('/', $type);
-                    // $ext      =  $extSplit[1];
-                    $fileNameCustomersss = uniqid() . ".png";
-                    // if($ext)
-                    // {
-                    //     $fileNameCustomer = uniqid() .".". $ext;
-                    // }
+            if (isset($attributes['asthma_prescription'])) {
+                // list($type, $data) = explode(';', $attributes['image']);
+                // $extSplit = explode('/', $type);
+                // $ext      =  $extSplit[1];
+                $fileNameCustomersss = uniqid() . ".png";
+                // if($ext)
+                // {
+                //     $fileNameCustomer = uniqid() .".". $ext;
+                // }
 
-                    $isFileUploadedCustomersss = $this->createImageFromBase64($attributes['asthma_prescription'], config('constants.SITE_USER_IMAGE_UPLOAD_PATH'), $fileNameCustomersss, 'public');
-                    if ($isFileUploadedCustomersss) {
-                        $isFileRelatedMediaCreated = $user->media()->updateOrCreate(['user_id' => $id, 'is_asthma_prescription' => true],[
-                            'mediaable_type' => get_class($user),
-                            'mediaable_id' => $id,
-                            'media_type' => 'image',
-                            'file' => $fileNameCustomersss,
-                            'is_asthma_prescription' => true
-                        ]);
-                    }
+                $isFileUploadedCustomersss = $this->createImageFromBase64($attributes['asthma_prescription'], config('constants.SITE_USER_IMAGE_UPLOAD_PATH'), $fileNameCustomersss, 'public');
+                if ($isFileUploadedCustomersss) {
+                    $isFileRelatedMediaCreated = $user->media()->updateOrCreate(['user_id' => $id, 'is_asthma_prescription' => true], [
+                        'mediaable_type' => get_class($user),
+                        'mediaable_id' => $id,
+                        'media_type' => 'image',
+                        'file' => $fileNameCustomersss,
+                        'is_asthma_prescription' => true
+                    ]);
                 }
+            }
 
-                if (isset($attributes['uric_acid_prescription'])) {
-                    // list($type, $data) = explode(';', $attributes['image']);
-                    // $extSplit = explode('/', $type);
-                    // $ext      =  $extSplit[1];
-                    $fileNameCustomerssss = uniqid() . ".png";
-                    // if($ext)
-                    // {
-                    //     $fileNameCustomer = uniqid() .".". $ext;
-                    // }
+            if (isset($attributes['uric_acid_prescription'])) {
+                // list($type, $data) = explode(';', $attributes['image']);
+                // $extSplit = explode('/', $type);
+                // $ext      =  $extSplit[1];
+                $fileNameCustomerssss = uniqid() . ".png";
+                // if($ext)
+                // {
+                //     $fileNameCustomer = uniqid() .".". $ext;
+                // }
 
-                    $isFileUploadedCustomerssss = $this->createImageFromBase64($attributes['uric_acid_prescription'], config('constants.SITE_USER_IMAGE_UPLOAD_PATH'), $fileNameCustomerssss, 'public');
-                    if ($isFileUploadedCustomerssss) {
-                        $isFileRelatedMediaCreated = $user->media()->updateOrCreate(['user_id' => $id, 'is_uric_acid_prescription' => true],[
-                            'mediaable_type' => get_class($user),
-                            'mediaable_id' => $id,
-                            'media_type' => 'image',
-                            'file' => $fileNameCustomerssss,
-                            'is_uric_acid_prescription' => true
-                        ]);
-                    }
+                $isFileUploadedCustomerssss = $this->createImageFromBase64($attributes['uric_acid_prescription'], config('constants.SITE_USER_IMAGE_UPLOAD_PATH'), $fileNameCustomerssss, 'public');
+                if ($isFileUploadedCustomerssss) {
+                    $isFileRelatedMediaCreated = $user->media()->updateOrCreate(['user_id' => $id, 'is_uric_acid_prescription' => true], [
+                        'mediaable_type' => get_class($user),
+                        'mediaable_id' => $id,
+                        'media_type' => 'image',
+                        'file' => $fileNameCustomerssss,
+                        'is_uric_acid_prescription' => true
+                    ]);
                 }
+            }
 
-                if (isset($attributes['diabities_prescription'])) {
-                    // list($type, $data) = explode(';', $attributes['image']);
-                    // $extSplit = explode('/', $type);
-                    // $ext      =  $extSplit[1];
-                    $fileNameCustomersssss = uniqid() . ".png";
-                    // if($ext)
-                    // {
-                    //     $fileNameCustomer = uniqid() .".". $ext;
-                    // }
+            if (isset($attributes['diabities_prescription'])) {
+                // list($type, $data) = explode(';', $attributes['image']);
+                // $extSplit = explode('/', $type);
+                // $ext      =  $extSplit[1];
+                $fileNameCustomersssss = uniqid() . ".png";
+                // if($ext)
+                // {
+                //     $fileNameCustomer = uniqid() .".". $ext;
+                // }
 
-                    $isFileUploadedCustomersssss = $this->createImageFromBase64($attributes['diabities_prescription'], config('constants.SITE_USER_IMAGE_UPLOAD_PATH'), $fileNameCustomersssss, 'public');
-                    if ($isFileUploadedCustomersssss) {
-                        $isFileRelatedMediaCreated = $user->media()->updateOrCreate(['user_id' => $id, 'is_diabities_prescription' => true],[
-                            'mediaable_type' => get_class($user),
-                            'mediaable_id' => $id,
-                            'media_type' => 'image',
-                            'file' => $fileNameCustomersssss,
-                            'is_diabities_prescription' => true
-                        ]);
-                    }
+                $isFileUploadedCustomersssss = $this->createImageFromBase64($attributes['diabities_prescription'], config('constants.SITE_USER_IMAGE_UPLOAD_PATH'), $fileNameCustomersssss, 'public');
+                if ($isFileUploadedCustomersssss) {
+                    $isFileRelatedMediaCreated = $user->media()->updateOrCreate(['user_id' => $id, 'is_diabities_prescription' => true], [
+                        'mediaable_type' => get_class($user),
+                        'mediaable_id' => $id,
+                        'media_type' => 'image',
+                        'file' => $fileNameCustomersssss,
+                        'is_diabities_prescription' => true
+                    ]);
                 }
+            }
 
-                if (isset($attributes['high_cholesterol_prescription'])) {
-                    // list($type, $data) = explode(';', $attributes['image']);
-                    // $extSplit = explode('/', $type);
-                    // $ext      =  $extSplit[1];
-                    $fileNameCustomerssssss = uniqid() . ".png";
-                    // if($ext)
-                    // {
-                    //     $fileNameCustomer = uniqid() .".". $ext;
-                    // }
+            if (isset($attributes['high_cholesterol_prescription'])) {
+                // list($type, $data) = explode(';', $attributes['image']);
+                // $extSplit = explode('/', $type);
+                // $ext      =  $extSplit[1];
+                $fileNameCustomerssssss = uniqid() . ".png";
+                // if($ext)
+                // {
+                //     $fileNameCustomer = uniqid() .".". $ext;
+                // }
 
-                    $isFileUploadedCustomerssssss = $this->createImageFromBase64($attributes['high_cholesterol_prescription'], config('constants.SITE_USER_IMAGE_UPLOAD_PATH'), $fileNameCustomerssssss, 'public');
-                    if ($isFileUploadedCustomerssssss) {
-                        $isFileRelatedMediaCreated = $user->media()->updateOrCreate(['user_id' => $id, 'is_high_cholesterol_prescription' => true],[
-                            'mediaable_type' => get_class($user),
-                            'mediaable_id' => $id,
-                            'media_type' => 'image',
-                            'file' => $fileNameCustomerssssss,
-                            'is_high_cholesterol_prescription' => true
-                        ]);
-                    }
+                $isFileUploadedCustomerssssss = $this->createImageFromBase64($attributes['high_cholesterol_prescription'], config('constants.SITE_USER_IMAGE_UPLOAD_PATH'), $fileNameCustomerssssss, 'public');
+                if ($isFileUploadedCustomerssssss) {
+                    $isFileRelatedMediaCreated = $user->media()->updateOrCreate(['user_id' => $id, 'is_high_cholesterol_prescription' => true], [
+                        'mediaable_type' => get_class($user),
+                        'mediaable_id' => $id,
+                        'media_type' => 'image',
+                        'file' => $fileNameCustomerssssss,
+                        'is_high_cholesterol_prescription' => true
+                    ]);
                 }
+            }
 
 
-                if (isset($attributes['low_blood_pressure_prescription'])) {
-                    // list($type, $data) = explode(';', $attributes['image']);
-                    // $extSplit = explode('/', $type);
-                    // $ext      =  $extSplit[1];
-                    $fileNameCustomersssssss = uniqid() . ".png";
-                    // if($ext)
-                    // {
-                    //     $fileNameCustomer = uniqid() .".". $ext;
-                    // }
+            if (isset($attributes['low_blood_pressure_prescription'])) {
+                // list($type, $data) = explode(';', $attributes['image']);
+                // $extSplit = explode('/', $type);
+                // $ext      =  $extSplit[1];
+                $fileNameCustomersssssss = uniqid() . ".png";
+                // if($ext)
+                // {
+                //     $fileNameCustomer = uniqid() .".". $ext;
+                // }
 
-                    $isFileUploadedCustomersssssss = $this->createImageFromBase64($attributes['low_blood_pressure_prescription'], config('constants.SITE_USER_IMAGE_UPLOAD_PATH'), $fileNameCustomersssssss, 'public');
-                    if ($isFileUploadedCustomersssssss) {
-                        $isFileRelatedMediaCreated = $user->media()->updateOrCreate(['user_id' => $id, 'is_low_blood_pressure_prescription' => true],[
-                            'mediaable_type' => get_class($user),
-                            'mediaable_id' => $id,
-                            'media_type' => 'image',
-                            'file' => $fileNameCustomersssssss,
-                            'is_low_blood_pressure_prescription' => true
-                        ]);
-                    }
+                $isFileUploadedCustomersssssss = $this->createImageFromBase64($attributes['low_blood_pressure_prescription'], config('constants.SITE_USER_IMAGE_UPLOAD_PATH'), $fileNameCustomersssssss, 'public');
+                if ($isFileUploadedCustomersssssss) {
+                    $isFileRelatedMediaCreated = $user->media()->updateOrCreate(['user_id' => $id, 'is_low_blood_pressure_prescription' => true], [
+                        'mediaable_type' => get_class($user),
+                        'mediaable_id' => $id,
+                        'media_type' => 'image',
+                        'file' => $fileNameCustomersssssss,
+                        'is_low_blood_pressure_prescription' => true
+                    ]);
                 }
+            }
 
 
             return $user;
@@ -2763,6 +2760,4 @@ class UserRepository extends BaseRepository implements UserContract
         }
         return $user;
     }
-
-
 }

@@ -15,11 +15,12 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/responsive.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
-    <title>SwaasthFiit</title>
+    <title>SwaasthFit</title>
     <link rel="shortcut icon" href="{{ asset('assets/vendor/images/favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-confirm.css') }}">
 </head>
 
 <body>
@@ -35,7 +36,7 @@
                 <div class="col-md-10 col-5">
                     <div id="main-nav" class="stellarnav">
                         <ul>
-                            <li><a href="#" class="loginbtn">Connect With Us</a></li>
+                            <li><a href="{{route('frontend.home')}}" class="loginbtn">Homepage</a></li>
                         </ul>
                     </div>
                 </div>
@@ -67,7 +68,10 @@
                         <h6>GST Details</h6>
                         <h6>Billing/Deposit</h6>
                     </div>
-                    <form id="multi-step-form" action="#" method="POST">
+                    {{-- <form id="multi-step-form" action="#" method="POST">
+                        @csrf --}}
+                    <form role="form" class="multi-step-form" id="adminFrm"
+                        data-action="{{ route('vendor.registration') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <!-- --------------1-start-------------------- -->
                         <div class="step step-1">
@@ -76,7 +80,7 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-12">
                                     <div class="step-fm-container">
-                                        <h2>Set up your SwaasthFiit selling account</h2>
+                                        <h2>Set up your SwaasthFit selling account</h2>
                                         <p>Have the following available</p>
                                         <div class="round-box-section">
                                             <div class="round-box-section-inner">
@@ -110,12 +114,13 @@
                                                 <div class="col-lg-12 col-md-12 col-12">
                                                     <label for="exampleInputText" class="form-label">What is a legal
                                                         name ? </label>
-                                                    <input type="text" class="form-control" id="exampleInputText">
+                                                    <input type="text" class="form-control" name="name"
+                                                        id="exampleInputText">
                                                 </div>
                                                 <h3>Seller agreement</h3>
                                                 <div class="col-lg-12 col-md-12 col-12 form-check">
-                                                    <input type="checkbox" class="form-check-input mt-15"
-                                                        id="exampleCheck1">
+                                                    <input type="checkbox" name="is_term"
+                                                        class="form-check-input mt-15" id="exampleCheck1">
                                                     <label class="form-check-label" for="exampleCheck1">
                                                         <p>I have read and accepted the terms and conditions of the
                                                             <span>Amazon Services Business Solutions Agreement</span>
@@ -149,28 +154,31 @@
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Business
                                                         address</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
+                                                    <input type="text" class="form-control"
+                                                        name="address_line_one" id="exampleInputText"
                                                         placeholder="Address Line 1">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12 mt-2">
                                                     <label for="exampleInputText" class="form-label"></label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
+                                                    <input type="text" class="form-control"
+                                                        name="address_line_two" id="exampleInputText"
                                                         placeholder="Address Line 2">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12 mt-2">
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="City/Town">
+                                                    <input type="text" class="form-control" name="city"
+                                                        id="exampleInputText" placeholder="City/Town">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12 mt-2">
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="State/Region/Province">
+                                                    <input type="text" class="form-control" name="state"
+                                                        id="exampleInputText" placeholder="State/Region/Province">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12 mt-2">
-                                                    <input type="text" class="form-control" id="exampleInputText">
+                                                    <input type="text" class="form-control" placeholder="country"
+                                                        id="exampleInputText" placeholder="Country">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12 mt-2">
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="ZIP / Postal code ">
+                                                    <input type="text" class="form-control" name="postal_code"
+                                                        id="exampleInputText" placeholder="ZIP / Postal code ">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -178,8 +186,8 @@
                                                     <h3>Choose your unique business display name</h3>
                                                     <label for="exampleInputText" class="form-label">What is a
                                                         business display name?</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="Revon">
+                                                    <input type="text" class="form-control" name="username"
+                                                        id="exampleInputText" placeholder="Enter display name">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -188,8 +196,8 @@
                                                         (optional)</h3>
                                                     <label for="exampleInputText" class="form-label">Why do we ask for
                                                         this?</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="Revon">
+                                                    <input type="text" class="form-control" name="why_do_sell"
+                                                        id="exampleInputText" placeholder="">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -215,8 +223,8 @@
                                                 <div class="col-lg-12 col-md-12 col-12">
                                                     <label for="exampleInputText" class="form-label">Mobile
                                                         number</label>
-                                                    <input type="number" class="form-control" id="exampleInputText"
-                                                        placeholder="+1 201-555-0123">
+                                                    <input type="number" name="mobile_number" class="form-control"
+                                                        id="exampleInputText" placeholder="Enter your mobile number">
                                                     <p class="eg">E.g. +1 206 266 1000</p>
                                                 </div>
                                             </div>
@@ -224,7 +232,7 @@
                                                 <div class="col-lg-10 col-md-10 col-12">
                                                     <label for="exampleInputText" class="form-label">SMS Verification
                                                         Language</label>
-                                                    <select class="form-select" aria-label="Default select example">
+                                                    <select class="form-control" aria-label="Default select example">
                                                         <option selected>English</option>
                                                         <option value="1">One</option>
                                                         <option value="2">Two</option>
@@ -238,6 +246,17 @@
                                                     </button>
                                                 </div>
                                             </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-12">
+                                                    <label for="exampleInputText" class="form-label">Email
+                                                        Address</label>
+                                                    <input type="text" name="email" class="form-control"
+                                                        id="exampleInputText" placeholder="Enter your email id">
+                                                    <p class="eg">E.g. info@gmail.com</p>
+                                                </div>
+                                            </div>
+
                                             <div class="row">
                                                 <div
                                                     class="col-lg-12 col-md-12 col-12 two-butn-row d-flex justify-content-center">
@@ -302,13 +321,13 @@
                                                     <label for="exampleInputText" class="form-label">What is
                                                         UPC?</label>
                                                     <div class="col-1 form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="inlineRadioOptions" id="inlineRadio1"
-                                                            value="option1">
+                                                        <input class="form-check-input" name="is_upc" value="0"
+                                                            type="radio" name="inlineRadioOptions"
+                                                            id="inlineRadio1" value="option1">
                                                         <label class="form-check-label" for="inlineRadio1">Yes</label>
                                                     </div>
                                                     <div class="col-1 form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio"
+                                                        <input class="form-check-input" value="1" type="radio"
                                                             name="inlineRadioOptions" id="inlineRadio2"
                                                             value="option2">
                                                         <label class="form-check-label" for="inlineRadio2">No</label>
@@ -323,21 +342,18 @@
                                                     <label for="exampleInputText" class="form-label">What does this
                                                         mean?</label>
                                                     <div class="col-2 form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="inlineRadioOptions" id="inlineRadio1"
-                                                            value="option1">
+                                                        <input class="form-check-input" value="0" type="radio"
+                                                            name="is_brand" id="inlineRadio1" value="option1">
                                                         <label class="form-check-label" for="inlineRadio1">Yes</label>
                                                     </div>
                                                     <div class="col-2 form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="inlineRadioOptions" id="inlineRadio2"
-                                                            value="option2">
+                                                        <input class="form-check-input" value="1" type="radio"
+                                                            name="is_brand" id="inlineRadio2" value="option2">
                                                         <label class="form-check-label" for="inlineRadio2">No</label>
                                                     </div>
                                                     <div class="col-2 form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="inlineRadioOptions" id="inlineRadio1"
-                                                            value="option1">
+                                                        <input class="form-check-input" value="2" type="radio"
+                                                            name="is_brand" id="inlineRadio1" value="option1">
                                                         <label class="form-check-label" for="inlineRadio1">Some of
                                                             them</label>
                                                     </div>
@@ -351,14 +367,14 @@
                                                         mean?</label>
                                                     <div class="col-1 form-check form-check-inline">
                                                         <input class="form-check-input" type="radio"
-                                                            name="inlineRadioOptions" id="inlineRadio1"
-                                                            value="option1">
+                                                            name="is_target_business" value="0"
+                                                            id="inlineRadio1" value="option1">
                                                         <label class="form-check-label" for="inlineRadio1">Yes</label>
                                                     </div>
                                                     <div class="col-1 form-check form-check-inline">
                                                         <input class="form-check-input" type="radio"
-                                                            name="inlineRadioOptions" id="inlineRadio2"
-                                                            value="option2">
+                                                            name="is_target_business" id="inlineRadio2"
+                                                            value="1">
                                                         <label class="form-check-label" for="inlineRadio2">No</label>
                                                     </div>
                                                 </div>
@@ -368,29 +384,31 @@
                                                     <h3>How many different products do you plan to list?</h3>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio"
-                                                            name="flexRadioDefault" id="flexRadioDefault1">
-                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                            name="how_many_products" value="1"
+                                                            id="how_many_products1">
+                                                        <label class="form-check-label" for="how_many_products1">
                                                             1-10
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="flexRadioDefault" id="flexRadioDefault2">
-                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                        <input class="form-check-input" value="2" type="radio"
+                                                            name="how_many_products" id="how_many_products2">
+                                                        <label class="form-check-label" for="how_many_products2">
                                                             11-100
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="flexRadioDefault" id="flexRadioDefault3">
-                                                        <label class="form-check-label" for="flexRadioDefault3">
+                                                        <input class="form-check-input" value="3" type="radio"
+                                                            name="how_many_products" id="how_many_products3">
+                                                        <label class="form-check-label" for="how_many_products3">
                                                             101-500
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio"
-                                                            name="flexRadioDefault" id="flexRadioDefault4">
-                                                        <label class="form-check-label" for="flexRadioDefault4">
+                                                            name="how_many_products" value="4"
+                                                            id="how_many_products4">
+                                                        <label class="form-check-label" for="how_many_products4">
                                                             More than 500
                                                         </label>
                                                     </div>
@@ -411,7 +429,7 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-12">
                                     <div class="step-fm-container">
-                                        <h2>Tell us about your product categories. You can also add or edit your choices
+                                        {{-- <h2>Tell us about your product categories. You can also add or edit your choices
                                             later</h2>
                                         <h6>Skip for now</h6>
                                         <div class="row">
@@ -693,7 +711,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
+
                                         <div class="row">
                                             <div
                                                 class="col-lg-12 col-md-12 col-12 two-butn-row d-flex justify-content-center">
@@ -740,7 +759,7 @@
                                                 <div class="col-lg-12 col-md-12 col-12">
                                                     <label for="exampleInputText" class="form-label">Business
                                                         classification</label>
-                                                    <select class="form-select" aria-label="Default select example">
+                                                    <select class="form-control" aria-label="Default select example">
                                                         <option selected="">English</option>
                                                         <option value="1">One</option>
                                                         <option value="2">Two</option>
@@ -773,7 +792,7 @@
                                                 <h2>Address</h2>
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Country</label>
-                                                    <select class="form-select" aria-label="Default select example">
+                                                    <select class="form-control" aria-label="Default select example">
                                                         <option selected="">English</option>
                                                         <option value="1">One</option>
                                                         <option value="2">Two</option>
@@ -943,7 +962,7 @@
                                                 <div class="col-lg-3 col-md-3 col-12">
                                                     <label for="exampleInputText" class="form-label">Valid through
                                                     </label>
-                                                    <select class="form-select" aria-label="Default select example">
+                                                    <select class="form-control" aria-label="Default select example">
                                                         <option selected="">English</option>
                                                         <option value="1">One</option>
                                                         <option value="2">Two</option>
@@ -951,7 +970,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-3 col-md-3 col-12">
-                                                    <select class="form-select mt-10"
+                                                    <select class="form-control mt-10"
                                                         aria-label="Default select example">
                                                         <option selected="">English</option>
                                                         <option value="1">One</option>
@@ -975,7 +994,7 @@
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Bank
                                                         Location</label>
-                                                    <select class="form-select" aria-label="Default select example">
+                                                    <select class="form-control" aria-label="Default select example">
                                                         <option selected="">United States</option>
                                                         <option value="1">One</option>
                                                         <option value="2">Two</option>
@@ -1241,6 +1260,8 @@
     <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
     <script src="{{ asset('assets/vendor/js/WOW.js') }}"></script>
     <script src="{{ asset('assets/vendor/js/custom.js') }}"></script>
+    <script src="{{ asset('vendor/form-common.js') }}"></script>
+    <script src="{{ asset('vendor/jquery-confirm.js') }}"></script>
     <script>
         var currentStep = 1;
         var updateProgressBar;
@@ -1255,19 +1276,81 @@
         }
 
         $(document).ready(function() {
-            $('#multi-step-form').find('.step').slice(1).hide();
+
+
+            // Current step tracking
+            var currentStep = 1;
+
+            // Function to validate each step
+            // function validateStep(step) {
+            //     // Implement validation logic for each step here
+            //     var isValid = true;
+            //     if (step === 1) {
+            //         // Example: Validate step 1 fields
+            //         if ($('#exampleInputText').val() === '') {
+            //             isValid = false;
+            //         }
+            //         // Add more validation logic for step 1 fields
+            //     } else if (step === 2) {
+            //         // Example: Validate step 2 fields
+            //         if ($('#exampleInputText').val() === '') {
+            //             isValid = false;
+            //         }
+            //         // Add more validation logic for step 2 fields
+            //     } else if (step === 3) {
+            //         // Example: Validate step 2 fields
+            //         if ($('#exampleInputText').val() === '') {
+            //             isValid = false;
+            //         }
+            //         // Add more validation logic for step 2 fields
+            //     } else if (step === 4) {
+            //         // Example: Validate step 2 fields
+            //         if ($('#exampleInputText').val() === '') {
+            //             isValid = false;
+            //         }
+            //         // Add more validation logic for step 2 fields
+            //     }
+            //     return isValid;
+            // }
+
+            function validateStep(step) {
+                var isValid = true;
+                $(".step-" + step + " input").each(function() {
+                    if ($(this).val() === '') {
+                        isValid = false;
+                        $(this).addClass("invalid-field"); // Add a class to mark invalid fields
+                    } else {
+                        $(this).removeClass("invalid-field"); // Remove the class if field is valid
+                        $(this).css("border-color",
+                            "black");
+                    }
+                });
+                return isValid;
+            }
+
+
+            $('.multi-step-form').find('.step').slice(1).hide();
 
             $(".next-step").click(function() {
-                if (currentStep < 5) {
-                    $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
-                    currentStep++;
-                    setTimeout(function() {
-                        $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
-                        $(".step-" + currentStep).show().addClass(
-                            "animate__animated animate__fadeInRight");
-                        updateProgressBar();
-                    }, 500);
-                }
+                // if (validateStep(currentStep)) {
+                    // $(".step-" + currentStep + " .invalid-field").css("border-color",
+                    //     "black");
+                    // $(".step-" + currentStep + " .invalid-field").removeClass("invalid-field");
+                    if (currentStep < 5) {
+                        $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
+                        currentStep++;
+                        setTimeout(function() {
+                            $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
+                            $(".step-" + currentStep).show().addClass(
+                                "animate__animated animate__fadeInRight");
+                            updateProgressBar();
+                        }, 500);
+                    }
+                // } else {
+                //     // alert('Please fill in all required fields.');
+                //     $(".step-" + currentStep + " .invalid-field").css("border-color",
+                //         "red"); // Outline invalid fields in red
+                // }
             });
 
             $(".prev-step").click(function() {

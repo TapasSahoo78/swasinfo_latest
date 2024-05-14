@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Redirect;
 
 class BaseController extends Controller
 {
-	use FlashMessages;
+    use FlashMessages;
 
-	protected $data = null;
+    protected $data = null;
 
     /**
      * @param $title
@@ -27,7 +27,7 @@ class BaseController extends Controller
      *     version="0.1"
      * )
      */
-    protected function setPageTitle($title, $subTitle='')
+    protected function setPageTitle($title, $subTitle = '')
     {
         view()->share(['pageTitle' => $title, 'subTitle' => $subTitle]);
     }
@@ -40,7 +40,7 @@ class BaseController extends Controller
     protected function showErrorPage($errorCode = 404, $message = null)
     {
         $data['message'] = $message;
-        return response()->view('errors.'.$errorCode, $data, $errorCode);
+        return response()->view('errors.' . $errorCode, $data, $errorCode);
     }
 
     /**
@@ -50,14 +50,32 @@ class BaseController extends Controller
      * @param null $data
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function responseJson($status = true, $responseCode = 200, $message ="", $data = [])
+    protected function responseJson($status = true, $responseCode = 200, $message = null, $redirect = null, $data = null)
+    {
+        return response()->json([
+            'status'        =>  $status,
+            'response_code' =>  $responseCode,
+            'message'       =>  $message,
+            'redirect'  => $redirect,
+            'data'          =>  $data
+        ]);
+    }
+
+    /**
+     * @param bool $error
+     * @param int $responseCode
+     * @param array $message
+     * @param null $data
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function apiResponseJson($status = true, $responseCode = 200, $message = "", $data = [])
     {
         return response()->json([
             'status'        =>  $status,
             'response_code' =>  $responseCode,
             'message'       =>  $message,
             'data'          =>  $data
-        ],$responseCode);
+        ], $responseCode);
     }
 
     /**
@@ -70,7 +88,7 @@ class BaseController extends Controller
      */
     protected function responseRedirect($route, $message, $type = 'info', $error = false, $withOldInputWhenError = false)
     {
-        if($type != 'noFlash'){
+        if ($type != 'noFlash') {
             $this->setFlashMessage($message, $type);
             $this->showFlashMessages();
         }
@@ -79,9 +97,9 @@ class BaseController extends Controller
             return redirect()->back()->withInput();
         }
 
-        if(!empty($urlparams)){
-            return redirect()->route($route,$urlparams);
-        }else{
+        if (!empty($urlparams)) {
+            return redirect()->route($route, $urlparams);
+        } else {
             return redirect()->route($route);
         }
     }
@@ -114,21 +132,22 @@ class BaseController extends Controller
      * @param bool $withOldInputWhenError
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function responseRedirectBack($message, $type = 'info', $error = false, $withOldInputWhenError = false, $anchor="")
+    protected function responseRedirectBack($message, $type = 'info', $error = false, $withOldInputWhenError = false, $anchor = "")
     {
         $this->setFlashMessage($message, $type);
         $this->showFlashMessages();
-        $anchor = !empty($anchor) ? $anchor:'';
+        $anchor = !empty($anchor) ? $anchor : '';
         return Redirect::to(URL::previous() . $anchor);
     }
 
-     /**
+    /**
      * setMetaDetails
      *
      * @param  mixed $meta
      * @return void
      */
-    protected function setMetaDetails($meta){
+    protected function setMetaDetails($meta)
+    {
         view()->share(['meta' => $meta]);
     }
 }

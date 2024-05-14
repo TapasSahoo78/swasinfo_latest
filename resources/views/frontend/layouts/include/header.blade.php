@@ -13,7 +13,7 @@
                         <li><a href="{{ route('frontend.contact') }}">Contact Us</a></li>
                         <li><a href="{{route('frontend.signup')}}">Sign Up</a></li>
                         <li><a href="{{ route('frontend.ecom') }}" class="loginbtn2">Buy Product</a></li>
-                        <li><a href="{{ route('seller.selling.account') }}" class="loginbtn">Selling Account</a></li>
+                        <li><a href="{{ route('vendor.registration') }}" class="loginbtn">Selling Account</a></li>
                     </ul>
                 </div>
             </div>

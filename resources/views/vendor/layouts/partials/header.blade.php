@@ -12,6 +12,7 @@
 <link href="{{ asset('assets_f/css/bootstrap.min.css') }}" rel="stylesheet">
 <!-- Template Stylesheet -->
 <link href="{{ asset('assets_f/css/style.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('vendor/jquery-confirm.css') }}">
 @stack('styles')
 <script>
     var APP_URL = {!! json_encode(url('/')) !!};

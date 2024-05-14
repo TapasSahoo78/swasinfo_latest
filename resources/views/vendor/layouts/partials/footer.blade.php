@@ -7,4 +7,7 @@
 <!-- Template Javascript -->
 <script src="{{ asset('assets_f/js/main.js') }}"></script>
 
+<script src="{{ asset('vendor/form-common.js') }}"></script>
+<script src="{{ asset('vendor/jquery-confirm.js') }}"></script>
+
 @stack('scripts')

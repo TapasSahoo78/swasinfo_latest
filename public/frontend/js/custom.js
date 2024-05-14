@@ -1,6 +1,6 @@
 (function ($) {
     "use strict";
-    
+
 
     // Mean Menu
     $('#main-nav').stellarNav({
@@ -16,11 +16,8 @@
         closeBtn     :false,
         scrollbarFix:false,
         mobileMode:false
-      
-      });
 
-    
-  
+      });
 
     $(".banner-slider-area").owlCarousel({
         autoplayHoverPause: true,
@@ -41,7 +38,7 @@
             },
         },
     });
-    
+
 
     // Go to Top
     $(function () {
