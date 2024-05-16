@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->text('card_number');
-            $table->tinyInteger('valid_month');
-            $table->tinyInteger('valid_yaer');
+            $table->string('valid_month');
+            $table->string('valid_yaer');
             $table->text('card_holder');
             $table->text('bank_location');
             $table->text('account_holder');
@@ -26,7 +26,6 @@ return new class extends Migration
             $table->text('bank_account_number');
             $table->text('re_account_number');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
             $table->timestamps();
         });
     }

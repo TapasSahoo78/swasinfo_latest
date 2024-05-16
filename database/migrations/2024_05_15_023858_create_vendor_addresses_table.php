@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('state')->nullable();
             $table->string('country')->nullable();
             $table->string('postal_code')->nullable();
-            $table->tinyInteger('why_do_sell')->nullable();
+            $table->longText('why_do_sell')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

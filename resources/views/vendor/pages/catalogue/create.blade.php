@@ -189,7 +189,7 @@
                                         <div class="col-lg-3 col-md-6 col-12 mb-2">
                                             <label for="" class="form-label">Unit</label>
                                             <select class="form-select">
-                                                <option selected="">Type product unit here. . .</option>
+                                                {{ getAllUnit('') }}
                                             </select>
                                         </div>
                                     </div>
@@ -229,23 +229,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white rounded p-3 mb-3">
+
+                    <div class="bg-white rounded p-3 mb-3" id="variants111">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12">
                                 <h5>Variation</h5>
-                                <form class="category-form">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-12 mb-2">
-                                            <label for="" class="form-label">Variation Type</label>
-                                            <select class="form-select">
-                                                <option selected="">Color</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-12 mb-2">
-                                            <label for="" class="form-label">Variation</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                                placeholder="Black" aria-describedby="emailHelp">
-                                        </div>
+                                <div class="category-form" id="variants">
+                                    <div class="row variant">
                                         <div class="col-lg-6 col-md-6 col-12 mb-2">
                                             <label for="" class="form-label">Variation Type</label>
                                             <select class="form-select">
@@ -257,26 +247,34 @@
                                             <div class="variationcard">
                                                 <input type="email" class="form-control" id="exampleInputEmail1"
                                                     placeholder="Gray" aria-describedby="emailHelp">
-                                                <div class="times-icon"><i class="fa fa-times" aria-hidden="true"></i>
-                                                </div>
+
+                                                <div class="times-icon remove-variant"><i class="fa fa-times"
+                                                        aria-hidden="true"></i></div>
+
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-12 mb-2">
-                                            <a href="#" class="add-variantbtn"><i class="fa fa-plus"
-                                                    aria-hidden="true"></i>
-                                                Add Variant</a>
-                                        </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Variants -->
+                    <!-- Add Variant Button -->
+                    <div class="col-lg-6 col-md-6 col-12 mb-2">
+                        <button type="button" id="addVariant" class="add-variantbtn"><i class="fa fa-plus"
+                                aria-hidden="true"></i>Add Variant</button>
+                    </div>
                     <div class="footerbtn-section">
                         <a href="#" class="cancelpro-btn"><i class="fa fa-times" aria-hidden="true"></i>
-                            Cancel</a> <a href="#" class="savepro-btn"><i class="fa fa-floppy-o"
-                                aria-hidden="true"></i> Save Product</a>
+                            Cancel</a>
+                        {{-- <a href="#" class="savepro-btn"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+                            Product</a> --}}
+                        <button type="submit" class="savepro-btn"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+                            Product</button>
                     </div>
                 </div>
+
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                     <h4>Bulk Upload</h4>
                     <div class="bg-white rounded p-3 mb-3">
@@ -441,6 +439,7 @@
                                 aria-hidden="true"></i> Save</a>
                     </div>
                 </div>
+
             </div>
         </div>
         <!-- Tab Start End -->
@@ -468,6 +467,43 @@
                     }
                 });
             });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var addVariantButton = document.getElementById('addVariant');
+            var variantsContainer = document.getElementById('variants');
+            var firstRow = variantsContainer.querySelector('.row.variant');
+
+            function addVariantRow() {
+                var variantTemplate = firstRow.cloneNode(true);
+                variantsContainer.appendChild(variantTemplate);
+                if (variantsContainer.children.length > 1) {
+                    variantTemplate.querySelector('.remove-variant').style.display =
+                        'inline'; // Show remove button for subsequent rows
+                }
+                addRemoveEventListener(variantTemplate);
+            }
+
+            function addRemoveEventListener(row) {
+                row.querySelector('.remove-variant').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    row.remove();
+                    if (variantsContainer.querySelectorAll('.row.variant').length === 1) {
+                        addVariantButton.disabled = false; // Re-enable adding when all rows are removed
+                    }
+                });
+            }
+
+            addVariantButton.addEventListener('click', function() {
+                addVariantRow();
+            });
+
+            // Hide remove button for the first row
+            firstRow.querySelector('.remove-variant').style.display = 'none';
+
+            // Initial setup
+            addRemoveEventListener(firstRow);
         });
     </script>
 @endpush

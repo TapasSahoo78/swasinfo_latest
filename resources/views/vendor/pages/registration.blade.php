@@ -36,7 +36,7 @@
                 <div class="col-md-10 col-5">
                     <div id="main-nav" class="stellarnav">
                         <ul>
-                            <li><a href="{{route('frontend.home')}}" class="loginbtn">Homepage</a></li>
+                            <li><a href="{{ route('frontend.home') }}" class="loginbtn">Homepage</a></li>
                         </ul>
                     </div>
                 </div>
@@ -170,10 +170,10 @@
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12 mt-2">
                                                     <input type="text" class="form-control" name="state"
-                                                        id="exampleInputText" placeholder="State/Region/Province">
+                                                        id="exampleInputText" placeholder="State">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12 mt-2">
-                                                    <input type="text" class="form-control" placeholder="country"
+                                                    <input type="text" name="country" class="form-control" placeholder="country"
                                                         id="exampleInputText" placeholder="Country">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12 mt-2">
@@ -321,15 +321,13 @@
                                                     <label for="exampleInputText" class="form-label">What is
                                                         UPC?</label>
                                                     <div class="col-1 form-check form-check-inline">
-                                                        <input class="form-check-input" name="is_upc" value="0"
-                                                            type="radio" name="inlineRadioOptions"
-                                                            id="inlineRadio1" value="option1">
+                                                        <input class="form-check-input" value="0" type="radio"
+                                                            name="is_upc" id="inlineRadio1" value="option1">
                                                         <label class="form-check-label" for="inlineRadio1">Yes</label>
                                                     </div>
                                                     <div class="col-1 form-check form-check-inline">
                                                         <input class="form-check-input" value="1" type="radio"
-                                                            name="inlineRadioOptions" id="inlineRadio2"
-                                                            value="option2">
+                                                            name="is_upc" id="inlineRadio2" value="option2">
                                                         <label class="form-check-label" for="inlineRadio2">No</label>
                                                     </div>
                                                 </div>
@@ -759,11 +757,11 @@
                                                 <div class="col-lg-12 col-md-12 col-12">
                                                     <label for="exampleInputText" class="form-label">Business
                                                         classification</label>
-                                                    <select class="form-control" aria-label="Default select example">
-                                                        <option selected="">English</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
+                                                    <select class="form-control" name="tax_type"
+                                                        aria-label="Default select example">
+                                                        <option selected="">Select Business classification</option>
+                                                        <option value="1">Individual</option>
+                                                        <option value="2">Personal</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -772,70 +770,71 @@
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Enter GST
                                                         Number</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="Name as on bank documents">
+                                                    <input type="text" name="gst_number" class="form-control"
+                                                        id="exampleInputText" placeholder="Name as on bank documents">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">CIN
                                                         Number</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="CIN">
+                                                    <input type="text" name="cin_number" class="form-control"
+                                                        id="exampleInputText" placeholder="CIN">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Pan
                                                         Number</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="18441215848484">
+                                                    <input type="text" name="pan_number" class="form-control"
+                                                        id="exampleInputText" placeholder="Enter Pan Number">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <h2>Address</h2>
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Country</label>
-                                                    <select class="form-control" aria-label="Default select example">
-                                                        <option selected="">English</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
+                                                    <select class="form-control" name="gst_country"
+                                                        aria-label="Default select example">
+                                                        <option selected="">Select Country</option>
+                                                        <option value="1">India</option>
+                                                        <option value="2">USA</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Re-type Pan
                                                         Number</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="18441215848484">
+                                                    <input type="text" name="re_pan_number" class="form-control"
+                                                        id="exampleInputText" placeholder="18441215848484">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Street and
                                                         Number</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="18441215848484">
+                                                    <input type="text" name="street_number" class="form-control"
+                                                        id="exampleInputText" placeholder="18441215848484">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Apartment, unit,
                                                         building etc.</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
+                                                    <input type="text" name="apartment_number"
+                                                        class="form-control" id="exampleInputText"
                                                         placeholder="18441215848484">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">City or
                                                         town</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="18441215848484">
+                                                    <input type="text" name="gst_city" class="form-control"
+                                                        id="exampleInputText" placeholder="18441215848484">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">State</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="18441215848484">
+                                                    <input type="text" name="gst_state" class="form-control"
+                                                        id="exampleInputText" placeholder="18441215848484">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Zip Code</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="18441215848484">
+                                                    <input type="text" name="gst_postal_code" class="form-control"
+                                                        id="exampleInputText" placeholder="18441215848484">
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-12 form-check">
-                                                    <input type="checkbox" class="form-check-input mt-15"
-                                                        id="exampleCheck1">
+                                                    <input type="checkbox" name="is_signature" value="1"
+                                                        class="form-check-input mt-15" id="exampleCheck1">
                                                     <label class="form-check-label" for="exampleCheck1">
                                                         <p> I consent to provide electronic signature for the
                                                             information provided as per IRS Form
@@ -891,6 +890,7 @@
                                                         <label for="exampleInputText" class="form-label">Upload
                                                             Signature</label>
                                                         <div class="photocard mb-3">
+                                                            {{-- signature --}}
                                                             <div class="photocard-icon"><img
                                                                     src="{{ asset('assets/vendor/images/write.png') }}"
                                                                     alt=""></div>
@@ -902,8 +902,9 @@
                                                     <div class="col-lg-12 col-md-12 col-12">
                                                         <label for="exampleInputText" class="form-label">Date</label>
                                                         <div id="datepicker" class="input-group">
-                                                            <input type="date" class="form-control"
-                                                                id="exampleInputEmail1" placeholder="">
+                                                            <input type="date" name="signature_date"
+                                                                class="form-control" id="exampleInputEmail1"
+                                                                placeholder="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -956,34 +957,28 @@
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Card Number
                                                     </label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="Card Number">
+                                                    <input type="text" name="card_number" class="form-control"
+                                                        id="exampleInputText" placeholder="Card Number">
                                                 </div>
                                                 <div class="col-lg-3 col-md-3 col-12">
-                                                    <label for="exampleInputText" class="form-label">Valid through
+                                                    <label for="exampleInputText" class="form-label">Valid
+                                                        through(Month)
                                                     </label>
-                                                    <select class="form-control" aria-label="Default select example">
-                                                        <option selected="">English</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
+                                                    <input type="text" name="valid_month" class="form-control"
+                                                        id="exampleInputText" placeholder="01">
                                                 </div>
                                                 <div class="col-lg-3 col-md-3 col-12">
-                                                    <select class="form-control mt-10"
-                                                        aria-label="Default select example">
-                                                        <option selected="">English</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
+                                                    <label for="exampleInputText" class="form-label">Valid
+                                                        through(Year)
+                                                    </label>
+                                                    <input type="text" name="valid_yaer" class="form-control"
+                                                        id="exampleInputText" placeholder="2025">
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-12">
                                                     <label for="exampleInputText" class="form-label">Cardholder's
                                                         Name</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="Cardholder's
-                                                        Name">
+                                                    <input type="text" name="card_holder" class="form-control"
+                                                        id="exampleInputText" placeholder="Cardholder's Name">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -994,35 +989,33 @@
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Bank
                                                         Location</label>
-                                                    <select class="form-control" aria-label="Default select example">
-                                                        <option selected="">United States</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
+                                                    <input type="text" name="bank_location" class="form-control"
+                                                        id="exampleInputText" placeholder="Name as on bank documents">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12"></div>
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Account Holder's
                                                         Name</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="Name as on bank documents">
+                                                    <input type="text" name="account_holder" class="form-control"
+                                                        id="exampleInputText" placeholder="Name as on bank documents">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">IFSC CODE</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
-                                                        placeholder="9 digits">
+                                                    <input type="text" name="ifsc_code" class="form-control"
+                                                        id="exampleInputText" placeholder="9 digits">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Bank Account
                                                         Number</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
+                                                    <input type="text" name="bank_account_number"
+                                                        class="form-control" id="exampleInputText"
                                                         placeholder="18441215848484">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12">
                                                     <label for="exampleInputText" class="form-label">Re-type Bank
                                                         Account Number</label>
-                                                    <input type="text" class="form-control" id="exampleInputText"
+                                                    <input type="text" name="re_account_number"
+                                                        class="form-control" id="exampleInputText"
                                                         placeholder="18441215848484">
                                                 </div>
                                             </div>
@@ -1333,19 +1326,19 @@
 
             $(".next-step").click(function() {
                 // if (validateStep(currentStep)) {
-                    // $(".step-" + currentStep + " .invalid-field").css("border-color",
-                    //     "black");
-                    // $(".step-" + currentStep + " .invalid-field").removeClass("invalid-field");
-                    if (currentStep < 5) {
-                        $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
-                        currentStep++;
-                        setTimeout(function() {
-                            $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
-                            $(".step-" + currentStep).show().addClass(
-                                "animate__animated animate__fadeInRight");
-                            updateProgressBar();
-                        }, 500);
-                    }
+                // $(".step-" + currentStep + " .invalid-field").css("border-color",
+                //     "black");
+                // $(".step-" + currentStep + " .invalid-field").removeClass("invalid-field");
+                if (currentStep < 5) {
+                    $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
+                    currentStep++;
+                    setTimeout(function() {
+                        $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
+                        $(".step-" + currentStep).show().addClass(
+                            "animate__animated animate__fadeInRight");
+                        updateProgressBar();
+                    }, 500);
+                }
                 // } else {
                 //     // alert('Please fill in all required fields.');
                 //     $(".step-" + currentStep + " .invalid-field").css("border-color",

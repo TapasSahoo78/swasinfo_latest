@@ -21,21 +21,20 @@ return new class extends Migration
             $table->string('gst_number')->nullable();
             $table->string('cin_number')->nullable();
             $table->string('pan_number')->nullable();
-            $table->string('country')->nullable();
+            $table->string('gst_country')->nullable();
             $table->string('re_pan_number')->nullable();
             $table->string('street_number')->nullable();
             $table->string('apartment_number')->nullable();
 
-            $table->string('city')->nullable();
-            $table->string('state')->nullable();
-            $table->string('postal_code')->nullable();
+            $table->string('gst_city')->nullable();
+            $table->string('gst_state')->nullable();
+            $table->string('gst_postal_code')->nullable();
 
             $table->string('is_signature')->nullable();
             $table->string('signature')->nullable();
             $table->string('signature_date')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
             $table->timestamps();
         });
     }
