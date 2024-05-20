@@ -52,8 +52,6 @@ Route::namespace('Api\Customer')
                 Route::get('/getscriptiondetails', 'getscriptiondetails')->name('getscriptiondetails');
                 Route::post('/deleteaccount', 'userDeleteAccount')->name('deleteaccount');
 
-
-
                 // Route::post('/workout-list', 'workoutList')->name('workout.list');
             });
         });
@@ -106,7 +104,6 @@ Route::namespace('Api\Customer')
     ->middleware('track.api.hits')
     ->group(function () {
 
-
         Route::middleware('auth:api')->middleware('auth:api', 'track.api.hits')->group(function () {
             Route::controller(UserApiControllers::class)->group(function () {
 
@@ -129,6 +126,9 @@ Route::namespace('Api\Customer')
                 Route::post('/user-food-item-save', 'userFoodItemSave')->name('user.food.item.save');
                 Route::get('/notification', 'notification')->name('notification');
                 Route::get('/transaction/{any}', 'transaction')->name('transaction');
+
+                Route::post('/recharge', 'rechargeWallet')->name('recharge');
+
                 Route::match(['get', 'post'], '/storetransaction', 'savetransaction')->name('storetransaction');
 
                 Route::match(['get', 'post'], '/start-pause-subscription', 'startPauseSubscription')->name('startPauseSubscription');

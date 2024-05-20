@@ -68,6 +68,7 @@ use App\Models\ProfileOtherInformation;
 use App\Models\Coupon;
 use App\Models\Rating;
 use Exception;
+use Razorpay\Api\Api;
 
 class UserApiControllers extends BaseController
 {
@@ -188,8 +189,6 @@ class UserApiControllers extends BaseController
 
     public function signup(Request $request)
     {
-
-
         $validator = Validator::make($request->all(), [
             'password' => 'required|string|min:6',
             'username' => 'required|nullable|string',
@@ -233,10 +232,8 @@ class UserApiControllers extends BaseController
         }
     }
 
-
     public function flogin(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'username' => 'required|string|min:6',
         ]);
@@ -285,10 +282,8 @@ class UserApiControllers extends BaseController
         return $this->responseJson(true, 200, $message, $userData);
     }
 
-
     public function verifyOtp(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'otp' => 'required|numeric|digits:4',
             'username' => 'required|nullable|string',
@@ -334,6 +329,7 @@ class UserApiControllers extends BaseController
             return $this->responseJson(true, 200, $message, $userData);
         }
     }
+
     public function resendOtp(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -444,10 +440,8 @@ class UserApiControllers extends BaseController
         }
     }
 
-
     public function loginVerify(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'otp' => 'required|numeric|digits:4',
             'username' => 'required|nullable|string',
@@ -499,6 +493,7 @@ class UserApiControllers extends BaseController
             return $this->responseJson(true, 200, $message, $userData);
         }
     }
+
     public function forgotPassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -535,6 +530,7 @@ class UserApiControllers extends BaseController
             return $this->responseJson(false, 200, "Something Went Wrong", "");
         }
     }
+
     public function createPassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -832,9 +828,6 @@ class UserApiControllers extends BaseController
         //     return $this->responseJson(false, 200, $validator->errors()->first(), "");
         // }
 
-
-
-
         $userStgPersonalDetails = $this->userService->updateOrCreateUserFoodItems($request->all(), $userId);
         //return $userStgPersonalDetails;
         if ($userStgPersonalDetails) {
@@ -845,7 +838,6 @@ class UserApiControllers extends BaseController
 
     public function rewardList(Request $request)
     {
-
         /* $filterConditionsUsers = [
             'mfi_id' => auth()->user()->mfi_id,
         ]; */
@@ -860,7 +852,6 @@ class UserApiControllers extends BaseController
 
     public function rewardDetails(Request $request, $id)
     {
-
         /* $filterConditionsUsers = [
             'mfi_id' => auth()->user()->mfi_id,
         ]; */
@@ -892,7 +883,6 @@ class UserApiControllers extends BaseController
         return $this->responseJson(true, 200, "", $data = $rewardList);
     }
 
-
     public function trainerList(Request $request)
     {
         /* $filterConditionsUsers = [
@@ -918,10 +908,9 @@ class UserApiControllers extends BaseController
         $data['Dietitian'] = UserTrainerDetailApiCollection::collection($userss);
         return $this->responseJson(true, 200, "", $data);
     }
+
     public function trainerDetails(Request $request)
     {
-
-
         $validator = Validator::make($request->all(), [
             "user_id" => 'required|exists:users,id',
         ]);
@@ -973,6 +962,7 @@ class UserApiControllers extends BaseController
         }
         return $this->responseJson(true, 200, "", SubscriptionApiCollection::collection($plans));
     }
+
     public function dietPlanList(Request $request)
     {
         // $planss = Diet::where('status', 1)->where('age_from',auth()->user()?->profile?->age)
@@ -1349,7 +1339,6 @@ class UserApiControllers extends BaseController
         }
     }
 
-
     public function physicallyConditionList(Request $request)
     {
         /* $filterConditionsUsers = [
@@ -1363,6 +1352,7 @@ class UserApiControllers extends BaseController
         // return json_encode($listCustomers[0]->mediaImage);
         return $this->responseJson(true, 200, "", PhysicallyConditionDetailApiCollection::collection($rewardList));
     }
+
     public function fitnessGoalList(Request $request)
     {
         /* $filterConditionsUsers = [
@@ -1383,6 +1373,7 @@ class UserApiControllers extends BaseController
         // return json_encode($listCustomers[0]->mediaImage);
         return $this->responseJson(true, 200, "", FaqDetailApiCollection::collection($rewardList));
     }
+
     public function privacyPolicy(Request $request)
     {
         $rewardList = Page::where('slug', 'privacy-policy')->first();
@@ -1391,8 +1382,6 @@ class UserApiControllers extends BaseController
         // return json_encode($listCustomers[0]->mediaImage);
         return $this->responseJson(true, 200, "", $rewardList);
     }
-
-
 
     /**
      * @OA\Post(
@@ -1560,7 +1549,6 @@ class UserApiControllers extends BaseController
 
     public function profileImageupdate(Request $request)
     {
-
         $userId = auth()->user()->id;
         $validator = Validator::make($request->all(), [
             "customer_image" => 'required|file|mimes:jpg,png,gif,jpeg'
@@ -1597,7 +1585,49 @@ class UserApiControllers extends BaseController
         return response()->json(['status' => true, 'message' => 'Notification Listing.', 'data' => $data], 200);
     }
 
+    public function rechargeWallet(Request $request)
+    {
+        $validator = Validator::make($request->all(), ["amount" => "required|numeric"]);
+        if ($validator->fails()) {
+            return $this->apiResponseJson(false, 422, $validator->errors()->first(), (object) []);
+        }
+        // $plans = Plan::where('id', $id)->where('status', 1)->with('courses')->get();
+        $amount = $request->amount * 100;
+        $receiptId = uniqid('recharge_');
 
+        $api = new Api(env('RAZORPAY_KEY_ID'), env('RAZORPAY_KEY_SECRET'));
+
+        $orderData = [
+            'amount' => $amount,
+            'currency' => 'INR',
+            'receipt' => $receiptId,
+            'payment_capture' => 1
+            // 'description' => 'Wallet Recharge',
+        ];
+
+        try {
+            $razorpayOrder = $api->order->create($orderData);
+            // Transaction::create([
+            //     "user_id" => Auth::id(),
+            //     "razorpayOrderId" => $razorpayOrder?->id,
+            //     "paidAmount" => $razorpayOrder?->amount / 100,
+            //     "remark" => "Wallet Recharge",
+            //     // "paymentDate" => ,
+            //     "paymentStatus" => "Pending",
+            // ]);
+
+            // if ($transactionCreated) {
+            //     $transactionLogCreated = [];
+            // }
+            return $this->apiResponseJson(true, 200, 'Intent created successfully in Razorpay Server', (object)[
+                "amount" => $razorpayOrder?->amount,
+                "orderId" => $razorpayOrder?->id
+            ]);
+        } catch (\Exception $e) {
+            logger($e->getMessage() . ' -- ' . $e->getLine() . ' -- ' . $e->getFile());
+            return $this->apiResponseJson(false, 500, $e->getMessage(), (object) []);
+        }
+    }
 
     public function transaction(Request $request, $id)
     {
@@ -1752,7 +1782,6 @@ class UserApiControllers extends BaseController
         return response()->json(['status' => 'true', 'message' => 'Screen time logged successfully', 'data' => []]);
     }
 
-
     public function workoutList(Request $request)
     {
         $workoutType  = ["exercises", "meditation", "yoga"];
@@ -1792,7 +1821,6 @@ class UserApiControllers extends BaseController
         }
     }
 
-
     public function sendNotificationtest($requestparam, $fcm)
     {
         $SERVER_API_KEY = env('FIREBASE_KEY', '');
@@ -1828,7 +1856,6 @@ class UserApiControllers extends BaseController
         return $response;
         //dd($response);
     }
-
 
     public function sendNotificationtesttrainer($requestparam, $fcm)
     {
@@ -1937,7 +1964,6 @@ class UserApiControllers extends BaseController
         return response()->json($formattedResponse);
     }
 
-
     private function formatBannerItems($banners)
     {
         // Format your banner items here
@@ -1981,10 +2007,6 @@ class UserApiControllers extends BaseController
                 $averageRating = 0;
             }
 
-
-
-
-
             // Modify this according to your duct model attributes
             return [
                 "id" => $product->id,
@@ -1999,10 +2021,8 @@ class UserApiControllers extends BaseController
         });
     }
 
-
     public function getProductList(Request $request)
     {
-
         $userId = auth()->user()->id;
         $cartItemscount = Cart::where('user_id', $userId)->where('is_active', '0')->count();
         $sortDirection = $request->input('sort');
@@ -2109,12 +2129,8 @@ class UserApiControllers extends BaseController
 
     public function getCategoryList(Request $request)
     {
-
-
         $sortDirection = $request->input('sort', 'asc');
         $searchTerm = $request->input('search_term');
-
-
 
         $productQuery = Category::where('is_active', '1');
 
@@ -2148,6 +2164,7 @@ class UserApiControllers extends BaseController
         }
         return response()->json(['status' => true, 'message' => 'Categories Listing.', 'data' => $products], 200);
     }
+
     public function cartInsert(Request $request)
     {
         $userId = auth()->user()->id;
@@ -2240,7 +2257,6 @@ class UserApiControllers extends BaseController
         }
     }
 
-
     public function getAddress(Request $request)
     {
         $userId = auth()->user()->id;
@@ -2294,8 +2310,6 @@ class UserApiControllers extends BaseController
         return response()->json(['status' => true, 'message' => 'User Address List.', 'item' => $item, 'total_price' => $totalAmount, 'save_price' => $totaldiscount, 'totalcart' => $cartItemscount], 200);
     }
 
-
-
     public function getShippingInfo(Request $request)
     {
 
@@ -2338,10 +2352,6 @@ class UserApiControllers extends BaseController
 
     private function formatCartItems($products)
     {
-
-
-
-
         // Format your product items here
         return $products->map(function ($product) {
             $discountvalue = $product->product->price * $product->product->discount / 100;
@@ -2364,7 +2374,6 @@ class UserApiControllers extends BaseController
 
     public function cartRemove(Request $request, $id)
     {
-
         $userId = auth()->user()->id;
 
         $delete = Cart::where('product_id', $id)->where('user_id', $userId)->delete();
@@ -2372,7 +2381,6 @@ class UserApiControllers extends BaseController
             return response()->json(['status' => true, 'message' => 'Cart Remove Sucessfully.', 'data' => (object)[]], 200);
         }
     }
-
 
     public function addFevorite(Request $request)
     {
@@ -2383,7 +2391,6 @@ class UserApiControllers extends BaseController
         return response()->json(['status' => true, 'message' => 'Fevorite Inseted Listing.', 'data' => (object)[]], 200);
     }
 
-
     public function getFevoriteList(Request $request)
     {
         $userId = auth()->user()->id;
@@ -2392,7 +2399,6 @@ class UserApiControllers extends BaseController
         $item = $this->formatFevoriteItems($cartItems);
         return response()->json(['status' => true, 'message' => 'Fevorite List', 'item' => $item, 'totalcart' => $cartItemscount], 200);
     }
-
 
     private function formatFevoriteItems($products)
     {
@@ -2492,7 +2498,6 @@ class UserApiControllers extends BaseController
 
     public function orderList(Request $request)
     {
-
         $user = User::where('id', '1')->first();
         $gst = $user->igst + $user->cgst;
         $userId = auth()->user()->id;
@@ -2614,4 +2619,3 @@ class UserApiControllers extends BaseController
         return response()->json(['status' => true, 'message' => 'Rating inserted successfully', 'data' => $rating], 200);
     }
 }
-
