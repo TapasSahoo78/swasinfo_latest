@@ -50,15 +50,14 @@ class BaseController extends Controller
      * @param null $data
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function responseJson($status = true, $responseCode = 200, $message = null, $redirect = null, $data = null)
+    protected function responseJson($status = true, $responseCode = 200, $message = "", $data = [])
     {
         return response()->json([
             'status'        =>  $status,
             'response_code' =>  $responseCode,
             'message'       =>  $message,
-            'redirect'  => $redirect,
             'data'          =>  $data
-        ]);
+        ], $responseCode);
     }
 
     /**
@@ -68,12 +67,13 @@ class BaseController extends Controller
      * @param null $data
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function apiResponseJson($status = true, $responseCode = 200, $message = "", $data = [])
+    protected function ajaxResponseJson($status = true, $responseCode = 200, $message = "", $redirect = null, $data = [])
     {
         return response()->json([
             'status'        =>  $status,
             'response_code' =>  $responseCode,
             'message'       =>  $message,
+            'redirect'  => $redirect,
             'data'          =>  $data
         ], $responseCode);
     }
