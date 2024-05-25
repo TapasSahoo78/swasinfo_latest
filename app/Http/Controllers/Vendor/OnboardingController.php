@@ -52,7 +52,7 @@ class OnboardingController extends BaseController
             $validator = Validator::make($request->all(), $rules);
 
             if ($validator->fails()) {
-                return $this->responseJson(false, 200, $validator->errors()->first());
+                return $this->ajaxResponseJson(false, 200, $validator->errors()->first());
             }
             DB::beginTransaction();
             try {
@@ -119,12 +119,12 @@ class OnboardingController extends BaseController
                     $isCustomerCreated->roles()->sync($isCustomerRole->id);
                     DB::commit();
                     // return $this->responseRedirect('seller.selling.account', 'Vendor created successfully', 'success', true);
-                    return $this->responseJson(true, 200, 'Vendor created successfully', route('vendor.dashboard'));
+                    return $this->ajaxResponseJson(true, 200, 'Vendor created successfully', route('vendor.dashboard'));
                 }
             } catch (\Exception $e) {
                 DB::rollback();
                 logger($e->getMessage() . ' -- ' . $e->getLine() . ' -- ' . $e->getFile());
-                return $this->responseJson(false, 200, 'Something went wrong');
+                return $this->ajaxResponseJson(false, 200, 'Something went wrong');
             }
         }
         return view('vendor.pages.registration');
