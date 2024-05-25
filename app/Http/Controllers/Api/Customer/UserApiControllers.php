@@ -190,7 +190,7 @@ class UserApiControllers extends BaseController
     public function signup(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'password' => 'required|string|min:6',
+            'password' => 'sometimes|string|min:6',
             'username' => 'required|nullable|string',
             'is_email' => 'required|boolean'
         ]);
@@ -218,7 +218,8 @@ class UserApiControllers extends BaseController
 
 
         $request->merge(['verification_code' => $otp]);
-        $request->merge(['password' => $request->password]);
+        // $request->merge(['password' => $request->password]);
+        $request->merge(['password' => "password"]);
 
         $userExist = $this->userService->createOrUpdateCustomer($request->except('_token'), $userFound?->id ?? NULL);
 
