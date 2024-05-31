@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Agent\SettingController;
+use App\Http\Controllers\Api\Common\ProfileQuestionController;
 use App\Http\Controllers\Api\Common\WalletController;
 
 // use App\Http\Controllers\Api\Agent\UserApiControllers;
@@ -18,6 +19,12 @@ use App\Http\Controllers\Api\Common\WalletController;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // })
+
+
+Route::controller(ProfileQuestionController::class)->group(function () {
+    Route::get('v1/questions-list', 'index')->name('questions.list');
+});
+
 
 Route::namespace('Api\Customer')
     ->prefix('customers')
@@ -265,9 +272,7 @@ Route::namespace('Api\Trainer')->prefix('trainers')->as('trainers.')->group(func
 
 });
 
-
 Route::namespace('Api\Trainer')->prefix('v1/trainers')->as('trainers.')->group(function () {
-
 
     Route::middleware('auth:api')->group(function () {
         Route::controller(TrainerApiController::class)->group(function () {
@@ -293,7 +298,6 @@ Route::namespace('Api\Trainer')->prefix('v1/trainers')->as('trainers.')->group(f
         });
     });
 
-
     Route::controller(TrainerApiController::class)->group(function () {
         Route::post('/signup', 'signup')->name('signup');
         Route::post('/flogin', 'flogin')->name('flogin');
@@ -316,10 +320,7 @@ Route::namespace('Api\Trainer')->prefix('v1/trainers')->as('trainers.')->group(f
 
     });
     // Route::post('login', [UserApiControllers::class, 'login']);
-
-
 });
-
 
 Route::namespace('Api\Trainer')->prefix('v2/trainers')->as('trainers.')->group(function () {
 

@@ -284,13 +284,13 @@
              </a>
 
              <ul class="nav nav-treeview">
-                @canany(['category'])
-                <li class="nav-item">
-                    <a href="{{ route('admin.product.brand.list') }}" class="nav-link">
-                        <p>MANAGE Brand</p>
-                    </a>
-                </li>
-            @endcanany
+                 @canany(['category'])
+                     <li class="nav-item">
+                         <a href="{{ route('admin.product.brand.list') }}" class="nav-link">
+                             <p>MANAGE Brand</p>
+                         </a>
+                     </li>
+                 @endcanany
                  @canany(['category'])
                      <li class="nav-item">
                          <a href="{{ route('admin.product.category.list') }}" class="nav-link">
@@ -300,12 +300,11 @@
                      </li>
 
                      <li class="nav-item">
-                        <a href="{{ route('admin.subcategory.list') }}" class="nav-link">
-                            <p>MANAGE Commision</p>
+                         <a href="{{ route('admin.subcategory.list') }}" class="nav-link">
+                             <p>MANAGE Commision</p>
 
-                        </a>
-                    </li>
-
+                         </a>
+                     </li>
                  @endcanany
                  @canany(['product'])
                      <li class="nav-item">
