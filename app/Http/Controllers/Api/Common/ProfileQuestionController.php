@@ -13,8 +13,8 @@ class ProfileQuestionController extends BaseController
     {
         // Fetch questions with their answers
         $questions = ProfileQuestion::with(['answers' => function ($query) {
-            $query->select('id', 'profile_question_id', 'answer', 'input_type', 'comments');
-        }])->select('id', 'question', 'group_wise')->get();
+            $query->select('id', 'profile_question_id', 'answer', 'slug', 'input_type', 'comments');
+        }])->select('id', 'question', 'slug', 'group_wise')->get();
 
         // Group by 'group_wise'
         $groupedQuestions = $questions->groupBy('group_wise');
