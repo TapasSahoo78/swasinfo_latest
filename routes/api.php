@@ -55,6 +55,10 @@ Route::namespace('Api\Customer')
                 Route::post('/user-food-item-save', 'userFoodItemSave')->name('user.food.item.save');
                 Route::get('/notification', 'notification')->name('notification');
                 Route::get('/transaction/{any}', 'transaction')->name('transaction');
+
+                Route::post('/question-store', 'profileQuestionStore')->name('question.store');
+                Route::post('/question-store', 'profileQuestionStore')->name('question.store');
+
                 Route::match(['get', 'post'], '/storetransaction', 'savetransaction')->name('storetransaction');
                 Route::get('/getscriptiondetails', 'getscriptiondetails')->name('getscriptiondetails');
                 Route::post('/deleteaccount', 'userDeleteAccount')->name('deleteaccount');

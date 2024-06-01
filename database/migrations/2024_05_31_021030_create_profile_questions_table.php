@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('profile_questions', function (Blueprint $table) {
             $table->id();
             $table->longText('question')->nullable();
+            $table->longText('slug')->nullable();
             $table->integer('group_wise')->nullable();
             $table->timestamps();
         });

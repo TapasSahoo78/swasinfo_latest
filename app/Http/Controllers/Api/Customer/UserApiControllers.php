@@ -744,14 +744,18 @@ class UserApiControllers extends BaseController
             'diet_plan_last_time' => 'sometimes|nullable',
             'is_followed_exercise_plan' => 'sometimes|nullable',
             'exercise_plan_last_time' => 'sometimes|nullable',
+
             'any_physical_movement' => 'sometimes|nullable',
             'physical_movement_last_time' => 'sometimes|nullable',
             'water_intake_last_time' => 'sometimes|nullable',
+
             'do_you_get_tired_during_the_day' => 'sometimes|nullable',
             'feel_drizzing_when_you_wakeup' => 'sometimes|nullable',
+
             'how_much_do_you_smoke_in_a_day' => 'sometimes|nullable',
             'how_often_do_you_drink' => 'sometimes|nullable',
             'what_do_you_usually_drink' => 'sometimes|nullable',
+
             'do_you_take_any_medication' => 'sometimes|nullable',
             'have_you_been_recently_hospitalized' => 'sometimes|nullable',
             'do_you_suffer_from_asthma' => 'sometimes|nullable',
@@ -759,7 +763,6 @@ class UserApiControllers extends BaseController
             'do_you_have_diabities' => 'sometimes|nullable',
             'do_you_have_high_cholesterol' => 'sometimes|nullable',
             'do_you_suffer_from_high_or_low_blood_pressure' => 'sometimes|nullable'
-
         ]);
 
         if ($validator->fails()) {
@@ -1635,6 +1638,26 @@ class UserApiControllers extends BaseController
         $plans = Plan::where('id', $id)->where('status', 1)->with('courses')->get();
         return $this->responseJson(true, 200, "", SubscriptionApiCollection::collection($plans));
         //return response()->json(['status' => true, 'message' => 'Transaction Details.', 'data' => $data], 200);
+    }
+
+    public function profileQuestionStore(Request $request)
+    {
+        $userId = auth()->user()->id;
+
+        $validator = Validator::make($request->all(), [
+            "start_pause_date" => 'required|date',
+            "type" => 'in:0,1' //0-pause,1-start
+        ]);
+        if ($validator->fails()) {
+            return $this->responseJson(false, 200, $validator->errors()->first(), (object)[]);
+        }
+        try {
+            // echo "Start Pause Subscription";
+            return response()->json(['status' => true, 'message' => 'Success', 'data' => (object)[]], 200);
+        } catch (Exception $e) {
+            logger($e->getMessage());
+            return response()->json(['status' => false, 'message' => 'Something went wrong!', 'data' => (object)[]], 500);
+        }
     }
 
     public function savetransaction(Request $request)

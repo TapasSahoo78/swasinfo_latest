@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('profile_question_id');
             $table->longText('answer')->nullable();
+            $table->longText('slug')->nullable();
             $table->longText('input_type')->nullable();
             $table->longText('comments')->nullable();
             $table->foreign('profile_question_id')->references('id')->on('profile_questions')->onDelete('cascade');
