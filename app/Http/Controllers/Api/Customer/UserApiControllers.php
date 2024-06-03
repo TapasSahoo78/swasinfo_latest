@@ -575,7 +575,7 @@ class UserApiControllers extends BaseController
     {
         $userId = auth()->user()->id;
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
+            'name' => 'nullable|string',
             'gender' => 'nullable|string',
             'age' => 'nullable|string',
             'height' => 'nullable|string',
@@ -614,7 +614,7 @@ class UserApiControllers extends BaseController
         //  return $request->all();
         // if ($request->post()) {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
+            'name' => 'nullable|string',
             'gender' => 'nullable|string',
             'age' => 'nullable|string',
             'height' => 'nullable|string',

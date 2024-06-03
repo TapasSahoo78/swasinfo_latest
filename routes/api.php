@@ -25,7 +25,6 @@ Route::controller(ProfileQuestionController::class)->group(function () {
     Route::get('v1/questions-list', 'index')->name('questions.list');
 });
 
-
 Route::namespace('Api\Customer')
     ->prefix('customers')
     ->as('customer.')
