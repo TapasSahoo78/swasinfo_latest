@@ -13,7 +13,7 @@ class UserWorkoutItem extends Model
 
     // Add any additional configuration or relationships here
 
-    
+
 
     public function workoutDetailsImage()
     {
@@ -35,7 +35,7 @@ class UserWorkoutItem extends Model
                 }
             }
         }
-        return asset('assets/admin/images/default_workout.jpeg');
+        return asset('assets/admin/images/default_workout.jpg');
     }
 
 
@@ -49,5 +49,5 @@ class UserWorkoutItem extends Model
         return $this->belongsTo(Workout::class, 'workout_id');
     }
 
-  
+
 }
