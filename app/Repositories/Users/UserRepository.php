@@ -2413,7 +2413,6 @@ class UserRepository extends BaseRepository implements UserContract
                 $user->physicalCondition()->sync($isUserPhysicalConditions->id);
             }
 
-
             return $user;
         }
 
