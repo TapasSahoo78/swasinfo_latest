@@ -2408,11 +2408,12 @@ class UserRepository extends BaseRepository implements UserContract
             $user->profileOtherInformation()->updateOrcreate(['user_id' => $id], $profileOtherData);
             if ($attributes['fitness_id'] != "") {
                 $isUserFitnessGoal = $this->fitnessGoalModel->find($attributes['fitness_id']);
-                $isUserPhysicalConditions = $this->userPhysicallyActiveConditions->find($attributes['user_physically_conditions_id']);
                 $user->fitness()->sync($isUserFitnessGoal->id);
+            }
+            if ($attributes['user_physically_conditions_id'] != "") {
+                $isUserPhysicalConditions = $this->userPhysicallyActiveConditions->find($attributes['user_physically_conditions_id']);
                 $user->physicalCondition()->sync($isUserPhysicalConditions->id);
             }
-
 
             return $user;
         }
