@@ -55,7 +55,7 @@ class Workout extends Model
                 }
             }
         }
-        return asset('assets/admin/images/default_workout.jpeg');
+        return asset('assets/admin/images/default_workout.jpg');
     }
 
 
