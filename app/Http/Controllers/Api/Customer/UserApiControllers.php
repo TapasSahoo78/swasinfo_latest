@@ -67,6 +67,7 @@ use App\Models\Order;
 use App\Models\ProfileOtherInformation;
 use App\Models\Coupon;
 use App\Models\Rating;
+use App\Services\Payment\PhonePeService as PaymentPhonePeService;
 use Exception;
 use Razorpay\Api\Api;
 
@@ -75,10 +76,12 @@ class UserApiControllers extends BaseController
     //
 
     protected $userService;
+    protected $phonePeService;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, PaymentPhonePeService $phonePeService)
     {
         $this->userService = $userService;
+        $this->phonePeService = $phonePeService;
     }
     /**
      * @OA\post(
@@ -1658,6 +1661,29 @@ class UserApiControllers extends BaseController
             logger($e->getMessage());
             return response()->json(['status' => false, 'message' => 'Something went wrong!', 'data' => (object)[]], 500);
         }
+    }
+
+    public function paymentIntent(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'amount' => 'required|numeric|min:1',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+
+        $amount = $request->input('amount');
+        $callbackUrl = route('payment.callback');
+        $orderId = uniqid('order_');
+
+        $response = $this->phonePeService->initiatePayment($amount, $callbackUrl, $orderId);
+
+        if ($response && $response['success']) {
+            return response()->json(['paymentUrl' => $response['data']['instrumentResponse']['redirectUrl']], 200);
+        }
+
+        return response()->json(['error' => 'Payment initiation failed.'], 500);
     }
 
     public function savetransaction(Request $request)

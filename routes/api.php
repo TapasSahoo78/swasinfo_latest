@@ -34,7 +34,6 @@ Route::namespace('Api\Customer')
 
         Route::middleware('auth:api')->middleware('auth:api', 'track.api.hits')->group(function () {
             Route::controller(UserApiControllers::class)->group(function () {
-
                 Route::post('/create-profile', 'createProfile')->name('create.profile');
                 Route::post('/update-user-profile', 'updateProfile')->name('update.user.profile');
                 Route::post('/change-password', 'changePassword')->name('change.password');
@@ -58,7 +57,10 @@ Route::namespace('Api\Customer')
                 Route::post('/question-store', 'profileQuestionStore')->name('question.store');
                 Route::post('/question-store', 'profileQuestionStore')->name('question.store');
 
+                // Route::post('/payment-intent', 'paymentIntent')->name('payment.intent');
+
                 Route::match(['get', 'post'], '/storetransaction', 'savetransaction')->name('storetransaction');
+
                 Route::get('/getscriptiondetails', 'getscriptiondetails')->name('getscriptiondetails');
                 Route::post('/deleteaccount', 'userDeleteAccount')->name('deleteaccount');
 
@@ -139,8 +141,9 @@ Route::namespace('Api\Customer')
 
                 Route::post('/recharge', 'rechargeWallet')->name('recharge');
 
-                Route::match(['get', 'post'], '/storetransaction', 'savetransaction')->name('storetransaction');
+                Route::post('/payment-intent', 'paymentIntent')->name('payment.intent');
 
+                Route::match(['get', 'post'], '/storetransaction', 'savetransaction')->name('storetransaction');
                 Route::match(['get', 'post'], '/start-pause-subscription', 'startPauseSubscription')->name('startPauseSubscription');
 
                 Route::get('/getscriptiondetails', 'getscriptiondetails')->name('getscriptiondetails');

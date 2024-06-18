@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
@@ -209,3 +210,9 @@ Route::get('questions', function () {
         'data'          =>  $questions
     ], 200);
 });
+
+
+
+Route::get('callback', function (Request $request) {
+    return $request;
+})->name('payment.callback');
