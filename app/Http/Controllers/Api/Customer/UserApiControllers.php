@@ -1675,15 +1675,46 @@ class UserApiControllers extends BaseController
 
         $amount = $request->input('amount');
         $callbackUrl = route('payment.callback');
-        $orderId = uniqid('order_');
+        // $orderId = uniqid('order_');
 
-        $response = $this->phonePeService->initiatePayment($amount, $callbackUrl, $orderId);
+        // $response = $this->phonePeService->initiatePayment($amount, $callbackUrl, $orderId);
 
-        if ($response && $response['success']) {
-            return response()->json(['paymentUrl' => $response['data']['instrumentResponse']['redirectUrl']], 200);
-        }
+        // if ($response && $response['success']) {
+        //     return response()->json(['paymentUrl' => $response['data']['instrumentResponse']['redirectUrl']], 200);
+        // }
 
-        return response()->json(['error' => 'Payment initiation failed.'], 500);
+        $transactionId = 'MT' . uniqid();
+        $userId = 'MUID' . rand(100, 999);
+        // $isTransactionAdded = Transaction::create([
+        //     'user_id' => auth()->user()->id,
+        //     'quiz_id' => $id,
+        //     'transaction_no' => $transactionId,
+        //     'transaction_type' => 'PhonePay',
+        //     'amount' => $amount,
+        // ]);
+        $data = [
+            "merchantId" => "M22LJ4MP063NS",
+            "merchantTransactionId" => $transactionId,
+            "merchantUserId" => $userId,
+            "amount" => $amount * 100,
+            "redirectUrl" => $callbackUrl,
+            "redirectMode" => "POST",
+            "callbackUrl" => $callbackUrl,
+            "mobileNumber" => (string) auth()->user()->phone,
+            "paymentInstrument" => [
+                "type" => "PAY_PAGE"
+            ]
+        ];
+        $encode = base64_encode(json_encode($data));
+        $saltKey = '14907035-1007-46a0-9853-8dbd2edc5dfa';
+        $saltIndex = 1;
+        $string = $encode . "/pg/v1/pay" . $saltKey;
+        $sha256 = hash('sha256', $string);
+        $finalXHeader = $sha256 . '###' . $saltIndex;
+        $merchant_id = "M22IQQIMAPRZY";
+        $finalXHeadercheckStatus = hash('sha256', '/pg/v1/status/' . $merchant_id . '/' . $transactionId . $saltKey) . '###' . $saltIndex;
+
+        return $this->responseJson(true, 200, "Payment Initiated", ['encoded_data' => $encode, 'sha256' => $sha256, 'checksum' => $finalXHeader, 'entry_fee' => $amount * 100, 'order_id' => $transactionId, "status_check_encoded_data" => $finalXHeadercheckStatus]);
     }
 
     public function savetransaction(Request $request)
