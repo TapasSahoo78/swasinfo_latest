@@ -67,6 +67,7 @@ use App\Models\Order;
 use App\Models\ProfileOtherInformation;
 use App\Models\Coupon;
 use App\Models\Rating;
+use App\Services\Payment\PhonePeService as PaymentPhonePeService;
 use Exception;
 use Razorpay\Api\Api;
 
@@ -75,10 +76,12 @@ class UserApiControllers extends BaseController
     //
 
     protected $userService;
+    protected $phonePeService;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, PaymentPhonePeService $phonePeService)
     {
         $this->userService = $userService;
+        $this->phonePeService = $phonePeService;
     }
     /**
      * @OA\post(
@@ -1658,6 +1661,60 @@ class UserApiControllers extends BaseController
             logger($e->getMessage());
             return response()->json(['status' => false, 'message' => 'Something went wrong!', 'data' => (object)[]], 500);
         }
+    }
+
+    public function paymentIntent(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'amount' => 'required|numeric|min:1',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+
+        $amount = $request->input('amount');
+        $callbackUrl = route('payment.callback');
+        // $orderId = uniqid('order_');
+
+        // $response = $this->phonePeService->initiatePayment($amount, $callbackUrl, $orderId);
+
+        // if ($response && $response['success']) {
+        //     return response()->json(['paymentUrl' => $response['data']['instrumentResponse']['redirectUrl']], 200);
+        // }
+
+        $transactionId = 'MT' . uniqid();
+        $userId = 'MUID' . rand(100, 999);
+        // $isTransactionAdded = Transaction::create([
+        //     'user_id' => auth()->user()->id,
+        //     'quiz_id' => $id,
+        //     'transaction_no' => $transactionId,
+        //     'transaction_type' => 'PhonePay',
+        //     'amount' => $amount,
+        // ]);
+        $data = [
+            "merchantId" => "M22LJ4MP063NS",
+            "merchantTransactionId" => $transactionId,
+            "merchantUserId" => $userId,
+            "amount" => $amount * 100,
+            "redirectUrl" => $callbackUrl,
+            "redirectMode" => "POST",
+            "callbackUrl" => $callbackUrl,
+            "mobileNumber" => (string) auth()->user()->phone,
+            "paymentInstrument" => [
+                "type" => "PAY_PAGE"
+            ]
+        ];
+        $encode = base64_encode(json_encode($data));
+        $saltKey = '14907035-1007-46a0-9853-8dbd2edc5dfa';
+        $saltIndex = 1;
+        $string = $encode . "/pg/v1/pay" . $saltKey;
+        $sha256 = hash('sha256', $string);
+        $finalXHeader = $sha256 . '###' . $saltIndex;
+        $merchant_id = "M22IQQIMAPRZY";
+        $finalXHeadercheckStatus = hash('sha256', '/pg/v1/status/' . $merchant_id . '/' . $transactionId . $saltKey) . '###' . $saltIndex;
+
+        return $this->responseJson(true, 200, "Payment Initiated", ['encoded_data' => $encode, 'sha256' => $sha256, 'checksum' => $finalXHeader, 'entry_fee' => $amount * 100, 'order_id' => $transactionId, "status_check_encoded_data" => $finalXHeadercheckStatus]);
     }
 
     public function savetransaction(Request $request)

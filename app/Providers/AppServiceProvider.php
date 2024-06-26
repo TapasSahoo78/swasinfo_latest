@@ -1,13 +1,16 @@
 <?php
 
 namespace App\Providers;
+
 use App\Models\Category;
+use App\Services\Payment\PhonePeService;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Laravel\Passport\Passport;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -17,7 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(PhonePeService::class, function ($app) {
+            return new PhonePeService();
+        });
         Passport::ignoreRoutes();
     }
 
@@ -44,18 +49,18 @@ class AppServiceProvider extends ServiceProvider
             );
         }
 
-        View::composer(['frontend.layouts.partials.navbar','frontend.index'], function ($view) {
+        View::composer(['frontend.layouts.partials.navbar', 'frontend.index'], function ($view) {
             $masterCategories = Category::whereNull('parent_id')->get();
             $view->with('masterCategories', $masterCategories);
         });
 
         View::composer('frontend.layouts.partials.footer', function ($view) {
-            $pages = \App\Models\Menu::where('status', 1)->where('is_footer',true)->orderBy('id', 'asc')->get();
+            $pages = \App\Models\Menu::where('status', 1)->where('is_footer', true)->orderBy('id', 'asc')->get();
             $view->with(['pages' => $pages]);
         });
 
-        View::composer(['frontend.layouts.partials.cart','frontend.layouts.partials.navbar'], function ($view) {
-            $cartProducts = auth()->user()?->carts ?? session()->get('cart',[]);
+        View::composer(['frontend.layouts.partials.cart', 'frontend.layouts.partials.navbar'], function ($view) {
+            $cartProducts = auth()->user()?->carts ?? session()->get('cart', []);
             $view->with(['cartProducts' => $cartProducts]);
         });
     }
