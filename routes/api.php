@@ -97,6 +97,7 @@ Route::namespace('Api\Customer')
         // Route::post('login', [UserApiControllers::class, 'login']);
     });
 
+
 Route::namespace('Api\Common')
     ->prefix('common')
     ->as('common.')
@@ -115,7 +116,6 @@ Route::namespace('Api\Customer')
     ->as('customer.')
     ->middleware('track.api.hits')
     ->group(function () {
-
         Route::middleware('auth:api')->middleware('auth:api', 'track.api.hits')->group(function () {
             Route::controller(UserApiControllers::class)->group(function () {
 
@@ -141,7 +141,7 @@ Route::namespace('Api\Customer')
 
                 Route::post('/recharge', 'rechargeWallet')->name('recharge');
 
-                Route::post('/payment-intent', 'paymentIntent')->name('payment.intent');
+                // Route::post('/payment-intent', 'paymentIntent')->name('payment.intent');
 
                 Route::match(['get', 'post'], '/storetransaction', 'savetransaction')->name('storetransaction');
                 Route::match(['get', 'post'], '/start-pause-subscription', 'startPauseSubscription')->name('startPauseSubscription');
@@ -179,7 +179,6 @@ Route::namespace('Api\Customer')
                 // Route::post('/workout-list', 'workoutList')->name('workout.list');
             });
         });
-
         Route::controller(UserApiControllers::class)->group(function () {
             Route::post('/login', 'login')->name('login');
             Route::post('/flogin', 'flogin')->name('flogin');
@@ -210,8 +209,10 @@ Route::namespace('Api\Customer')
 
         });
         // Route::post('login', [UserApiControllers::class, 'login']);
+        Route::controller(UserApiControllers::class)->group(function () {
+            Route::post('/payment-intent', 'paymentIntent')->name('payment.intent');
+        });
     });
-
 
 
 Route::namespace('Api\Trainer')->prefix('trainers')->as('trainers.')->group(function () {
@@ -250,7 +251,6 @@ Route::namespace('Api\Trainer')->prefix('trainers')->as('trainers.')->group(func
             Route::get('/newuser', 'newUserList')->name('newuser');
         });
     });
-
 
     Route::controller(TrainerApiController::class)->group(function () {
         Route::post('/signup', 'signup')->name('signup');
@@ -329,8 +329,6 @@ Route::namespace('Api\Trainer')->prefix('v1/trainers')->as('trainers.')->group(f
 });
 
 Route::namespace('Api\Trainer')->prefix('v2/trainers')->as('trainers.')->group(function () {
-
-
     Route::middleware('auth:api')->group(function () {
         Route::controller(TrainerApiController::class)->group(function () {
             Route::post('/create-profile', 'createProfile')->name('create.profile');
@@ -354,8 +352,6 @@ Route::namespace('Api\Trainer')->prefix('v2/trainers')->as('trainers.')->group(f
             Route::match(['get', 'post'], '/customer-request-list', 'customerCallRequestList')->name('customer.call.request.list');
         });
     });
-
-
     Route::controller(TrainerApiController::class)->group(function () {
         Route::post('/signup', 'signup')->name('signup');
         Route::post('/flogin', 'flogin')->name('flogin');
@@ -378,6 +374,4 @@ Route::namespace('Api\Trainer')->prefix('v2/trainers')->as('trainers.')->group(f
 
     });
     // Route::post('login', [UserApiControllers::class, 'login']);
-
-
 });

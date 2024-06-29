@@ -157,8 +157,6 @@ class TrainerApiController extends BaseController
         return $this->responseJson(true, 200, "", $customers);
     }
 
-
-
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -251,7 +249,9 @@ class TrainerApiController extends BaseController
             $error = ['error' => $validator->errors()->all()];
             return $this->responseJson(false, 200, $validator->errors()->first(), "");
         }
+        $otp = genrateOtp(4);
         if ($request->is_email) {
+
             $request->merge(['email' => $request->username]);
             $userFound = $this->trainerService->findUserByEmail($request->username);
             $data = [
@@ -326,8 +326,6 @@ class TrainerApiController extends BaseController
 
     public function createProfile(Request $request)
     {
-
-
         $userId = auth()->user()->id;
         $validator = Validator::make($request->all(), [
             'name' => 'nullable|string',
@@ -438,7 +436,7 @@ class TrainerApiController extends BaseController
             // $fcm =  auth()->user()->fcm_token;
             // $this->sendNotificationtest($requestparam, $fcm);
 
-            // 
+            //
 
 
             $notification = new Notification;
@@ -1296,7 +1294,7 @@ class TrainerApiController extends BaseController
 
 
 
-   
+
 
 
     public function deleteCustomerFood(Request $request, $id)
