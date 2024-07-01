@@ -53,9 +53,13 @@ class TrainerApiController extends BaseController
     {
 
         $validator = Validator::make($request->all(), [
+            'first_name' => 'required|string|min:2|max:30',
+            'last_name' => 'required|string|min:2|max:30',
+            'email' => 'required|unique:users,email',
+            'mobile_number' => 'required|unique:users,mobile_number',
             'password' => 'required|string|min:6',
-            'username' => 'required|nullable|string',
-            'is_email' => 'required|boolean'
+            // 'username' => 'required|nullable|string',
+            // 'is_email' => 'required|boolean'
         ]);
 
         if ($validator->fails()) {
@@ -64,27 +68,30 @@ class TrainerApiController extends BaseController
         }
         try {
             $otp = genrateOtp(4);
+            $request->merge(['is_email' => 0]);
             if ($request->is_email) {
-                $request->merge(['email' => $request->username]);
-                $userFound = $this->trainerService->findUserByEmail($request->username);
+                $request->merge(['email' => $request->email]);
+                $userFound = $this->trainerService->findUserByEmail($request->email);
                 $data = [
                     'otp' => $otp,
                 ];
-                $user = $request->username;
+                $user = $request->email;
                 Mail::send('email.otpverification', $data, function ($message) use ($user) {
                     $message->to($user);
                     $message->subject('Your OTP Verification Code');
                 });
             } else {
-                $request->merge(['mobile_number' => $request->username]);
-                $userFound = $this->trainerService->findUserByMobile($request->username);
+                $request->merge(['mobile_number' => $request->mobile_number]);
+                $userFound = $this->trainerService->findUserByMobile($request->mobile_number);
             }
 
-            if (!empty($userFound)) {
-                return $this->responseJson(false, 200, "You have already registered", "");
-            };
+            // if (!empty($userFound)) {
+            //     return $this->responseJson(false, 200, "You have already registered", "");
+            // };
+
             $request->merge(['verification_code' => $otp]);
             $request->merge(['password' => $request->password]);
+            $request->merge(['username' => rand()]);
 
             $userExist = $this->trainerService->createOrUpdateCustomer($request->except('_token'), $userFound?->id ?? NULL);
 
