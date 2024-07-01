@@ -1700,7 +1700,8 @@ class UserApiControllers extends BaseController
             "redirectUrl" => $callbackUrl,
             "redirectMode" => "POST",
             "callbackUrl" => $callbackUrl,
-            "mobileNumber" => (string) auth()->user()->phone ?? '8918906608',
+            // "mobileNumber" => (string) auth()->user()->phone ?? '8918906608',
+            "mobileNumber" => '8918906608',
             "paymentInstrument" => [
                 "type" => "PAY_PAGE"
             ]
