@@ -1683,8 +1683,7 @@ class UserApiControllers extends BaseController
         //     return response()->json(['paymentUrl' => $response['data']['instrumentResponse']['redirectUrl']], 200);
         // }
 
-        $transactionId = 'MT' . uniqid();
-        $userId = 'MUID' . rand(100, 999);
+
         // $isTransactionAdded = Transaction::create([
         //     'user_id' => auth()->user()->id,
         //     'quiz_id' => $id,
@@ -1692,15 +1691,18 @@ class UserApiControllers extends BaseController
         //     'transaction_type' => 'PhonePay',
         //     'amount' => $amount,
         // ]);
+        // "mobileNumber" => (string) auth()->user()->phone ?? '8918906608',
+        $transactionId = 'MT' . uniqid();
+        $userId = 'MUID' . rand(100, 999);
         $data = [
-            "merchantId" => "M22LJ4MP063NS",
+            // "merchantId" => "M22LJ4MP063NS",
+            "merchantId" => "M22IQQIMAPRZY",
             "merchantTransactionId" => $transactionId,
             "merchantUserId" => $userId,
             "amount" => $amount * 100,
             "redirectUrl" => $callbackUrl,
             "redirectMode" => "POST",
             "callbackUrl" => $callbackUrl,
-            // "mobileNumber" => (string) auth()->user()->phone ?? '8918906608',
             "mobileNumber" => '8918906608',
             "paymentInstrument" => [
                 "type" => "PAY_PAGE"
