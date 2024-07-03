@@ -1683,8 +1683,7 @@ class UserApiControllers extends BaseController
         //     return response()->json(['paymentUrl' => $response['data']['instrumentResponse']['redirectUrl']], 200);
         // }
 
-        $transactionId = 'MT' . uniqid();
-        $userId = 'MUID' . rand(100, 999);
+
         // $isTransactionAdded = Transaction::create([
         //     'user_id' => auth()->user()->id,
         //     'quiz_id' => $id,
@@ -1692,27 +1691,32 @@ class UserApiControllers extends BaseController
         //     'transaction_type' => 'PhonePay',
         //     'amount' => $amount,
         // ]);
+        // "mobileNumber" => (string) auth()->user()->phone ?? '8918906608',
+        $transactionId = 'MT' . uniqid();
+        $userId = 'MUID' . rand(100, 999);
         $data = [
-            "merchantId" => "M22LJ4MP063NS",
+            "merchantId" => "PGTESTPAYUAT", // Testing
+            // "merchantId" => "M22IQQIMAPRZY", // Production
             "merchantTransactionId" => $transactionId,
             "merchantUserId" => $userId,
             "amount" => $amount * 100,
             "redirectUrl" => $callbackUrl,
             "redirectMode" => "POST",
             "callbackUrl" => $callbackUrl,
-            // "mobileNumber" => (string) auth()->user()->phone ?? '8918906608',
             "mobileNumber" => '8918906608',
             "paymentInstrument" => [
                 "type" => "PAY_PAGE"
             ]
         ];
         $encode = base64_encode(json_encode($data));
-        $saltKey = '14907035-1007-46a0-9853-8dbd2edc5dfa';
+        // $saltKey = '14907035-1007-46a0-9853-8dbd2edc5dfa';// Production
+        $saltKey = '099eb0cd-02cf-4e2a-8aca-3e6c6aff0399'; //// Testing
         $saltIndex = 1;
         $string = $encode . "/pg/v1/pay" . $saltKey;
         $sha256 = hash('sha256', $string);
         $finalXHeader = $sha256 . '###' . $saltIndex;
-        $merchant_id = "M22IQQIMAPRZY";
+        // $merchant_id = "M22IQQIMAPRZY";// Production
+        $merchant_id = "PGTESTPAYUAT"; // Testing
         $finalXHeadercheckStatus = hash('sha256', '/pg/v1/status/' . $merchant_id . '/' . $transactionId . $saltKey) . '###' . $saltIndex;
 
         return $this->responseJson(true, 200, "Payment Initiated", ['encoded_data' => $encode, 'sha256' => $sha256, 'checksum' => $finalXHeader, 'entry_fee' => $amount * 100, 'order_id' => $transactionId, "status_check_encoded_data" => $finalXHeadercheckStatus]);
