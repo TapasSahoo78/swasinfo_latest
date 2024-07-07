@@ -183,10 +183,10 @@ class TrainerApiController extends BaseController
                 'otp' => $otp,
             ];
             $user = $request->username;
-            Mail::send('email.otpverification', $data, function ($message) use ($user) {
-                $message->to($user);
-                $message->subject('Your OTP Verification Code');
-            });
+            // Mail::send('email.otpverification', $data, function ($message) use ($user) {
+            //     $message->to($user);
+            //     $message->subject('Your OTP Verification Code');
+            // });
         } else {
             $loginParam = ['mobile_number' => $request->username];
         }
