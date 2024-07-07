@@ -34,6 +34,7 @@ use App\Models\UserFootitem;
 use App\Models\UserWorkoutItem;
 use App\Models\LiveSession;
 use App\Models\WorkoutDetails;
+use Illuminate\Support\Facades\File;
 
 class TrainerApiController extends BaseController
 {
@@ -53,8 +54,8 @@ class TrainerApiController extends BaseController
     {
 
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required|string|min:2|max:30',
-            'last_name' => 'required|string|min:2|max:30',
+            // 'first_name' => 'required|string|min:2|max:30',
+            // 'last_name' => 'required|string|min:2|max:30',
             'email' => 'required|unique:users,email',
             'mobile_number' => 'required|unique:users,mobile_number',
             'password' => 'required|string|min:6',
@@ -807,21 +808,21 @@ class TrainerApiController extends BaseController
 
     public function updateProfile(Request $request)
     {
-
         $userId = auth()->user()->id;
         $validator = Validator::make($request->all(), [
-            'name' => 'nullable|string',
+            'first_name' => 'nullable|string',
+            'last_name' => 'nullable|string',
+            'expertise' => 'nullable',
+
+            'ac_no' => 'nullable|numeric|min:9999999',
+            'ifsc_code' => 'nullable|string',
+
             'gender' => 'nullable|string',
             'age' => 'nullable|numeric|min:1',
-
             'preffered_language' => 'nullable|string',
-            'expertise' => 'nullable',
             'qualification_name' => 'nullable|string',
-
             'intro' => 'nullable|string',
-            'ac_no' => 'nullable|numeric|min:9999999',
             'reenter_ac_no' => 'nullable|numeric|min:9999999|same:ac_no',
-            'ifsc_code' => 'nullable|string',
             'bank_name' => 'nullable|string',
 
         ]);
@@ -831,106 +832,134 @@ class TrainerApiController extends BaseController
         }
         $guidance = is_array($request->guidance) ? $request->guidance : explode(",", $request->guidance);
         $request->merge(['guidance' => $guidance]);
-        $userData =  $this->trainerService->updateOrCreateProfile($request->all(), $userId);
+        // $userData =  $this->trainerService->updateOrCreateProfile($request->all(), $userId);
+        $userData = User::where('id', $userId)->first();
+        $userData->first_name = $request->first_name;
+        $userData->last_name = $request->last_name;
+        $userData->is_profile_completed = 1;
+        $userData->save();
 
         $trainerdetails = TrainerDetail::where('user_id', $userId)->first();
 
         try {
-            $base64Image_for_profile = $request->base64Image_for_profile;
-
-            $base64Image_for_qualification = $request->base64Image_for_qualification;
-
-            $base64Image_for_bank_cheque = $request->base64Image_for_bank_cheque;
-
-            $base64Image_for_id_proof = $request->base64Image_for_id_proof;
-
+            if ($request->hasFile('profile_photo')) {
+                $file = $request->file('profile_photo');
+                $fileName = time() . '.' . $file->getClientOriginalExtension();
+                // Check if there is an existing image associated with the model
+                if (File::exists(public_path('uploads/' . $trainerdetails?->profile_photo))) {
+                    File::delete(public_path('uploads/' . $trainerdetails?->profile_photo));
+                }
+                $file->move('uploads', $fileName);
+            }
+            if ($request->hasFile('trans_photo_one')) {
+                $file = $request->file('trans_photo_one');
+                $fileName2 = time() . '.' . $file->getClientOriginalExtension();
+                // Check if there is an existing image associated with the model
+                if (File::exists(public_path('uploads/' . $trainerdetails?->trans_photo_one))) {
+                    File::delete(public_path('uploads/' . $trainerdetails?->trans_photo_one));
+                }
+                $file->move('uploads', $fileName2);
+            }
+            if ($request->hasFile('trans_photo_two')) {
+                $file = $request->file('trans_photo_two');
+                $fileName3 = time() . '.' . $file->getClientOriginalExtension();
+                // Check if there is an existing image associated with the model
+                if (File::exists(public_path('uploads/' . $trainerdetails?->trans_photo_two))) {
+                    File::delete(public_path('uploads/' . $trainerdetails?->trans_photo_two));
+                }
+                $file->move('uploads', $fileName3);
+            }
+            if ($request->hasFile('trans_photo_three')) {
+                $file = $request->file('trans_photo_three');
+                $fileName4 = time() . '.' . $file->getClientOriginalExtension();
+                // Check if there is an existing image associated with the model
+                if (File::exists(public_path('uploads/' . $trainerdetails?->trans_photo_three))) {
+                    File::delete(public_path('uploads/' . $trainerdetails?->trans_photo_three));
+                }
+                $file->move('uploads', $fileName4);
+            }
+            if ($request->hasFile('trans_photo_four')) {
+                $file = $request->file('trans_photo_four');
+                $fileName5 = time() . '.' . $file->getClientOriginalExtension();
+                // Check if there is an existing image associated with the model
+                if (File::exists(public_path('uploads/' . $trainerdetails?->trans_photo_four))) {
+                    File::delete(public_path('uploads/' . $trainerdetails?->trans_photo_four));
+                }
+                $file->move('uploads', $fileName5);
+            }
 
             $slot_selectjson = json_encode($request->slot_select);
-
-            //dd($base64Image_for_id_proof);
-
-
-
-
-
-            $decodedImage_for_profile = base64_decode($base64Image_for_profile);
-            $decodedImage_for_qualification = base64_decode($base64Image_for_qualification);
-            $decodedImage_for_bank_cheque = base64_decode($base64Image_for_bank_cheque);
-            $decodedImage_for_id_proof = base64_decode($base64Image_for_id_proof);
-
-            $fileName = uniqid() . '.jpeg';
-            $fileNameQualification = uniqid() . '.jpeg';
-            $fileNameBankCheque = uniqid() . '.jpeg';
-            $fileNameIdProof = uniqid() . '.jpeg';
-
-
-            file_put_contents(public_path('profile_picture/' . $fileName), $decodedImage_for_profile);
-            file_put_contents(public_path('qualification/' . $fileNameQualification), $decodedImage_for_qualification);
-            file_put_contents(public_path('bankcheque/' . $fileNameBankCheque), $decodedImage_for_bank_cheque);
-            file_put_contents(public_path('id_proof/' . $fileNameIdProof), $decodedImage_for_id_proof);
-
-            //$imageUrl = url('invoices/' . $fileName);
-
             $loggedInTrainer = auth()->user();
-            //dd($loggedInTrainer->id);
 
             $trainer_detail = TrainerDetail::where('user_id', $userId)->first();
+            if (empty($trainer_detail)) {
+                $trainer_detail = new TrainerDetail();
+            }
             $trainer_detail->user_id = $loggedInTrainer->id;
-            $trainer_detail->name = $request->name;
+            $trainer_detail->name = $request->first_name . ' ' . $request->last_name;
+            $trainer_detail->expertise = $request->expertise;
+            $trainer_detail->experience = $request->experience;
+            $trainer_detail->address = $request->address;
+            $trainer_detail->ac_no = $request->ac_no;
+            $trainer_detail->ifsc_code = $request->ifsc_code;
+
+            $trainer_detail->slot_day = $request->slot_day;
+            $trainer_detail->from_time = $request->from_time;
+            $trainer_detail->to_time = $request->to_time;
+
+            $trainer_detail->profile_photo = $fileName ?? $trainer_detail?->profile_photo;
+            $trainer_detail->trans_photo_one = $fileName2 ?? $trainer_detail?->trans_photo_one;
+            $trainer_detail->trans_photo_two = $fileName3 ?? $trainer_detail?->trans_photo_two;
+            $trainer_detail->trans_photo_three = $fileName4 ?? $trainer_detail?->trans_photo_three;
+            $trainer_detail->trans_photo_four = $fileName5 ?? $trainer_detail?->trans_photo_four;
+
             $trainer_detail->gender = $request->gender;
             $trainer_detail->age = $request->age;
-
             $trainer_detail->preffered_language = $request->preffered_language;
-            $trainer_detail->expertise = $request->expertise;
             $trainer_detail->qualification_name = $request->qualification_name;
             $trainer_detail->intro = $request->intro;
-            $trainer_detail->ac_no = $request->ac_no;
             $trainer_detail->reenter_ac_no = $request->reenter_ac_no;
-            $trainer_detail->experience = $request->experience;
-            $trainer_detail->ifsc_code = $request->ifsc_code;
             $trainer_detail->bank_name = $request->bank_name;
 
-            if ($request->base64Image_for_profile != "") {
-                $trainer_detail->profile_picture_file = $fileName;
-            } else {
-                $trainer_detail->profile_picture_file = $trainerdetails->profile_picture_file;;
-            }
-            if ($request->base64Image_for_qualification != "") {
-                $trainer_detail->qualification_file = $fileNameQualification;
-            } else {
-                $trainer_detail->qualification_file = $trainerdetails->qualification_file;
-            }
-            if ($request->base64Image_for_bank_cheque != "") {
-                $trainer_detail->bank_check_file = $fileNameBankCheque;
-            } else {
-                $trainer_detail->bank_check_file = $trainerdetails->bank_check_file;
-            }
-            if ($request->base64Image_for_id_proof != "") {
-                $trainer_detail->id_proof_file = $fileNameIdProof;
-            } else {
-                $trainer_detail->id_proof_file = $trainerdetails->id_proof_file;
-            }
+            // if ($request->base64Image_for_profile != "") {
+            //     $trainer_detail->profile_picture_file = $fileName;
+            // } else {
+            //     $trainer_detail->profile_picture_file = $trainerdetails->profile_picture_file;;
+            // }
+            // if ($request->base64Image_for_qualification != "") {
+            //     $trainer_detail->qualification_file = $fileNameQualification;
+            // } else {
+            //     $trainer_detail->qualification_file = $trainerdetails->qualification_file;
+            // }
+            // if ($request->base64Image_for_bank_cheque != "") {
+            //     $trainer_detail->bank_check_file = $fileNameBankCheque;
+            // } else {
+            //     $trainer_detail->bank_check_file = $trainerdetails->bank_check_file;
+            // }
+            // if ($request->base64Image_for_id_proof != "") {
+            //     $trainer_detail->id_proof_file = $fileNameIdProof;
+            // } else {
+            //     $trainer_detail->id_proof_file = $trainerdetails->id_proof_file;
+            // }
 
-            if ($request->slot_select != "") {
-
+            if (isset($request->slot_select) && $request->slot_select != "") {
                 //$trainer_detail->id_proof_file=$request->guidance;
                 $trainer_detail->slot_select = $slot_selectjson;
             } else {
-
-                $trainer_detail->slot_select = $trainerdetails->slot_select;
+                $trainer_detail->slot_select = $trainerdetails->slot_select ?? NULL;
             }
             $trainer_detail->save();
 
-
             $trainerdetails = TrainerDetail::where('user_id', $userId)->first();
-            $fileName = $trainerdetails->profile_picture_file;
-            $fileNameQualification = $trainerdetails->qualification_file;
-            $fileNameBankCheque = $trainerdetails->bank_check_file;
-            $fileNameIdProof = $trainerdetails->id_proof_file;
-            $imageUrl = url('profile_picture/' . $fileName);
-            $qualification_url = url('qualification/' . $fileNameQualification);
-            $bank_cheque_url = url('bankcheque/' . $fileNameBankCheque);
-            $id_proof_url = url('id_proof/' . $fileNameIdProof);
+            $imageUrl =   url('uploads/' . $trainerdetails->profile_photo);
+            $trans_photo_one = url('uploads/' . $trainerdetails->trans_photo_one);
+            $trans_photo_two = url('uploads/' . $trainerdetails->trans_photo_two);
+            $trans_photo_three = url('uploads/' . $trainerdetails->trans_photo_three);
+            $trans_photo_four = url('uploads/' . $trainerdetails->trans_photo_four);
+            // $imageUrl = url('profile_picture/' . $fileName);
+            // $qualification_url = url('qualification/' . $fileNameQualification);
+            // $bank_cheque_url = url('bankcheque/' . $fileNameBankCheque);
+            // $id_proof_url = url('id_proof/' . $fileNameIdProof);
 
             //return response()->json(['id_proof_url' => $id_proof_url], 201);
             $notification = new Notification;
@@ -938,9 +967,24 @@ class TrainerApiController extends BaseController
             $notification->massage = "Profile is update successfully.";
             $notification->save();
 
-
             if ($userData) {
-                return $this->responseJson(true, 200, "Profile Data", ['name_prefix' => $userData->name_prefix, 'name' => $userData->first_name, 'gender' => $trainerdetails->gender, 'age' => $trainerdetails->age, 'preffered_language' => $trainerdetails->preffered_language, 'expertise' => $trainerdetails->expertise, 'qualification_name ' => $trainerdetails->qualification_name, 'intro ' => $trainerdetails->intro, 'type ' => $userData->type, 'experience ' => $trainerdetails->experience, 'ac_no ' => $trainerdetails->ac_no, 'reenter_ac_no ' => $trainerdetails->reenter_ac_no, 'slot' => !empty($trainerdetails->slot_select) ? json_decode($trainerdetails->slot_select, true) : [], 'bank_name' => $trainerdetails->bank_name, 'ifsc_code' => $trainerdetails->ifsc_code, 'profile_picture_url' => $imageUrl, 'qualification_url' => $qualification_url, 'bank_cheque_url' => $bank_cheque_url, 'id_proof_url' => $id_proof_url, 'is_profile_completed' => $userData->is_profile_completed]);
+                return $this->responseJson(true, 200, "Profile Data", [
+                    'first_name' => $userData->first_name, 'last_name' => $userData->last_name, 'expertise' => $trainerdetails->expertise,  'experience ' => $trainerdetails->experience, 'ac_no ' => $trainerdetails->ac_no, 'reenter_ac_no ' => $trainerdetails->reenter_ac_no,
+                    // 'slot' => !empty($trainerdetails->slot_select) ? json_decode($trainerdetails->slot_select, true) : [],
+                    'bank_name' => $trainerdetails->bank_name, 'ifsc_code' => $trainerdetails->ifsc_code, 'profile_picture_url' => $imageUrl,
+
+                    'address' => $trainerdetails->address,
+                    'trans_photo_one' => $trans_photo_one,
+                    'trans_photo_two' => $trans_photo_two,
+                    'trans_photo_three' => $trans_photo_three,
+                    'trans_photo_four' => $trans_photo_four,
+
+                    'slot_day' => $trainerdetails->slot_day,
+                    'from_time' => $trainerdetails->from_time,
+                    'to_time' => $trainerdetails->to_time,
+
+                    'is_profile_completed' => $userData->is_profile_completed
+                ]);
             }
         } catch (\Throwable $th) {
             return response()->json(['status' => false, 'message' => $th->getMessage() . '/' . $th->getLine() . '/' . $th->getFile(), 'data' => (object)[]], 500);
