@@ -849,7 +849,7 @@ class TrainerApiController extends BaseController
                 if (File::exists(public_path('uploads/' . $trainerdetails?->profile_photo))) {
                     File::delete(public_path('uploads/' . $trainerdetails?->profile_photo));
                 }
-                $file->move('uploads', $fileName);
+                $file->move(public_path('uploads'), $fileName);
             }
             if ($request->hasFile('trans_photo_one')) {
                 $file = $request->file('trans_photo_one');
@@ -858,7 +858,7 @@ class TrainerApiController extends BaseController
                 if (File::exists(public_path('uploads/' . $trainerdetails?->trans_photo_one))) {
                     File::delete(public_path('uploads/' . $trainerdetails?->trans_photo_one));
                 }
-                $file->move('uploads', $fileName2);
+                $file->move(public_path('uploads'), $fileName2);
             }
             if ($request->hasFile('trans_photo_two')) {
                 $file = $request->file('trans_photo_two');
@@ -867,7 +867,7 @@ class TrainerApiController extends BaseController
                 if (File::exists(public_path('uploads/' . $trainerdetails?->trans_photo_two))) {
                     File::delete(public_path('uploads/' . $trainerdetails?->trans_photo_two));
                 }
-                $file->move('uploads', $fileName3);
+                $file->move(public_path('uploads'), $fileName3);
             }
             if ($request->hasFile('trans_photo_three')) {
                 $file = $request->file('trans_photo_three');
@@ -876,7 +876,7 @@ class TrainerApiController extends BaseController
                 if (File::exists(public_path('uploads/' . $trainerdetails?->trans_photo_three))) {
                     File::delete(public_path('uploads/' . $trainerdetails?->trans_photo_three));
                 }
-                $file->move('uploads', $fileName4);
+                $file->move(public_path('uploads'), $fileName4);
             }
             if ($request->hasFile('trans_photo_four')) {
                 $file = $request->file('trans_photo_four');
@@ -885,7 +885,7 @@ class TrainerApiController extends BaseController
                 if (File::exists(public_path('uploads/' . $trainerdetails?->trans_photo_four))) {
                     File::delete(public_path('uploads/' . $trainerdetails?->trans_photo_four));
                 }
-                $file->move('uploads', $fileName5);
+                $file->move(public_path('uploads'), $fileName5);
             }
 
             $slot_selectjson = json_encode($request->slot_select);
