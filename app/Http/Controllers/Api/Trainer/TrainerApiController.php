@@ -844,7 +844,7 @@ class TrainerApiController extends BaseController
         try {
             if ($request->hasFile('profile_photo')) {
                 $file = $request->file('profile_photo');
-                $fileName = time() . '.' . $file->getClientOriginalExtension();
+                $fileName = rand() . time() . '.' . $file->getClientOriginalExtension();
                 // Check if there is an existing image associated with the model
                 if (File::exists(public_path('uploads/' . $trainerdetails?->profile_photo))) {
                     File::delete(public_path('uploads/' . $trainerdetails?->profile_photo));
@@ -853,7 +853,7 @@ class TrainerApiController extends BaseController
             }
             if ($request->hasFile('trans_photo_one')) {
                 $file = $request->file('trans_photo_one');
-                $fileName2 = time() . '.' . $file->getClientOriginalExtension();
+                $fileName2 = rand() . time() . '.' . $file->getClientOriginalExtension();
                 // Check if there is an existing image associated with the model
                 if (File::exists(public_path('uploads/' . $trainerdetails?->trans_photo_one))) {
                     File::delete(public_path('uploads/' . $trainerdetails?->trans_photo_one));
@@ -862,7 +862,7 @@ class TrainerApiController extends BaseController
             }
             if ($request->hasFile('trans_photo_two')) {
                 $file = $request->file('trans_photo_two');
-                $fileName3 = time() . '.' . $file->getClientOriginalExtension();
+                $fileName3 = rand() . time() . '.' . $file->getClientOriginalExtension();
                 // Check if there is an existing image associated with the model
                 if (File::exists(public_path('uploads/' . $trainerdetails?->trans_photo_two))) {
                     File::delete(public_path('uploads/' . $trainerdetails?->trans_photo_two));
@@ -871,7 +871,7 @@ class TrainerApiController extends BaseController
             }
             if ($request->hasFile('trans_photo_three')) {
                 $file = $request->file('trans_photo_three');
-                $fileName4 = time() . '.' . $file->getClientOriginalExtension();
+                $fileName4 = rand() . time() . '.' . $file->getClientOriginalExtension();
                 // Check if there is an existing image associated with the model
                 if (File::exists(public_path('uploads/' . $trainerdetails?->trans_photo_three))) {
                     File::delete(public_path('uploads/' . $trainerdetails?->trans_photo_three));
@@ -880,7 +880,7 @@ class TrainerApiController extends BaseController
             }
             if ($request->hasFile('trans_photo_four')) {
                 $file = $request->file('trans_photo_four');
-                $fileName5 = time() . '.' . $file->getClientOriginalExtension();
+                $fileName5 = rand() . time() . '.' . $file->getClientOriginalExtension();
                 // Check if there is an existing image associated with the model
                 if (File::exists(public_path('uploads/' . $trainerdetails?->trans_photo_four))) {
                     File::delete(public_path('uploads/' . $trainerdetails?->trans_photo_four));
