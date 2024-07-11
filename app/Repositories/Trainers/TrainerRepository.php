@@ -285,6 +285,7 @@ class TrainerRepository extends BaseRepository implements TrainerContract
         $attributes['email_verified_at'] = NULL;
         $attributes['password'] = bcrypt($attributes['password']);
         $attributes['is_approve'] = 0;
+        $attributes['is_profile_completed'] = 0;
         $attributes['is_blocked'] = 0;
         $isCustomerCreated = $this->create($attributes);
         if ($isCustomerCreated) {
