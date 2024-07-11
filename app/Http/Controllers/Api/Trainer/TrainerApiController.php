@@ -209,10 +209,8 @@ class TrainerApiController extends BaseController
         }
     }
 
-
     public function loginVerify(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'otp' => 'required|numeric|digits:4',
             'username' => 'required|nullable|string',
@@ -295,6 +293,7 @@ class TrainerApiController extends BaseController
     public function createPassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'verification_code' => 'required|min:4|string',
             'new_password' => 'required|min:8|string',
             'confirm_password' => 'required|same:new_password',
             'username'              => 'required|string',
@@ -313,6 +312,10 @@ class TrainerApiController extends BaseController
         }
         if (is_null($userFound)) {
             return $this->responseJson(false, 200, "User Not Found", "");
+        }
+
+        if ($request->verification_code != $userFound->verification_code) {
+            return $this->responseJson(false, 200, "OTP not matched", "");
         }
 
         /* $otp = genrateOtp(4); */
