@@ -843,7 +843,7 @@ class TrainerApiController extends BaseController
         $userData->last_name = $request->last_name;
         $userData->is_profile_completed = 1;
         $userData->save();
-
+dd($userData->roles);
         if (empty($userData->roles)) {
             $isCustomerRole = $this->roleModel->where('slug',$request->title)->first();
             $userData->roles()->sync($isCustomerRole->id);
@@ -976,6 +976,7 @@ class TrainerApiController extends BaseController
             $trans_photo_two = url('uploads/' . $trainerdetails->trans_photo_two);
             $trans_photo_three = url('uploads/' . $trainerdetails->trans_photo_three);
             $trans_photo_four = url('uploads/' . $trainerdetails->trans_photo_four);
+            $trans_photo_five = url('uploads/' . $trainerdetails->trans_photo_five);
             // $imageUrl = url('profile_picture/' . $fileName);
             // $qualification_url = url('qualification/' . $fileNameQualification);
             // $bank_cheque_url = url('bankcheque/' . $fileNameBankCheque);
@@ -998,6 +999,7 @@ class TrainerApiController extends BaseController
                     'trans_photo_two' => $trans_photo_two,
                     'trans_photo_three' => $trans_photo_three,
                     'trans_photo_four' => $trans_photo_four,
+                    'trans_photo_five' => $trans_photo_five,
 
                     'slot_day' => $trainerdetails->slot_day,
                     'from_time' => $trainerdetails->from_time,
