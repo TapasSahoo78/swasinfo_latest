@@ -171,11 +171,6 @@ Route::namespace('Api\Customer')
                 Route::get('/orderlist', 'orderList')->name('orderlist');
                 Route::post('/addrating', 'addRating')->name('addrating');
 
-
-
-
-
-
                 // Route::post('/workout-list', 'workoutList')->name('workout.list');
             });
         });
@@ -200,10 +195,6 @@ Route::namespace('Api\Customer')
             Route::post('/app-version', 'postAppVersion')->name('app-version');
             Route::get('/get-app-version', 'getAppVersion')->name('get-app-version');
             Route::get('/get-location/{pinCode}', 'getLocation')->name('get-location');
-
-
-
-
 
             //Route::post('/workout-list', 'workoutList')->name('workout.list');
 

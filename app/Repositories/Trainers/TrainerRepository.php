@@ -288,10 +288,10 @@ class TrainerRepository extends BaseRepository implements TrainerContract
         $attributes['is_profile_completed'] = 0;
         $attributes['is_blocked'] = 0;
         $isCustomerCreated = $this->create($attributes);
-        if ($isCustomerCreated) {
-            $isCustomerRole = $this->roleModel->where('slug', 'trainer')->first();
-            $isCustomerCreated->roles()->sync($isCustomerRole->id);
-        }
+        // if ($isCustomerCreated) {
+        //     $isCustomerRole = $this->roleModel->where('slug', 'trainer')->first();
+        //     $isCustomerCreated->roles()->sync($isCustomerRole->id);
+        // }
         return $isCustomerCreated;
     }
 

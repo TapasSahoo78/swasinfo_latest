@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('trans_photo_two')->nullable()->after('trans_photo_one');
             $table->string('trans_photo_three')->nullable()->after('trans_photo_two');
             $table->string('trans_photo_four')->nullable()->after('trans_photo_three');
+            $table->string('trans_photo_five')->nullable()->after('trans_photo_four');
+
             $table->longText('address')->nullable()->after('trans_photo_four');
 
             $table->string('slot_day')->nullable()->after('address');
