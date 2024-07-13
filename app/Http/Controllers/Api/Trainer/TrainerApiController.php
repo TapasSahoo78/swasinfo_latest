@@ -843,7 +843,7 @@ class TrainerApiController extends BaseController
         $userData->last_name = $request->last_name;
         $userData->is_profile_completed = 1;
         $userData->save();
-dd($userData->roles());
+
         if (empty($userData->roles)) {
             $isCustomerRole = $this->roleModel->where('slug',$request->title)->first();
             $userData->roles()->sync($isCustomerRole->id);
