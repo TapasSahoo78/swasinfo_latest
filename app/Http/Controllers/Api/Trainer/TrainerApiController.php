@@ -25,7 +25,7 @@ use App\Http\Resources\Api\Customer\WorkoutPlanApiCollection;
 use App\Http\Resources\Api\Customer\UserTrainerDetailApiCollection;
 use App\Http\Resources\Api\Customer\FoodApiCollection;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\Role;
 use Carbon\Carbon;
 use App\Models\UserFoodItemDetail;
 use App\Http\Resources\Api\Customer\DietApiCollection;
@@ -41,13 +41,14 @@ class TrainerApiController extends BaseController
 
     protected $trainerService;
     protected $roleService;
-
+    protected $roleModel;
     protected $userService;
-    public function __construct(TrainerService $trainerService, UserService $userService, RoleService $roleService)
+    public function __construct(TrainerService $trainerService, UserService $userService, RoleService $roleService,Role $roleModel)
     {
         $this->trainerService = $trainerService;
         $this->userService    = $userService;
         $this->roleService    = $roleService;
+        $this->roleModel        = $roleModel;
     }
 
     public function signup(Request $request)
@@ -828,6 +829,7 @@ class TrainerApiController extends BaseController
             'reenter_ac_no' => 'nullable|numeric|min:9999999|same:ac_no',
             'bank_name' => 'nullable|string',
 
+            'title' => 'sometimes|in:trainer,doctor',
         ]);
         if ($validator->fails()) {
             $error = ['error' => $validator->errors()->all()];
@@ -841,6 +843,11 @@ class TrainerApiController extends BaseController
         $userData->last_name = $request->last_name;
         $userData->is_profile_completed = 1;
         $userData->save();
+
+        if (empty($userData->roles)) {
+            $isCustomerRole = $this->roleModel->where('slug',$request->title)->first();
+            $userData->roles()->sync($isCustomerRole->id);
+        }
 
         $trainerdetails = TrainerDetail::where('user_id', $userId)->first();
 
@@ -890,6 +897,15 @@ class TrainerApiController extends BaseController
                 }
                 $file->move(public_path('uploads'), $fileName5);
             }
+            if ($request->hasFile('trans_photo_five')) {
+                $file = $request->file('trans_photo_five');
+                $fileName6 = rand() . time() . '.' . $file->getClientOriginalExtension();
+                // Check if there is an existing image associated with the model
+                if (File::exists(public_path('uploads/' . $trainerdetails?->trans_photo_five))) {
+                    File::delete(public_path('uploads/' . $trainerdetails?->trans_photo_five));
+                }
+                $file->move(public_path('uploads'), $fileName6);
+            }
 
             $slot_selectjson = json_encode($request->slot_select);
             $loggedInTrainer = auth()->user();
@@ -915,6 +931,7 @@ class TrainerApiController extends BaseController
             $trainer_detail->trans_photo_two = $fileName3 ?? $trainer_detail?->trans_photo_two;
             $trainer_detail->trans_photo_three = $fileName4 ?? $trainer_detail?->trans_photo_three;
             $trainer_detail->trans_photo_four = $fileName5 ?? $trainer_detail?->trans_photo_four;
+            $trainer_detail->trans_photo_five = $fileName6 ?? $trainer_detail?->trans_photo_five;
 
             $trainer_detail->gender = $request->gender;
             $trainer_detail->age = $request->age;
