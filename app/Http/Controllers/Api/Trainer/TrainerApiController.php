@@ -992,7 +992,15 @@ class TrainerApiController extends BaseController
                 return $this->responseJson(true, 200, "Profile Data", [
                     'first_name' => $userData->first_name, 'last_name' => $userData->last_name, 'expertise' => $trainerdetails->expertise,  'experience ' => $trainerdetails->experience, 'ac_no ' => $trainerdetails->ac_no, 'reenter_ac_no ' => $trainerdetails->reenter_ac_no,
                     // 'slot' => !empty($trainerdetails->slot_select) ? json_decode($trainerdetails->slot_select, true) : [],
-                    'bank_name' => $trainerdetails->bank_name, 'ifsc_code' => $trainerdetails->ifsc_code, 'profile_picture_url' => $imageUrl,
+                    'bank_name' => $trainerdetails->bank_name,
+                    'ifsc_code' => $trainerdetails->ifsc_code,
+
+                    'gender' => $trainerdetails->gender,
+                    'age' => $trainerdetails->age,
+                    'preffered_language' => $trainerdetails->preffered_language,
+                    'qualification_name' => $trainerdetails->qualification_name,
+
+                    'profile_picture_url' => $imageUrl,
 
                     'address' => $trainerdetails->address,
                     'trans_photo_one' => $trans_photo_one,
