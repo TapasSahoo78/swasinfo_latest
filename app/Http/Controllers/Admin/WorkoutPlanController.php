@@ -39,7 +39,7 @@ class WorkoutPlanController extends BaseController
     }
     public function addWorkout(Request $request)
     {
-      
+
         $this->setPageTitle('Workout Add');
         if ($request->post()) {
             //dd($request->all());
@@ -47,14 +47,16 @@ class WorkoutPlanController extends BaseController
                 'name' => 'required',
                 'workout_type' => 'required',
                 'workout_sub_type' => 'required',
-                "workout_image" => 'required|file|mimes:jpg,png,gif,jpeg'
+                "workout_image" => 'required|file|mimes:jpg,png,gif,jpeg',
+                // "video_link" => 'required'
             ]);
             DB::beginTransaction();
             //try {
             $isBrandCreated = Workout::create([
                 'name' => $request->name,
                 'workout_type' => $request->workout_type,
-                'workout_sub_type' => $request->workout_sub_type
+                'workout_sub_type' => $request->workout_sub_type,
+                // 'video_link' => $request->video_link
             ]);
             if ($isBrandCreated) {
                 if ($isBrandCreated->workout_type == 'yoga') {
@@ -106,15 +108,17 @@ class WorkoutPlanController extends BaseController
                 'name' => 'required',
                 'workout_type' => 'required',
                 'workout_sub_type' => 'required',
-               // "workout_image" => 'required|file|mimes:jpg,png,gif,jpeg'
+                // 'video_link' => 'required'
+                // "workout_image" => 'required|file|mimes:jpg,png,gif,jpeg',
             ]);
             DB::beginTransaction();
             try {
                 $isAttribute = Workout::where('uuid', $id)->first();
                 $isAttributeCreated = Workout::where('uuid', $id)->update([
                     'name' => $request->name,
-                'workout_type' => $request->workout_type,
-                'workout_sub_type' => $request->workout_sub_type
+                    'workout_type' => $request->workout_type,
+                    'workout_sub_type' => $request->workout_sub_type,
+                    // 'video_link' => $request->video_link
                 ]);
 
                 if ($isAttributeCreated) {
