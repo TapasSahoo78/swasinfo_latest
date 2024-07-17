@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api\Customer;
 
-use Auth;
-
 use App\Models\Faq;
 use App\Models\Diet;
 use App\Models\Page;
@@ -69,6 +67,7 @@ use App\Models\Coupon;
 use App\Models\Rating;
 use App\Services\Payment\PhonePeService as PaymentPhonePeService;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Razorpay\Api\Api;
 
 class UserApiControllers extends BaseController
@@ -901,16 +900,27 @@ class UserApiControllers extends BaseController
         //$trainerList = User::where('is_active', 1)->get();
         //$listCustomers = $this->userService->listCustomers($filterConditionsUsers, 'id', 'asc');
         // return json_encode($listCustomers[0]->mediaImage);
+        $user = Auth::user();
         $filterConditions = [
             'is_active' => 1,
-            'type' => '0'
+            'type' => '0',
         ];
+
+        if (!empty($user->trainer_id)) {
+            $filterConditions['id'] = $user->trainer_id;
+        }
+
         $filterConditionss = [
             'is_active' => 1,
-            'type' => '1'
+            'type' => '0',
         ];
+
+        if (!empty($user->dietitian_id)) {
+            $filterConditionss['id'] = $user->dietitian_id;
+        }
+
         $users = $this->userService->getCustomers('trainer', $filterConditions);
-        $userss = $this->userService->getCustomers('trainer', $filterConditionss);
+        $userss = $this->userService->getCustomers('doctor', $filterConditionss);
         $data['trainer'] = UserTrainerDetailApiCollection::collection($users);
         $data['Dietitian'] = UserTrainerDetailApiCollection::collection($userss);
         return $this->responseJson(true, 200, "", $data);
