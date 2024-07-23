@@ -43,7 +43,7 @@ class TrainerApiController extends BaseController
     protected $roleService;
     protected $roleModel;
     protected $userService;
-    public function __construct(TrainerService $trainerService, UserService $userService, RoleService $roleService,Role $roleModel)
+    public function __construct(TrainerService $trainerService, UserService $userService, RoleService $roleService, Role $roleModel)
     {
         $this->trainerService = $trainerService;
         $this->userService    = $userService;
@@ -162,6 +162,7 @@ class TrainerApiController extends BaseController
         //$trainerList = User::where('is_active', 1)->get();
         //$listCustomers = $this->userService->listCustomers($filterConditionsUsers, 'id', 'asc');
         // return json_encode($listCustomers[0]->mediaImage);
+
         $customers = TrainerCustomerRequest::where('trainer_id', auth()->user()->id)->with('customerRequest')->get();
         return $this->responseJson(true, 200, "", $customers);
     }
@@ -481,7 +482,7 @@ class TrainerApiController extends BaseController
 
     public function customerCallRequestList(Request $request)
     {
-        //$user = auth()->user();
+        // $user = auth()->user();
         $message = "User Details Fetched Successfully !!";
         $userData = TrainerCustomerRequest::where('trainer_id', auth()->user()->id)->with('customerRequest')->get();
         return $this->responseJson(true, 200, $message, $userData);
@@ -560,7 +561,8 @@ class TrainerApiController extends BaseController
     public function userDetailsv2(Request $request)
     {
         $user = auth()->user()->id;
-        $users = User::where('id', $user)->first();
+
+        $userData = User::where('id', $user)->first();
         $trainerdetails = TrainerDetail::where('user_id', $user)->first();
         $fileName = $trainerdetails->profile_picture_file;
         $fileNameQualification = $trainerdetails->qualification_file;
@@ -571,10 +573,42 @@ class TrainerApiController extends BaseController
         $bank_cheque_url = url('bankcheque/' . $fileNameBankCheque);
         $id_proof_url = url('id_proof/' . $fileNameIdProof);
 
+        $imageUrl =   url('uploads/' . $trainerdetails->profile_photo);
+        $trans_photo_one = url('uploads/' . $trainerdetails->trans_photo_one);
+        $trans_photo_two = url('uploads/' . $trainerdetails->trans_photo_two);
+        $trans_photo_three = url('uploads/' . $trainerdetails->trans_photo_three);
+        $trans_photo_four = url('uploads/' . $trainerdetails->trans_photo_four);
+        $trans_photo_five = url('uploads/' . $trainerdetails->trans_photo_five);
+
         //return response()->json(['id_proof_url' => $id_proof_url], 201);
 
-        if ($users) {
-            return $this->responseJson(true, 200, "Profile Data", ['name_prefix' => $users->name_prefix, 'name' => $users->first_name, 'gender' => $trainerdetails->gender, 'age' => $trainerdetails->age, 'preffered_language' => $trainerdetails->preffered_language, 'expertise' => $trainerdetails->expertise, 'qualification_name ' => $trainerdetails->qualification_name, 'intro ' => $trainerdetails->intro, 'type ' => $trainerdetails->type, 'experience ' => $trainerdetails->experience, 'ac_no ' => $trainerdetails->ac_no, 'reenter_ac_no ' => $trainerdetails->reenter_ac_no, 'slot' => !empty($trainerdetails->slot_select) ? json_decode($trainerdetails->slot_select, true) : [], 'bank_name' => $trainerdetails->bank_name, 'ifsc_code ' => $trainerdetails->ifsc_code, 'profile_picture_url' => $imageUrl, 'qualification_url' => $qualification_url, 'bank_cheque_url' => $bank_cheque_url, 'id_proof_url' => $id_proof_url, 'is_profile_completed' => $users->is_profile_completed]);
+        if ($userData) {
+            return $this->responseJson(true, 200, "Profile Data", [
+                'first_name' => $userData->first_name, 'last_name' => $userData->last_name, 'expertise' => $trainerdetails->expertise,  'experience ' => $trainerdetails->experience, 'ac_no ' => $trainerdetails->ac_no, 'reenter_ac_no ' => $trainerdetails->reenter_ac_no,
+                // 'slot' => !empty($trainerdetails->slot_select) ? json_decode($trainerdetails->slot_select, true) : [],
+                'bank_name' => $trainerdetails->bank_name,
+                'ifsc_code' => $trainerdetails->ifsc_code,
+
+                'gender' => $trainerdetails->gender,
+                'age' => $trainerdetails->age,
+                'preffered_language' => $trainerdetails->preffered_language,
+                'qualification_name' => $trainerdetails->qualification_name,
+
+                'profile_picture_url' => $imageUrl,
+
+                'address' => $trainerdetails->address,
+                'trans_photo_one' => $trans_photo_one,
+                'trans_photo_two' => $trans_photo_two,
+                'trans_photo_three' => $trans_photo_three,
+                'trans_photo_four' => $trans_photo_four,
+                'trans_photo_five' => $trans_photo_five,
+
+                'slot_day' => $trainerdetails->slot_day,
+                'from_time' => $trainerdetails->from_time,
+                'to_time' => $trainerdetails->to_time,
+
+                'is_profile_completed' => $userData->is_profile_completed
+            ]);
         }
     }
 
@@ -629,9 +663,6 @@ class TrainerApiController extends BaseController
     {
         // $planss = Diet::where('status', 1)->where('age_from',auth()->user()?->profile?->age)
         // ->where('height',auth()->user()?->profile?->height)->where('weight',auth()->user()?->profile?->weight) ->first();
-
-
-
         if (auth()->user()?->profile?->age != "" && auth()->user()?->profile?->height != "" && auth()->user()?->profile?->weight) {
 
             $planss = Diet::where('status', 1)->first();
@@ -642,9 +673,6 @@ class TrainerApiController extends BaseController
 
                 if ($fooditem) {
                     $fooditems = explode(',', $fooditem->food_ids);
-
-
-
 
                     $food = Food::whereIn('id', $fooditems)->get();
 
@@ -845,7 +873,7 @@ class TrainerApiController extends BaseController
         $userData->save();
 
         if (empty($userData->roles)) {
-            $isCustomerRole = $this->roleModel->where('slug',$request->title)->first();
+            $isCustomerRole = $this->roleModel->where('slug', $request->title)->first();
             $userData->roles()->sync($isCustomerRole->id);
         }
 
@@ -1375,9 +1403,6 @@ class TrainerApiController extends BaseController
 
 
 
-
-
-
     public function deleteCustomerFood(Request $request, $id)
     {
         $food = UserFootitem::where('id', $id)->delete();
@@ -1566,5 +1591,9 @@ class TrainerApiController extends BaseController
         }
         return $response;
         //dd($response);
+    }
+
+    public function clientListTrainer(Request $request)
+    {
     }
 }

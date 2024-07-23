@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Agent\SettingController;
 use App\Http\Controllers\Api\Common\ProfileQuestionController;
 use App\Http\Controllers\Api\Common\WalletController;
+use App\Http\Controllers\Api\TrainerDietitian\ManageController;
 
 // use App\Http\Controllers\Api\Agent\UserApiControllers;
 /*
@@ -223,14 +224,16 @@ Route::namespace('Api\Trainer')->prefix('trainers')->as('trainers.')->group(func
             Route::post('/physically-condition-list', 'physicallyConditionList')->name('physically.condition.list');
             Route::post('/fitness-goal-list', 'fitnessGoalList')->name('fitness.goal.list');
             Route::post('/user-advance-update-details', 'userAdvanceUpdateDetails')->name('user.advance.update.details');
+
             Route::post('/diet-plan-list', 'dietPlanList')->name('diet.plan.list');
             Route::get('/workout-list', 'workoutList')->name('workout.list');
+
             Route::post('/user-food-item-save', 'userFoodItemSave')->name('user.food.item.save');
             Route::get('/notification', 'notification')->name('notification');
             Route::match(['get', 'post'], '/customer-request-list', 'customerCallRequestList')->name('customer.call.request.list');
             Route::get('/dasboard', 'dasboardData')->name('dasboard');
             Route::post('/availibity', 'availibityProfile')->name('availibity');
-            Route::get('/customer_list', 'customerList')->name('customer_list');
+            Route::get('/customer-list', 'customerList')->name('customer.list');
             Route::get('/food-list', 'foodList')->name('food-list');
             Route::post('/slot-update', 'slotUpdate')->name('slot-update');
             Route::post('/update-customer-food', 'updateCustomerFood')->name('update-customer-food');
@@ -336,8 +339,10 @@ Route::namespace('Api\Trainer')->prefix('v2/trainers')->as('trainers.')->group(f
             Route::post('/physically-condition-list', 'physicallyConditionList')->name('physically.condition.list');
             Route::post('/fitness-goal-list', 'fitnessGoalList')->name('fitness.goal.list');
             Route::post('/user-advance-update-details', 'userAdvanceUpdateDetails')->name('user.advance.update.details');
+
             Route::post('/diet-plan-list', 'dietPlanList')->name('diet.plan.list');
             Route::post('/workout-list', 'workoutList')->name('workout.list');
+
             Route::post('/user-food-item-save', 'userFoodItemSave')->name('user.food.item.save');
             Route::get('/notification', 'notification')->name('notification');
             Route::match(['get', 'post'], '/customer-request-list', 'customerCallRequestList')->name('customer.call.request.list');
@@ -365,4 +370,9 @@ Route::namespace('Api\Trainer')->prefix('v2/trainers')->as('trainers.')->group(f
 
     });
     // Route::post('login', [UserApiControllers::class, 'login']);
+
+    Route::controller(ManageController::class)->group(function () {
+        Route::get('/questions-list', 'questionsList')->name('questions.list');
+    });
+
 });
