@@ -33,6 +33,7 @@ use App\Models\Food;
 use App\Models\UserFootitem;
 use App\Models\UserWorkoutItem;
 use App\Models\LiveSession;
+use App\Models\ProfileQuestion;
 use App\Models\WorkoutDetails;
 use Illuminate\Support\Facades\File;
 
@@ -1412,7 +1413,41 @@ class TrainerApiController extends BaseController
     public function customerDetails(Request $request, $id)
     {
         $userDetails = User::where('id', $id)->first();
-        $data = new UserDetailApiCollection($userDetails);
+
+        $questions = ProfileQuestion::with(['answers' => function ($query) {
+            $query->select('id', 'profile_question_id', 'answer', 'slug', 'input_type', 'comments');
+        }])->select('id', 'question', 'slug', 'group_wise')->get();
+
+        // Group by 'group_wise'
+        $groupedQuestions = $questions->groupBy('group_wise');
+        $arryMain = [];
+
+        foreach ($groupedQuestions as $mkey => $main) {
+            $arryMain[$mkey] = [];  // Initialize an array for each mkey
+            foreach ($main as $value) {
+                $answers = [];
+                foreach ($value->answers as $answer) {
+                    $answers[] = [
+                        'answer' => $answer->answer,
+                        'slug' => $answer->slug,
+                        'input_type' => $answer->input_type,
+                        'comments' => $answer->comments,
+                        'user_ans' => 1
+                    ];
+                }
+
+                $arryMain[$mkey][] = [
+                    'id' => $value->id,
+                    'question' => $value->question,
+                    'slug' => $value->slug,
+                    'group_wise' => $value->group_wise,
+                    'answers' => $answers
+                ];
+            }
+        }
+
+        $data['personal_details'] = new UserDetailApiCollection($userDetails);
+        $data['additional_details'] = $arryMain;
         return $this->responseJson(true, 200, "", $data);
     }
 
