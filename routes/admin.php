@@ -3,6 +3,9 @@
 use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\QuestionsController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Gym\BookingController;
+use App\Http\Controllers\Gym\CategoryController;
+use App\Http\Controllers\Gym\ManagementController;
 use Illuminate\Support\Facades\Route;
 
 Route::namespace('Admin')->as('admin.')->middleware(['auth'])->group(function () {
@@ -223,7 +226,6 @@ Route::namespace('Admin')->as('admin.')->middleware(['auth'])->group(function ()
                 ->withoutMiddleware('permission:add-agent-manager|list-agent-manager|edit-agent-manager|delete-agent-manager');
         });
 
-
     Route::controller(VendorController::class)
         ->as('vendor.')
         ->middleware('permission:add-agent-manager|list-agent-manager|edit-agent-manager|delete-agent-manager')
@@ -237,13 +239,27 @@ Route::namespace('Admin')->as('admin.')->middleware(['auth'])->group(function ()
         });
 });
 
-
-
-
 Route::post('admin/logout', 'Auth\LoginController@adminLogout')->name('admin.logout');
-
-
-
-
-
 Route::get('/', 'Admin\MfiController@mfiList')->name('mfi-list');
+
+
+Route::as('admin.')->middleware(['auth'])->group(function () {
+    Route::controller(CategoryController::class)->as('gym.category.')->prefix('gym/category')->group(function () {
+        Route::get('/', 'index')->name('list');
+        Route::match(['get', 'post'], 'add', 'addCategory')->name('add');
+        Route::match(['get', 'post', 'put'], 'edit/{uuid}', 'editCategory')->name('edit');
+        Route::get('/delete/{uuid}', 'deleteCategory')->name('delete');
+    });
+    Route::controller(ManagementController::class)->as('gym.management.')->prefix('gym/management')->group(function () {
+        Route::get('/', 'index')->name('list');
+        Route::match(['get', 'post'], 'add', 'addManagement')->name('add');
+        Route::match(['get', 'post', 'put'], 'edit/{uuid}', 'editManagement')->name('edit');
+        Route::get('/delete/{uuid}', 'deleteManagement')->name('delete');
+    });
+    Route::controller(BookingController::class)->as('gym.booking.')->prefix('gym/booking')->group(function () {
+        Route::get('/', 'index')->name('list');
+        Route::match(['get', 'post'], 'add', 'addBooking')->name('add');
+        Route::match(['get', 'post', 'put'], 'edit/{uuid}', 'editBooking')->name('edit');
+        Route::get('/delete/{uuid}', 'deleteBooking')->name('delete');
+    });
+});

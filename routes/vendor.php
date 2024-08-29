@@ -26,7 +26,7 @@ Route::controller(OnboardingController::class)->group(function () {
 
 Route::namespace('Vendor')->as('vendor.')->middleware([])->group(function () {
     Route::controller(DashboardController::class)->group(function () {
-        Route::match(['get', 'post'], '/dashboard', 'index')->name('dashboard');
+        Route::match(['get', 'post'], '/ ', 'index')->name('dashboard');
     });
     Route::controller(CatalogueController::class)->group(function () {
         Route::match(['get', 'post'], '/catalogue', 'createCatalogue')->name('catalogue');

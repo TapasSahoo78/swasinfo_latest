@@ -35,6 +35,7 @@ use App\Models\UserWorkoutItem;
 use App\Models\LiveSession;
 use App\Models\ProfileQuestion;
 use App\Models\WorkoutDetails;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class TrainerApiController extends BaseController
@@ -63,6 +64,7 @@ class TrainerApiController extends BaseController
             'password' => 'required|string|min:6',
             // 'username' => 'required|nullable|string',
             // 'is_email' => 'required|boolean'
+            'role' => 'required|in:trainer,dietitian,gym-trainer'
         ]);
 
         if ($validator->fails()) {
@@ -240,6 +242,7 @@ class TrainerApiController extends BaseController
             $userFound->access_token = $userFound->createToken('LaravelAuthApp')->accessToken;
             $userData = [
                 'otp_matched' => true,
+                'role' => User::where('id',$userFound?->id)->first()->roles->first(),
                 'user_details' => $userFound
             ];
             $message = "LoggedIn Successfully !!";
@@ -585,7 +588,12 @@ class TrainerApiController extends BaseController
 
         if ($userData) {
             return $this->responseJson(true, 200, "Profile Data", [
-                'first_name' => $userData->first_name, 'last_name' => $userData->last_name, 'expertise' => $trainerdetails->expertise,  'experience ' => $trainerdetails->experience, 'ac_no ' => $trainerdetails->ac_no, 'reenter_ac_no ' => $trainerdetails->reenter_ac_no,
+                'first_name' => $userData->first_name,
+                'last_name' => $userData->last_name,
+                'expertise' => $trainerdetails->expertise,
+                'experience ' => $trainerdetails->experience,
+                'ac_no ' => $trainerdetails->ac_no,
+                'reenter_ac_no ' => $trainerdetails->reenter_ac_no,
                 // 'slot' => !empty($trainerdetails->slot_select) ? json_decode($trainerdetails->slot_select, true) : [],
                 'bank_name' => $trainerdetails->bank_name,
                 'ifsc_code' => $trainerdetails->ifsc_code,
@@ -1019,7 +1027,12 @@ class TrainerApiController extends BaseController
 
             if ($userData) {
                 return $this->responseJson(true, 200, "Profile Data", [
-                    'first_name' => $userData->first_name, 'last_name' => $userData->last_name, 'expertise' => $trainerdetails->expertise,  'experience ' => $trainerdetails->experience, 'ac_no ' => $trainerdetails->ac_no, 'reenter_ac_no ' => $trainerdetails->reenter_ac_no,
+                    'first_name' => $userData->first_name,
+                    'last_name' => $userData->last_name,
+                    'expertise' => $trainerdetails->expertise,
+                    'experience ' => $trainerdetails->experience,
+                    'ac_no ' => $trainerdetails->ac_no,
+                    'reenter_ac_no ' => $trainerdetails->reenter_ac_no,
                     // 'slot' => !empty($trainerdetails->slot_select) ? json_decode($trainerdetails->slot_select, true) : [],
                     'bank_name' => $trainerdetails->bank_name,
                     'ifsc_code' => $trainerdetails->ifsc_code,
@@ -1628,7 +1641,5 @@ class TrainerApiController extends BaseController
         //dd($response);
     }
 
-    public function clientListTrainer(Request $request)
-    {
-    }
+    public function clientListTrainer(Request $request) {}
 }
