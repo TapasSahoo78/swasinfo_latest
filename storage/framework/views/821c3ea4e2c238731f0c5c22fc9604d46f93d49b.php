@@ -320,7 +320,7 @@
                                 </thead>
                                 <tbody>
                                     <?php $__empty_1 = true; $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                                        
+                                     
                                         <tr>
                                             <td><?php echo e($value->fisrt_name ?? ''); ?></td>
                                             <td><?php echo e($value->last_name ?? ''); ?></td>
