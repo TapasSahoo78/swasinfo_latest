@@ -22,16 +22,13 @@ class LoginController extends BaseController
     | to conveniently provide its functionality to your applications.
     |
     */
-
     use AuthenticatesUsers;
-
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-
     /**
      * Create a new controller instance.
      *
@@ -39,15 +36,13 @@ class LoginController extends BaseController
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout','adminLogout');
+        $this->middleware('guest')->except('logout', 'adminLogout');
     }
-
     public function showLoginForm()
     {
-        $this->setPageTitle('Admin Login','');
+        $this->setPageTitle('Admin Login', '');
         return view('auth.login');
     }
-
     public function login(Request $request)
     {
         $input = $request->all();
@@ -57,7 +52,6 @@ class LoginController extends BaseController
             'password' => 'required',
             // 'recaptcha' => ['required', new ReCaptchaRule('login')],
         ]);
-
         $userData = array(
             'email' => $input['email'],
             'password' => $input['password']
@@ -83,25 +77,81 @@ class LoginController extends BaseController
                 // Add additional role-based redirections if needed
             }
         }
-
         return $this->responseRedirectBack('Email address and password are wrong.', 'error', true, true);
     }
-
-    public function adminLogout(Request $request){
+    public function adminLogout(Request $request)
+    {
         $this->loggedOut($request);
     }
-
-    protected function loggedOut(Request $request) {
-        $referer= $request->headers->get('referer');
-        if(str_contains($referer,'admin')){
+    protected function loggedOut(Request $request)
+    {
+        $referer = $request->headers->get('referer');
+        if (str_contains($referer, 'admin')) {
             return redirect(route('admin.login'));
-        }else{
+        } else {
             return redirect(route('admin.login'));
         }
-
+    }
+    // ***********************************************Restaurants********************************************************************8888
+    public function showRestaurantsLoginForm()
+    {
+        $this->setPageTitle('Restaurants Login', '');
+        return view('auth.restaurants_login');
     }
 
+    public function restaurantsLogin(Request $request)
+    {
+        // Validate email and password
+        $validatedData = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+        // dd($request->all());
+        // Prepare login credentials
+        $userData = [
+            'email' => $validatedData['email'],
+            'password' => $validatedData['password']
+        ];
 
+        // // Check if the user wants to be remembered
+        $rememberMe = true;
+        // dd($rememberMe);
+        // dd($userData);
+        // Attempt authentication
+        if (auth()->attempt($userData, $rememberMe)) {
+            // dd(auth()->user());
+            $user = auth()->user();
+            // dd($user->role);
+            // Ensure user has the role of 'restaurant_owner'
+            // if ($user->role !== 'restaurant_owner') {
+            //     auth()->logout();
+            //     return $this->responseRedirectBack('Access denied. You are not a restaurant owner.', 'error', true, true);
+            // }
 
+            // Check if the account is deactivated
+            if (!$user->is_active) {
+                auth()->logout();
+                return $this->responseRedirectBack('Oh no! Your Account has been deactivated. Please contact admin.', 'info', true, true);
+            }
 
+            // Check if the account is not approved
+            if (!$user->is_approve) {
+                auth()->logout();
+                return $this->responseRedirectBack('Hang tight! Our team is currently verifying your application. You\'ll receive an approval email when your account is ready.', 'info', true, true);
+            }
+
+            // Check if the account is deleted
+            if ($user->deleted_at !== null) {
+                auth()->logout();
+                return $this->responseRedirectBack('Your account has been deleted. Please contact support for further assistance.', 'info', true, true);
+            }
+            // dd($user);
+
+            // User is authenticated and valid
+            return $this->responseRedirect('restaurant.home', 'Logged in successfully', 'success');
+        }   
+
+        // If authentication fails
+        return $this->responseRedirectBack('Email address or password is incorrect.', 'error', true, true);
+    }
 }

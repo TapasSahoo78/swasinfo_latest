@@ -74,18 +74,20 @@
                  </a>
              </li>
          @endcanany
-         <?php 
+         @canany(['add-agent-manager', 'list-agent-manager', 'edit-agent-manager', 'delete-agent-manager'])
+             <?php 
             if(auth()->user()->id != 1){
               $userId = auth()->user()->uuid;
         ?>
-         <li class="nav-item has-treeview">
-             <a href=" {{ route('admin.agent.reporttotal', $userId) }}" class="nav-link">
-                 <p>
-                     Report
-                 </p>
-             </a>
-         </li>
-         <?php } ?>
+             <li class="nav-item has-treeview">
+                 <a href=" {{ route('admin.agent.reporttotal', $userId) }}" class="nav-link">
+                     <p>
+                         Report
+                     </p>
+                 </a>
+             </li>
+             <?php } ?>
+         @endcanany
          @canany(['add-workout', 'list-workout', 'edit-workout', 'delete-workout'])
              <li class="nav-item has-treeview">
                  <a href="{{ route('admin.workout.list') }}" class="nav-link">
@@ -105,39 +107,30 @@
                  </a>
                  <ul class="nav nav-treeview">
                      {{-- @canany(['add-leads', 'edit-leads', 'view-leads', 'delete-leads']) --}}
-
                      <li class="nav-item  {{ sidebar_open(['admin.diet.food.*']) }} ">
-
                          <a class="nav-items-title nav-link" href="{{ route('admin.diet.food.list') }}">
                              @if (!empty(sidebar_open(['admin.diet.food.*'])))
                                  <i class="fa fa-square" aria-hidden="true"></i>
                              @endif <b>Food</b>
                          </a>
-
                      </li>
                      <li class="nav-item  {{ sidebar_open(['admin.diet.plan.*']) }} ">
-
                          <a class="nav-items-title nav-link" href="{{ route('admin.diet.plan.list') }}">
                              @if (!empty(sidebar_open(['admin.diet.plan.*'])))
                                  <i class="fa fa-square" aria-hidden="true"></i>
                              @endif <b>Diet Plan</b>
                          </a>
-
                      </li>
                      {{-- @endcanany --}}
                      {{-- @canany(['add-enquiries', 'edit-enquiries', 'view-enquiries', 'delete-enquiries'])
                         <li class="nav-item  {{ sidebar_open(['mfi.crm.enquiry.*']) }} ">
-
                  <a class="nav-items-title nav-link " href="{{ route('mfi.crm.enquiry.list', ['slug' => $code]) }}">
                      @if (!empty(sidebar_open(['mfi.crm.enquiry.*'])))
                      <i class="fa fa-square" aria-hidden="true"></i>
                      @endif <b>ENQUIRY</b>
                  </a>
-
          </li>
-
          @endcanany --}}
-
                  </ul>
              </li>
          @endcanany
@@ -153,45 +146,36 @@
                  <ul class="nav nav-treeview">
                      {{-- @canany(['add-leads', 'edit-leads', 'view-leads', 'delete-leads']) --}}
                      {{-- <li class="nav-item  {{ sidebar_open(['admin.subscription.category.*']) }} ">
-
                  <a class="nav-items-title nav-link " href="{{ route('admin.subscription.category.list') }}">
                      @if (!empty(sidebar_open(['admin.subscription.category.*'])))
                      <i class="fa fa-square" aria-hidden="true"></i>
                      @endif <b>category</b>
                  </a>
-
              </li> --}}
                      <li class="nav-item  {{ sidebar_open(['admin.subscription.course.*']) }} ">
-
                          <a class="nav-items-title nav-link" href="{{ route('admin.subscription.course.list') }}">
                              @if (!empty(sidebar_open(['admin.subscription.course.*'])))
                                  <i class="fa fa-square" aria-hidden="true"></i>
                              @endif <b>Course</b>
                          </a>
-
                      </li>
                      <li class="nav-item  {{ sidebar_open(['admin.subscription.plan.*']) }} ">
-
                          <a class="nav-items-title nav-link" href="{{ route('admin.subscription.plan.list') }}">
                              @if (!empty(sidebar_open(['admin.subscription.plan.*'])))
                                  <i class="fa fa-square" aria-hidden="true"></i>
                              @endif <b>Plan</b>
                          </a>
-
                      </li>
                      {{-- @endcanany --}}
                      {{-- @canany(['add-enquiries', 'edit-enquiries', 'view-enquiries', 'delete-enquiries'])
                         <li class="nav-item  {{ sidebar_open(['mfi.crm.enquiry.*']) }} ">
-
              <a class="nav-items-title nav-link " href="{{ route('mfi.crm.enquiry.list', ['slug' => $code]) }}">
                  @if (!empty(sidebar_open(['mfi.crm.enquiry.*'])))
                  <i class="fa fa-square" aria-hidden="true"></i>
                  @endif <b>ENQUIRY</b>
              </a>
-
      </li>
      @endcanany --}}
-
                  </ul>
              </li>
          @endcanany
@@ -274,49 +258,126 @@
      </p>
      </a>
      </li> --}}
+         @canany(['add-branch', 'edit-branch', 'delete-branch', 'view-branch', 'add-loan', 'edit-loan', 'view-loan',
+             'delete-loan', 'add-occupation', 'edit-occupation', 'view-occupation', 'delete-occupation', 'add-purpose',
+             'edit-purpose', 'view-purpose', 'delete-purpose', 'add-user', 'edit-user', 'view-user', 'delete-user',
+             'add-roles', 'edit-roles', 'view-roles', 'delete-roles', 'add-accounts', 'edit-accounts', 'view-accounts',
+             'delete-accounts'])
+             <li class="nav-item has-treeview">
+                 <a href="#" class="nav-link">
+                     <p>
+                         E- Commerce Section
+                         <i class="fa fa-plus" aria-hidden="true"></i>
+                     </p>
+                 </a>
+                 <ul class="nav nav-treeview">
+                     @canany(['bannerlist'])
+                         <li class="nav-item">
+                             <a href="{{ route('admin.product.bannerlist') }}" class="nav-link">
+                                 <p>MANAGE Banner</p>
+                             </a>
+                         </li>
+                     @endcanany
+                     @canany(['category'])
+                         <li class="nav-item">
+                             <a href="{{ route('admin.product.category.list') }}" class="nav-link">
+                                 <p>MANAGE Category</p>
+                             </a>
+                         </li>
+                     @endcanany
+                     @canany(['product'])
+                         <li class="nav-item">
+                             <a href="{{ route('admin.product.list') }}" class="nav-link">
+                                 <p>MANAGE Product</p>
+                             </a>
+                         </li>
+                     @endcanany
+                     @canany(['points'])
+                         <li class="nav-item">
+                             <a href="{{ route('admin.product.points.list') }}" class="nav-link">
+                                 <p>MANAGE Points</p>
+                             </a>
+                         </li>
+                     @endcanany
+                 </ul>
+             </li>
+         @endcanany
+         @canany(['add-branch', 'edit-branch', 'delete-branch', 'view-branch', 'add-loan', 'edit-loan', 'view-loan',
+             'delete-loan', 'add-occupation', 'edit-occupation', 'view-occupation', 'delete-occupation', 'add-purpose',
+             'edit-purpose', 'view-purpose', 'delete-purpose', 'add-user', 'edit-user', 'view-user', 'delete-user',
+             'add-roles', 'edit-roles', 'view-roles', 'delete-roles', 'add-accounts', 'edit-accounts', 'view-accounts',
+             'delete-accounts'])
+             <li class="nav-item has-treeview">
+                 <a href="#" class="nav-link">
+                     <p>
+                         Managment Restaurant
+                         <i class="fa fa-plus" aria-hidden="true"></i>
+                     </p>
+                 </a>
+                 <ul class="nav nav-treeview">
 
-         <li class="nav-item has-treeview">
-             <a href="#" class="nav-link">
-                 <p>
-                     E- Commerce Section
-                     <i class="fa fa-plus" aria-hidden="true"></i>
-                 </p>
-             </a>
-
-             <ul class="nav nav-treeview">
-                 @canany(['bannerlist'])
+                     {{-- @canany(['product']) --}}
                      <li class="nav-item">
-                         <a href="{{ route('admin.product.bannerlist') }}" class="nav-link">
-                             <p>MANAGE Banner</p>
-
+                         <a href="{{ route('admin.restaurant.list') }}" class="nav-link">
+                             <p>MANAGE Restaurant</p>
                          </a>
                      </li>
-                 @endcanany
-                 @canany(['category'])
+                     {{-- @endcanany --}}
+                     {{-- @canany(['product']) --}}
                      <li class="nav-item">
-                         <a href="{{ route('admin.product.category.list') }}" class="nav-link">
+                         <a href="{{ route('admin.offer.list') }}" class="nav-link">
+                             <p>MANAGE Offers</p>
+                         </a>
+                     </li>
+                     {{-- @canany(['category']) --}}
+                     <li class="nav-item">
+                         <a href="{{ route('admin.restaurant.category.list') }}" class="nav-link">
                              <p>MANAGE Category</p>
-
                          </a>
                      </li>
-                 @endcanany
-                 @canany(['product'])
                      <li class="nav-item">
-                         <a href="{{ route('admin.product.list') }}" class="nav-link">
+                         <a href="{{ route('admin.restaurant.category.subcategory.list') }}" class="nav-link">
+                             <p>MANAGE Sub Category</p>
+                         </a>
+                     </li>
+                     {{-- @endcanany --}}
+                     {{-- @endcanany --}}
 
-                             <p>MANAGE Product</p>
-                         </a>
-                     </li>
-                 @endcanany
-                 @canany(['points'])
-                     <li class="nav-item">
-                         <a href="{{ route('admin.product.points.list') }}" class="nav-link">
-                             <p>MANAGE Points</p>
-                         </a>
-                     </li>
-                 @endcanany
-             </ul>
-         </li>
+
+                     {{-- @canany(['bannerlist'])
+                    <li class="nav-item">
+                        <a href="{{ route('admin.product.bannerlist') }}" class="nav-link">
+                            <p>MANAGE Banner</p>
+                        </a>
+                    </li>
+                @endcanany
+                @canany(['category'])
+                    <li class="nav-item">
+                        <a href="{{ route('admin.product.category.list') }}" class="nav-link">
+                            <p>MANAGE Category</p>
+                        </a>
+                    </li>
+                @endcanany
+                @canany(['product'])
+                    <li class="nav-item">
+                        <a href="{{ route('admin.product.list') }}" class="nav-link">
+                            <p>MANAGE Product</p>
+                        </a>
+                    </li>
+                @endcanany --}}
+                     {{-- @canany(['points'])
+                    <li class="nav-item">
+                        <a href="{{ route('admin.product.points.list') }}" class="nav-link">
+                            <p>MANAGE Points</p>
+                        </a>
+                    </li>
+                @endcanany --}}
+
+
+
+                 </ul>
+             </li>
+         @endcanany
          @canany(['vendor'])
              <li class="nav-item has-treeview">
                  <a href="{{ route('admin.vendor.list') }}" class="nav-link">
@@ -335,7 +396,6 @@
                  </a>
              </li>
          @endcanany
-
          <!-- catagories -->
          @canany(['add-branch', 'edit-branch', 'delete-branch', 'view-branch', 'add-loan', 'edit-loan', 'view-loan',
              'delete-loan', 'add-occupation', 'edit-occupation', 'view-occupation', 'delete-occupation', 'add-purpose',
@@ -352,23 +412,19 @@
                  <ul class="nav nav-treeview">
                      @canany(['add-branch', 'edit-branch', 'delete-branch', 'view-branch'])
                          {{-- <li class="nav-item">
-
                      <a class="nav-items-title" href="{{ route('admin.branch.list') }}"><i class="fa fa-square" aria-hidden="true"></i><b>Branch</b></a>
-
      </li> --}}
                      @endcanany
                      @canany(['add-loan', 'edit-loan', 'view-loan', 'delete-loan'])
                          <li class="nav-item">
                              <a href="#" class="nav-link">
                                  <p>Loan</p>
-
                              </a>
                          </li>
                      @endcanany
                      @canany(['add-occupation', 'edit-occupation', 'view-occupation', 'delete-occupation'])
                          <li class="nav-item">
                              <a href="#" class="nav-link">
-
                                  <p>Occupation</p>
                              </a>
                          </li>
@@ -376,7 +432,6 @@
                      @canany(['add-purpose', 'edit-purpose', 'view-purpose', 'delete-purpose'])
                          <li class="nav-item">
                              <a href="#" class="nav-link">
-
                                  <p>Purpose</p>
                              </a>
                          </li>
@@ -384,7 +439,6 @@
                      @canany(['add-user', 'edit-user', 'view-user', 'delete-user'])
                          <li class="nav-item">
                              <a href="#" class="nav-link">
-
                                  <p>User</p>
                              </a>
                          </li>
@@ -392,7 +446,6 @@
                      @canany(['add-roles', 'edit-roles', 'view-roles', 'delete-roles'])
                          <li class="nav-item">
                              <a href="#" class="nav-link">
-
                                  <p>Roles</p>
                              </a>
                          </li>
@@ -400,7 +453,6 @@
                      @canany(['add-accounts', 'edit-accounts', 'view-accounts', 'delete-accounts'])
                          <li class="nav-item">
                              <a href="#" class="nav-link">
-
                                  <p>Accounts</p>
                              </a>
                          </li>
@@ -418,52 +470,40 @@
              </a>
              <ul class="nav nav-treeview">
                  <li class="nav-item">
-
                      <p class="nav-items-title"><i class="fa fa-square" aria-hidden="true"></i><b>Branch</b></p>
-
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
                          <p>Loan</p>
-
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Occupation</p>
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Purpose</p>
                      </a>
                  </li>
-
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>User</p>
                      </a>
                  </li>
-
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Roles</p>
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Accounts</p>
                      </a>
                  </li>
              </ul>
          </li>
-
-
          <li class="nav-item has-treeview">
              <a href="#" class="nav-link">
                  <p>
@@ -473,51 +513,40 @@
              </a>
              <ul class="nav nav-treeview">
                  <li class="nav-item">
-
                      <p class="nav-items-title"><i class="fa fa-square" aria-hidden="true"></i><b>Branch</b></p>
-
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
                          <p>Loan</p>
-
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Occupation</p>
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Purpose</p>
                      </a>
                  </li>
-
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>User</p>
                      </a>
                  </li>
-
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Roles</p>
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Accounts</p>
                      </a>
                  </li>
              </ul>
          </li>
-
          <li class="nav-item has-treeview">
              <a href="#" class="nav-link">
                  <p>
@@ -527,51 +556,40 @@
              </a>
              <ul class="nav nav-treeview">
                  <li class="nav-item">
-
                      <p class="nav-items-title"><i class="fa fa-square" aria-hidden="true"></i><b>Branch</b></p>
-
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
                          <p>Loan</p>
-
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Occupation</p>
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Purpose</p>
                      </a>
                  </li>
-
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>User</p>
                      </a>
                  </li>
-
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Roles</p>
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Accounts</p>
                      </a>
                  </li>
              </ul>
          </li>
-
          <li class="nav-item has-treeview">
              <a href="#" class="nav-link">
                  <p>
@@ -581,52 +599,40 @@
              </a>
              <ul class="nav nav-treeview">
                  <li class="nav-item">
-
                      <p class="nav-items-title"><i class="fa fa-square" aria-hidden="true"></i><b>Branch</b></p>
-
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
                          <p>Loan</p>
-
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Occupation</p>
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Purpose</p>
                      </a>
                  </li>
-
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>User</p>
                      </a>
                  </li>
-
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Roles</p>
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Accounts</p>
                      </a>
                  </li>
              </ul>
          </li>
-
-
          <li class="nav-item has-treeview">
              <a href="#" class="nav-link">
                  <p>
@@ -636,52 +642,40 @@
              </a>
              <ul class="nav nav-treeview">
                  <li class="nav-item">
-
                      <p class="nav-items-title"><i class="fa fa-square" aria-hidden="true"></i><b>Branch</b></p>
-
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
                          <p>Loan</p>
-
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Occupation</p>
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Purpose</p>
                      </a>
                  </li>
-
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>User</p>
                      </a>
                  </li>
-
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Roles</p>
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Accounts</p>
                      </a>
                  </li>
              </ul>
          </li>
-
-
          <li class="nav-item has-treeview">
              <a href="#" class="nav-link">
                  <p>
@@ -691,53 +685,41 @@
              </a>
              <ul class="nav nav-treeview">
                  <li class="nav-item">
-
                      <p class="nav-items-title"><i class="fa fa-square" aria-hidden="true"></i><b>Branch</b></p>
-
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
                          <p>Loan</p>
-
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Occupation</p>
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Purpose</p>
                      </a>
                  </li>
-
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>User</p>
                      </a>
                  </li>
-
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Roles</p>
                      </a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">
-
                          <p>Accounts</p>
                      </a>
                  </li>
              </ul>
          </li> -->
-
          <li class="nav-item has-treeview">
-
              <a href="{{ route('logout') }}" class="nav-link"
                  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                  <p>

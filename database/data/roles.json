@@ -1,10 +1,10 @@
 {
-    "roles":[
+    "roles": [
         {
-            "name" : "Super Admin",
-            "short_code" : "SAD",
-            "role_type" : "admin",
-            "slug" : "super-admin"
+            "name": "Super Admin",
+            "short_code": "SAD",
+            "role_type": "admin",
+            "slug": "super-admin"
         },
         {
             "name": "Sub Admin",
@@ -19,16 +19,22 @@
             "slug": "business-development-executive"
         },
         {
-            "name" : "Customer",
-            "short_code" : "customer",
-            "role_type" : "customer",
-            "slug" : "customer"
+            "name": "Customer",
+            "short_code": "customer",
+            "role_type": "customer",
+            "slug": "customer"
         },
         {
-            "name" : "Trainer",
-            "short_code" : "trainer",
-            "role_type" : "trainer",
-            "slug" : "trainer"
+            "name": "Trainer",
+            "short_code": "trainer",
+            "role_type": "trainer",
+            "slug": "trainer"
+        },
+        {
+            "name": "Restaurant",
+            "short_code": "restaurant",
+            "role_type": "restaurant",
+            "slug": "restaurant"
         }
     ]
 }

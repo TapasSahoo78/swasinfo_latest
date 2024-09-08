@@ -53,6 +53,7 @@ use App\Http\Resources\Mfi\Occupation\OccupationResource;
 use App\Http\Resources\Mfi\Branch\BranchOprationAreaResource;
 use App\Models\LiveSession;
 use App\Models\Product;
+use App\Models\RestaurantsSubCategorie;
 
 class AjaxController extends BaseController
 {
@@ -514,14 +515,14 @@ class AjaxController extends BaseController
                     $data = $this->userService->updateUserStatus($request->except(['uuid', 'find', 'value']), $id);
                     $message = 'User Status updated';
                     break;
-            
-                case 'plan_categories':
-                        $id = uuidtoid($request->uuid, $table);
-                        $data = $this->categoryService->updateStatus($request->except('find'), $id);
-                        $message = 'Category Status updated';
-                        break;
 
-                        
+                case 'plan_categories':
+                    $id = uuidtoid($request->uuid, $table);
+                    $data = $this->categoryService->updateStatus($request->except('find'), $id);
+                    $message = 'Category Status updated';
+                    break;
+
+
                 case 'categories':
                     $id = uuidtoid($request->uuid, $table);
                     $data = $this->categoryService->updateCategoryStatus($request->except('find'), $id);
@@ -657,25 +658,27 @@ class AjaxController extends BaseController
         }
     }
 
-    public function updateSales(Request $request){
+    public function updateSales(Request $request)
+    {
         $table = $request->find;
         $data = $request->value;
         $id = uuidtoid($request->uuid, $table);
-        
-        $product=Product::where('id',$id)->first();
-        $product->is_sales=$data;
+
+        $product = Product::where('id', $id)->first();
+        $product->is_sales = $data;
         $product->save();
         $message = 'Status updated';
         return $this->responseJson(true, 200, $message);
     }
 
 
-    public function updateDeal(Request $request){
+    public function updateDeal(Request $request)
+    {
         $table = $request->find;
         $data = $request->value;
         $id = uuidtoid($request->uuid, $table);
-        $product=Product::where('id',$id)->first();
-        $product->is_deal=$data;
+        $product = Product::where('id', $id)->first();
+        $product->is_deal = $data;
         $product->save();
         $message = 'Status updated';
         return $this->responseJson(true, 200, $message);
@@ -686,7 +689,7 @@ class AjaxController extends BaseController
     {
         if ($request->ajax()) {
             $table = $request->find;
-           
+
             switch ($table) {
                 case 'users':
                     $data = $this->userService->userDelete($request->except('find'));
@@ -826,8 +829,6 @@ class AjaxController extends BaseController
                     $data = $this->roleService->deleteRole($id);
                     $message = 'Branch Deleted';
                     break;
-
-                    
             }
             if ($data) {
                 return $this->responseJson(true, 200, $message);
@@ -1041,17 +1042,24 @@ class AjaxController extends BaseController
         }
     }
 
-    public function updateSessionStatus(Request $request){
-     
-        $session=LiveSession::where('id',$request->uuid)->first();
-       $session->status=$request->value['is_active'];
-       $session->save();
-       if($request->value['is_active'] == 1){
-         $massage="Session Approved Successfully";
-       }else if($request->value['is_active'] == 0){
-         $massage="Session Unapproved Successfully";
-       }
-       return $this->responseJson(true, 200,$massage);
+    public function updateSessionStatus(Request $request)
+    {
 
+        $session = LiveSession::where('id', $request->uuid)->first();
+        $session->status = $request->value['is_active'];
+        $session->save();
+        if ($request->value['is_active'] == 1) {
+            $massage = "Session Approved Successfully";
+        } else if ($request->value['is_active'] == 0) {
+            $massage = "Session Unapproved Successfully";
+        }
+        return $this->responseJson(true, 200, $massage);
+    }
+
+    public function restaurantSubcategory(Request $request)
+    {
+        dd($request->all());
+        $subCategories = RestaurantsSubCategorie::where('category_id', $request->category_id)->get();
+        return response()->json(['subCategories' => $subCategories]);
     }
 }

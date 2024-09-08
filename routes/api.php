@@ -50,8 +50,6 @@ Route::namespace('Api\Customer')
                 Route::get('/getscriptiondetails', 'getscriptiondetails')->name('getscriptiondetails');
                 Route::post('/deleteaccount', 'userDeleteAccount')->name('deleteaccount');
 
-
-
                 // Route::post('/workout-list', 'workoutList')->name('workout.list');
             });
         });
@@ -76,8 +74,6 @@ Route::namespace('Api\Customer')
             Route::get('/faq/{id}', 'faq')->name('faq');
             Route::post('/app-version', 'postAppVersion')->name('app-version');
             Route::get('/get-app-version', 'getAppVersion')->name('get-app-version');
-
-
 
             //Route::post('/workout-list', 'workoutList')->name('workout.list');
 

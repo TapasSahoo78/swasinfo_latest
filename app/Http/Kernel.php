@@ -72,5 +72,7 @@ class Kernel extends HttpKernel
         'hasInvitation' => \App\Http\Middleware\HasInvitation::class, // has admin invitation
         'role'  =>  \App\Http\Middleware\RoleMiddleware::class,
         'track.api.hits' => \App\Http\Middleware\TrackApiHits::class,
+        'restaurantOwner' => \App\Http\Middleware\RestaurantOwnerMiddleware::class,
+
     ];
 }

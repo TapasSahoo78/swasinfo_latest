@@ -25,6 +25,7 @@ use App\Contracts\Payment\PaymentContract;
 use App\Contracts\Penalty\PenaltyContract;
 use App\Contracts\Product\ProductContract;
 use App\Contracts\Purpose\PurposeContract;
+use App\Contracts\RestaurantContract\RestaurantContract;
 use App\Contracts\Role\RoleContract;
 use App\Contracts\Store\StoreContract;
 use App\Contracts\Testimonial\TestimonialContract;
@@ -69,6 +70,7 @@ use Illuminate\Support\ServiceProvider;
 /* use App\Contracts\Crm\Enquiry\EnquiryContract;
 use App\Repositories\Crm\Enquiry\EnquiryRepository; */
 use App\Contracts\Trainers\TrainerContract;
+use App\Repositories\Product\RestaurantRepository;
 use App\Repositories\Trainers\TrainerRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -107,6 +109,7 @@ class RepositoryServiceProvider extends ServiceProvider
         MfiRolesContract::class => MfiRolesRepository::class,
         AgentGroupContract::class => AgentGroupRepository::class,
         TrainerContract::class => TrainerRepository::class,
+        RestaurantContract::class => RestaurantRepository::class,
 
 
     ];

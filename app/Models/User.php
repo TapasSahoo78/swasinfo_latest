@@ -567,4 +567,10 @@ return $this->hasOne(Address::class);
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+    public function restaurant()
+    {
+        return $this->hasOne(Restaurant::class, 'user_id');
+    }
+
+
 }

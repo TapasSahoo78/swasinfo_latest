@@ -14,6 +14,7 @@ use App\Models\User;
 class InvitationController extends BaseController
 {
 
+    protected $userService;
     protected $inviteService;
 
     /**
@@ -24,13 +25,13 @@ class InvitationController extends BaseController
     public function __construct(
         UserService $userService,
         InviteService $inviteService
-    )
-    {
+    ) {
         $this->userService    = $userService;
         $this->inviteService  = $inviteService;
     }
-    public function list(Request $request){
-        $users    =  $this->inviteService->fetchInvites(['registered_at'=> null]);
+    public function list(Request $request)
+    {
+        $users    =  $this->inviteService->fetchInvites(['registered_at' => null]);
 
         $this->setPageTitle('Admin Users', '');
         return view('admin.invite.invite-admin', compact('users'));
@@ -38,9 +39,9 @@ class InvitationController extends BaseController
 
     public function create()
     {
-        
+
         $roles = Role::where('role_type', 'sub-admin')->get();
-      
+
         $this->setPageTitle('Add Admin User', '');
         return view('admin.invite.add-admin', compact('roles'));
     }
@@ -54,7 +55,6 @@ class InvitationController extends BaseController
      */
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'first_name'     =>  'required|string',
             'last_name'     =>  'required|string',
@@ -65,13 +65,13 @@ class InvitationController extends BaseController
         ]);
         // dd($request->all());
         \DB::beginTransaction();
-        try{
+        try {
             $isAdminCreated = User::create([
-                'first_name'=>$request->first_name,
-                'last_name'=>$request->last_name,
-                'email'=>$request->email,
-                'mobile_number'=>$request->mobile_number,
-                'password'=> bcrypt($request->password)
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'mobile_number' => $request->mobile_number,
+                'password' => bcrypt($request->password)
             ]);
 
             /* $this->inviteService->createAdmin($request->except('_token')); */
@@ -79,25 +79,15 @@ class InvitationController extends BaseController
                 $isRole = Role::find($request->role);
                 $isAdminCreated->roles()->attach($isRole);
             }
-            if($isAdminCreated){
+            if ($isAdminCreated) {
                 \DB::commit();
-                return $this->responseRedirect('admin.user.list', 'Admin User created' ,'success',false, false);
+                return $this->responseRedirect('admin.user.list', 'Admin User created', 'success', false, false);
             }
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             \DB::rollback();
             logger($e->getMessage() . ' -- ' . $e->getLine() . ' -- ' . $e->getFile());
-            return $this->responseRedirectBack('Something went wrong','error',true);
+            return $this->responseRedirectBack('Something went wrong', 'error', true);
         }
-        ## Invitation functionality
-        // $invitation = $this->inviteService->createInvite($request->only(['email', 'role_id']));
-
-        ## Send invitation email to the user
-
-        ## End
-
-        // if (!$invitation) {
-        //     return $this->responseRedirectBack('Error occurred while invite admin.', 'error', true, true);
-        // }
-        return $this->responseRedirect('admin.invitation.list', 'Invitation link has been sent to the user' ,'success',false, false);
+        return $this->responseRedirect('admin.invitation.list', 'Invitation link has been sent to the user', 'success', false, false);
     }
 }

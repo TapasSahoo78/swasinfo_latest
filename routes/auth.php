@@ -17,6 +17,11 @@ Route::namespace('Auth')->controller(LoginController::class)->group(function () 
     Route::get('/admin/login', 'showLoginForm')->name('admin.login');
     // Route::match(['get','post'],'/','showLoginForm')->name('login');
 });
+// restaurants
+Route::namespace('Auth')->controller(LoginController::class)->group(function () {
+    Route::get('/restaurants/login', 'showRestaurantsLoginForm')->name('restaurants.login');
+    Route::post('/restaurants/login', 'restaurantsLogin')->name('restaurants.login');
+});
 Route::namespace('Auth')->controller(RegisterController::class)->group(function () {
     Route::match(['get', 'post'], '/signup', 'registration')->name('signup');
 });
