@@ -558,7 +558,6 @@ return $this->hasOne(Address::class);
     {
         return $this->hasOne(Plan::class, 'id', 'payment_type');
         // return $this->hasOne(UserHealthScheduleScreenThree::class, 'user_id')
-
     }
 
     public function paymentType()
@@ -569,5 +568,18 @@ return $this->hasOne(Address::class);
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function gymPersonalDetails()
+    {
+        return $this->hasOne(GymTrainerPersonalDetail::class);
+    }
+    public function gymBusinessDetails()
+    {
+        return $this->hasOne(GymTrainerBusinessDetail::class);
+    }
+    public function gymCenterDetails()
+    {
+        return $this->hasOne(GymManagement::class);
     }
 }

@@ -151,16 +151,6 @@
                      </p>
                  </a>
                  <ul class="nav nav-treeview">
-                     {{-- @canany(['add-leads', 'edit-leads', 'view-leads', 'delete-leads']) --}}
-                     {{-- <li class="nav-item  {{ sidebar_open(['admin.subscription.category.*']) }} ">
-
-                 <a class="nav-items-title nav-link " href="{{ route('admin.subscription.category.list') }}">
-                     @if (!empty(sidebar_open(['admin.subscription.category.*'])))
-                     <i class="fa fa-square" aria-hidden="true"></i>
-                     @endif <b>category</b>
-                 </a>
-
-             </li> --}}
                      <li class="nav-item  {{ sidebar_open(['admin.subscription.course.*']) }} ">
 
                          <a class="nav-items-title nav-link" href="{{ route('admin.subscription.course.list') }}">
@@ -179,18 +169,6 @@
                          </a>
 
                      </li>
-                     {{-- @endcanany --}}
-                     {{-- @canany(['add-enquiries', 'edit-enquiries', 'view-enquiries', 'delete-enquiries'])
-                        <li class="nav-item  {{ sidebar_open(['mfi.crm.enquiry.*']) }} ">
-
-             <a class="nav-items-title nav-link " href="{{ route('mfi.crm.enquiry.list', ['slug' => $code]) }}">
-                 @if (!empty(sidebar_open(['mfi.crm.enquiry.*'])))
-                 <i class="fa fa-square" aria-hidden="true"></i>
-                 @endif <b>ENQUIRY</b>
-             </a>
-
-     </li>
-     @endcanany --}}
 
                  </ul>
              </li>
@@ -413,333 +391,48 @@
                  </ul>
              </li>
          @endcanany
-         <!--
-         <li class="nav-item has-treeview">
-             <a href="#" class="nav-link">
-                 <p>
-                     CRM
-                     <i class="fa fa-plus" aria-hidden="true"></i>
-                 </p>
-             </a>
-             <ul class="nav nav-treeview">
-                 <li class="nav-item">
 
-                     <p class="nav-items-title"><i class="fa fa-square" aria-hidden="true"></i><b>Branch</b></p>
-
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <p>Loan</p>
-
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Occupation</p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Purpose</p>
-                     </a>
-                 </li>
-
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>User</p>
-                     </a>
-                 </li>
-
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Roles</p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Accounts</p>
-                     </a>
-                 </li>
-             </ul>
-         </li>
-
-
-         <li class="nav-item has-treeview">
-             <a href="#" class="nav-link">
-                 <p>
-                     CUSTOMERS
-                     <i class="fa fa-plus" aria-hidden="true"></i>
-                 </p>
-             </a>
-             <ul class="nav nav-treeview">
-                 <li class="nav-item">
-
-                     <p class="nav-items-title"><i class="fa fa-square" aria-hidden="true"></i><b>Branch</b></p>
-
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <p>Loan</p>
-
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Occupation</p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Purpose</p>
-                     </a>
-                 </li>
-
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>User</p>
-                     </a>
-                 </li>
-
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Roles</p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Accounts</p>
-                     </a>
-                 </li>
-             </ul>
-         </li>
-
-         <li class="nav-item has-treeview">
-             <a href="#" class="nav-link">
-                 <p>
-                     DISBURSEMENT
-                     <i class="fa fa-plus" aria-hidden="true"></i>
-                 </p>
-             </a>
-             <ul class="nav nav-treeview">
-                 <li class="nav-item">
-
-                     <p class="nav-items-title"><i class="fa fa-square" aria-hidden="true"></i><b>Branch</b></p>
-
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <p>Loan</p>
-
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Occupation</p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Purpose</p>
-                     </a>
-                 </li>
-
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>User</p>
-                     </a>
-                 </li>
-
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Roles</p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Accounts</p>
-                     </a>
-                 </li>
-             </ul>
-         </li>
-
-         <li class="nav-item has-treeview">
-             <a href="#" class="nav-link">
-                 <p>
-                     RECOVERY
-                     <i class="fa fa-plus" aria-hidden="true"></i>
-                 </p>
-             </a>
-             <ul class="nav nav-treeview">
-                 <li class="nav-item">
-
-                     <p class="nav-items-title"><i class="fa fa-square" aria-hidden="true"></i><b>Branch</b></p>
-
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <p>Loan</p>
-
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Occupation</p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Purpose</p>
-                     </a>
-                 </li>
-
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>User</p>
-                     </a>
-                 </li>
-
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Roles</p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Accounts</p>
-                     </a>
-                 </li>
-             </ul>
-         </li>
-
-
-         <li class="nav-item has-treeview">
-             <a href="#" class="nav-link">
-                 <p>
-                     LEDGER
-                     <i class="fa fa-plus" aria-hidden="true"></i>
-                 </p>
-             </a>
-             <ul class="nav nav-treeview">
-                 <li class="nav-item">
-
-                     <p class="nav-items-title"><i class="fa fa-square" aria-hidden="true"></i><b>Branch</b></p>
-
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <p>Loan</p>
-
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Occupation</p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Purpose</p>
-                     </a>
-                 </li>
-
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>User</p>
-                     </a>
-                 </li>
-
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Roles</p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Accounts</p>
-                     </a>
-                 </li>
-             </ul>
-         </li>
-
-
-         <li class="nav-item has-treeview">
-             <a href="#" class="nav-link">
-                 <p>
-                     MIS
-                     <i class="fa fa-plus" aria-hidden="true"></i>
-                 </p>
-             </a>
-             <ul class="nav nav-treeview">
-                 <li class="nav-item">
-
-                     <p class="nav-items-title"><i class="fa fa-square" aria-hidden="true"></i><b>Branch</b></p>
-
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-                         <p>Loan</p>
-
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Occupation</p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Purpose</p>
-                     </a>
-                 </li>
-
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>User</p>
-                     </a>
-                 </li>
-
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Roles</p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="#" class="nav-link">
-
-                         <p>Accounts</p>
-                     </a>
-                 </li>
-             </ul>
-         </li> -->
+         @canany(['add-courses', 'list-courses', 'edit-courses', 'delete-courses', 'add-plans', 'list-plans',
+             'edit-plans', 'delete-plans'])
+             <li class="nav-item has-treeview {{ slide_down(['admin.subscription.*']) }}">
+                 <a href="javascript:void(0)" class="nav-link {{ sidebar_open(['admin.subscription.*']) }}">
+                     <p>
+                         {{ __('Gym Section') }}
+                         <i class="fa fa-plus" aria-hidden="true"></i>
+                     </p>
+                 </a>
+                 <ul class="nav nav-treeview">
+                    <li class="nav-item  {{ sidebar_open(['admin.gym.category.*']) }} ">
+                        <a class="nav-items-title nav-link" href="{{ route('admin.gym.category.list') }}">
+                            @if (!empty(sidebar_open(['admin.gym.category.*'])))
+                                <i class="fa fa-square" aria-hidden="true"></i>
+                            @endif <b>Gym Facilities</b>
+                        </a>
+                    </li>
+                     <li class="nav-item  {{ sidebar_open(['admin.gym.category.*']) }} ">
+                         <a class="nav-items-title nav-link" href="{{ route('admin.gym.category.list') }}">
+                             @if (!empty(sidebar_open(['admin.gym.category.*'])))
+                                 <i class="fa fa-square" aria-hidden="true"></i>
+                             @endif <b>Gym Category</b>
+                         </a>
+                     </li>
+                     <li class="nav-item  {{ sidebar_open(['admin.gym.management.*']) }} ">
+                         <a class="nav-items-title nav-link" href="{{ route('admin.gym.management.list') }}">
+                             @if (!empty(sidebar_open(['admin.gym.management.*'])))
+                                 <i class="fa fa-square" aria-hidden="true"></i>
+                             @endif <b>Gym Management</b>
+                         </a>
+                     </li>
+                     <li class="nav-item  {{ sidebar_open(['admin.gym.booking.*']) }} ">
+                         <a class="nav-items-title nav-link" href="{{ route('admin.gym.booking.list') }}">
+                             @if (!empty(sidebar_open(['admin.gym.booking.*'])))
+                                 <i class="fa fa-square" aria-hidden="true"></i>
+                             @endif <b>Gym Booking List</b>
+                         </a>
+                     </li>
+                 </ul>
+             </li>
+         @endcanany
 
          <li class="nav-item has-treeview">
 

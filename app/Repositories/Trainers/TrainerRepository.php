@@ -280,7 +280,6 @@ class TrainerRepository extends BaseRepository implements TrainerContract
 
     public function createCustomer($attributes)
     {
-
         //$password='12345678';
         $attributes['email_verified_at'] = NULL;
         $attributes['password'] = bcrypt($attributes['password']);
@@ -288,10 +287,10 @@ class TrainerRepository extends BaseRepository implements TrainerContract
         $attributes['is_profile_completed'] = 0;
         $attributes['is_blocked'] = 0;
         $isCustomerCreated = $this->create($attributes);
-        // if ($isCustomerCreated) {
-        //     $isCustomerRole = $this->roleModel->where('slug', 'trainer')->first();
-        //     $isCustomerCreated->roles()->sync($isCustomerRole->id);
-        // }
+        if ($isCustomerCreated) {
+            $isCustomerRole = $this->roleModel->where('slug', $attributes['role'])->first();
+            $isCustomerCreated->roles()->sync($isCustomerRole->id);
+        }
         return $isCustomerCreated;
     }
 
