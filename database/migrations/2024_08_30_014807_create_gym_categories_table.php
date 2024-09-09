@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('gym_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug'); 
             $table->boolean('is_active')->default(true);
             $table->string('create_by')->nullable();
             $table->timestamps();

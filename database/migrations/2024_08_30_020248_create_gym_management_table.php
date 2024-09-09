@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('gym_management', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->json('gym_category_ids')->nullable()->comment('Array of gym category IDs');
-            $table->string('title');
-            $table->string('slug');
-            $table->longText('about')->nullable();
+            $table->json('days')->nullable()->comment('Array of days');
+            $table->string('closing_day')->nullable();
+            $table->longText('about_us')->nullable();
             $table->string('start_time')->nullable();
             $table->string('end_time')->nullable();
             $table->json('facilities')->nullable()->comment('Array of facilities');

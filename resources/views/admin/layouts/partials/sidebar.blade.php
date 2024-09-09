@@ -402,6 +402,13 @@
                      </p>
                  </a>
                  <ul class="nav nav-treeview">
+                    <li class="nav-item  {{ sidebar_open(['admin.gym.category.*']) }} ">
+                        <a class="nav-items-title nav-link" href="{{ route('admin.gym.category.list') }}">
+                            @if (!empty(sidebar_open(['admin.gym.category.*'])))
+                                <i class="fa fa-square" aria-hidden="true"></i>
+                            @endif <b>Gym Facilities</b>
+                        </a>
+                    </li>
                      <li class="nav-item  {{ sidebar_open(['admin.gym.category.*']) }} ">
                          <a class="nav-items-title nav-link" href="{{ route('admin.gym.category.list') }}">
                              @if (!empty(sidebar_open(['admin.gym.category.*'])))

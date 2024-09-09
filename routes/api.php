@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Agent\SettingController;
 use App\Http\Controllers\Api\Common\ProfileQuestionController;
 use App\Http\Controllers\Api\Common\WalletController;
+use App\Http\Controllers\Api\Trainer\GymTrainerController;
 use App\Http\Controllers\Api\TrainerDietitian\ManageController;
 
 // use App\Http\Controllers\Api\Agent\UserApiControllers;
@@ -347,6 +348,11 @@ Route::namespace('Api\Trainer')->prefix('v2/trainers')->as('trainers.')->group(f
             Route::get('/notification', 'notification')->name('notification');
             Route::match(['get', 'post'], '/customer-request-list', 'customerCallRequestList')->name('customer.call.request.list');
         });
+
+        Route::controller(GymTrainerController::class)->prefix('gym')->as('gym.')->group(function () {
+            Route::post('/create-profie', 'GymCreateProfile')->name('create.profie');
+            Route::get('/get-profie', 'GymGetProfile')->name('get.profie');
+        });
     });
     Route::controller(TrainerApiController::class)->group(function () {
         Route::post('/signup', 'signup')->name('signup');
@@ -374,5 +380,4 @@ Route::namespace('Api\Trainer')->prefix('v2/trainers')->as('trainers.')->group(f
     Route::controller(ManageController::class)->group(function () {
         Route::get('/questions-list', 'questionsList')->name('questions.list');
     });
-
 });

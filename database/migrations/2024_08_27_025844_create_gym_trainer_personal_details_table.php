@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('gym_name');
-            $table->string('owner_name')->comment('User first and last name');
+            // $table->string('owner_name')->comment('User first and last name');
             $table->string('alter_mobile_number')->nullable();
             $table->string('gym_logo')->nullable();
             $table->string('profile_img')->nullable()->comment('User profile picture');
