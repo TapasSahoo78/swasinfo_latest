@@ -582,4 +582,10 @@ return $this->hasOne(Address::class);
     {
         return $this->hasOne(GymManagement::class);
     }
+    public function restaurant()
+    {
+        return $this->hasOne(Restaurant::class, 'user_id');
+    }
+
+
 }

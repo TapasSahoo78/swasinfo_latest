@@ -6,6 +6,10 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Gym\BookingController;
 use App\Http\Controllers\Gym\CategoryController;
 use App\Http\Controllers\Gym\ManagementController;
+use App\Http\Controllers\Admin\ContacUsController;
+use App\Http\Controllers\Admin\OffersController;
+use App\Http\Controllers\Admin\RestaurantController;
+use App\Http\Controllers\Admin\RestaurantsCategorieController;
 use Illuminate\Support\Facades\Route;
 
 Route::namespace('Admin')->as('admin.')->middleware(['auth'])->group(function () {
@@ -145,6 +149,9 @@ Route::namespace('Admin')->as('admin.')->middleware(['auth'])->group(function ()
         Route::match(['get', 'post', 'put'], 'edit/{uuid}', 'editAttribute')->name('edit');
         Route::get('/delete/{uuid}', 'deleteAttribute')->name('delete');
     });
+    Route::controller(ContacUsController::class)->as('contact-us.')->prefix('contact-us')->group(function () {
+        Route::get('/', 'index')->name('list');
+    });
 
     // Route::controller(QuestionsController::class)->as('question.')->prefix('question')->group(function () {
     //     Route::get('/', 'index')->name('list');
@@ -237,9 +244,33 @@ Route::namespace('Admin')->as('admin.')->middleware(['auth'])->group(function ()
             Route::match(['get', 'post', 'put'], 'edit/{uuid}', 'editVendor')->name('edit');
             Route::get('/delete/{uuid}', 'deleteVendor')->name('delete');
         });
+
+    // ************************************************************************************************************
+    Route::controller(RestaurantController::class)->prefix('restaurants')->as('restaurant.')->group(function () {
+        Route::get('/', 'index')->name('list');
+        Route::match(['get', 'post'], '/add', 'addRestaurant')->name('add');
+    });
+
+    // ************************************************************************************************************
+    Route::controller(OffersController::class)->prefix('offers')->as('offer.')->group(function () {
+        Route::get('/', 'index')->name('list');
+        Route::match(['get', 'post'], '/add', 'create')->name('add');
+    });
+    // ************************************************************************************************************
+    Route::controller(RestaurantsCategorieController::class)->prefix('restaurants/category')->as('restaurant.category.')->group(function () {
+        Route::get('/', 'index')->name('list');
+        Route::match(['get', 'post'], '/add', 'create')->name('add');
+        // *******************************************************************************************
+        Route::get('/sub-category-list', 'subCategoryList')->name('subcategory.list');
+        Route::match(['get', 'post'], '/sub-category-add', 'createSubCategory')->name('subcategory.add');
+    });
+    // ************************************************************************************************************
 });
 
 Route::post('admin/logout', 'Auth\LoginController@adminLogout')->name('admin.logout');
+
+// Route::post('admin/logout', 'Auth\LoginController@adminLogout')->name('admin.logout');
+
 Route::get('/', 'Admin\MfiController@mfiList')->name('mfi-list');
 
 

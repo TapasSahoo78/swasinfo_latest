@@ -12,6 +12,7 @@ Route::namespace('Admin')->controller(AjaxController::class)->as('ajax.')->middl
     Route::get('/getPermissions', 'getPermissions')->name('get.permissions');
     Route::get('/getSubCategories', 'getSubCategories')->name('get.sub.categories');
     Route::get('/customer-all-data', 'customerAllData')->name('get.customer.data');
+    Route::post('/restaurant-subcategory', 'restaurantSubcategory')->name('restaurant.subcategory');
 
     Route::post('/category-wise-product', 'categoryWiseProduct')->name('category.wise.product');
     Route::get('/autocomplete', 'autocomplete')->name('autocomplete');

@@ -296,6 +296,7 @@
                     <div class="col-sm-8">
                         <h1 class="m-0 text-dark">No of Categories : {{ count($listCategories) }}</h1>
                     </div><!-- /.col -->
+
                   <?php if(auth()->user()->id == 1){ ?>
                     <div class="col-sm-4 right_btn">
                         <a class="btn btn-primary" href="{{ route('admin.subscription.category.add') }}">
@@ -303,7 +304,9 @@
                             ADD CATEGORY
                         </a>
                     </div><!-- /.col -->
+
                    <?php } ?>
+
                 </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -332,6 +335,7 @@
                                 <tbody>
                                     @forelse ($listCategories as $data)
                                         <tr>
+
                                             <td>{{ $data->category_name ? $data->category_name : '---' }}
                                             <td>{{ date('d-m-Y', strtotime($data->created_at)) }}</td>
                                             <td>
@@ -362,6 +366,7 @@
                                                             alt="">
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
                                                             <a class="dropdown-item" href="{{ route('admin.subscription.category.edit', $data->uuid) }}">Edit</a>
                                                             <a class="dropdown-item deleteData" data-table="plan_categories"
                                                                 data-uuid="{{ $data->uuid }}"

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\BaseController;
+use App\Models\contacUs;
 use App\Services\Banner\BannerService;
 use App\Services\Blog\BlogService;
 use App\Services\Brand\BrandService;
@@ -35,7 +36,6 @@ class FrontendController extends BaseController
         $this->testimonialService = $testimonialService;
         $this->blogService = $blogService;
         $this->faqService = $faqService;
-
     }
 
     public function index(Request $request)
@@ -74,7 +74,7 @@ class FrontendController extends BaseController
         $canamolyCbdProducts = $this->productService->listProducts($filterBrandProducts, 'id', 'asc');
         $banners = $this->bannerService->listBanners($filterBanners, 'id', 'asc');
         $listTestimonials = $this->testimonialService->listTestimonials($filterTestimonials, 'id', 'asc', 10);
-        return view('frontend.index', compact('listBrands', 'listDelta8Products', 'banners', 'canamolyCbdProducts', 'categories', 'listTestimonials', 'listBlogs'));
+        return view('frontend.index', compact('listBrands', 'listDelta8Pucts', 'banners', 'canamolyCbdProducts', 'categories', 'listTestimonials', 'listBlogs'));
     }
 
     public function products(Request $request)
@@ -197,7 +197,6 @@ class FrontendController extends BaseController
                     'category' => [$request->slug],
                 ];
             }
-
         }
         if ($request->has('orderBy')) {
             if ($request->orderBy == 'newest') {
@@ -258,7 +257,21 @@ class FrontendController extends BaseController
         $blogId = uuidtoid($uuid, 'blogs');
         $blogData = $this->blogService->findBlogById($blogId);
         $listPopularBlogs = $this->blogService->listBlogs($filterByPopularConditions, 'id', 'asc', 15);
-        return view('frontend.blog.blog-details', compact('blogData','listPopularBlogs'));
+        return view('frontend.blog.blog-details', compact('blogData', 'listPopularBlogs'));
     }
-
+    public function contactUs(Request $request)
+    {
+        $this->setPageTitle('Contact Us');
+        if ($request->isMethod('post')) {
+            $isCreateCategory = contacUs::create([
+                'fisrt_name' => $request->first,
+                'last_name' => $request->last,
+                'connecting_for' => $request->agent,
+                'mobile' => $request->mobile,
+                'email' => $request->email,
+                'details' => $request->comment,
+            ]);
+            return $this->responseRedirect('frontend.contact', 'Attribute created successfully', 'success', false);
+        }
+    }
 }

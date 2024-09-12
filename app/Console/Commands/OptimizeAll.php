@@ -12,7 +12,7 @@ class OptimizeAll extends Command
      * @var string
      */
     protected $signature = 'refresh';
-
+    
     /**
      * The console command description.
      *

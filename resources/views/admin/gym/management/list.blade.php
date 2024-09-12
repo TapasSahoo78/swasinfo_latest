@@ -300,6 +300,7 @@
                     <div class="col-sm-4 right_btn">
                         <a class="btn btn-primary" href="{{ route('admin.subscription.category.add') }}">
                             <span><i class="fa fa-plus" aria-hidden="true"></i></span>
+
                             ADD CATEGORY
                         </a>
                     </div><!-- /.col -->

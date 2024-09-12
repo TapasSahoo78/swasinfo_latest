@@ -301,6 +301,14 @@
                         <a class="btn btn-primary " href="{{ route('admin.product.category.list') }}">
                             <span><i class="fa fa-list" aria-hidden="true"></i></span>
                             Category List
+========
+                        <h1 class="m-0 text-dark">Edit User</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-4 right_btn">
+                        <a class="btn btn-primary" href="{{ route('admin.user.list') }}">
+                            <span><i class="fa fa-list" aria-hidden="true"></i></span>
+                            User List
+>>>>>>>> 5278a15d54d297b514d5e419999275e8d42c3132:resources/views/restaurant/dashboard/edit-user.blade.php
                         </a>
                     </div><!-- /.col --> --}}
                 </div>
@@ -315,7 +323,9 @@
                 <!-- /.row -->
                 <!-- Recent Assets -->
                 <div class="card p-3">
+
                     <form method="post" action="{{ route('admin.product.brand.edit', $data->uuid) }}" id="customerForm"
+
                         enctype="multipart/form-data">
                         @csrf
                         {{-- <input type="hidden" name="id" value="{{isset($data)?$data->id:''}}"> --}}
@@ -332,8 +342,6 @@
                                     @enderror
                                 </div>
                             </div>
-
-
 
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -367,7 +375,7 @@
 
                         <div class="row mt-3">
                             <div class="col-md-4">
-                                <button class="btn btn-primary" type="submit">Save</button>
+                                <button class="btn btn-primary" type="submit">Update</button>
                             </div>
                             <div class="col-md-4">
 
@@ -396,7 +404,6 @@
 
     <!-- /.content-wrapper -->
 @endsection
-
 @push('scripts')
     {{-- <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>  --}}
     {{-- <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.js') }}"></script> --}}
@@ -408,7 +415,6 @@
                 $('#dataTable').DataTable();
             });
         </script> --}}
-
     <script src="{{ asset('assets/admin/js/datatableajax.js') }}"></script>
     <script src="{{ asset('assets/admin/js/customer.js') }}"></script>
     <script src="{{ asset('assets/admin/js/customer-kyc-verification.js') }}"></script>

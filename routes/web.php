@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
@@ -21,6 +22,7 @@ Route::get('/', function () {
 Route::get('/contact-us', function () {
     return view('frontend.pages.contact_us');
 })->name('frontend.contact');
+Route::post('/contact-us',[FrontendController::class,'contactUs'] )->name('frontend.contact');
 
 Route::get('/ecom', function () {
     return view('ecom.layouts.main');

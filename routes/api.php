@@ -91,8 +91,6 @@ Route::namespace('Api\Customer')
             Route::post('/app-version', 'postAppVersion')->name('app-version');
             Route::get('/get-app-version', 'getAppVersion')->name('get-app-version');
 
-
-
             //Route::post('/workout-list', 'workoutList')->name('workout.list');
 
         });

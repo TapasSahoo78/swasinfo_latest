@@ -53,6 +53,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapAdminRoutes();
         $this->mapAjaxRoutes();
         $this->mapVendorRoutes();
+        $this->mapRestaurantsRoutes();
         // $this->mapMfiRoutes();
         // $this->mapPageRoutes();
         $this->mapFrontendRoutes();
@@ -79,6 +80,13 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->prefix('admin')
             ->group(base_path('routes/admin.php'));
+    }
+    protected function mapRestaurantsRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->prefix('restaurants')
+            ->group(base_path('routes/restaurants.php'));
     }
 
     protected function mapAjaxRoutes()

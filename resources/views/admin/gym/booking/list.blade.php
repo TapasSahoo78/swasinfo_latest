@@ -294,6 +294,7 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-sm-8">
+
                         <h1 class="m-0 text-dark">No of Categories : {{ count($listCategories) }}</h1>
                     </div><!-- /.col -->
                   <?php if(auth()->user()->id == 1){ ?>
@@ -330,6 +331,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     @forelse ($listCategories as $data)
                                         <tr>
                                             <td>{{ $data->category_name ? $data->category_name : '---' }}
@@ -344,6 +346,7 @@
 
                                                     @case(0)
                                                         <a href="javascript:void(0)" data-value="1" data-uuid="{{ $data->uuid }}"
+
                                                             data-table="plan_categories" data-message="active"
                                                             class="inactive-status changeStatus ">Inactive</a>
                                                     @break

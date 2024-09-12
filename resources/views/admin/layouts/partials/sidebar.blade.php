@@ -74,18 +74,20 @@
                  </a>
              </li>
          @endcanany
-         <?php
+         @canany(['add-agent-manager', 'list-agent-manager', 'edit-agent-manager', 'delete-agent-manager'])
+             <?php
             if(auth()->user()->id != 1){
               $userId = auth()->user()->uuid;
         ?>
-         <li class="nav-item has-treeview">
-             <a href=" {{ route('admin.agent.reporttotal', $userId) }}" class="nav-link">
-                 <p>
-                     Report
-                 </p>
-             </a>
-         </li>
-         <?php } ?>
+             <li class="nav-item has-treeview">
+                 <a href=" {{ route('admin.agent.reporttotal', $userId) }}" class="nav-link">
+                     <p>
+                         Report
+                     </p>
+                 </a>
+             </li>
+             <?php } ?>
+         @endcanany
          @canany(['add-workout', 'list-workout', 'edit-workout', 'delete-workout'])
              <li class="nav-item has-treeview">
                  <a href="{{ route('admin.workout.list') }}" class="nav-link">
@@ -105,6 +107,8 @@
                  </a>
                  <ul class="nav nav-treeview">
                      {{-- @canany(['add-leads', 'edit-leads', 'view-leads', 'delete-leads']) --}}
+                     <li class="nav-item  {{ sidebar_open(['admin.diet.food.*']) }} ">
+
 
                      <li class="nav-item  {{ sidebar_open(['admin.diet.food.*']) }} ">
 
@@ -113,6 +117,9 @@
                                  <i class="fa fa-square" aria-hidden="true"></i>
                              @endif <b>Food</b>
                          </a>
+                     </li>
+                     <li class="nav-item  {{ sidebar_open(['admin.diet.plan.*']) }} ">
+
 
                      </li>
                      <li class="nav-item  {{ sidebar_open(['admin.diet.plan.*']) }} ">
@@ -121,28 +128,21 @@
                              @if (!empty(sidebar_open(['admin.diet.plan.*'])))
                                  <i class="fa fa-square" aria-hidden="true"></i>
                              @endif <b>Diet Plan</b>
-                         </a>
-
-                     </li>
-                     {{-- @endcanany --}}
-                     {{-- @canany(['add-enquiries', 'edit-enquiries', 'view-enquiries', 'delete-enquiries'])
+                         </a </li>
+                         {{-- @endcanany --}}
+                         {{-- @canany(['add-enquiries', 'edit-enquiries', 'view-enquiries', 'delete-enquiries'])
                         <li class="nav-item  {{ sidebar_open(['mfi.crm.enquiry.*']) }} ">
-
                  <a class="nav-items-title nav-link " href="{{ route('mfi.crm.enquiry.list', ['slug' => $code]) }}">
                      @if (!empty(sidebar_open(['mfi.crm.enquiry.*'])))
                      <i class="fa fa-square" aria-hidden="true"></i>
                      @endif <b>ENQUIRY</b>
                  </a>
-
          </li>
-
-         @endcanany --}}
-
+         @endcanany --
                  </ul>
              </li>
          @endcanany
-         @canany(['add-courses', 'list-courses', 'edit-courses', 'delete-courses', 'add-plans', 'list-plans',
-             'edit-plans', 'delete-plans'])
+         @canany(['add-courses', 'list-courses', 'edit-courses', 'delete-courses', 'add-plans', 'list-plans', 'edit-plans', 'delete-plans'])
              <li class="nav-item has-treeview {{ slide_down(['admin.subscription.*']) }}">
                  <a href="javascript:void(0)" class="nav-link {{ sidebar_open(['admin.subscription.*']) }}">
                      <p>
@@ -153,11 +153,25 @@
                  <ul class="nav nav-treeview">
                      <li class="nav-item  {{ sidebar_open(['admin.subscription.course.*']) }} ">
 
+
+                         {{-- @canany(['add-leads', 'edit-leads', 'view-leads', 'delete-leads']) --}}
+                         {{-- <li class="nav-item  {{ sidebar_open(['admin.subscription.category.*']) }} ">
+                 <a class="nav-items-title nav-link " href="{{ route('admin.subscription.category.list') }}">
+                     @if (!empty(sidebar_open(['admin.subscription.category.*'])))
+                     <i class="fa fa-square" aria-hidden="true"></i>
+                     @endif <b>category</b>
+                 </a>
+             </li> --}}
+                     <li class="nav-item  {{ sidebar_open(['admin.subscription.course.*']) }} ">
+
                          <a class="nav-items-title nav-link" href="{{ route('admin.subscription.course.list') }}">
                              @if (!empty(sidebar_open(['admin.subscription.course.*'])))
                                  <i class="fa fa-square" aria-hidden="true"></i>
                              @endif <b>Course</b>
                          </a>
+                     </li>
+                     <li class="nav-item  {{ sidebar_open(['admin.subscription.plan.*']) }} ">
+
 
                      </li>
                      <li class="nav-item  {{ sidebar_open(['admin.subscription.plan.*']) }} ">
@@ -167,285 +181,405 @@
                                  <i class="fa fa-square" aria-hidden="true"></i>
                              @endif <b>Plan</b>
                          </a>
-
                      </li>
 
-                 </ul>
+
              </li>
-         @endcanany
-         @canany(['faq'])
-             <li class="nav-item has-treeview">
-                 <a href="{{ route('admin.cms.faq') }}" class="nav-link">
-                     <p>
-                         Manage FAQS
-                     </p>
-                 </a>
-             </li>
-         @endcanany
-         @canany(['update-privacy-policy'])
-             <li class="nav-item has-treeview">
-                 <a href="{{ route('admin.cms.privacy.policy') }}" class="nav-link">
-                     <p>
-                         Manage Privacy policy
-                     </p>
-                 </a>
-             </li>
-         @endcanany
-         @canany(['term-and-condition'])
-             <li class="nav-item has-treeview">
-                 <a href="{{ route('admin.cms.term.and.condition') }}" class="nav-link">
-                     <p>
-                         Manage term and condition
-                     </p>
-                 </a>
-             </li>
-         @endcanany
-         @canany(['contact-us'])
-             <li class="nav-item has-treeview">
-                 <a href="{{ route('admin.cms.contact.us') }}" class="nav-link">
-                     <p>
-                         Manage Contact-us
-                     </p>
-                 </a>
-             </li>
-         @endcanany
-         @canany(['help-and-support'])
-             <li class="nav-item has-treeview">
-                 <a href="{{ route('admin.cms.helps.support') }}" class="nav-link">
-                     <p>
-                         Manage Help And Support
-                     </p>
-                 </a>
-             </li>
-         @endcanany
-         @canany(['add-rewards', 'list-rewards', 'edit-rewards', 'delete-rewards'])
-             <li class="nav-item has-treeview">
-                 <a href="{{ route('admin.reward.list') }}" class="nav-link">
-                     <p>
-                         Manage Rewards
-                     </p>
-                 </a>
-             </li>
-         @endcanany
-         @canany(['list-transaction'])
-             <li class="nav-item has-treeview">
-                 <a href="{{ route('admin.customer.transaction') }}" class="nav-link">
-                     <p>
-                         Manage Transaction List
-                     </p>
-                 </a>
-             </li>
-         @endcanany
-         @canany(['live-session'])
-             <li class="nav-item has-treeview">
-                 <a href="{{ route('admin.customer.livesession') }}" class="nav-link">
-                     <p>
-                         Live Session
-                     </p>
-                 </a>
-             </li>
-         @endcanany
-         {{-- <li class="nav-item has-treeview">
+             {{-- @endcanany --}}
+             {{-- @canany(['add-enquiries', 'edit-enquiries', 'view-enquiries', 'delete-enquiries'])
+                        <li class="nav-item  {{ sidebar_open(['mfi.crm.enquiry.*']) }} ">
+             <a class="nav-items-title nav-link " href="{{ route('mfi.crm.enquiry.list', ['slug' => $code]) }}">
+                 @if (!empty(sidebar_open(['mfi.crm.enquiry.*'])))
+                 <i class="fa fa-square" aria-hidden="true"></i>
+                 @endif <b>ENQUIRY</b>
+             </a>
+     </li>
+     @endcanany --}}
+         </ul>
+         </li>
+     @endcanany
+     @canany(['faq'])
+         <li class="nav-item has-treeview">
+             <a href="{{ route('admin.cms.faq') }}" class="nav-link">
+                 <p>
+                     Manage FAQS
+                 </p>
+             </a>
+         </li>
+     @endcanany
+     @canany(['update-privacy-policy'])
+         <li class="nav-item has-treeview">
+             <a href="{{ route('admin.cms.privacy.policy') }}" class="nav-link">
+                 <p>
+                     Manage Privacy policy
+                 </p>
+             </a>
+         </li>
+     @endcanany
+     @canany(['term-and-condition'])
+         <li class="nav-item has-treeview">
+             <a href="{{ route('admin.cms.term.and.condition') }}" class="nav-link">
+                 <p>
+                     Manage term and condition
+                 </p>
+             </a>
+         </li>
+     @endcanany
+     @canany(['contact-us'])
+         <li class="nav-item has-treeview">
+             <a href="{{ route('admin.cms.contact.us') }}" class="nav-link">
+                 <p>
+                     Manage Contact-us
+                 </p>
+             </a>
+         </li>
+     @endcanany
+     @canany(['help-and-support'])
+         <li class="nav-item has-treeview">
+             <a href="{{ route('admin.cms.helps.support') }}" class="nav-link">
+                 <p>
+                     Manage Help And Support
+                 </p>
+             </a>
+         </li>
+     @endcanany
+     @canany(['add-rewards', 'list-rewards', 'edit-rewards', 'delete-rewards'])
+         <li class="nav-item has-treeview">
+             <a href="{{ route('admin.reward.list') }}" class="nav-link">
+                 <p>
+                     Manage Rewards
+                 </p>
+             </a>
+         </li>
+     @endcanany
+     @canany(['list-transaction'])
+         <li class="nav-item has-treeview">
+             <a href="{{ route('admin.customer.transaction') }}" class="nav-link">
+                 <p>
+                     Manage Transaction List
+                 </p>
+             </a>
+         </li>
+     @endcanany
+     @canany(['live-session'])
+         <li class="nav-item has-treeview">
+             <a href="{{ route('admin.customer.livesession') }}" class="nav-link">
+                 <p>
+                     Live Session
+                 </p>
+             </a>
+         </li>
+     @endcanany
+     {{-- <li class="nav-item has-treeview">
              <a href="{{route('admin.customer.list')}}" class="nav-link">
      <p>
          Manage Trainner
      </p>
      </a>
      </li> --}}
+     {{-- @canany(['add-branch', 'edit-branch', 'delete-branch', 'view-branch', 'add-loan', 'edit-loan', 'view-loan', 'delete-loan', 'add-occupation', 'edit-occupation', 'view-occupation', 'delete-occupation', 'add-purpose', 'edit-purpose', 'view-purpose', 'delete-purpose', 'add-user', 'edit-user', 'view-user', 'delete-user', 'add-roles', 'edit-roles', 'view-roles', 'delete-roles', 'add-accounts', 'edit-accounts', 'view-accounts', 'delete-accounts']) --}}
+     {{-- <li class="nav-item has-treeview">
+         <a href="#" class="nav-link">
+             <p>
+                 E- Commerce Section
+                 <i class="fa fa-plus" aria-hidden="true"></i>
+             </p>
+         </a>
+         <ul class="nav nav-treeview">
+             @canany(['bannerlist'])
+                 <li class="nav-item">
+                     <a href="{{ route('admin.product.bannerlist') }}" class="nav-link">
+                         <p>MANAGE Banner</p>
+                     </a>
+                 </li>
+             @endcanany
+             @canany(['category'])
+                 <li class="nav-item">
+                     <a href="{{ route('admin.product.category.list') }}" class="nav-link">
+                         <p>MANAGE Category</p>
+                     </a>
+                 </li>
+             @endcanany
+             @canany(['product'])
+                 <li class="nav-item">
+                     <a href="{{ route('admin.product.list') }}" class="nav-link">
+                         <p>MANAGE Product</p>
+                     </a>
+                 </li>
+             @endcanany
+             @canany(['points'])
+                 <li class="nav-item">
+                     <a href="{{ route('admin.product.points.list') }}" class="nav-link">
+                         <p>MANAGE Points</p>
+                     </a>
+                 </li>
+             @endcanany
+         </ul>
+     </li> --}}
+     {{-- @endcanany --}}
+     {{-- @canany(['add-branch', 'edit-branch', 'delete-branch', 'view-branch', 'add-loan', 'edit-loan', 'view-loan', 'delete-loan', 'add-occupation', 'edit-occupation', 'view-occupation', 'delete-occupation', 'add-purpose', 'edit-purpose', 'view-purpose', 'delete-purpose', 'add-user', 'edit-user', 'view-user', 'delete-user', 'add-roles', 'edit-roles', 'view-roles', 'delete-roles', 'add-accounts', 'edit-accounts', 'view-accounts', 'delete-accounts']) --}}
+     <li class="nav-item has-treeview">
+         <a href="#" class="nav-link">
+             <p>
+                 Managment Restaurant
+                 <i class="fa fa-plus" aria-hidden="true"></i>
+             </p>
+         </a>
+         <ul class="nav nav-treeview">
+             {{-- @canany(['product']) --}}
+             <li class="nav-item">
+                 <a href="{{ route('admin.restaurant.list') }}" class="nav-link">
+                     <p>MANAGE Restaurant</p>
+                 </a>
+             </li>
+             {{-- @endcanany --}}
+             {{-- @canany(['product']) --}}
+             <li class="nav-item">
+                 <a href="{{ route('admin.offer.list') }}" class="nav-link">
+                     <p>MANAGE Offers</p>
+                 </a>
+             </li>
+             {{-- @canany(['category']) --}}
+             <li class="nav-item">
+                 <a href="{{ route('admin.restaurant.category.list') }}" class="nav-link">
+                     <p>MANAGE Category</p>
+                 </a>
+             </li>
+             <li class="nav-item">
+                 <a href="{{ route('admin.restaurant.category.subcategory.list') }}" class="nav-link">
+                     <p>MANAGE Sub Category</p>
+                 </a>
+             </li>
+             {{-- @endcanany --}}
+             {{-- @endcanany --}}
 
+             {{-- @canany(['bannerlist'])
+                    <li class="nav-item">
+                        <a href="{{ route('admin.product.bannerlist') }}" class="nav-link">
+                            <p>MANAGE Banner</p>
+                        </a>
+                    </li>
+                @endcanany
+                @canany(['category'])
+                    <li class="nav-item">
+                        <a href="{{ route('admin.product.category.list') }}" class="nav-link">
+                            <p>MANAGE Category</p>
+                        </a>
+                    </li>
+                @endcanany
+                @canany(['product'])
+                    <li class="nav-item">
+                        <a href="{{ route('admin.product.list') }}" class="nav-link">
+                            <p>MANAGE Product</p>
+                        </a>
+                    </li>
+                @endcanany --}}
+             {{-- @canany(['points'])
+                    <li class="nav-item">
+                        <a href="{{ route('admin.product.points.list') }}" class="nav-link">
+                            <p>MANAGE Points</p>
+                        </a>
+                    </li>
+                @endcanany --}}
+
+
+
+         </ul>
+     </li>
+
+     <li class="nav-item has-treeview">
+         <a href="#" class="nav-link">
+             <p>
+                 E- Commerce Section
+                 <i class="fa fa-plus" aria-hidden="true"></i>
+             </p>
+         </a>
+
+         <ul class="nav nav-treeview">
+             @canany(['category'])
+                 <li class="nav-item">
+                     <a href="{{ route('admin.product.brand.list') }}" class="nav-link">
+                         <p>MANAGE Brand</p>
+                     </a>
+                 </li>
+             @endcanany
+             @canany(['category'])
+                 <li class="nav-item">
+                     <a href="{{ route('admin.product.category.list') }}" class="nav-link">
+                         <p>MANAGE Category</p>
+
+                     </a>
+                 </li>
+
+                 <li class="nav-item">
+                     <a href="{{ route('admin.subcategory.list') }}" class="nav-link">
+                         <p>MANAGE Commision</p>
+
+                     </a>
+                 </li>
+             @endcanany
+             @canany(['product'])
+                 <li class="nav-item">
+                     <a href="{{ route('admin.product.list') }}" class="nav-link">
+
+                         <p>MANAGE Product</p>
+                     </a>
+                 </li>
+             @endcanany
+             @canany(['points'])
+                 <li class="nav-item">
+                     <a href="{{ route('admin.product.points.list') }}" class="nav-link">
+                         <p>MANAGE Variants</p>
+                     </a>
+                 </li>
+             @endcanany
+             @canany(['category'])
+                 <li class="nav-item">
+                     <a href="{{ route('admin.product.category.list') }}" class="nav-link">
+                         <p>MANAGE Order</p>
+                     </a>
+                 </li>
+             @endcanany
+
+         </ul>
+     </li>
+
+     {{-- @endcanany --}}
+     @canany(['vendor'])
          <li class="nav-item has-treeview">
-             <a href="#" class="nav-link">
+             <a href="{{ route('admin.vendor.list') }}" class="nav-link">
                  <p>
-                     E- Commerce Section
+                     Manage Vendor List
+                 </p>
+             </a>
+         </li>
+     @endcanany
+     @canany(['vendor'])
+         <li class="nav-item has-treeview">
+             <a href="{{ route('admin.contact-us.list') }}" class="nav-link">
+                 <p>
+                     Contact Us List
+                 </p>
+             </a>
+         </li>
+     @endcanany
+
+     <!-- catagories -->
+     @canany(['add-branch', 'edit-branch', 'delete-branch', 'view-branch', 'add-loan', 'edit-loan', 'view-loan',
+         'delete-loan', 'add-occupation', 'edit-occupation', 'view-occupation', 'delete-occupation', 'add-purpose',
+         'edit-purpose', 'view-purpose', 'delete-purpose', 'add-user', 'edit-user', 'view-user', 'delete-user', 'add-roles',
+         'edit-roles', 'view-roles', 'delete-roles', 'add-accounts', 'edit-accounts', 'view-accounts', 'delete-accounts'])
+         <li class="nav-item has-treeview">
+             <a href="#" class="nav-link active">
+                 <p>
+                     ADMINISTRATION
                      <i class="fa fa-plus" aria-hidden="true"></i>
                  </p>
              </a>
-
              <ul class="nav nav-treeview">
-                 @canany(['category'])
-                     <li class="nav-item">
-                         <a href="{{ route('admin.product.brand.list') }}" class="nav-link">
-                             <p>MANAGE Brand</p>
-                         </a>
-                     </li>
-                 @endcanany
-                 @canany(['category'])
-                     <li class="nav-item">
-                         <a href="{{ route('admin.product.category.list') }}" class="nav-link">
-                             <p>MANAGE Category</p>
-
-                         </a>
-                     </li>
-
-                     <li class="nav-item">
-                         <a href="{{ route('admin.subcategory.list') }}" class="nav-link">
-                             <p>MANAGE Commision</p>
-
-                         </a>
-                     </li>
-                 @endcanany
-                 @canany(['product'])
-                     <li class="nav-item">
-                         <a href="{{ route('admin.product.list') }}" class="nav-link">
-
-                             <p>MANAGE Product</p>
-                         </a>
-                     </li>
-                 @endcanany
-                 @canany(['points'])
-                     <li class="nav-item">
-                         <a href="{{ route('admin.product.points.list') }}" class="nav-link">
-                             <p>MANAGE Variants</p>
-                         </a>
-                     </li>
-                 @endcanany
-                 @canany(['category'])
-                     <li class="nav-item">
-                         <a href="{{ route('admin.product.category.list') }}" class="nav-link">
-                             <p>MANAGE Order</p>
-                         </a>
-                     </li>
-                 @endcanany
-
-             </ul>
-         </li>
-         @canany(['vendor'])
-             <li class="nav-item has-treeview">
-                 <a href="{{ route('admin.vendor.list') }}" class="nav-link">
-                     <p>
-                         Manage Vendor List
-                     </p>
-                 </a>
-             </li>
-         @endcanany
-
-         <!-- catagories -->
-         @canany(['add-branch', 'edit-branch', 'delete-branch', 'view-branch', 'add-loan', 'edit-loan', 'view-loan',
-             'delete-loan', 'add-occupation', 'edit-occupation', 'view-occupation', 'delete-occupation', 'add-purpose',
-             'edit-purpose', 'view-purpose', 'delete-purpose', 'add-user', 'edit-user', 'view-user', 'delete-user',
-             'add-roles', 'edit-roles', 'view-roles', 'delete-roles', 'add-accounts', 'edit-accounts', 'view-accounts',
-             'delete-accounts'])
-             <li class="nav-item has-treeview">
-                 <a href="#" class="nav-link active">
-                     <p>
-                         ADMINISTRATION
-                         <i class="fa fa-plus" aria-hidden="true"></i>
-                     </p>
-                 </a>
-                 <ul class="nav nav-treeview">
-                     @canany(['add-branch', 'edit-branch', 'delete-branch', 'view-branch'])
-                         {{-- <li class="nav-item">
+                 @canany(['add-branch', 'edit-branch', 'delete-branch', 'view-branch'])
+                     {{-- <li class="nav-item">
 
                      <a class="nav-items-title" href="{{ route('admin.branch.list') }}"><i class="fa fa-square" aria-hidden="true"></i><b>Branch</b></a>
-
      </li> --}}
-                     @endcanany
-                     @canany(['add-loan', 'edit-loan', 'view-loan', 'delete-loan'])
-                         <li class="nav-item">
-                             <a href="#" class="nav-link">
-                                 <p>Loan</p>
-
-                             </a>
-                         </li>
-                     @endcanany
-                     @canany(['add-occupation', 'edit-occupation', 'view-occupation', 'delete-occupation'])
-                         <li class="nav-item">
-                             <a href="#" class="nav-link">
-
-                                 <p>Occupation</p>
-                             </a>
-                         </li>
-                     @endcanany
-                     @canany(['add-purpose', 'edit-purpose', 'view-purpose', 'delete-purpose'])
-                         <li class="nav-item">
-                             <a href="#" class="nav-link">
-
-                                 <p>Purpose</p>
-                             </a>
-                         </li>
-                     @endcanany
-                     @canany(['add-user', 'edit-user', 'view-user', 'delete-user'])
-                         <li class="nav-item">
-                             <a href="#" class="nav-link">
-
-                                 <p>User</p>
-                             </a>
-                         </li>
-                     @endcanany
-                     @canany(['add-roles', 'edit-roles', 'view-roles', 'delete-roles'])
-                         <li class="nav-item">
-                             <a href="#" class="nav-link">
-
-                                 <p>Roles</p>
-                             </a>
-                         </li>
-                     @endcanany
-                     @canany(['add-accounts', 'edit-accounts', 'view-accounts', 'delete-accounts'])
-                         <li class="nav-item">
-                             <a href="#" class="nav-link">
-
-                                 <p>Accounts</p>
-                             </a>
-                         </li>
-                     @endcanany
-                 </ul>
-             </li>
-         @endcanany
-
-         @canany(['add-courses', 'list-courses', 'edit-courses', 'delete-courses', 'add-plans', 'list-plans',
-             'edit-plans', 'delete-plans'])
-             <li class="nav-item has-treeview {{ slide_down(['admin.subscription.*']) }}">
-                 <a href="javascript:void(0)" class="nav-link {{ sidebar_open(['admin.subscription.*']) }}">
-                     <p>
-                         {{ __('Gym Section') }}
-                         <i class="fa fa-plus" aria-hidden="true"></i>
-                     </p>
-                 </a>
-                 <ul class="nav nav-treeview">
-                    <li class="nav-item  {{ sidebar_open(['admin.gym.category.*']) }} ">
-                        <a class="nav-items-title nav-link" href="{{ route('admin.gym.category.list') }}">
-                            @if (!empty(sidebar_open(['admin.gym.category.*'])))
-                                <i class="fa fa-square" aria-hidden="true"></i>
-                            @endif <b>Gym Facilities</b>
-                        </a>
-                    </li>
-                     <li class="nav-item  {{ sidebar_open(['admin.gym.category.*']) }} ">
-                         <a class="nav-items-title nav-link" href="{{ route('admin.gym.category.list') }}">
-                             @if (!empty(sidebar_open(['admin.gym.category.*'])))
-                                 <i class="fa fa-square" aria-hidden="true"></i>
-                             @endif <b>Gym Category</b>
+                 @endcanany
+                 @canany(['add-loan', 'edit-loan', 'view-loan', 'delete-loan'])
+                     <li class="nav-item">
+                         <a href="#" class="nav-link">
+                             <p>Loan</p>
                          </a>
                      </li>
-                     <li class="nav-item  {{ sidebar_open(['admin.gym.management.*']) }} ">
-                         <a class="nav-items-title nav-link" href="{{ route('admin.gym.management.list') }}">
-                             @if (!empty(sidebar_open(['admin.gym.management.*'])))
-                                 <i class="fa fa-square" aria-hidden="true"></i>
-                             @endif <b>Gym Management</b>
+                 @endcanany
+                 @canany(['add-occupation', 'edit-occupation', 'view-occupation', 'delete-occupation'])
+                     <li class="nav-item">
+                         <a href="#" class="nav-link">
+                             <p>Occupation</p>
                          </a>
                      </li>
-                     <li class="nav-item  {{ sidebar_open(['admin.gym.booking.*']) }} ">
-                         <a class="nav-items-title nav-link" href="{{ route('admin.gym.booking.list') }}">
-                             @if (!empty(sidebar_open(['admin.gym.booking.*'])))
-                                 <i class="fa fa-square" aria-hidden="true"></i>
-                             @endif <b>Gym Booking List</b>
+                 @endcanany
+                 @canany(['add-purpose', 'edit-purpose', 'view-purpose', 'delete-purpose'])
+                     <li class="nav-item">
+                         <a href="#" class="nav-link">
+                             <p>Purpose</p>
                          </a>
                      </li>
-                 </ul>
-             </li>
-         @endcanany
-
-         <li class="nav-item has-treeview">
-
-             <a href="{{ route('logout') }}" class="nav-link"
-                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                 @endcanany
+                 @canany(['add-user', 'edit-user', 'view-user', 'delete-user'])
+                     <li class="nav-item">
+                         <a href="#" class="nav-link">
+                             <p>User</p>
+                         </a>
+                     </li>
+                 @endcanany
+                 @canany(['add-roles', 'edit-roles', 'view-roles', 'delete-roles'])
+                     <li class="nav-item">
+                         <a href="#" class="nav-link">
+                             <p>Roles</p>
+                         </a>
+                     </li>
+                 @endcanany
+                 @canany(['add-accounts', 'edit-accounts', 'view-accounts', 'delete-accounts'])
+                     <li class="nav-item">
+                         <a href="#" class="nav-link">
+                             <p>Accounts</p>
+                         </a>
+                     </li>
+                 @endcanany
+             </ul>
+         </li>
+     @endcanany
+     @canany(['add-courses', 'list-courses', 'edit-courses', 'delete-courses', 'add-plans', 'list-plans', 'edit-plans',
+         'delete-plans']) <li class="nav-item has-treeview {{ slide_down(['admin.subscription.*']) }}">
+             <a href="javascript:void(0)" class="nav-link {{ sidebar_open(['admin.subscription.*']) }}">
                  <p>
-                     Logout
+                     {{ __('Gym Section') }}
+                     <i class="fa fa-plus" aria-hidden="true"></i>
                  </p>
              </a>
-             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                 {{ csrf_field() }}
-             </form>
+             <ul class="nav nav-treeview">
+                 <li class="nav-item  {{ sidebar_open(['admin.gym.category.*']) }} ">
+                     <a class="nav-items-title nav-link" href="{{ route('admin.gym.category.list') }}">
+                         @if (!empty(sidebar_open(['admin.gym.category.*'])))
+                             <i class="fa fa-square" aria-hidden="true"></i>
+                         @endif <b>Gym Facilities</b>
+                     </a>
+                 </li>
+                 <li class="nav-item  {{ sidebar_open(['admin.gym.category.*']) }} ">
+                     <a class="nav-items-title nav-link" href="{{ route('admin.gym.category.list') }}">
+                         @if (!empty(sidebar_open(['admin.gym.category.*'])))
+                             <i class="fa fa-square" aria-hidden="true"></i>
+                         @endif <b>Gym Category</b>
+                     </a>
+                 </li>
+                 <li class="nav-item  {{ sidebar_open(['admin.gym.management.*']) }} ">
+                     <a class="nav-items-title nav-link" href="{{ route('admin.gym.management.list') }}">
+                         @if (!empty(sidebar_open(['admin.gym.management.*'])))
+                             <i class="fa fa-square" aria-hidden="true"></i>
+                         @endif <b>Gym Management</b>
+                     </a>
+                 </li>
+                 <li class="nav-item  {{ sidebar_open(['admin.gym.booking.*']) }} ">
+                     <a class="nav-items-title nav-link" href="{{ route('admin.gym.booking.list') }}">
+                         @if (!empty(sidebar_open(['admin.gym.booking.*'])))
+                             <i class="fa fa-square" aria-hidden="true"></i>
+                         @endif <b>Gym Booking List</b>
+                     </a>
+                 </li>
+             </ul>
          </li>
+     @endcanany
+
+     <li class="nav-item has-treeview">
+         <a href="{{ route('logout') }}" class="nav-link"
+             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+             <p>
+                 Logout
+             </p>
+         </a>
+         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+             {{ csrf_field() }}
+         </form>
+     </li>
      </ul>
  </nav>
  <!-- /.sidebar-menu -->

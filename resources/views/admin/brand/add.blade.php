@@ -295,14 +295,18 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-sm-8">
-                        <h1 class="m-0 text-dark">Add Brand</h1>
+                        <h1 class="m-0 text-dark">Edit Category</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-4 right_btn">
                         <a class="btn btn-primary" href="{{ route('admin.product.brand.list') }}">
+
+                    {{-- <div class="col-sm-4 right_btn">
+                        <a class="btn btn-primary " href="{{ route('admin.product.category.list') }}">
+>>>>>>>> 5278a15d54d297b514d5e419999275e8d42c3132:resources/views/restaurant/category-product/edit.blade.php
                             <span><i class="fa fa-list" aria-hidden="true"></i></span>
-                            Brand List
+                            Category List
                         </a>
-                    </div><!-- /.col -->
+                    </div><!-- /.col --> --}}
                 </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -324,7 +328,9 @@
                                 <div class="form-group">
                                     <label>Name<sup>*</sup></label>
                                     <input id="name" class="form-control" type="text" name="name"
+
                                         placeholder="Brand" value="{{ old('name') }}" />
+
                                     @error('name')
                                         <span class="text-sm text-danger">
                                             {{ $message }}
@@ -332,7 +338,6 @@
                                     @enderror
                                 </div>
                             </div>
-
 
 
                             <div class="col-md-12">
@@ -350,15 +355,18 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
+
                                     <label>Brand Image</label>
                                     <input id="brand_image" class="form-control" type="file" name="brand_image"
                                         placeholder="Category" value="{{ old('brand_image') }}" />
                                     @error('brand_image')
+
                                         <span class="text-sm text-danger">
                                             {{ $message }}
                                         </span>
                                     @enderror
                                 </div>
+                                <img src="{{ asset('images/' . $data->category_image) }}" alt="Your Image" width="200" height="100">
                             </div>
 
                         </div>

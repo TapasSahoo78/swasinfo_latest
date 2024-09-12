@@ -1,4 +1,6 @@
+
 @extends('admin.layouts.app')
+
 @push('style')
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css"> --}}
@@ -282,7 +284,9 @@
 @endpush
 @section('pagetitlesection')
     <li class="nav-item d-none d-sm-inline-block">
+
         <a href="#" class="nav-link custom-cumb">{{ __('BRAND') }}</a>
+
     </li>
 @endsection
 @section('content')
@@ -293,16 +297,17 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-sm-8">
+
                         <h1 class="m-0 text-dark">No of Brand : {{ count($data) }}</h1>
+
                     </div><!-- /.col -->
-                    <?php if(auth()->user()->id == 1){ ?>
                     <div class="col-sm-4 right_btn">
+
                         <a class="btn btn-primary" href="{{ route('admin.product.brand.add') }}">
                             <span><i class="fa fa-plus" aria-hidden="true"></i></span>
                             ADD BRAND
                         </a>
                     </div><!-- /.col -->
-                    <?php } ?>
                 </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -335,7 +340,9 @@
                                             <td>{{ ++$key }}</td>
                                             <td>{{ $value->name ? $value->name : '---' }}
                                             <td>{{ $value->description ? $value->description : '---' }}
+
                                             <td><img src="{{ asset('images/' . $value->brand_image) }}" alt="Your Image" width="200" height="100">
+
                                             <td>
                                                 @switch($value->is_active)
                                                     @case(1)
@@ -365,10 +372,12 @@
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                         <a class="dropdown-item"
+
                                                             href="{{ route('admin.product.brand.edit', $value->uuid) }}">Edit</a>
                                                         <a class="dropdown-item deleteData" data-table="categories"
                                                             data-uuid="{{ $value->uuid }}"
                                                             href="javascript:void(0)">Delete</a>
+
                                                     </div>
                                                 </div>
 
