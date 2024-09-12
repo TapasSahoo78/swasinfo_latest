@@ -350,6 +350,7 @@ Route::namespace('Api\Trainer')->prefix('v2/trainers')->as('trainers.')->group(f
         });
 
         Route::controller(GymTrainerController::class)->prefix('gym')->as('gym.')->group(function () {
+            Route::get('/common-data', 'GymCommonData')->name('common.data');
             Route::post('/create-profie', 'GymCreateProfile')->name('create.profie');
             Route::get('/get-profie', 'GymGetProfile')->name('get.profie');
         });

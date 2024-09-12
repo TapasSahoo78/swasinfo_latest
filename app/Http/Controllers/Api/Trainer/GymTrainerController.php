@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Api\Trainer;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
+use App\Models\GymCategory;
+use App\Models\GymDay;
+use App\Models\GymFacilities;
 use App\Models\GymManagement;
 use App\Models\GymTrainerBusinessDetail;
 use App\Models\GymTrainerPersonalDetail;
@@ -13,9 +16,27 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use PhpOffice\PhpSpreadsheet\Calculation\DateTimeExcel\Days;
 
 class GymTrainerController extends BaseController
 {
+
+    public function GymCommonData()
+    {
+        $userId = Auth::id();
+        try {
+            $data['categories'] = GymCategory::select('name', 'slug')->get();
+            $data['days'] = GymDay::select('name', 'slug')->get();
+            $data['facilities'] = GymFacilities::select('name', 'slug')->get();
+            if ($data) {
+                return $this->responseJson(true, 200, "Common Data", $data);
+            }
+        } catch (\Throwable $th) {
+            info($th);
+            return response()->json(['status' => false, 'message' => $th->getMessage() . '/' . $th->getLine() . '/' . $th->getFile(), 'data' => (object)[]], 500);
+        }
+    }
+
     public function GymCreateProfile(Request $request)
     {
         $userId = Auth::id();
