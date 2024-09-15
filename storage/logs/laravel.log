@@ -1893,3 +1893,299 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
+[2024-09-16 03:16:02] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2024-09-16 03:16:38] local.ERROR: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'gym_category_id' (SQL: alter table `gym_bookings` add `gym_category_id` bigint unsigned null after `user_id`, add `timing` varchar(255) null after `end_date`) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S21): SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'gym_category_id' (SQL: alter table `gym_bookings` add `gym_category_id` bigint unsigned null after `user_id`, add `timing` varchar(255) null after `end_date`) at J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:760)
+[stacktrace]
+#0 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback('alter table `gy...', Array, Object(Closure))
+#1 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(546): Illuminate\\Database\\Connection->run('alter table `gy...', Array, Object(Closure))
+#2 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Blueprint.php(109): Illuminate\\Database\\Connection->statement('alter table `gy...')
+#3 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(439): Illuminate\\Database\\Schema\\Blueprint->build(Object(Staudenmeir\\LaravelCte\\Connections\\MySqlConnection), Object(Illuminate\\Database\\Schema\\Grammars\\MySqlGrammar))
+#4 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(269): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#5 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(338): Illuminate\\Database\\Schema\\Builder->table('gym_bookings', Object(Closure))
+#6 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\database\\migrations\\2024_09_16_014256_alter_category_to_gym_bookings.php(20): Illuminate\\Support\\Facades\\Facade::__callStatic('table', Array)
+#7 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(488): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#8 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(406): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Staudenmeir\\LaravelCte\\Connections\\MySqlConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#9 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(415): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#10 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(216): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Task.php(37): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(751): Illuminate\\Console\\View\\Components\\Task->render('2024_09_16_0142...', Object(Closure))
+#13 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(216): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2024_09_16_0142...', Object(Closure))
+#14 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(181): Illuminate\\Database\\Migrations\\Migrator->runUp('J:\\\\DECEMBER-202...', 20, false)
+#15 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(124): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#16 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#17 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(628): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#18 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(102): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#19 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#20 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#21 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#22 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#23 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#24 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#25 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Command\\Command.php(326): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#26 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#27 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Application.php(1078): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(102): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(155): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 {main}
+
+[previous exception] [object] (PDOException(code: 42S21): SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'gym_category_id' at J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:545)
+[stacktrace]
+#0 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(545): PDOStatement->execute()
+#1 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(753): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('alter table `gy...', Array)
+#2 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback('alter table `gy...', Array, Object(Closure))
+#3 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(546): Illuminate\\Database\\Connection->run('alter table `gy...', Array, Object(Closure))
+#4 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Blueprint.php(109): Illuminate\\Database\\Connection->statement('alter table `gy...')
+#5 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(439): Illuminate\\Database\\Schema\\Blueprint->build(Object(Staudenmeir\\LaravelCte\\Connections\\MySqlConnection), Object(Illuminate\\Database\\Schema\\Grammars\\MySqlGrammar))
+#6 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(269): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#7 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(338): Illuminate\\Database\\Schema\\Builder->table('gym_bookings', Object(Closure))
+#8 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\database\\migrations\\2024_09_16_014256_alter_category_to_gym_bookings.php(20): Illuminate\\Support\\Facades\\Facade::__callStatic('table', Array)
+#9 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(488): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#10 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(406): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Staudenmeir\\LaravelCte\\Connections\\MySqlConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(415): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(216): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#13 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Task.php(37): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#14 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(751): Illuminate\\Console\\View\\Components\\Task->render('2024_09_16_0142...', Object(Closure))
+#15 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(216): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2024_09_16_0142...', Object(Closure))
+#16 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(181): Illuminate\\Database\\Migrations\\Migrator->runUp('J:\\\\DECEMBER-202...', 20, false)
+#17 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(124): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#18 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#19 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(628): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#20 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(102): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#21 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#22 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#25 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#26 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#27 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Command\\Command.php(326): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#28 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#29 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Application.php(1078): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(102): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(155): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#34 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 {main}
+"} 
+[2024-09-16 03:17:09] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2024-09-16 03:17:39] local.ERROR: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'gym_category_id' (SQL: alter table `gym_bookings` add `gym_category_id` bigint unsigned null after `user_id`, add `timing` varchar(255) null after `end_date`) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S21): SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'gym_category_id' (SQL: alter table `gym_bookings` add `gym_category_id` bigint unsigned null after `user_id`, add `timing` varchar(255) null after `end_date`) at J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:760)
+[stacktrace]
+#0 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback('alter table `gy...', Array, Object(Closure))
+#1 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(546): Illuminate\\Database\\Connection->run('alter table `gy...', Array, Object(Closure))
+#2 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Blueprint.php(109): Illuminate\\Database\\Connection->statement('alter table `gy...')
+#3 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(439): Illuminate\\Database\\Schema\\Blueprint->build(Object(Staudenmeir\\LaravelCte\\Connections\\MySqlConnection), Object(Illuminate\\Database\\Schema\\Grammars\\MySqlGrammar))
+#4 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(269): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#5 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(338): Illuminate\\Database\\Schema\\Builder->table('gym_bookings', Object(Closure))
+#6 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\database\\migrations\\2024_09_16_014256_alter_category_to_gym_bookings.php(20): Illuminate\\Support\\Facades\\Facade::__callStatic('table', Array)
+#7 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(488): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#8 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(406): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Staudenmeir\\LaravelCte\\Connections\\MySqlConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#9 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(415): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#10 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(216): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Task.php(37): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(751): Illuminate\\Console\\View\\Components\\Task->render('2024_09_16_0142...', Object(Closure))
+#13 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(216): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2024_09_16_0142...', Object(Closure))
+#14 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(181): Illuminate\\Database\\Migrations\\Migrator->runUp('J:\\\\DECEMBER-202...', 20, false)
+#15 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(124): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#16 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#17 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(628): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#18 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(102): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#19 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#20 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#21 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#22 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#23 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#24 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#25 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Command\\Command.php(326): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#26 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#27 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Application.php(1078): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(102): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(155): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 {main}
+
+[previous exception] [object] (PDOException(code: 42S21): SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'gym_category_id' at J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:545)
+[stacktrace]
+#0 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(545): PDOStatement->execute()
+#1 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(753): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('alter table `gy...', Array)
+#2 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(720): Illuminate\\Database\\Connection->runQueryCallback('alter table `gy...', Array, Object(Closure))
+#3 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(546): Illuminate\\Database\\Connection->run('alter table `gy...', Array, Object(Closure))
+#4 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Blueprint.php(109): Illuminate\\Database\\Connection->statement('alter table `gy...')
+#5 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(439): Illuminate\\Database\\Schema\\Blueprint->build(Object(Staudenmeir\\LaravelCte\\Connections\\MySqlConnection), Object(Illuminate\\Database\\Schema\\Grammars\\MySqlGrammar))
+#6 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(269): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#7 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(338): Illuminate\\Database\\Schema\\Builder->table('gym_bookings', Object(Closure))
+#8 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\database\\migrations\\2024_09_16_014256_alter_category_to_gym_bookings.php(20): Illuminate\\Support\\Facades\\Facade::__callStatic('table', Array)
+#9 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(488): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#10 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(406): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Staudenmeir\\LaravelCte\\Connections\\MySqlConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(415): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(216): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#13 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Task.php(37): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#14 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(751): Illuminate\\Console\\View\\Components\\Task->render('2024_09_16_0142...', Object(Closure))
+#15 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(216): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2024_09_16_0142...', Object(Closure))
+#16 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(181): Illuminate\\Database\\Migrations\\Migrator->runUp('J:\\\\DECEMBER-202...', 20, false)
+#17 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(124): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#18 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(90): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#19 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(628): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#20 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(102): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#21 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#22 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#25 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(661): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#26 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#27 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Command\\Command.php(326): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#28 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(153): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#29 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Application.php(1078): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\symfony\\console\\Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(102): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(155): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#34 J:\\DECEMBER-2024\\SWASINFO(latest)\\shyamfuturetech-swasthafit(latest)\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 {main}
+"} 
+[2024-09-16 03:18:03] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2024-09-16 03:19:02] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2024-09-16 03:20:02] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2024-09-16 03:21:02] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2024-09-16 03:22:04] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2024-09-16 03:23:02] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2024-09-16 03:24:02] local.ERROR: Uncaught ReflectionException: Class "App\Policies\ModelPolicy" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\Policies\\Mo...')
+#1 [internal function]: {closure}('App\\Policies\\Mo...', 'App\\Models\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"App\\Policies\\ModelPolicy\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct('App\\\\Policies\\\\Mo...')
+#1 [internal function]: {closure}('App\\\\Policies\\\\Mo...', 'App\\\\Models\\\\Mode...')
+#2 Command line code(1): array_map(Object(Closure), Array, Array)
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 

@@ -28,7 +28,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('gym_bookings', function (Blueprint $table) {
-            //
+            $table->dropColumn(['gym_category_id', 'timing']);
         });
     }
 };
