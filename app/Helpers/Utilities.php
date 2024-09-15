@@ -680,3 +680,34 @@ function uploadMedia($request, $mediaable, $mediaableType, $fileInputName = 'ima
         return $media;  // Return the saved media model
     }
 }
+function formatFirstAndLastDay($days)
+{
+    // Ensure the array is not empty
+    if (empty($days)) {
+        return '';
+    }
+    // Concatenate the first and last day
+    return $days[0] . ' to ' . $days[count($days) - 1];
+}
+
+function generateTimeSlots($startTime, $endTime, $interval = 1)
+{
+    $start = Carbon::parse($startTime);  // Parse the start time using Carbon
+    $end = Carbon::parse($endTime);      // Parse the end time using Carbon
+    $slots = [];
+
+    // Loop through the times and generate slots
+    while ($start->lt($end)) {
+        $slotStart = $start->format('h:i A'); // Get the current slot's start time
+        $slotEnd = $start->addHour($interval)->format('h:i A'); // Get the slot end time (1-hour gap)
+
+        // If the slotEnd is greater than the end time, stop the loop
+        if (Carbon::parse($slotEnd)->gt($end)) {
+            break;
+        }
+
+        $slots[] = "$slotStart - $slotEnd"; // Add the slot to the array
+    }
+
+    return $slots;
+}

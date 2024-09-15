@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Agent\SettingController;
 use App\Http\Controllers\Api\Common\ProfileQuestionController;
 use App\Http\Controllers\Api\Common\WalletController;
+use App\Http\Controllers\Api\Customer\GymTrainerController as CustomerGymTrainerController;
 use App\Http\Controllers\Api\Trainer\GymTrainerController;
 use App\Http\Controllers\Api\TrainerDietitian\ManageController;
 
@@ -202,6 +203,16 @@ Route::namespace('Api\Customer')
         // Route::post('login', [UserApiControllers::class, 'login']);
         Route::controller(UserApiControllers::class)->group(function () {
             Route::post('/payment-intent', 'paymentIntent')->name('payment.intent');
+        });
+
+        Route::controller(CustomerGymTrainerController::class)->group(function () {
+            Route::get('/gym-list', 'gymsList')->name('gym.list');
+            Route::post('/gym-details', 'gymsDetails')->name('gym.details');
+
+            Route::post('/slot-booking', 'slotBookingGymCustomer')->name('gym.slot.booking');
+
+            Route::post('/workout-booking-list', 'workoutBookingCustomer')->name('gym.workout.booking');
+            Route::post('/cancel-booking', 'workoutBookingCancel')->name('gym.cancel.booking');
         });
     });
 

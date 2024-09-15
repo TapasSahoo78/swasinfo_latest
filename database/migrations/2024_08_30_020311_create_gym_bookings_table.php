@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('gym_management_id')->references('id')->on('gym_management')->onDelete('cascade');
             $table->string('start_date')->nullable();
             $table->string('end_date')->nullable();
+            $table->string('timing')->nullable();
             $table->integer('status')->default(1);
             $table->string('create_by')->nullable();
             $table->timestamps();
