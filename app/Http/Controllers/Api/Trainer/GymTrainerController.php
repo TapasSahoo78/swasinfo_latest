@@ -63,6 +63,10 @@ class GymTrainerController extends BaseController
             'start_time' => 'required|string',
             'end_time' => 'required|string',
             'facilities' => 'required|array',
+            'location' => 'sometimes|string',
+            'latitude' => 'sometimes|numeric',
+            'longitude' => 'sometimes|numeric',
+
         ]);
         if ($validator->fails()) {
             $error = ['error' => $validator->errors()->all()];
@@ -186,6 +190,10 @@ class GymTrainerController extends BaseController
                 $userGymData->about_us = $request->about_us;
                 $userGymData->start_time = $request->start_time;
                 $userGymData->end_time = $request->end_time;
+
+                $userGymData->location = $request->location;
+                $userGymData->latitude = $request->latitude;
+                $userGymData->longitude = $request->longitude;
 
                 $userGymData->facilities = json_encode($facilities);
                 $userGymData->save();
